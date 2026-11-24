@@ -1,0 +1,160 @@
+{
+  "blender": "5.2.2 LTS",
+  "sourceDeclaresUndo": false,
+  "undoPolicy": "Explicit bpy.ops.ed.undo_push snapshots; Set Active does not declare UNDO",
+  "sources": {
+    "vendor/add-camera-rigs/operators.py": "8939a8e0733a5a8fea9418a21c63921374f710ff79a4cc966062e8b952e99f39",
+    "vendor/add-camera-rigs/build_rigs.py": "bac3d523b925451d490f786d52812f5741924f13240b93252b3e647d9d6890b9",
+    "vendor/blender-scene-camera/scene.cc": "73f4f2ec12844f10074f642db106eae9a3a637a3b30c45389da3a3b42312c5d9"
+  },
+  "cases": [
+    {
+      "id": "successive-manual",
+      "states": [
+        {
+          "step": "initial-marker-A",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "set-B",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "B",
+          "allCamerasExist": true
+        },
+        {
+          "step": "set-C",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "C",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Undo-C",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "B",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Redo-C",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "C",
+          "allCamerasExist": true
+        }
+      ]
+    },
+    {
+      "id": "unrelated-history",
+      "states": [
+        {
+          "step": "initial-marker-A",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "duration-edit",
+          "frame": 48,
+          "frameEnd": 300,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "set-C",
+          "frame": 48,
+          "frameEnd": 300,
+          "sceneCamera": "C",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Undo-C",
+          "frame": 48,
+          "frameEnd": 300,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Undo-duration",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Redo-duration",
+          "frame": 48,
+          "frameEnd": 300,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Redo-C",
+          "frame": 48,
+          "frameEnd": 300,
+          "sceneCamera": "C",
+          "allCamerasExist": true
+        }
+      ]
+    },
+    {
+      "id": "seek-and-return",
+      "states": [
+        {
+          "step": "initial-marker-A",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "set-B",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "B",
+          "allCamerasExist": true
+        },
+        {
+          "step": "set-C",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "C",
+          "allCamerasExist": true
+        },
+        {
+          "step": "seek-49",
+          "frame": 49,
+          "frameEnd": 250,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "seek-back-48",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "A",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Undo-C",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "B",
+          "allCamerasExist": true
+        },
+        {
+          "step": "Redo-C",
+          "frame": 48,
+          "frameEnd": 250,
+          "sceneCamera": "C",
+          "allCamerasExist": true
+        }
+      ]
+    }
+  ]
+}

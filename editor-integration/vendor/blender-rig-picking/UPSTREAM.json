@@ -1,0 +1,74 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "armature_select.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/armature/armature_select.cc",
+      "sha256": "124fb6246426b6f21ff170b682ff4ed13e0d32d7df42beaa690e8445cfe51074"
+    },
+    "view3d_select.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/space_view3d/view3d_select.cc",
+      "sha256": "4629250205fce953830119031a324898ac189831cdce9455932817bdddee4390"
+    },
+    "math_geom.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_geom.cc",
+      "sha256": "3de333b5b273342dddbc72ffa5d92718fd8abe720d83ecf347ed570f60730d09"
+    },
+    "wm_event_query.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/windowmanager/intern/wm_event_query.cc",
+      "sha256": "d3d014aa579a7bb581c7505a087461f0c2710d0d8070dad6f72335554979d444"
+    },
+    "WM_types.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/windowmanager/WM_types.hh",
+      "sha256": "d86bfb346c0d9b96b65836bd826023788601792dd44780e9a41dc0d50d8554a6"
+    },
+    "userdef_default.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/userdef/userdef_default.c",
+      "sha256": "3997c60abfa9e9d34f01f2744f7f1b943d69ac89c7bb5a5ee366364927f68c33"
+    },
+    "DNA_userdef_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_userdef_types.h",
+      "sha256": "58a976242d92e2c3e02578e4483322fca0899071c0a207c2e82ab1984058a7d3"
+    },
+    "screen_edit.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/screen/screen_edit.cc",
+      "sha256": "a2824178f32806c6c510f800e1d8567b91ef3a46a90900df56e8e2bc92d65634"
+    },
+    "gpu_select.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/intern/gpu_select.cc",
+      "sha256": "036c130881bd3cf5130a9b77eed5cbb95899c4a6c17af8df6b0820c18f2d4c3d"
+    },
+    "gpu_select_pick.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/intern/gpu_select_pick.cc",
+      "sha256": "94ee2e59ec3ca923de592882218052634325028348913b7fd9820eb49695c27b"
+    },
+    "select_instance.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/select/select_instance.hh",
+      "sha256": "04893777bf7c1d9c1201ff5f7959a95b748b9cc864b363eed43253359410b2f8"
+    },
+    "gpu_select_next.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/intern/gpu_select_next.cc",
+      "sha256": "622e7b1a02255f2d86633a25e8843c7801b370392747a678db7a9ccc40c773cb"
+    },
+    "draw_manager_c.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/intern/draw_manager_c.cc",
+      "sha256": "c71f0532a3f233b9b052400b228f0f90c70f9408321ce948b747ab6881fb89c3"
+    },
+    "draw_manager_exec.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/intern/draw_manager_exec.cc",
+      "sha256": "b62f577d1b3372876ac9436592a7d565e1ea7453b86f70bb47d18581d703017c"
+    },
+    "DNA_view3d_defaults.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_view3d_defaults.h",
+      "sha256": "61ada0b69362397a23ec931bb61f9522ea54cca88f2d11444613ddd0d425c8b9"
+    },
+    "DNA_scene_defaults.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_scene_defaults.h",
+      "sha256": "b0f9dada73216abe3b1edf4aa7439202825a43735afa25a38ac52fa4cee11855"
+    },
+    "view3d_view.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/space_view3d/view3d_view.cc",
+      "sha256": "a993b0f9aacf44a1d40e76755939a55852c11faa3033dc0d32adf0df6e5f5314"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "tag": "v4.3.0",
+  "files": {
+    "fcurve.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/fcurve.cc",
+      "sha256": "0faad339b0dacd3c1183401decd2800036ed090a10579fb64b37ba60fd717a1b"
+    },
+    "curve.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/curve.cc",
+      "sha256": "b82b48306f88b1c535fd35286bb8cd01a4df66094b03ec1a158c2274db806dd7"
+    },
+    "DNA_anim_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_anim_types.h",
+      "sha256": "25636a41148dd19ef5a9260dfe5287e99c6baab10f51dc7cead40019816cec39"
+    },
+    "easing.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/easing.c",
+      "sha256": "fda29bcd4de70b2b3ef0a3633561a6508161ac27f8ccba98243e06cc177a9cfd"
+    },
+    "DNA_curve_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_curve_types.h",
+      "sha256": "748592715131ea26d534dde7783569edc59b6a0f1ee128c4d5bf69da40ba13c7"
+    },
+    "BKE_curve.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/BKE_curve.hh",
+      "sha256": "20019a40cbd7c8ffd740ed82a9e2da593569a707bd524e1c035739e88744acf6"
+    },
+    "math_solvers.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_solvers.c",
+      "sha256": "6f9fa61c3e0ba55b3a7bfb1946f65990ad471b0fb06492c8bb305891067209ff"
+    },
+    "math_base_inline.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_base_inline.c",
+      "sha256": "636c252ff3511d21b570862e176a59782774dc38e0e4a42b080d79021ba79e2f"
+    },
+    "math_base.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_base.c",
+      "sha256": "8d4b55eaa5123f707f3370b1103e55a71e2908e37b8e90286087df9dc62fbda3"
+    },
+    "BLI_math_base.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_math_base.h",
+      "sha256": "f71d35f57bbd0bf441f26c21e7402590256c7a471f739ed6c3ed5a0949c16121"
+    },
+    "animrig_fcurve.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/animrig/intern/fcurve.cc",
+      "sha256": "f174dfec2d1aef2a047a5f0d7fa7744083e649b48f03da84dc9e299219055f2e"
+    },
+    "ANIM_fcurve.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/animrig/ANIM_fcurve.hh",
+      "sha256": "0bf69875628bee18f8f05a90fbc24f5224139a91561a6426235cb2f24bbca163"
+    },
+    "ANIM_keyframing.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/animrig/ANIM_keyframing.hh",
+      "sha256": "13e8fe014659825811f137fc9d1d3d0f61417d832ed1ab6c242f41ff58fc8503"
+    },
+    "BKE_fcurve.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/BKE_fcurve.hh",
+      "sha256": "098d1ad728426da08bf6887beece2f21ff2cfc40bbbbb3df2c8a265994ac62e1"
+    },
+    "DNA_action_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_action_types.h",
+      "sha256": "2290b3fc8dfe19bb7909f03785fce3bc0778e5148915c724ce2cba068a146c1f"
+    },
+    "math_vector.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector.c",
+      "sha256": "7f6c851cdafe5028e6d0343bc0976abb977a44fb77a1fe1d1a791e1a8246daf1"
+    }
+  }
+}

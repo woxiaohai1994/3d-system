@@ -1,0 +1,82 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "download_date": "2026-09-30",
+  "method": "Python urllib.request.urlopen; original response bytes, no normalization",
+  "independent_git_blob_verified": false,
+  "native_blender": "5.2.2 LTS",
+  "native_build_hash": "d13f752e3b9c",
+  "files": {
+    "v4.3.0/bpy_interface_run.cc": {
+      "ref": "v4.3.0",
+      "source_path": "source/blender/python/intern/bpy_interface_run.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/intern/bpy_interface_run.cc",
+      "sha256": "0221cd6627a720292b4117bf2ed41d92321ac1dc46628f16aa7970a886de80e0",
+      "bytes": 13442,
+      "lines": 483
+    },
+    "v4.3.0/py_capi_utils.cc": {
+      "ref": "v4.3.0",
+      "source_path": "source/blender/python/generic/py_capi_utils.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/generic/py_capi_utils.cc",
+      "sha256": "719c8c2a45a163e210061c2dd0f44a424839a19db40a62b6e11c657e92fcb30e",
+      "bytes": 53482,
+      "lines": 1911
+    },
+    "v4.3.0/bpy_utils_units.cc": {
+      "ref": "v4.3.0",
+      "source_path": "source/blender/python/intern/bpy_utils_units.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/intern/bpy_utils_units.cc",
+      "sha256": "5509b3ceee91f58f5fa485a7497e56c2ab598baf5c7968ba948858e09fd4b93f",
+      "bytes": 12039,
+      "lines": 395
+    },
+    "d13f752e3b9c/bpy_interface_run.cc": {
+      "ref": "d13f752e3b9c",
+      "source_path": "source/blender/python/intern/bpy_interface_run.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/d13f752e3b9c/source/blender/python/intern/bpy_interface_run.cc",
+      "sha256": "c2b7aa9ef2ef3b42d71e72fb6b40ec38a026e3dae8ab32663004088ce0a4b969",
+      "bytes": 18384,
+      "lines": 650
+    },
+    "d13f752e3b9c/py_capi_utils.cc": {
+      "ref": "d13f752e3b9c",
+      "source_path": "source/blender/python/generic/py_capi_utils.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/d13f752e3b9c/source/blender/python/generic/py_capi_utils.cc",
+      "sha256": "ac693935fe20dd74ce8ce802cdd627c17ffe8e2d827bfb4ceece26b7a049fcd0",
+      "bytes": 63285,
+      "lines": 2260
+    },
+    "d13f752e3b9c/bpy_utils_units.cc": {
+      "ref": "d13f752e3b9c",
+      "source_path": "source/blender/python/intern/bpy_utils_units.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/d13f752e3b9c/source/blender/python/intern/bpy_utils_units.cc",
+      "sha256": "fd0f84e302c9c02b5e83008e6b680113d7e8f24ed91f9835c852b10b5ed0465c",
+      "bytes": 12265,
+      "lines": 404
+    },
+    "d13f752e3b9c/numinput.cc": {
+      "ref": "d13f752e3b9c",
+      "source_path": "source/blender/editors/util/numinput.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/d13f752e3b9c/source/blender/editors/util/numinput.cc",
+      "sha256": "b316d1c54bc08ee91be5884fb317f8bd43a55dafa2eff5f8baa68921948f7241",
+      "bytes": 19722,
+      "lines": 679
+    },
+    "d13f752e3b9c/ED_numinput.hh": {
+      "ref": "d13f752e3b9c",
+      "source_path": "source/blender/editors/include/ED_numinput.hh",
+      "url": "https://raw.githubusercontent.com/blender/blender/d13f752e3b9c/source/blender/editors/include/ED_numinput.hh",
+      "sha256": "f24e2e0c6555978310c458286ecf6ab32e64231747aed936e07544e150ab735e",
+      "bytes": 3867,
+      "lines": 124
+    },
+    "d13f752e3b9c/unit.cc": {
+      "ref": "d13f752e3b9c",
+      "source_path": "source/blender/blenkernel/intern/unit.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/d13f752e3b9c/source/blender/blenkernel/intern/unit.cc",
+      "sha256": "26015e1202116553cb8b0aab61c23fdbd3f03ebd7c0d21c988d5adbcc89968fb",
+      "bytes": 77048,
+      "lines": 2658
+    }
+  }
+}

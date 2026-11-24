@@ -1,0 +1,785 @@
+--- a/src/panel.tsx
++++ b/src/panel.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { useEditor } from '@pascal-app/editor'
+ import { useViewer } from '@pascal-app/viewer'
+ import { useCallback, useEffect, useRef, useState } from 'react'
+@@ -198,6 +199,8 @@
+ }
+ 
+ export default function MintAssetsPanel() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const [connection, setConnection] = useState<ConnectionState>('loading')
+   const [user, setUser] = useState<MintPluginUser | null>(null)
+   const [tab, setTab] = useState<Tab>('create')
+@@ -658,18 +661,18 @@
+   }
+ 
+   if (connection === 'loading') {
+-    return <PanelMessage title="Connecting to Mint…" body="Checking your secure Mint session." />
++    return <PanelMessage title={uiText("Connecting to Mint…")} body={uiText("Checking your secure Mint session.")} />
+   }
+   if (connection === 'disconnected' || connection === 'expired') {
+     return (
+       <PanelMessage
+         emphasizeBody
+         heroSrc={MINT_PLUGIN_HERO.src}
+-        title={connection === 'expired' ? 'Reconnect Mint' : 'Mint assets'}
++        title={connection === 'expired' ? uiText("Reconnect Mint") : uiText("Mint assets")}
+         body={
+           connection === 'expired'
+-            ? 'Your Mint session ended. Sign in again to continue.'
+-            : 'Generate, browse and add Mint 3D assets.'
++            ? uiText("Your Mint session ended. Sign in again to continue.")
++            : uiText("Generate, browse and add Mint 3D assets.")
+         }
+         action={
+           <div className="flex w-full max-w-56 flex-col gap-2">
+@@ -678,24 +681,20 @@
+               onClick={() => window.location.assign(mintConnectUrl())}
+               style={{ backgroundColor: '#bef93a', color: '#0a0a0a' }}
+               type="button"
+-            >
+-              Sign In with Mint
+-            </button>
++            >{uiText("Sign In with Mint")}{' '}</button>
+             <a
+               className="w-full rounded-xl border border-sidebar-foreground/20 px-4 py-2.5 text-sm font-medium text-sidebar-foreground/75 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+               href="https://mint.gg"
+               rel="noreferrer"
+               target="_blank"
+-            >
+-              Learn more about Mint
+-            </a>
++            >{uiText("Learn more about Mint")}{' '}</a>
+           </div>
+         }
+       />
+     )
+   }
+   if (connection === 'error') {
+-    return <PanelMessage title="Could not connect" body={error ?? 'Mint is temporarily unavailable.'} />
++    return <PanelMessage title={uiText("Could not connect")} body={error ?? uiText("Mint is temporarily unavailable.")} />
+   }
+ 
+   return (
+@@ -705,24 +704,24 @@
+           <div className="flex items-baseline gap-2">
+             <h2 className="font-semibold text-sm">Mint</h2>
+             <span
+-              aria-label={`Mint Pascal Plugin version ${MINT_PASCAL_PLUGIN_VERSION}`}
++              aria-label={uiText("Mint Pascal Plugin version {arg0}", {arg0: MINT_PASCAL_PLUGIN_VERSION})}
+               className="text-[9px] font-medium tabular-nums text-sidebar-foreground/35"
+             >
+               v{MINT_PASCAL_PLUGIN_VERSION}
+             </span>
+           </div>
+           <button
+-            aria-label="Log out of Mint"
++            aria-label={uiText("Log out of Mint")}
+             className="flex size-8 items-center justify-center rounded-lg text-sidebar-foreground/55 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+             onClick={() => setShowLogoutDialog(true)}
+-            title="Log out"
++            title={uiText("Log out")}
+             type="button"
+           >
+             <LogoutIcon />
+           </button>
+         </div>
+         <div
+-          aria-label="Mint panel sections"
++          aria-label={uiText("Mint panel sections")}
+           className="mt-3 grid grid-cols-2 gap-1 rounded-xl border border-sidebar-border bg-sidebar-accent p-1"
+           role="tablist"
+         >
+@@ -741,7 +740,7 @@
+               role="tab"
+               type="button"
+             >
+-              {value === 'create' ? 'Create' : 'Assets'}
++              {value === 'create' ? uiText("Create") : uiText("Assets")}
+             </button>
+           ))}
+         </div>
+@@ -834,11 +833,13 @@
+   onLoadMore: () => void
+   placementProgress: PlacementProgress | null
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   if (props.loading && props.models.length === 0) {
+-    return <PanelMessage title="Loading models…" body="Loading your newest succeeded 3D models." />
++    return <PanelMessage title={uiText("Loading models…")} body={uiText("Loading your newest succeeded 3D models.")} />
+   }
+   if (props.models.length === 0) {
+-    return <PanelMessage title="No succeeded models yet" body="Use Create to generate a model without leaving Pascal." />
++    return <PanelMessage title={uiText("No succeeded models yet")} body={uiText("Use Create to generate a model without leaving Pascal.")} />
+   }
+   return (
+     <>
+@@ -851,11 +852,11 @@
+             <article className="overflow-hidden rounded-xl border border-sidebar-border bg-sidebar-accent/30" key={model.id}>
+               <div className="relative">
+                 <button
+-                  aria-label={`Add ${model.name ?? 'Untitled model'} to the scene`}
++                  aria-label={uiText("Add {arg0} to the scene", {arg0: model.name ?? 'Untitled model'})}
+                   className="block w-full disabled:opacity-50"
+                   disabled={props.busy}
+                   onClick={() => props.onPlace(model)}
+-                  title="Add to scene"
++                  title={uiText("Add to scene")}
+                   type="button"
+                 >
+                   <img
+@@ -867,27 +868,27 @@
+                 </button>
+                 {progress && <AssetPlacementProgress progress={progress} />}
+                 <button
+-                  aria-label={`View details for ${model.name ?? 'Untitled model'}`}
++                  aria-label={uiText("View details for {arg0}", {arg0: model.name ?? 'Untitled model'})}
+                   className="absolute z-10 flex size-6 items-center justify-center rounded-full border border-transparent text-white drop-shadow-sm transition-colors hover:border-white/25 hover:bg-black/70 focus-visible:border-white/25 focus-visible:bg-black/70"
+                   onClick={(event) => {
+                     event.stopPropagation()
+                     props.onOpen(model)
+                   }}
+                   style={{ right: '0.5rem', top: '0.5rem' }}
+-                  title="View details"
++                  title={uiText("View details")}
+                   type="button"
+                 >
+                   <InfoIcon />
+                 </button>
+               </div>
+               <button
+-                aria-label={`View details for ${model.name ?? 'Untitled model'}`}
++                aria-label={uiText("View details for {arg0}", {arg0: model.name ?? 'Untitled model'})}
+                 className="block w-full truncate px-2 py-2 text-left text-xs font-medium hover:bg-sidebar-accent/60"
+                 onClick={() => props.onOpen(model)}
+-                title="View details"
++                title={uiText("View details")}
+                 type="button"
+               >
+-                {model.name ?? 'Untitled model'}
++                {model.name ?? uiText("Untitled model")}
+               </button>
+             </article>
+           )
+@@ -895,7 +896,7 @@
+       </div>
+       {props.nextCursor && (
+         <button className="mt-3 w-full rounded-lg bg-sidebar-accent px-3 py-2 text-xs" disabled={props.loading} onClick={props.onLoadMore} type="button">
+-          {props.loading ? 'Loading…' : 'Load more'}
++          {props.loading ? uiText("Loading…") : uiText("Load more")}
+         </button>
+       )}
+     </>
+@@ -910,6 +911,8 @@
+   onPlace: () => void
+   progress: PlacementProgress | null
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const optimized = modelIsOptimized(props.model)
+   const sourceUrl = placementGlbUrl(props.model)
+   const [metrics, setMetrics] = useState<GlbMetrics | null>(null)
+@@ -945,13 +948,11 @@
+         className="rounded-md px-2 py-1 text-xs text-sidebar-foreground/60 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+         onClick={props.onBack}
+         type="button"
+-      >
+-        ← Assets
+-      </button>
++      >{uiText("← Assets")}{' '}</button>
+ 
+       <div className="relative overflow-hidden rounded-xl border border-sidebar-border">
+         <img
+-          alt={props.model.name ?? 'Mint model'}
++          alt={props.model.name ?? uiText("Mint model")}
+           className="aspect-square w-full bg-black/5 object-contain"
+           src={modelThumbnailUrl(props.model) ?? MINT_THUMBNAIL_FALLBACK}
+         />
+@@ -966,16 +967,16 @@
+       >
+         {props.placing
+           ? props.progress?.phase === 'optimizing'
+-            ? 'Optimizing…'
+-            : 'Preparing…'
+-          : 'Add to scene'}
++            ? uiText("Optimizing…")
++            : uiText("Preparing…")
++          : uiText("Add to scene")}
+       </button>
+ 
+-      <h2 className="text-base font-semibold leading-6">{props.model.name ?? 'Untitled model'}</h2>
++      <h2 className="text-base font-semibold leading-6">{props.model.name ?? uiText("Untitled model")}</h2>
+ 
+       <section className="overflow-hidden rounded-xl border border-sidebar-border">
+         <div className="flex items-center justify-between gap-3 border-b border-sidebar-border px-3.5 py-2.5">
+-          <h3 className="text-[10px] font-medium uppercase tracking-[0.18em] text-sidebar-foreground/45">Prompt</h3>
++          <h3 className="text-[10px] font-medium uppercase tracking-[0.18em] text-sidebar-foreground/45">{uiText("Prompt")}</h3>
+           <button
+             className="rounded-md px-2 py-1 text-[11px] font-medium text-sidebar-foreground/60 hover:bg-sidebar-accent hover:text-sidebar-foreground disabled:opacity-40"
+             disabled={!props.model.prompt}
+@@ -987,40 +988,38 @@
+             }}
+             type="button"
+           >
+-            {copiedPrompt === props.model.prompt ? 'Copied' : 'Copy'}
++            {copiedPrompt === props.model.prompt ? uiText("Copied") : uiText("Copy")}
+           </button>
+         </div>
+         <p className="whitespace-pre-wrap px-3.5 py-3.5 text-[13px] leading-5 text-sidebar-foreground/70">
+-          {props.model.prompt ?? 'No prompt is available for this model.'}
++          {props.model.prompt ?? uiText("No prompt is available for this model.")}
+         </p>
+       </section>
+ 
+       <section className="space-y-2.5">
+-        <h3 className="px-1 text-[10px] font-medium uppercase tracking-[0.18em] text-sidebar-foreground/45">Info</h3>
++        <h3 className="px-1 text-[10px] font-medium uppercase tracking-[0.18em] text-sidebar-foreground/45">{uiText("Info")}</h3>
+         <dl className="divide-y divide-sidebar-border overflow-hidden rounded-xl border border-sidebar-border bg-sidebar-accent/25">
+           <ModelMetric
+-            label="Faces"
++            label={uiText("Faces")}
+             value={metrics ? displayCount(metrics.faces) : pendingValue}
+           />
+           <ModelMetric
+-            label="Vertices"
++            label={uiText("Vertices")}
+             value={metrics ? displayCount(metrics.vertices) : pendingValue}
+           />
+           <ModelMetric
+-            label="File size"
++            label={uiText("File size")}
+             value={displayFileSize(metrics?.fileSizeBytes ?? knownFileSize) ?? pendingValue}
+           />
+           <div className="flex min-h-11 items-center justify-between gap-4 px-3.5 py-2.5 text-xs">
+-            <dt className="text-sidebar-foreground/55">Mint link</dt>
++            <dt className="text-sidebar-foreground/55">{uiText("Mint link")}</dt>
+             <dd>
+               <a
+                 className="rounded-md px-2 py-1 text-[11px] font-medium text-sidebar-foreground/60 hover:bg-sidebar hover:text-sidebar-foreground"
+                 href={props.model.mintUrl}
+                 rel="noreferrer"
+                 target="_blank"
+-              >
+-                Open in Mint
+-              </a>
++              >{uiText("Open in Mint")}{' '}</a>
+             </dd>
+           </div>
+         </dl>
+@@ -1031,9 +1030,11 @@
+ }
+ 
+ function ModelMetric(props: { label: string; value: string }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div className="flex min-h-11 items-center justify-between gap-4 px-3.5 py-2.5 text-xs">
+-      <dt className="text-sidebar-foreground/55">{props.label}</dt>
++      <dt className="text-sidebar-foreground/55">{uiLabel(props.label)}</dt>
+       <dd className="truncate font-medium tabular-nums text-sidebar-foreground/85">{props.value}</dd>
+     </div>
+   )
+@@ -1064,6 +1065,8 @@
+   onOpenCompleted: (modelId: string) => void
+   onStarted: (operation: MintOperation, optimizeAfterGeneration: boolean) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const [prompt, setPrompt] = useState('')
+   const [name, setName] = useState('')
+   const [preset, setPreset] = useState<MintGenerationPreset>('fast')
+@@ -1168,24 +1171,22 @@
+ 
+   return (
+     <form className="space-y-6" onSubmit={(event) => void submit(event)}>
+-      <h2 className="text-base font-semibold leading-6">
+-        What would you like to create?
+-      </h2>
++      <h2 className="text-base font-semibold leading-6">{uiText("What would you like to create?")}{' '}</h2>
+ 
+       <label className="flex flex-col text-xs" style={{ gap: '0.5rem' }}>
+-        <span className="font-medium">Describe the 3D model</span>
++        <span className="font-medium">{uiText("Describe the 3D model")}</span>
+         <textarea
+           className="w-full rounded-xl border border-sidebar-border bg-sidebar p-3.5 leading-5 outline-none focus:ring-1"
+           maxLength={8000}
+           onChange={(event) => setPrompt(event.target.value)}
+-          placeholder="A warm Scandinavian lounge chair with rounded oak arms, cream bouclé cushions, and softly tapered legs"
++          placeholder={uiText("A warm Scandinavian lounge chair with rounded oak arms, cream bouclé cushions, and softly tapered legs")}
+           style={{ minHeight: '6.5rem' }}
+           value={prompt}
+         />
+       </label>
+ 
+       <div className="flex flex-col text-xs" style={{ gap: '0.5rem' }}>
+-        <span className="font-medium">Or upload a reference image</span>
++        <span className="font-medium">{uiText("Or upload a reference image")}</span>
+         {(files.length > 0 || importedReferenceImage) && (
+           <div className={files.length + (importedReferenceImage ? 1 : 0) === 1 ? 'grid grid-cols-1' : 'grid grid-cols-2 gap-2'}>
+             {files.map((file, index) => (
+@@ -1213,7 +1214,7 @@
+           <label
+             className={`flex min-h-11 items-center rounded-xl border border-sidebar-border bg-sidebar px-3.5 py-2.5 font-medium ${canAddFile ? 'cursor-pointer hover:bg-sidebar-accent/40' : 'cursor-not-allowed opacity-50'}`}
+           >
+-            <span className="truncate">Upload image</span>
++            <span className="truncate">{uiText("Upload image")}</span>
+             <input
+               accept="image/*"
+               className="hidden"
+@@ -1230,7 +1231,7 @@
+             />
+           </label>
+           <input
+-            aria-label="Reference image URL"
++            aria-label={uiText("Reference image URL")}
+             className="min-w-0 rounded-xl border border-sidebar-border bg-sidebar px-3.5 py-2.5 outline-none placeholder:text-sidebar-foreground/40 focus:ring-1 disabled:opacity-50"
+             disabled={importingReferenceImage || !canImportReferenceImage}
+             inputMode="url"
+@@ -1248,7 +1249,7 @@
+               setReferenceImageUrl(pasted)
+               void importReferenceImage(pasted)
+             }}
+-            placeholder={importingReferenceImage ? 'Processing image…' : 'Paste image URL'}
++            placeholder={importingReferenceImage ? uiText("Processing image…") : uiText("Paste image URL")}
+             type="url"
+             value={importingReferenceImage ? '' : referenceImageUrl}
+           />
+@@ -1256,17 +1257,15 @@
+       </div>
+ 
+       <details className="rounded-xl border border-sidebar-border">
+-        <summary className="cursor-pointer px-3.5 py-3 text-xs font-medium hover:bg-sidebar-accent/30">
+-          Advanced
+-        </summary>
++        <summary className="cursor-pointer px-3.5 py-3 text-xs font-medium hover:bg-sidebar-accent/30">{uiText("Advanced")}{' '}</summary>
+         <div className="space-y-4 border-t border-sidebar-border p-3.5">
+           <div className="space-y-2 text-xs">
+             <FieldLabel
+-              description="Sets the name shown for this model in Mint and Pascal. Leave it blank to let Mint choose one."
+-              label="Name"
++              description={uiText("Sets the name shown for this model in Mint and Pascal. Leave it blank to let Mint choose one.")}
++              label={uiText("Name")}
+             />
+             <input
+-              aria-label="Name"
++              aria-label={uiText("Name")}
+               className="w-full rounded-lg border border-sidebar-border bg-sidebar p-2.5"
+               maxLength={120}
+               onChange={(event) => setName(event.target.value)}
+@@ -1274,14 +1273,14 @@
+             />
+           </div>
+           <div className="grid grid-cols-2 gap-3">
+-            <Select description="Controls speed and detail. Fast is quickest, Standard is balanced, and Production prioritizes quality." label="Preset" onChange={(value) => setPreset(value as MintGenerationPreset)} value={preset} options={[['fast', 'Fast'], ['standard', 'Standard'], ['production', 'Production']]} />
+-            <Select description="Auto continues to the final model. Review pauses at the preview for approval or revision." label="Workflow" onChange={(value) => setMode(value as MintGenerationMode)} value={mode} options={[['auto', 'Auto'], ['review', 'Review preview']]} />
++            <Select description={uiText("Controls speed and detail. Fast is quickest, Standard is balanced, and Production prioritizes quality.")} label={uiText("Preset")} onChange={(value) => setPreset(value as MintGenerationPreset)} value={preset} options={[['fast', 'Fast'], ['standard', 'Standard'], ['production', 'Production']]} />
++            <Select description={uiText("Auto continues to the final model. Review pauses at the preview for approval or revision.")} label={uiText("Workflow")} onChange={(value) => setMode(value as MintGenerationMode)} value={mode} options={[['auto', 'Auto'], ['review', 'Review preview']]} />
+           </div>
+-          <Select description="Guides eligible characters into a neutral T-pose or A-pose for easier rigging." label="Character pose" onChange={(value) => setRigging(value as 'none' | MintRiggingPose)} value={rigging} options={[['none', 'None'], ['t_pose', 'T-pose'], ['a_pose', 'A-pose']]} />
++          <Select description={uiText("Guides eligible characters into a neutral T-pose or A-pose for easier rigging.")} label={uiText("Character pose")} onChange={(value) => setRigging(value as 'none' | MintRiggingPose)} value={rigging} options={[['none', 'None'], ['t_pose', 'T-pose'], ['a_pose', 'A-pose']]} />
+           <div className="space-y-2 text-xs">
+             <FieldLabel
+-              description="Runs optimization after generation so the model is ready to use efficiently in Pascal."
+-              label="Auto Optimize"
++              description={uiText("Runs optimization after generation so the model is ready to use efficiently in Pascal.")}
++              label={uiText("Auto Optimize")}
+             />
+             <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-sidebar-border bg-sidebar-accent/25 p-3.5">
+               <input
+@@ -1290,16 +1289,14 @@
+                 onChange={(event) => setOptimizeAfterGeneration(event.target.checked)}
+                 type="checkbox"
+               />
+-              <span className="leading-4 text-sidebar-foreground/55">
+-                Optimized automatically after generation for Pascal.
+-              </span>
++              <span className="leading-4 text-sidebar-foreground/55">{uiText("Optimized automatically after generation for Pascal.")}{' '}</span>
+             </label>
+           </div>
+         </div>
+       </details>
+ 
+       <button className="w-full rounded-xl border border-sidebar-primary-foreground/25 bg-sidebar-primary px-4 py-3 text-sm font-medium text-sidebar-primary-foreground shadow-sm disabled:opacity-50" disabled={submitting || importingReferenceImage || hasPendingReferenceImageUrl || !hasGenerationInput} type="submit">
+-        {submitting ? 'Starting…' : 'Generate 3D model'}
++        {submitting ? uiText("Starting…") : uiText("Generate 3D model")}
+       </button>
+ 
+       {props.currentTasks.length > 0 && (
+@@ -1307,7 +1304,7 @@
+           className="space-y-3 border-t border-sidebar-border/70"
+           style={{ paddingTop: '1.25rem' }}
+         >
+-          <h3 className="text-sm font-semibold">Currently creating</h3>
++          <h3 className="text-sm font-semibold">{uiText("Currently creating")}</h3>
+           <div className="space-y-2">
+             {props.currentTasks.map((task) => (
+               <CurrentWork
+@@ -1338,6 +1335,8 @@
+   model: MintPluginModel | null
+   onOpen?: () => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const thumbnail = props.model ? modelThumbnailUrl(props.model) : props.operation.assets?.previewImageUrl
+   const optimizing = props.operation.type === 'model_optimization'
+   const succeeded = operationSucceeded(props.operation)
+@@ -1348,14 +1347,14 @@
+     !operationIsAwaitingReview(props.operation)
+         ? 'running'
+         : props.operation.status
+-  const modelName = props.model?.name ?? '3D model'
++  const modelName = props.model?.name ?? uiText('3D model')
+   const title = succeeded
+     ? optimizing
+-      ? `${modelName} optimized`
+-      : `${modelName} created`
++      ? uiText('{name} optimized', {name: modelName})
++      : uiText('{name} created', {name: modelName})
+     : optimizing
+-      ? `Optimizing ${modelName}`
+-      : 'Generating 3D model'
++      ? uiText('Optimizing {name}', {name: modelName})
++      : uiText('Generating 3D model')
+ 
+   const content = (
+     <>
+@@ -1380,9 +1379,9 @@
+         </div>
+       )}
+       <div className="min-w-0 flex-1 space-y-1">
+-        <h3 className="truncate text-xs font-medium">{title}</h3>
++        <h3 className="truncate text-xs font-medium">{uiLabel(title)}</h3>
+         <p className="text-[11px] capitalize text-sidebar-foreground/50">
+-          {displayStatus}
++          {uiLabel(displayStatus)}
+         </p>
+       </div>
+       {thumbnail && (
+@@ -1399,7 +1398,7 @@
+   if (props.onOpen) {
+     return (
+       <button
+-        aria-label={`Open ${modelName} in Assets`}
++        aria-label={uiText('Open {name} in Assets', {name: modelName})}
+         className="flex w-full items-center gap-3 rounded-xl border border-sidebar-border bg-sidebar-accent/25 p-3 text-left transition-colors hover:bg-sidebar-accent/45 focus-visible:outline-none focus-visible:ring-1"
+         onClick={props.onOpen}
+         type="button"
+@@ -1417,9 +1416,11 @@
+ }
+ 
+ function SuccessCheck() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <svg
+-      aria-label="Succeeded"
++      aria-label={uiText("Succeeded")}
+       className="size-4 shrink-0"
+       fill="none"
+       role="img"
+@@ -1433,6 +1434,7 @@
+ }
+ 
+ function ReferenceImagePreview(props: { file: File; onRemove: () => void }) {
++  const {t: uiText} = useI18n()
+   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+ 
+   useEffect(() => {
+@@ -1451,7 +1453,7 @@
+         />
+       )}
+       <button
+-        aria-label={`Remove ${props.file.name}`}
++        aria-label={uiText('Remove {name}', {name: props.file.name})}
+         className="absolute z-10 flex size-6 items-center justify-center rounded-full border border-white/20 bg-black/70 text-base leading-none text-white shadow-sm hover:bg-black/85"
+         onClick={props.onRemove}
+         style={{
+@@ -1477,15 +1479,17 @@
+   image: { sourceUrl: string; url: string }
+   onRemove: () => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div className="relative overflow-hidden rounded-xl border border-sidebar-border bg-sidebar-accent/25" style={{ height: '5.5rem' }}>
+       <img
+-        alt="Imported reference"
++        alt={uiText("Imported reference")}
+         className="size-full object-contain"
+         src={props.image.url}
+       />
+       <button
+-        aria-label="Remove imported reference image"
++        aria-label={uiText("Remove imported reference image")}
+         className="absolute z-10 flex size-6 items-center justify-center rounded-full border border-white/20 bg-black/70 text-base leading-none text-white shadow-sm hover:bg-black/85"
+         onClick={props.onRemove}
+         style={{
+@@ -1509,13 +1513,15 @@
+ }
+ 
+ function FieldLabel(props: { label: string; description: string }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div className="relative flex w-full items-center gap-1.5">
+-      <span className="font-medium">{props.label}</span>
++      <span className="font-medium">{uiLabel(props.label)}</span>
+       <button
+-        aria-label={`${props.label}: ${props.description}`}
++        aria-label={`${uiLabel(props.label)}: ${uiLabel(props.description)}`}
+         className="peer flex size-4 shrink-0 items-center justify-center rounded-full border border-sidebar-foreground/25 text-[10px] font-semibold leading-none text-sidebar-foreground/55 hover:border-sidebar-foreground/50 hover:text-sidebar-foreground focus:border-sidebar-foreground/50 focus:text-sidebar-foreground focus:outline-none"
+-        title={props.description}
++        title={uiLabel(props.description)}
+         type="button"
+       >
+         i
+@@ -1524,24 +1530,28 @@
+         className="pointer-events-none invisible absolute left-0 top-full z-30 mt-2 w-full rounded-lg border border-sidebar-border bg-sidebar px-2.5 py-2 text-[11px] font-normal leading-4 text-sidebar-foreground/75 opacity-0 shadow-lg transition-opacity peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100"
+         role="tooltip"
+       >
+-        {props.description}
++        {uiLabel(props.description)}
+       </span>
+     </div>
+   )
+ }
+ 
+ function Select(props: { label: string; description: string; value: string; options: [string, string][]; onChange: (value: string) => void }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div className="space-y-2 text-xs">
+-      <FieldLabel description={props.description} label={props.label} />
+-      <select aria-label={props.label} className="w-full rounded-lg border border-sidebar-border bg-sidebar p-2.5" onChange={(event) => props.onChange(event.target.value)} value={props.value}>
+-        {props.options.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
++      <FieldLabel description={uiLabel(props.description)} label={uiLabel(props.label)} />
++      <select aria-label={uiLabel(props.label)} className="w-full rounded-lg border border-sidebar-border bg-sidebar p-2.5" onChange={(event) => props.onChange(event.target.value)} value={props.value}>
++        {props.options.map(([value, label]) => <option key={value} value={value}>{uiLabel(label)}</option>)}
+       </select>
+     </div>
+   )
+ }
+ 
+ function AssetPlacementProgress(props: { progress: PlacementProgress }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const running =
+     props.progress.phase === 'optimizing' ||
+     props.progress.phase === 'preparing'
+@@ -1573,7 +1583,7 @@
+           <path d="M12 7.5v5M12 16.5h.01" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+         </svg>
+       )}
+-      <p className="text-xs font-medium leading-4">{label}</p>
++      <p className="text-xs font-medium leading-4">{uiLabel(label)}</p>
+     </div>
+   )
+ }
+@@ -1587,6 +1597,8 @@
+   onRetry: () => void
+   onDismiss: () => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const [feedback, setFeedback] = useState('')
+   const [copiedError, setCopiedError] = useState(false)
+   const operation = props.operation
+@@ -1605,7 +1617,7 @@
+     return (
+       <div className="flex items-center gap-2 rounded-lg border border-sidebar-border bg-sidebar px-3 py-2 shadow-sm" role="status">
+         <p className="min-w-0 flex-1 truncate text-xs font-medium">
+-          {operationResultMessage(operation)}
++          {uiText('{operation}: {status}', {operation: uiLabel(operationTypeLabel(operation)), status: uiLabel(operation.status.replaceAll('_', ' '))})}
+         </p>
+       </div>
+     )
+@@ -1614,10 +1626,10 @@
+     return (
+       <div className="flex items-center gap-2 rounded-lg border border-sidebar-border bg-sidebar px-3 py-2 shadow-sm" role="status">
+         <p className="min-w-0 flex-1 truncate text-xs font-medium">
+-          {operationResultMessage(operation)}
++          {uiText('{operation}: {status}', {operation: uiLabel(operationTypeLabel(operation)), status: uiLabel(operation.status.replaceAll('_', ' '))})}
+         </p>
+         <button
+-          aria-label="Dismiss operation notice"
++          aria-label={uiText("Dismiss operation notice")}
+           className="flex size-6 shrink-0 items-center justify-center rounded-md text-base leading-none text-sidebar-foreground/50 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+           onClick={props.onDismiss}
+           type="button"
+@@ -1637,8 +1649,8 @@
+     >
+       <div className="flex items-center justify-between gap-2">
+         <strong>
+-          {operationTypeLabel(operation)}
+-          {operation.status === 'failed' ? ' failed' : ''}
++          {uiLabel(operationTypeLabel(operation))}
++          {operation.status === 'failed' ? ' · '+uiLabel('failed') : ''}
+         </strong>
+         {operation.status === 'failed' && errorReport ? (
+           <button
+@@ -1650,28 +1662,28 @@
+             }}
+             type="button"
+           >
+-            {copiedError ? 'Copied' : 'Copy error'}
++            {copiedError ? uiText("Copied") : uiText("Copy error")}
+           </button>
+         ) : operation.status !== 'failed' ? (
+-          <span className="rounded-full bg-sidebar-accent px-2 py-1 capitalize">{displayStatus.replaceAll('_', ' ')}</span>
++          <span className="rounded-full bg-sidebar-accent px-2 py-1 capitalize">{uiLabel(displayStatus.replaceAll('_', ' '))}</span>
+         ) : null}
+       </div>
+-      {(displayStatus === 'queued' || displayStatus === 'running') && <p className="text-sidebar-foreground/60">Mint is working. This panel will update automatically.</p>}
++      {(displayStatus === 'queued' || displayStatus === 'running') && <p className="text-sidebar-foreground/60">{uiText("Mint is working. This panel will update automatically.")}</p>}
+       {awaitingReview && (
+         <div className="space-y-2">
+-          {operation.assets?.previewImageUrl && <img alt="Mint model preview" className="max-h-44 w-full rounded-lg object-contain" src={operation.assets.previewImageUrl} />}
++          {operation.assets?.previewImageUrl && <img alt={uiText("Mint model preview")} className="max-h-44 w-full rounded-lg object-contain" src={operation.assets.previewImageUrl} />}
+           <div className="grid grid-cols-2 gap-2">
+-            <button className="rounded-md bg-sidebar-primary px-2 py-1.5 text-sidebar-primary-foreground disabled:opacity-50" disabled={props.busy} onClick={props.onApprove} type="button">Approve</button>
+-            <input className="rounded-md border border-sidebar-border bg-sidebar px-2" maxLength={2000} onChange={(event) => setFeedback(event.target.value)} placeholder="Revision feedback" value={feedback} />
++            <button className="rounded-md bg-sidebar-primary px-2 py-1.5 text-sidebar-primary-foreground disabled:opacity-50" disabled={props.busy} onClick={props.onApprove} type="button">{uiText("Approve")}</button>
++            <input className="rounded-md border border-sidebar-border bg-sidebar px-2" maxLength={2000} onChange={(event) => setFeedback(event.target.value)} placeholder={uiText("Revision feedback")} value={feedback} />
+           </div>
+-          <button className="w-full rounded-md bg-sidebar-accent px-2 py-1.5 disabled:opacity-50" disabled={props.busy || !feedback.trim()} onClick={() => props.onRevise(feedback.trim())} type="button">Revise preview</button>
++          <button className="w-full rounded-md bg-sidebar-accent px-2 py-1.5 disabled:opacity-50" disabled={props.busy || !feedback.trim()} onClick={() => props.onRevise(feedback.trim())} type="button">{uiText("Revise preview")}</button>
+         </div>
+       )}
+       {operation.status === 'billing_required' && (
+         <div className="space-y-2">
+-          <p>{operation.billing?.requiredCredits ?? 'More'} Credits required.</p>
+-          {operation.billing?.actionUrl && <a className="block rounded-md bg-sidebar-primary px-2 py-1.5 text-center text-sidebar-primary-foreground" href={operation.billing.actionUrl} rel="noreferrer" target="_blank">Manage Mint Credits</a>}
+-          <button className="w-full rounded-md bg-sidebar-accent px-2 py-1.5 disabled:opacity-50" disabled={props.busy} onClick={props.onResume} type="button">Resume after payment</button>
++          <p>{operation.billing?.requiredCredits ?? uiText("More")}{' '}{uiText("Credits required.")}</p>
++          {operation.billing?.actionUrl && <a className="block rounded-md bg-sidebar-primary px-2 py-1.5 text-center text-sidebar-primary-foreground" href={operation.billing.actionUrl} rel="noreferrer" target="_blank">{uiText("Manage Mint Credits")}</a>}
++          <button className="w-full rounded-md bg-sidebar-accent px-2 py-1.5 disabled:opacity-50" disabled={props.busy} onClick={props.onResume} type="button">{uiText("Resume after payment")}</button>
+         </div>
+       )}
+       {operation.status === 'failed' && (
+@@ -1684,19 +1696,13 @@
+               className="rounded-md border border-sidebar-border px-2 py-1.5 text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+               onClick={props.onDismiss}
+               type="button"
+-            >
+-              Cancel
+-            </button>
+-            <button className="rounded-md bg-sidebar-accent px-2 py-1.5 disabled:opacity-50" disabled={props.busy || operation.resource?.type !== 'model'} onClick={props.onRetry} type="button">Retry model</button>
++            >{uiText("Cancel")}{' '}</button>
++            <button className="rounded-md bg-sidebar-accent px-2 py-1.5 disabled:opacity-50" disabled={props.busy || operation.resource?.type !== 'model'} onClick={props.onRetry} type="button">{uiText("Retry model")}</button>
+           </div>
+         </div>
+       )}
+     </section>
+   )
+-}
+-
+-function operationResultMessage(operation: MintOperation) {
+-  return `${operationTypeLabel(operation)} ${operation.status.replaceAll('_', ' ')}`
+ }
+ 
+ function operationTypeLabel(operation: MintOperation) {
+@@ -1730,6 +1736,8 @@
+   onCancel: () => void
+   onConfirm: () => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div
+       className="absolute inset-0 flex items-center justify-center p-4"
+@@ -1748,10 +1756,8 @@
+         role="dialog"
+       >
+         <div className="space-y-1">
+-          <h3 className="text-sm font-semibold" id="mint-logout-title">Log out {props.accountName}?</h3>
+-          <p className="text-xs leading-relaxed text-sidebar-foreground/55">
+-            You’ll need to connect Mint again to create or place assets.
+-          </p>
++          <h3 className="text-sm font-semibold" id="mint-logout-title">{uiText("Log out")}{' '}{props.accountName}?</h3>
++          <p className="text-xs leading-relaxed text-sidebar-foreground/55">{uiText("You’ll need to connect Mint again to create or place assets.")}{' '}</p>
+         </div>
+         <div className="grid grid-cols-2 gap-2">
+           <button
+@@ -1760,16 +1766,14 @@
+             disabled={props.busy}
+             onClick={props.onCancel}
+             type="button"
+-          >
+-            Cancel
+-          </button>
++          >{uiText("Cancel")}{' '}</button>
+           <button
+             className="rounded-lg bg-red-600 px-3 py-2 text-xs font-medium text-white disabled:opacity-50"
+             disabled={props.busy}
+             onClick={props.onConfirm}
+             type="button"
+           >
+-            {props.busy ? 'Logging out…' : 'Log out'}
++            {props.busy ? uiText("Logging out…") : uiText("Log out")}
+           </button>
+         </div>
+       </section>
+@@ -1778,11 +1782,13 @@
+ }
+ 
+ function PanelMessage(props: { title: string; body: string; action?: React.ReactNode; heroSrc?: string; emphasizeBody?: boolean }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center text-sidebar-foreground">
+       {props.heroSrc ? (
+         <img
+-          alt="Mint 3D asset showcase"
++          alt={uiText("Mint 3D asset showcase")}
+           className="w-full rounded-xl border border-sidebar-border object-cover shadow-sm"
+           src={props.heroSrc}
+           style={{ aspectRatio: '3 / 2', maxWidth: '18rem' }}
+@@ -1791,12 +1797,12 @@
+         <div className="flex size-12 items-center justify-center rounded-2xl bg-sidebar-accent text-xl font-semibold">M</div>
+       )}
+       <div className="space-y-1">
+-        <h2 className="text-sm font-semibold">{props.title}</h2>
++        <h2 className="text-sm font-semibold">{uiLabel(props.title)}</h2>
+         <p
+           className="leading-relaxed text-sidebar-foreground/60"
+           style={{ fontSize: props.emphasizeBody ? '0.875rem' : '0.75rem' }}
+         >
+-          {props.body}
++          {uiLabel(props.body)}
+         </p>
+       </div>
+       {props.action}
+@@ -1805,21 +1811,21 @@
+ }
+ 
+ function ErrorNotice(props: { detail: string; onDismiss: () => void }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div
+       className="flex items-center gap-2 rounded-lg border border-red-500/50 bg-sidebar px-3 py-2 shadow-sm"
+       role="alert"
+     >
+-      <p className="min-w-0 flex-1 text-xs font-medium">An error occurred</p>
++      <p className="min-w-0 flex-1 text-xs font-medium">{uiText("An error occurred")}</p>
+       <button
+         className="shrink-0 rounded-md px-2 py-1 text-[11px] font-medium text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+         onClick={() => void navigator.clipboard.writeText(props.detail).catch(() => undefined)}
+         type="button"
+-      >
+-        Copy error
+-      </button>
++      >{uiText("Copy error")}{' '}</button>
+       <button
+-        aria-label="Dismiss error"
++        aria-label={uiText("Dismiss error")}
+         className="flex size-6 shrink-0 items-center justify-center rounded-md text-base leading-none text-sidebar-foreground/50 hover:bg-sidebar-accent hover:text-sidebar-foreground"
+         onClick={props.onDismiss}
+         type="button"

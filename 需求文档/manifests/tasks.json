@@ -1,0 +1,788 @@
+[
+  {
+    "id": "T00",
+    "title": "工作区与安全检查",
+    "status": "DONE",
+    "dependencies": [],
+    "sources": [],
+    "scope": "只读检查工作区、Git 状态、权限范围和本地工具。没有明确写入目录或存在用户未提交变更时，不做产品代码写入。",
+    "steps": [
+      "定位用户授权的项目目录；记录现有仓库与无仓库目录，不在上级目录自动初始化。",
+      "读取 pwd、git status、branch、HEAD、remote；远端 URL 含凭据时在报告中脱敏。",
+      "记录 Node/Bun/Git/操作系统与架构；确认 macOS 开发环境及 Windows 验证环境是否可用，缺失平台记录待验证/阻塞和后续验证安排，不据此宣称兼容；确认哪些来源目录只读、哪些输出目录可写。",
+      "检查当前端口与进程仅用于说明环境；不杀进程、不使用 restart 脚本。",
+      "有未提交修改时报告路径与可能冲突；保留内容并先做只读研究。"
+    ],
+    "exit_criteria": [
+      "无覆盖用户工作风险。",
+      "实施与只读来源目录明确；未授权推送/发布/部署被写入交接约束。"
+    ],
+    "artifacts": [
+      "workspace-report.md",
+      "首个 HANDOFF.md，所有任务仍为 TODO"
+    ],
+    "rollback": "本任务不写产品代码，无需回滚；不得通过清理工作区制造“安全通过”。",
+    "test_groups": [
+      "SRC"
+    ]
+  },
+  {
+    "id": "T01",
+    "title": "固定来源与初始来源锁",
+    "status": "DONE",
+    "dependencies": [
+      "T00"
+    ],
+    "sources": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05"
+    ],
+    "scope": "在独立工作树核对三个固定提交，验证关键路径和插件引用；尚不迁移功能。",
+    "steps": [
+      "按主文件第 21 章获取已授权的新工作树；旧仓库只核对，不覆盖。",
+      "确认三个完整 SHA 可获取，读取固定提交而不是依赖 main；记录根锁文件的 SHA-256。",
+      "运行本包 audit_sources.py；未安装 Python 时用等价只读命令并记录。",
+      "对照 source-index 的必读文件和 source-lock 的插件引用，检查 README 与源码的差异。",
+      "记录来源 LICENSE 和实际需要复制的模型/贴图许可入口，尚不复制来源不明素材。"
+    ],
+    "exit_criteria": [
+      "三个固定提交、根 packageManager、关键路径均有核对记录。",
+      "若网络/提交不可用，明确 BLOCKED_SOURCE，不把其他提交冒充基线。"
+    ],
+    "artifacts": [
+      "source-audit.json",
+      "source-lock.json（加入实际锁文件哈希）",
+      "source-map.md 初版"
+    ],
+    "rollback": "只移除本任务自行创建且未包含用户数据的失败临时下载须经确认；不删除已有仓库。",
+    "test_groups": [
+      "SRC"
+    ]
+  },
+  {
+    "id": "T02",
+    "title": "原始 Pascal 基线",
+    "status": "DONE",
+    "dependencies": [
+      "T01"
+    ],
+    "sources": [
+      "S04",
+      "S05",
+      "S10",
+      "S17",
+      "S18",
+      "S19"
+    ],
+    "scope": "不加业务代码，证明原始应用能构建和运行，区分原始问题与后续迁移回归。",
+    "steps": [
+      "审阅根和子包 scripts/安装脚本，使用 bun@1.3.14 与锁文件 frozen 安装；以 macOS 建立首个开发基线，同时记录 Windows 的脚本、路径和原生依赖风险，Windows 基线最迟在 T18 比较前补齐。",
+      "依次运行 check-types、test、build、check，分别保存原始日志与退出码，不串联吞错。",
+      "打开原编辑器，用 F01/F02/F04 的最小场景测二维/三维、门窗、材质、撤销、保存、重开。",
+      "检查 Environment/Pool/Nature/Streetscape 和原版导出；Bones/Mint 的外部依赖状态单独记录。",
+      "确认普通编辑不依赖 AI 密钥，记录实际端口、后端存储位置与渲染 backend。",
+      "原始失败只做必要的最小单独修复；修复前后基线均保留，不开始 donor 移植。"
+    ],
+    "exit_criteria": [
+      "所有迁移依赖的本地基线已 PASS，或明确到问题/复现并有经批准最小修复。",
+      "原有测试被完整保留，不能通过 skip/删除变成通过。"
+    ],
+    "artifacts": [
+      "baseline-report.md",
+      "evidence/baseline/*",
+      "固定 baseline commit/安全存档记录"
+    ],
+    "rollback": "回到本任务前的干净分支通过受审提交/受授权 revert；不做未经授权 hard reset。",
+    "test_groups": [
+      "BASE"
+    ]
+  },
+  {
+    "id": "T03",
+    "title": "真实 API、重叠能力与契约审计",
+    "status": "DONE",
+    "dependencies": [
+      "T02"
+    ],
+    "sources": [
+      "S06",
+      "S07",
+      "S11",
+      "S12",
+      "S14",
+      "S15",
+      "S17",
+      "S25",
+      "S29",
+      "S30"
+    ],
+    "scope": "完成设计决策和路径映射。必须核对现成能力，防止重复建相机、资产库和历史系统。",
+    "steps": [
+      "列出宿主 scene/selection/level/actions/history/snapshot/asset-storage/persistence 的真实导出、签名和调用点。",
+      "完整读取 donor AI tools/types/dispatch/preview，生成工具全集，再标出本文纳入与排除。",
+      "检查 SceneBridge node-shims 和 exports，先标 browser-safe 未验证，不猜同名接口。",
+      "将 OpenPlan 相机、轮廓、模板、静态 GLB、包流程拆为纯逻辑、UI、存储和渲染耦合段。",
+      "形成 file-transfer-map：source SHA/path → proposed target → 依赖 → 必须适配项 → 测试。",
+      "决定项目扩展读写与 sidecar 保存方式、历史引用回收边界、模型 ID 映射；重复能力能复用就取消重复实现。",
+      "创建 ADR：单底座、唯一 store、选择性迁移、截图格式、项目容器、工具范围、服务端传输。"
+    ],
+    "exit_criteria": [
+      "不存在以名字相似代替签名兼容的未知项。",
+      "所有新增 adapter 有明确来源能力，不增加本期之外用户功能。",
+      "建议目录已对照真实结构修正，关键歧义已在 ADR 决定。"
+    ],
+    "artifacts": [
+      "api-map.md",
+      "overlap-audit.md",
+      "file-transfer-map.csv",
+      "ai-tool-inventory.json",
+      "decisions/*.md"
+    ],
+    "rollback": "设计阶段更改文档即可；后续发现冲突先修订 ADR，不悄悄扩大范围。",
+    "test_groups": [
+      "SRC",
+      "BOUNDARY"
+    ]
+  },
+  {
+    "id": "T04",
+    "title": "依赖边界与测试支架",
+    "status": "DONE",
+    "dependencies": [
+      "T03"
+    ],
+    "sources": [
+      "S04",
+      "S06",
+      "S07",
+      "S24"
+    ],
+    "scope": "建立最薄整合目录与可运行测试入口，不迁入完整功能应用。",
+    "steps": [
+      "增加必要 contracts 与 adapter 目录，沿用 Pascal 编译和工作区规则。",
+      "建立源文件/依赖审计：最终运行时不引入 @aedifex/core、第二套 Zustand store、Svelte、Firebase 或 donor Three 版本。",
+      "实际打包验证 /bridge 与 /operations 子路径；若携带 server-only 实现，选 host core actions 薄包装。",
+      "建立单元/集成/浏览器测试命令和 fixture 目录；先用一个空模块 smoke test 证明命令确实运行。新增脚本不得依赖 macOS 专属命令或固定路径，使用跨平台实现或明确的平台适配。",
+      "CI 保留原任务，只新增必要检查；不复制来源发布 marketplace 配置。",
+      "在锁文件中核对新增依赖及解析到的 React/Three/core 实例，记录 package peer 冲突而不是强制忽略。"
+    ],
+    "exit_criteria": [
+      "服务端代码不进入浏览器 bundle，基础 store 身份可测。",
+      "新测试命令已经创建并执行，不是文档占位。"
+    ],
+    "artifacts": [
+      "boundary-report.md",
+      "tests/fixtures/ 基础骨架",
+      "新增 package scripts 与 CI diff"
+    ],
+    "rollback": "移除本次新增孤立目录/依赖通过小提交恢复；不清除原锁文件重装另一套工具链。",
+    "test_groups": [
+      "BOUNDARY"
+    ]
+  },
+  {
+    "id": "T05",
+    "title": "统一场景操作与坐标历史",
+    "status": "IN_PROGRESS",
+    "dependencies": [
+      "T04"
+    ],
+    "sources": [
+      "S06",
+      "S14",
+      "S15",
+      "S25",
+      "S28"
+    ],
+    "scope": "唯一 SceneEditAdapter，处理批次、坐标、版本冲突、预览及宿主撤销。",
+    "steps": [
+      "以真实 HostSceneGraph/Patch 类型实现读取、校验、候选与 commit；不自己造写入节点字典的捷径。",
+      "建立 projectId/requestId/sceneRevision 检查，确认前重新校验；实现 stale-preview 拒绝。",
+      "实现厘米/米、度/弧度、平面/XZ、父局部矩阵、镜像变换边界；引入非对称 fixture。",
+      "校验父子创建依赖、ID 冲突和级联删除；验证宿主 applyPatch 错误原子性与一次撤销，不盲信方法名。",
+      "用临时 UI 或测试入口证明人工与 adapter 修改同一对象；随后移除测试专用入口。",
+      "设计预览隔离/局部清理，证明取消时不会用旧全快照覆盖用户后续编辑。"
+    ],
+    "exit_criteria": [
+      "创建、移动、批次失败、取消、一次 Undo/Redo 和保存重开均通过。",
+      "旋转父节点、楼层/地形支持与 mirrored fixture 无方向/尺寸错误。"
+    ],
+    "artifacts": [
+      "SceneEditAdapter 实现与测试",
+      "coordinate-convention.md",
+      "事务/历史差异记录"
+    ],
+    "rollback": "关闭尚未完成的迁入入口，保留原版人工编辑；恢复 adapter 变更时不删除项目数据。",
+    "test_groups": [
+      "CORE"
+    ]
+  },
+  {
+    "id": "T06",
+    "title": "目录映射与静态模型入口",
+    "status": "TODO",
+    "dependencies": [
+      "T05"
+    ],
+    "sources": [
+      "S11",
+      "S26",
+      "S28",
+      "S29",
+      "S32"
+    ],
+    "scope": "利用宿主资产存储和 renderer 接入选定 GLB 入库流程，避免独立模型系统。",
+    "steps": [
+      "列出六模板所需 catalogId，核对 Pascal 对应资产/方向/尺寸；缺项列清，不猜测。",
+      "迁入 GLB 预检与窄格式限制，检查 bytes/chunks/外部资源/纹理/解码后预算。",
+      "实现预览、名称、尺寸、来源许可、hash 去重和用户确认；复用 asset:// 与宿主 ItemNode。",
+      "源字节不变，默认等比；预览居中/落地用实例包装变换，不能污染缓存源模型。",
+      "实现定义/实例/源素材的删除保护，含多楼层、历史/撤销引用及加载中取消。",
+      "只导入映射所需且许可已核对的 donor 模型子集；保存 notices/hash。"
+    ],
+    "exit_criteria": [
+      "有效模型可放置保存；重复源不重复复制；非法/过量资源拒绝且项目不变。",
+      "删除/Undo/重新打开没有失效 URL 或提前 GC。"
+    ],
+    "artifacts": [
+      "catalog-map.json",
+      "asset-provenance.json",
+      "自定义模型 React UI 与 adapter",
+      "模型准入测试"
+    ],
+    "rollback": "停止新导入入口并保留已导入源字节；不得删除用户已有 asset records 来恢复代码。",
+    "test_groups": [
+      "ASSET"
+    ]
+  },
+  {
+    "id": "T07",
+    "title": "完整项目快照和原子保存",
+    "status": "TODO",
+    "dependencies": [
+      "T05",
+      "T06"
+    ],
+    "sources": [
+      "S06",
+      "S17",
+      "S30"
+    ],
+    "scope": "把现有场景与迁入扩展/素材引用纳入同一次可靠保存。",
+    "steps": [
+      "核对原生保存格式中的 nodes/roots/collections/materials/installedPlugins，建立回归 fixture。",
+      "将 Environment presentation 配置接入读取/恢复，使用其真实 API，不猜 localStorage key。",
+      "实现最小 envelope 或宿主等价扩展；配置不同 schema/version，当前相机字段允许后续 T10 注册。",
+      "使用宿主存储原子事务或经 ADR 定义的 manifest 发布，注入写入失败证明最后成功版本保留。",
+      "保存过程中发生新编辑时保持 dirty 状态并等待下一保存，不能错误清空未保存标记。",
+      "切换项目加载所有扩展后再允许编辑/截图；失败时保持原项目或完整恢复，不半加载。"
+    ],
+    "exit_criteria": [
+      "新 profile/重开保持材质、集合、插件、环境与模型源引用。",
+      "保存失败和并发编辑不造成真假“已保存”。"
+    ],
+    "artifacts": [
+      "project-schema.md",
+      "ProjectStorageAdapter",
+      "原子保存故障测试与回归包"
+    ],
+    "rollback": "先保留新格式 reader，代码回退不得让已保存项目无法读取；数据迁移只用非破坏副本验证。",
+    "test_groups": [
+      "PROJECT"
+    ]
+  },
+  {
+    "id": "T08",
+    "title": "便携包与保存版本恢复",
+    "status": "TODO",
+    "dependencies": [
+      "T07"
+    ],
+    "sources": [
+      "S29",
+      "S30"
+    ],
+    "scope": "整合应用自己的本地便携包和当前项目快照，不接 iOS/Firebase 双向协议。",
+    "steps": [
+      "确定独立 format/version、manifest/scene/extensions/assets 结构和 bounds。",
+      "导出当前项目必需原始附件与来源，列出缺失或未授权远程资源，不把不完整包标完整。",
+      "导入前验证 ZIP 路径、重复、大小、hash、引用、未知版本和必需插件；不执行包内内容。",
+      "以新项目副本原子导入，映射 projectId/sidecar/必要 nodeId，跨表一致后才激活。",
+      "版本保存优先复用宿主；附件池化、旧版恢复、历史引用 GC 和限额要共同测试。",
+      "保持原生 Pascal JSON 导入导出；OpenPlan/iOS 包明确不支持，不做半解析后丢字段。"
+    ],
+    "exit_criteria": [
+      "一份完整包能在新 profile 恢复到可继续编辑状态。",
+      "损坏/未知/超限包不影响当前项目；取消无暂存残留。"
+    ],
+    "artifacts": [
+      "package-format-v1.md",
+      "导入导出实现",
+      "历史恢复 UI/适配",
+      "恶意/损坏最小 fixtures"
+    ],
+    "rollback": "保留原始用户包，旧程序回退时必须保留兼容 reader 或停止打开新格式，不能自动降级覆盖。",
+    "test_groups": [
+      "PACKAGE",
+      "PROJECT"
+    ]
+  },
+  {
+    "id": "T09",
+    "title": "基础轮廓和家具组合",
+    "status": "TODO",
+    "dependencies": [
+      "T05",
+      "T06"
+    ],
+    "sources": [
+      "S26",
+      "S27",
+      "S32"
+    ],
+    "scope": "只移植四种房间轮廓和六个基础家具组合，不增加新布局求解器。",
+    "steps": [
+      "提取 getWalls 与固定 furniture offsets，完成一次坐标单位转换。",
+      "转换为 Pascal 原生墙/家具创建，不直接导入 OpenPlan project；处理自动 zone/slab 避免重复。",
+      "按 catalog-map 放入正确类别、尺寸、朝向的资产；缺项在确认前报告。",
+      "组合创建、取消、失败和撤销统一到 EditPlan；所有节点保留单独可编辑性。",
+      "分别对四种轮廓和六个组合做几何/数量/方向测试；调整房间尺寸时说明来源没有自适应。",
+      "保存重开、复制后编辑与多楼层目标检查。"
+    ],
+    "exit_criteria": [
+      "十个来源预设/组合均按源范围可用，无静默缺资产。",
+      "一次 Undo 全部移除这次插入但不影响原有对象。"
+    ],
+    "artifacts": [
+      "room-presets.ts/room-templates.ts 等映射实现",
+      "catalog-map 完整状态",
+      "模板回归截图"
+    ],
+    "rollback": "下线模板入口不删除已生成宿主节点；移植模板只是创建方式，不成为保存项目的硬依赖。",
+    "test_groups": [
+      "TEMPLATE"
+    ]
+  },
+  {
+    "id": "T10",
+    "title": "当前相机、预览与 PNG 输出",
+    "status": "TODO",
+    "dependencies": [
+      "T05",
+      "T07"
+    ],
+    "sources": [
+      "S07",
+      "S25",
+      "S36"
+    ],
+    "scope": "将来源相机工作流放在 Pascal viewer 上，复用其真实截图管线。",
+    "steps": [
+      "实现 React 参数面板与放置/目标交互，绑定宿主当前场景；不搬来源 scene/buildWalls/renderer。",
+      "统一位置/target/quaternion/FOV/aspect 与辅助视锥，移交原有 controls 输入权。",
+      "映射 Pascal snapshot，核对真实 MIME/outW/outH；实现 PNG 正确编码但不改原缩略图策略。",
+      "增加资源准备/超时/取消状态；任何临时相机/renderer/可见性变化在 finally 恢复。",
+      "把当前相机必要参数注册到 T07 扩展保存，不建设多机位列表。",
+      "验证环境、水面、材料、透明和辅助层剔除；循环截图检查 Canvas/ObjectURL/计时器释放。"
+    ],
+    "exit_criteria": [
+      "取景与导出比例一致，PNG signature/MIME/尺寸正确。",
+      "截图失败或项目切换后编辑器状态、相机和工具仍正常。"
+    ],
+    "artifacts": [
+      "CaptureAdapter/CurrentCameraAdapter",
+      "React 控件",
+      "实际 PNG 样本与截图测试"
+    ],
+    "rollback": "恢复原有相机控制并关闭新增入口；不回退全部 viewer，更不能把 WebGPU 改成普通 WebGL。",
+    "test_groups": [
+      "CAMERA"
+    ]
+  },
+  {
+    "id": "T11",
+    "title": "AI 传输与服务端边界",
+    "status": "TODO",
+    "dependencies": [
+      "T04"
+    ],
+    "sources": [
+      "S12",
+      "S13",
+      "S22",
+      "S23",
+      "S35"
+    ],
+    "scope": "实现可替换的聊天传输和配置；服务端不持有所有用户共用的可写场景。",
+    "steps": [
+      "完整读取来源 routes/config/stream parser，先用 mock provider 验证 schema 和 SSE 分片。",
+      "将服务端 key/config 放在环境配置中；前端只提交受控 ID 和最小场景摘要。",
+      "复用宿主 Host/Origin/token 保护，provider 目标白名单、超时和大小上限；不增加任意 URL 代理。",
+      "区分未发送失败、已发送结果未知、明确错误；不盲目重试收费请求。",
+      "取消、重复点击、流结束后迟到事件按 requestId/projectId 隔离。",
+      "记录实际协议依赖与模型配置格式，不将来源默认模型名当成必须可用模型。"
+    ],
+    "exit_criteria": [
+      "浏览器与导出包无密钥；协议错误/超时/取消可重现。",
+      "无凭据时基础编辑器和 mock 测试照常可用。"
+    ],
+    "artifacts": [
+      "服务端路由/配置模板",
+      "ChatTransport 实现",
+      "协议与安全测试"
+    ],
+    "rollback": "关闭 AI 服务端路由/功能开关，不改变场景 store；泄漏情况需要移除日志并按真实凭据管理流程处理。",
+    "test_groups": [
+      "AI",
+      "SECURITY"
+    ]
+  },
+  {
+    "id": "T12",
+    "title": "AI 上下文、工具映射与验证",
+    "status": "TODO",
+    "dependencies": [
+      "T05",
+      "T06",
+      "T11"
+    ],
+    "sources": [
+      "S12",
+      "S14",
+      "S15",
+      "S16",
+      "S22"
+    ],
+    "scope": "将主文件第 10 章纳入的工具映射到宿主真实能力，不支持的工具不发送给模型。",
+    "steps": [
+      "从固定源代码抽取 tool definitions/types/dispatch，核对三者集合；输出完整 inventory。",
+      "为每个纳入工具实现真实参数 schema、调用点、父级/目标/材质/空间验证。",
+      "场景摘要只包含相关节点/尺寸/层级/可用资产；排除二进制、无关历史和密钥。",
+      "工具清单、提示词和分发从同一能力表生成；原始 prompt 中提及已排除工具的文字也移除。",
+      "修正室内/室外边界、目录模糊匹配警告和无法无损映射的材质；不得静默换语义。",
+      "为每个纳入工具生成合法/非法用例，再对批次依赖、ID 冲突和环引用做集成测试。"
+    ],
+    "exit_criteria": [
+      "所有本期纳入工具都有实现和正反用例，不仅是 UI 名称。",
+      "排除项模型即使输出也被安全拒绝，不覆盖手工编辑。"
+    ],
+    "artifacts": [
+      "ai-tool-capabilities.json",
+      "工具 schema/validator/adapter",
+      "逐工具测试与未支持清单"
+    ],
+    "rollback": "能力表收回未通过项并保持 TODO 状态；不能把本期 MUST 擅自改 EXCLUDED。",
+    "test_groups": [
+      "AI",
+      "TOOLS"
+    ]
+  },
+  {
+    "id": "T13",
+    "title": "AI 预览确认、聊天 UI 与取消",
+    "status": "TODO",
+    "dependencies": [
+      "T07",
+      "T12"
+    ],
+    "sources": [
+      "S12",
+      "S13",
+      "S14",
+      "S21"
+    ],
+    "scope": "复用来源必要的聊天/方案/预览机制，正式场景只由用户确认后提交。",
+    "steps": [
+      "迁入 React 聊天与操作卡片，使用宿主 selection/level，不自建复制节点 store。",
+      "接入受限来源循环；默认 3 往返/50 操作/180秒为安全配置，不复制 200 轮默认。",
+      "预览显示新增/变更/删除及影响范围；取消与失败清理预览且不产生历史项。",
+      "模型 confirm_preview 不可冒充用户点击；正式确认验证 revision 并保证幂等。",
+      "测试预览期间人工编辑、删除目标、切楼层/项目、组件卸载和迟到响应。",
+      "确认→一次 Undo→Redo→保存重开，核对对象/材质/资产引用。"
+    ],
+    "exit_criteria": [
+      "没有模型自动批准写入，没有幽灵节点污染保存和导出。",
+      "所有异步竞争情况下保持正确项目和用户编辑。"
+    ],
+    "artifacts": [
+      "AI UI/preview 适配",
+      "限制配置与用户说明",
+      "端到端录像/截图和用例日志"
+    ],
+    "rollback": "先关闭内置 AI 入口并清理本请求预览；不以整个旧快照回滚用户的新编辑。",
+    "test_groups": [
+      "AI",
+      "CORE",
+      "UI"
+    ]
+  },
+  {
+    "id": "T14",
+    "title": "当前截图的单次生图",
+    "status": "TODO",
+    "dependencies": [
+      "T10",
+      "T11"
+    ],
+    "sources": [
+      "S25",
+      "S35"
+    ],
+    "scope": "移植现有截图+风格/光线/氛围+补充文字的单张生成链路，不接外部业务系统。",
+    "steps": [
+      "React UI 连接 CaptureAdapter 和独立 ImageTransport，场景操作 AI 与图像生成模型能力分开。",
+      "分别适配来源 Gemini 与 /responses+image_generation 协议，验证供应商能力而非只看模型名称。",
+      "参考图 MIME/比例和输出支持尺寸正确传递；结果不拉伸伪装，显示实际尺寸。",
+      "结果只作为图像，不写入 scene geometry；request/camera/project 关联固定。",
+      "mock 覆盖认证、限流、超时、取消、非法图片/无图片/超大返回及旧响应。",
+      "凭据获准后执行少量真实协议请求并记录；没有凭据标记 BLOCKED_CREDENTIALS。"
+    ],
+    "exit_criteria": [
+      "本地协议/UI 测试通过，图像结果可查看和下载。",
+      "真实服务状态明示；取消不承诺远端停止计费。"
+    ],
+    "artifacts": [
+      "ImageTransport/服务端路由",
+      "UI 与协议测试",
+      "外部实调状态报告"
+    ],
+    "rollback": "停用图像路由并保留用户已生成图片；不影响相机输出和场景编辑。",
+    "test_groups": [
+      "IMAGE"
+    ]
+  },
+  {
+    "id": "T15",
+    "title": "统一 UI 与生命周期",
+    "status": "IN_PROGRESS",
+    "dependencies": [
+      "T08",
+      "T09",
+      "T13",
+      "T14"
+    ],
+    "sources": [
+      "S25",
+      "S33",
+      "S34"
+    ],
+    "scope": "让所有迁入入口共同工作，不重做整个 Pascal 视觉系统。",
+    "steps": [
+      "合并入口到宿主面板，不创建 iframe、第二应用或重叠快捷键管理器。",
+      "测试焦点在输入框、模态框、预览、拖动和相机放置时的 Escape/Undo/Delete 优先级。",
+      "统一 loading/error/cancel 状态；保存、截图、AI 预览互相冲突时有明确排他规则。",
+      "无 credentials 时显示配置缺失，基础操作可用；新 UI 采用中文但不改数据 ID。",
+      "循环打开关闭面板/预览/项目，检查自建 timer/listener/Canvas/ObjectURL 与 late callbacks。",
+      "把所有临时测试入口移除，保留可审计的测试 fixture。",
+      "完成第 16.1 节的简体中文界面与术语统一，覆盖 Pascal 基础编辑器、纳入插件和所有迁入工作流；检查错误/空状态、中文输入法和排版，API/ID/许可原文及用户数据不变。",
+      "建立共用语言字典和 zh-CN / en 切换入口；英文浏览器中首次默认中文，刷新保留明确选择，切换不修改用户数据或历史。"
+    ],
+    "exit_criteria": [
+      "面板操作不丢选择/楼层/工具，旧响应不污染新项目。",
+      "无双编辑器、无自建常驻重复 render loop。",
+      "基础编辑器、纳入插件及新增工作流默认简体中文，AC-UI-05 通过；未完成中文化不能称中文版交付。"
+    ],
+    "artifacts": [
+      "interaction-ownership.md",
+      "UI 截图与键盘回归",
+      "resource-lifecycle-report.md"
+    ],
+    "rollback": "逐入口关闭，不恢复一整份早期布局覆盖原版后续修复。",
+    "test_groups": [
+      "UI",
+      "LIFECYCLE"
+    ]
+  },
+  {
+    "id": "T16",
+    "title": "插件与原功能回归",
+    "status": "TODO",
+    "dependencies": [
+      "T15"
+    ],
+    "sources": [
+      "S05",
+      "S06",
+      "S07",
+      "S17",
+      "S18",
+      "S19"
+    ],
+    "scope": "原版保留项是整合验收组成部分，不能把它们当作与移植无关。",
+    "steps": [
+      "跑 T02 相同 fixtures 和原仓库完整测试，核对差异。",
+      "Environment 节点/sidecar、Pool 调参、Nature 选择、Streetscape 和窗口/屋顶/楼梯等保留项逐个复查。",
+      "截图检查插件 presentation 与材质，模型导出检查其 opt-in 边界，不能混淆两种输出。",
+      "导入原 Pascal JSON，编辑、保存、导出再导入，不丢 materials/collections/installedPlugins。",
+      "检查本地 CLI/MCP 既有 smoke 与单客户端隔离约束；不自动注册外部 agent。",
+      "原始缺陷与迁移新回归分表，关键新回归必须修复后再走安全审核。"
+    ],
+    "exit_criteria": [
+      "本期保留矩阵没有未解释退化。",
+      "环境设置和本地附件在新 profile 的整合包中正确恢复。"
+    ],
+    "artifacts": [
+      "baseline-vs-integrated.md",
+      "插件/导入导出验证日志",
+      "修复回归提交"
+    ],
+    "rollback": "定位到引入回归的任务提交/adapter；不删除插件让测试消失。",
+    "test_groups": [
+      "BASE",
+      "PROJECT",
+      "PACKAGE",
+      "CAMERA"
+    ]
+  },
+  {
+    "id": "T17",
+    "title": "安全、网络、依赖与来源审计",
+    "status": "TODO",
+    "dependencies": [
+      "T16"
+    ],
+    "sources": [
+      "S04",
+      "S05",
+      "S11",
+      "S17",
+      "S23",
+      "S29",
+      "S30",
+      "S32",
+      "S35"
+    ],
+    "scope": "检查整合新增攻击面和复制资产/代码来源，只做相关修正。",
+    "steps": [
+      "扫描 browser bundle/导出包/日志，无密钥、server-only 模块、source repo 私有目录或意外 SDK。",
+      "测试 Origin/Host/token 与 provider whitelist；拒绝任意 URL、redirect 到非允许目标和超量响应。",
+      "对 GLB/ZIP 进行损坏、解压炸弹、路径穿越、重复键/路径、伪 MIME、未知版本等安全用例。",
+      "依赖图确认仅宿主核心与一致 Three/React；不以 skipLibCheck/全局 any 掩盖版本错误。",
+      "逐文件检查 THIRD_PARTY_NOTICES、MIT、模型/贴图哈希和来源状态。",
+      "网络录制确认除了声明目录/服务外无 Firebase/遥测/隐式项目上传。"
+    ],
+    "exit_criteria": [
+      "关键数据和凭据安全用例 PASS；无许可不清的复制素材。",
+      "新入口的限制没有意外降低原版合法导入能力。"
+    ],
+    "artifacts": [
+      "security-report.md",
+      "network-origins.md",
+      "THIRD_PARTY_NOTICES",
+      "dependency-report.md"
+    ],
+    "rollback": "有安全缺陷先禁用对应新路由/入口，保留项目；高风险问题不进入候选版本。",
+    "test_groups": [
+      "SECURITY",
+      "BOUNDARY"
+    ]
+  },
+  {
+    "id": "T18",
+    "title": "全验收与性能比较",
+    "status": "TODO",
+    "dependencies": [
+      "T17"
+    ],
+    "sources": [
+      "S33",
+      "S34",
+      "S36"
+    ],
+    "scope": "执行所有必需用例并比较代表性运行成本，不把作者结果当作自己的数据。",
+    "steps": [
+      "逐条执行 acceptance.csv，用真实证据更新状态/目标 commit/运行条件。",
+      "每项新 AI tool 的正反测试均执行；工具 mock 与真实服务测试分别统计。",
+      "按主规范第 17.4 节，在 macOS + Chrome、Windows + Chrome、Windows + Edge 分别实测核心编辑、预览确认/取消、撤销重做、截图、导入导出、保存重开及版本恢复；验证项目包在 macOS/Windows 间双向交换；检查空格/中文路径、文件名大小写、权限和 Ctrl/Cmd 快捷键。记录各子项状态、OS/架构/浏览器/GPU/backend 与证据，Safari 等其他浏览器单列。",
+      "在 macOS 和 Windows 各自补齐原始基线，分别按同设备同 fixture 至少 5 次比较加载/编辑/保存/截图；记录 DPR/缓存/backend，不用不同平台的耗时直接判断回归。",
+      "20 次面板/导入/取消/截图/切项目压力检查没有自有资源线性增长。",
+      "复查所有 skipped/blocked，未实现能力不能打勾；输出可重现问题列表。"
+    ],
+    "exit_criteria": [
+      "所有无外部依赖的 MUST 用例 PASS，性能退化超过调查阈值有解释或修复。",
+      "macOS/Windows 必测矩阵与双向项目交换全部 PASS；任一必需子项 NOT_RUN/BLOCKED/FAIL 时本任务不能完成。外部凭据阻塞单列，设备阻塞不豁免双平台要求，不能写全平台生产就绪。"
+    ],
+    "artifacts": [
+      "acceptance.csv（实际结果）",
+      "evidence/index.json",
+      "platform-report.md（按 templates/PLATFORM_REPORT.md 逐平台记录）",
+      "performance-report.md",
+      "known-issues.md"
+    ],
+    "rollback": "问题回到所属任务修复后重跑相关矩阵，不能只改报告。",
+    "test_groups": [
+      "REGRESSION",
+      "LIFECYCLE"
+    ]
+  },
+  {
+    "id": "T19",
+    "title": "干净候选版本复现",
+    "status": "TODO",
+    "dependencies": [
+      "T18"
+    ],
+    "sources": [
+      "S04",
+      "S05"
+    ],
+    "scope": "从干净副本按交付说明重建，而不是依赖作者机器残留。",
+    "steps": [
+      "分别在 macOS 和 Windows 的隔离目录从同一候选 commit 获取干净副本，不带现有 node_modules/cache/env；记录 OS 版本与 CPU 架构。",
+      "按分别编写的 macOS/Windows 说明完成环境配置、依赖安装、类型检查/测试/构建和启动；配置模板不包含真实 key，说明明确 shell、路径、权限、原生依赖与数据位置，记录各平台命令和退出码。",
+      "导入交付最小测试包，验证主闭环与对应渲染 backend。",
+      "核对 source-lock、锁文件 hash、功能矩阵、版本和数据格式说明一致。",
+      "核对部署范围/端口/存储/备份说明与实际行为；没有授权不推送/发布/部署。",
+      "按本地与外部服务实际验收范围命名候选版本。"
+    ],
+    "exit_criteria": [
+      "macOS 和 Windows 的交付说明均能在各自干净环境复现，AC-RELEASE-01 的两个平台子项均 PASS；任一平台缺失验证不得完成本任务。",
+      "源码来源、数据兼容与外部未验证范围一致。"
+    ],
+    "artifacts": [
+      "release-candidate-report.md",
+      "REPRODUCE.md（分别包含 macOS/Windows 环境配置、安装、启动、构建与故障处理）",
+      "候选 commit/source-lock 哈希"
+    ],
+    "rollback": "候选不通过则返回对应任务，保留稳定 baseline/已通过提交，不硬回退用户项目。",
+    "test_groups": [
+      "RELEASE"
+    ]
+  },
+  {
+    "id": "T20",
+    "title": "最终交接与恢复说明",
+    "status": "TODO",
+    "dependencies": [
+      "T19"
+    ],
+    "sources": [],
+    "scope": "让下一位 AI 只凭仓库与文档即可知道实际完成范围和下一步。",
+    "steps": [
+      "逐项更新任务/验收/功能矩阵，状态与证据一一对应。",
+      "按源项目汇总复制/改编/保留/明确不迁移的文件与理由。",
+      "记录所有新增配置、格式、限制、启动方法、故障排查与安全回滚点。",
+      "HANDOFF 中列当前分支/commit、工作区状态、最近执行命令、macOS/Windows 验证矩阵及未解决事项；禁止只写“继续上面的任务”。",
+      "确认无临时 backup 文件、私有素材、密钥、伪造演示和未声明依赖。",
+      "交付本地文件与仓库，不对未执行发布行为作任何宣称。"
+    ],
+    "exit_criteria": [
+      "下一位开发者不需猜测 source、状态、测试和任务范围。",
+      "所有本地 MUST 完成；未实调外部服务明确单列，不夸大。"
+    ],
+    "artifacts": [
+      "HANDOFF.md",
+      "CHANGESET.md",
+      "KNOWN_LIMITS.md",
+      "ROLLBACK.md",
+      "最终功能矩阵与证据索引"
+    ],
+    "rollback": "文档修正保留历史；不得通过删除失败记录制造完成状态。",
+    "test_groups": [
+      "RELEASE"
+    ]
+  }
+]

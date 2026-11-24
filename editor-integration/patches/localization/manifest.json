@@ -1,0 +1,288 @@
+[
+  {
+    "package": "@mint/pascal-plugin",
+    "source": "github:mintdotgg/mint-pascal-plugin#902c546dbaece6b31455c0dc394afe6b9cd136fe",
+    "patch": "pascal-plugin.patch",
+    "files": [
+      {
+        "path": "src/panel.tsx",
+        "before": "366c771db39fd10b0db88308d1f67f36b37b9fd783748dc4b492422b6a771f41",
+        "after": "c874a7160b2603e2220d6f0b86cc30d2efc369589462a6f27e5ce4acbe1b55f5"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-bones",
+    "source": "github:pascalorg/plugin-bones#5679260261ee1c733656ff6dfb99e30bb24b58a7",
+    "patch": "plugin-bones.patch",
+    "files": [
+      {
+        "path": "src/inspector/wall-engineering.tsx",
+        "before": "dde3da83f512acbbb8d671166795c6757152da1a303d37ce3f50038234111509",
+        "after": "ae25210845192bee8dc5e0b8f47a15180b817984f1fa1ded74fffbab09f750fa"
+      },
+      {
+        "path": "src/panel.tsx",
+        "before": "aa1c6aa6bb6bb9aad58453b44495c81b325dab283ad95790818353c709f1fc4f",
+        "after": "a05935402286f5317303f3e2e748c1120139eb27fd74db7757fceb73c96882d3"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-environment",
+    "source": "github:AxiomeCG/environment#1aa0bc3cbed273dbf751e9af79e446f6de105c90",
+    "patch": "plugin-environment.patch",
+    "files": [
+      {
+        "path": "src/atmosphere/controls.tsx",
+        "before": "6e554375d81db68afb3fedd9c11587c0343592f808a87c13d42a4a54fadb8d40",
+        "after": "c7af5cc081e69b53e6b0129f624ba0e600c1b498386771aa1764cd1943cd58c2"
+      },
+      {
+        "path": "src/atmosphere/time-orbit.tsx",
+        "before": "fb870a7619b1453fadcb0e2be3298c421eda8e5787d776ed431841aa03d9a799",
+        "after": "459694d82eeed2fafe9eb23c48f043dae302113dfbd3d3788c7b763ef13902f8"
+      },
+      {
+        "path": "src/brush-color-picker.tsx",
+        "before": "87d20acbc58590bf8e74d562cc16ba50e72b680ff141768878d96aa570197133",
+        "after": "c5ba5c24ec7d548e24e39a5130859d2d9668a689ff5cc192ba398251f0c18a0d"
+      },
+      {
+        "path": "src/environment-selector.tsx",
+        "before": "74346548c8abcb9eb97d6ecefec5977ae531f4a0296c5c1057647ed4e107599f",
+        "after": "d85a3144b929797750f9937fd9b920c308db2de652610509a1f030e6494dbf53"
+      },
+      {
+        "path": "src/panel.tsx",
+        "before": "577651edc7a2053df977f9eff1e7565f951545e22962e8aef124ce9d5969f23b",
+        "after": "5a009942febcb3f71a550bed66accae971ba4253e16f7c4152f53c1398da95e1"
+      },
+      {
+        "path": "src/parameter-range.tsx",
+        "before": "e13878422e38c085922b6547fe0aeb121c82f6d01b3b7094e5967e40423bab2c",
+        "after": "371c1ce1cc73cb2936ba48ee91b3adaceff030672f7d29c58a44f1aa009fe400"
+      },
+      {
+        "path": "src/pond/controls.tsx",
+        "before": "f024fe34e2db1cd349903140f87cda135d01e7e1fcc54773086a69116bdf1091",
+        "after": "3ba860dd030b4841e08ecec7837ea13b22efbfdb4f3d1070e4bfb7d33c5fd5be"
+      },
+      {
+        "path": "src/river/controls.tsx",
+        "before": "6694c61cc4e86d6978c159e14d107674d5974ab84729b2f366413a7f2eed5f46",
+        "after": "dde9feb6b812f16137740120331e02d2b23afd25386d0f5b82fba133f0dcc267"
+      },
+      {
+        "path": "src/river/floorplan-tool.tsx",
+        "before": "98fc1c76b4dd587874881dec083bb58dbdf7748bcb1186f6d8a2d03eb3fccb85",
+        "after": "e12e16ce078fc888f2af5ebd69d23a01334a00537c9d1af380cb6e3e9355fc7a"
+      },
+      {
+        "path": "src/surroundings/frontage-selector.tsx",
+        "before": "ef7184eb22621028cc798b2ee1454042ef06e1b3fe10d3a85a097fe96f952da6",
+        "after": "7e899cee3d6f8ce03d055092f989a4a96fa356b9387e86754accd62a0c09a158"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-pool",
+    "source": "github:sudhir9297/pool-pascal-plugin#483a080558293cd344170e66318230e2ac9b6ae8",
+    "patch": "plugin-pool.patch",
+    "files": [
+      {
+        "path": "src/editor/connect-pool-pipes.tsx",
+        "before": "0b6293b8e2c92602ae04d637ab39b1522c367ad1debc8a57b71c38c9c129c1fa",
+        "after": "590c5dcfaeee13725fdcbdd78065f6325b97e6478a82d04d9a5b8b1528cc0255"
+      },
+      {
+        "path": "src/editor/connections.tsx",
+        "before": "0f7f40e9f9eef6ccc7c42d39594e0165ef1ed53aa36fe03ef1642f28758274ff",
+        "after": "eda61b19fe8cff5a39f920c3bb57646966f053b6164ca47a75b006b5d1b65db8"
+      },
+      {
+        "path": "src/editor/panel.tsx",
+        "before": "0e6f84c41b979aa76a6bcf88d15bd5261426dd4b0d63aead5f27b23a55937800",
+        "after": "e9808781ff001c086b11ed3ecf65a8b66b58c11888d09e2d0473f401785c2f6c"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-streetscape",
+    "source": "github:sudhir9297/streetscape-pascal-plugin#1c04ec9ccb3fa8124ec56dfc1026567cbbc51aef",
+    "patch": "plugin-streetscape.patch",
+    "files": [
+      {
+        "path": "src/driveway-gate-open-control.tsx",
+        "before": "e8efcc345163238a8fc93687fe7a0e5e84b31a1367912ca5c75cdf32cc6f7107",
+        "after": "534f218c103bbff09a7e9ce21b7171b1a40e6e5f94a8e7707f953afc7c384f99"
+      },
+      {
+        "path": "src/mailbox-open-control.tsx",
+        "before": "b0021061a5418fc640908296f27bc328b7528178bb027df9e988fd429bb0e526",
+        "after": "0f5ec22d5d13e9e3325ab536cf445b9541d6a5bdf8f50fe14548008eec11d3d2"
+      },
+      {
+        "path": "src/parcel-box-open-control.tsx",
+        "before": "6ccd7797ffbba8a9af9365bcae32a411902e06e850196bd871ce48fc49b2ada9",
+        "after": "b7dee9bb888b11a19b036d8a8501722703a68d8d45f6b9da54883653efe3781c"
+      },
+      {
+        "path": "src/presets-panel.tsx",
+        "before": "da4cdb47e2fc10ae54ebb2d6af064c800c8a2f8be3c8c9c676dce980acdf527c",
+        "after": "149810777fd09a09dfeb044403edf9615b1505e76c81f40594c06b45a0d9b543"
+      },
+      {
+        "path": "src/road-network-cross-section-inspector.tsx",
+        "before": "530df2c3273b40141397a05a9d083eb174ed2d09f87f736316a0a865f1920323",
+        "after": "25aab009ae2758adb96da21b302f03f1fa9c1854fe0a0aa8d8f167f42f9a89ee"
+      },
+      {
+        "path": "src/road-network-junction-inspector.tsx",
+        "before": "22937f53cc4d3c97cb3549df7ce0f0cd4005322e24477b19cbee2bc0c7cdabe6",
+        "after": "45584e8dfd3d9cd6fae2f68f41036c29fa5f7a38543af81feb920ca84fc83664"
+      },
+      {
+        "path": "src/road-network-preset-library.tsx",
+        "before": "da397df8e0fce911524b11a426e8000ca4e777730ca7176c1d4a0e7db538fe81",
+        "after": "d32f58dd40a9a06d921ff215ace3ea53f9694fb9e68908f97a5f0190852a0867"
+      },
+      {
+        "path": "src/road-network-spline-inspector.tsx",
+        "before": "419e8b5ace2340a2a5e6abe936892e8f9f2c50d9672e8b6013c4908889377b5e",
+        "after": "79dd3c6882d863b9e19a40db168092b3ddaf32b1fc9a0e675318f637bb2436b7"
+      },
+      {
+        "path": "src/road-network-terrain-inspector.tsx",
+        "before": "dcf5830d30e90d238abf0fd4e6929b95a429af1a02f9e6affba8f973740d6dd4",
+        "after": "d76a8665afed0b9f0c415c32a728958249c59a87c024ef8be43e1bb95a433195"
+      },
+      {
+        "path": "src/road-network-tool.tsx",
+        "before": "88622552376674e5df5c980e64082fddc19e0b6cabb15c3dae56d871337eb82d",
+        "after": "ed3fcce386e3ea68e37702d98241028bd2a6e10b0a13583eead65c6ad9a8574c"
+      },
+      {
+        "path": "src/road-network-vertical-profile-inspector.tsx",
+        "before": "89f444e7fc4fcb53e3f7a0e2c214280c11ef7b37b90d70bd054048f2b06be76b",
+        "after": "bba5c7ed7270ce12d6e21d7a10f9159530fb310dd54a2677975a01d736c5f9ff"
+      },
+      {
+        "path": "src/road-panel-controls.tsx",
+        "before": "76492e8864c8a309c7c717858ac859de891e268233f152bd026d518ccb318ec8",
+        "after": "c830b2235b1525974179b51dd4527bb538a5980e202dfd9c53dab0a6f2001a26"
+      },
+      {
+        "path": "src/road-sign-text-editor.tsx",
+        "before": "6d9dc5a40909e69b9db9080179e709d6f4b3ab359abbe7c1a487e52ce572089a",
+        "after": "a9c7050f2bdaeac0d1a93be6879efca83c393aa97fc49565419ce67f160fe471"
+      },
+      {
+        "path": "src/roadside-decoration-rules.tsx",
+        "before": "bcab87696a2101fca17d8371f48037c60f76dd56edca2f2e39b04d9ab192ac91",
+        "after": "a3394835b3d41242ff13ee2149208d82f0057212b31fc2c40fd640b160017b93"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-trees",
+    "source": "github:pascalorg/plugin-trees#56d978cd9b409b716207b3f3d269455d3cd6f067",
+    "patch": "plugin-trees.patch",
+    "files": [
+      {
+        "path": "src/presets-panel.tsx",
+        "before": "775c7b15b2470a671c8d4744f85098e66de943a83fe2aa575f1df0ef304fc33b",
+        "after": "570bf58ef0d1df548c9a01ddc84ffbbfc8697e614ab35ca1841b32f39b9e9980"
+      },
+      {
+        "path": "src/instanced.tsx",
+        "before": "b7ce7ec9ceb40cc2cd9d5a3b363cb46ce317bb7c5860dc4d929f8803697039f6",
+        "after": "0f4610516f200881aece4a4723c49bab29d81daf2e4524f905eb9d9c8145952d"
+      },
+      {
+        "path": "src/definition.ts",
+        "before": "6c3bad73fcd49a19e075b727ec16fa064b4f5ca3ee4c47d9fce5a6ce8ebfe0af",
+        "after": "b5fa59144a8c582d3f18df2f4b94e9c4fb7a7ba5b39727c661b304e7d4698dfb"
+      },
+      {
+        "path": "src/geometry.ts",
+        "before": "00e959dcdc54bee72d5538955fcb642c8b7d34796d2a5837db17d7eb6eb6cc51",
+        "after": "7874301d834071299b25978c76ff1a75881d85ddaf7ad9451aaafa2427b3dcd9"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-environment",
+    "source": "github:AxiomeCG/environment#1aa0bc3cbed273dbf751e9af79e446f6de105c90",
+    "patch": "plugin-environment-motion.patch",
+    "files": [
+      {
+        "path": "src/atmosphere/layer.tsx",
+        "before": "f9390e4b08eae861546aca645fbf2ec99f17a4a46033156158d6721db6dcd15b",
+        "after": "b35018bc32629692b59ffc2019953e353083b7bde99669f03a6af5a5ead8b6e6"
+      },
+      {
+        "path": "src/atmosphere/weather.tsx",
+        "before": "b3ab5512551d6f620d6dfc9d405014041b11bded8ec423c0832d929c2dc4f18b",
+        "after": "aee978be94f8855bb5d9d827e5b92c5c742d94704a735cb8153cd8ed66d278c9"
+      },
+      {
+        "path": "src/pond/static-renderer.tsx",
+        "before": "d45d00c7999214ccbe5445e16a602f955103c681e948581a66c54cac83262135",
+        "after": "dc459adec1d5249ff63866da92cce8a9fcacaf8b202d66d42a22c4d7dfc3541e"
+      },
+      {
+        "path": "src/pond/system.tsx",
+        "before": "ae691281579517f978ad2b2415e4e0d1b6a660b0c7aaa62dd0a78060f2bc6b16",
+        "after": "500a181af800c6a1bb441e868087c4a9c81a6b1ea91b42f56b8c9f12fe711e71"
+      },
+      {
+        "path": "src/surroundings/distant-birds.tsx",
+        "before": "954822d7e000daf58669476247e0e18ff1bd89af0f53bbb3d68cc272efab174c",
+        "after": "19797464ee920dba8cc9f43d6f6ed82eec488b7ee63738358fd5e15b0ed773b1"
+      },
+      {
+        "path": "src/surroundings/lighthouse-beacon.tsx",
+        "before": "9e8f01935863aaab18907d616f463bca2940ebc970754a45d2ee006cb9924694",
+        "after": "e6ce787a3de2dfc2cb0b017784abb53c44efd3c81054b707ed29a562dfc47084"
+      }
+    ]
+  },
+  {
+    "package": "@pascal-app/plugin-pool",
+    "source": "github:sudhir9297/pool-pascal-plugin#483a080558293cd344170e66318230e2ac9b6ae8",
+    "patch": "plugin-pool-motion.patch",
+    "files": [
+      {
+        "path": "src/editor/renderer.tsx",
+        "before": "c8387aeba09a47705d95079ab87aec84372115931fb19313166b9f31ad7d37c1",
+        "after": "61f06d9145269d061f098a7f79335846c7429db2b795b95b760af053ea3d6d95"
+      },
+      {
+        "path": "src/shader/water-effect.ts",
+        "before": "94813962153fb76f7e8cbd61373fb502f0fd6829dd18d18e11dfed299905ec68",
+        "after": "dd25256a29abc0c399a1578c704328a03e5281e9cecba2a357927bf0711d875a"
+      },
+      {
+        "path": "src/shader/waterfall-effect.ts",
+        "before": "a78667ba390a29f926f27c8557753d102bbc01dd4e2a4452d763fccf7623a79d",
+        "after": "966e29b9732d1597815ca7c4c4b230cfbd0493988ca9171b2be7499b27e3204b"
+      },
+      {
+        "path": "src/shared-joint/editor/preview.tsx",
+        "before": "f0444dcf0f4f213b3eafe3d9a6f4c93961ad7d4886f942d2193257874a8f7c84",
+        "after": "02f0c34806a398d6fd109d846b6311f7570ef80b0a4a81dfbff40e849593243c"
+      },
+      {
+        "path": "src/spillover/editor/preview.tsx",
+        "before": "54d9270c3b03b8271e85c3dbc1f9f5007177b7ddc01bd56904356730e201e1ab",
+        "after": "5dc0866ec869a56865ee47523f331c8822c0490040b19520ca148385f0e94a8b"
+      },
+      {
+        "path": "src/water-feature/waterfall/editor/preview.tsx",
+        "before": "6fa68d43cd66f473fa5e272e83bb27f1827d13c88167f29f14d29158d79b2e7c",
+        "after": "5d467600febd287ff05cef92eeff3d93b59654595c934653156a81baebe8a9ce"
+      }
+    ]
+  }
+]

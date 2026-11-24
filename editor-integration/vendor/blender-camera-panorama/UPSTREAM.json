@@ -1,0 +1,115 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "ref": "v4.3.0",
+  "retrieved_on": "2026-10-01",
+  "files": {
+    "projection.h": {
+      "source_path": "intern/cycles/kernel/camera/projection.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/kernel/camera/projection.h",
+      "sha256": "4bba84cca89fbe77366237ce42e7cdeb8aee2caa30ecdda9343a9fa4c2c76a7a",
+      "bytes": 11224
+    },
+    "kernel-camera.h": {
+      "source_path": "intern/cycles/kernel/camera/camera.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/kernel/camera/camera.h",
+      "sha256": "8b5211d2838e0fcfe1c41ba162cb0d6bd40724ab0d60e3c9656fac1a8bc438d9",
+      "bytes": 16657
+    },
+    "blender-camera.cpp": {
+      "source_path": "intern/cycles/blender/camera.cpp",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/blender/camera.cpp",
+      "sha256": "9d3a2016cec9ff1ebfb3ae78cc524b9014e8ddaf5a18f554444e795d426315c2",
+      "bytes": 35918
+    },
+    "scene-camera.cpp": {
+      "source_path": "intern/cycles/scene/camera.cpp",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/scene/camera.cpp",
+      "sha256": "5d3b45b8fea8fa172e09bdc286af344b468e7129af3c49b9240fcabfb5507d2d",
+      "bytes": 30656
+    },
+    "math.h": {
+      "source_path": "intern/cycles/util/math.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/math.h",
+      "sha256": "f576901f389165d2f759a82c7739b3fc09054848a1c174bf0ae7b28f740a6bc6",
+      "bytes": 25375
+    },
+    "math_float2.h": {
+      "source_path": "intern/cycles/util/math_float2.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/math_float2.h",
+      "sha256": "b1bd6a02e8af012e50e4ff9b38298c10470ebb6916a0a232f2a28ff524264128",
+      "bytes": 5074
+    },
+    "math_float3.h": {
+      "source_path": "intern/cycles/util/math_float3.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/math_float3.h",
+      "sha256": "c867468ab5906bbab7b658fecd4fe49501d21e88b5ade934ba7e03b8255c1fbf",
+      "bytes": 11709
+    },
+    "math_float4.h": {
+      "source_path": "intern/cycles/util/math_float4.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/math_float4.h",
+      "sha256": "e39102e59ee5a9beb6116d4ee9022d97031a3ac097f23981501000e4258cc685",
+      "bytes": 14768
+    },
+    "transform.h": {
+      "source_path": "intern/cycles/util/transform.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/transform.h",
+      "sha256": "6b6acb436daa3b2b5cf1a1f6a3595b9427ec6e6e54ebaf640da877ee7a155b00",
+      "bytes": 15895
+    },
+    "kernel-types.h": {
+      "source_path": "intern/cycles/kernel/types.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/kernel/types.h",
+      "sha256": "e3bd2a049dabc53c89a12bb26496bd9f3ae98e5c4eba629b0556cccfbf7d9834",
+      "bytes": 54906
+    },
+    "DNA_camera_defaults.h": {
+      "source_path": "source/blender/makesdna/DNA_camera_defaults.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_camera_defaults.h",
+      "sha256": "fd7311f49fdf9fdd27620b7e571adb0993283bb066b0a9f1eb9f9abdb71ed535",
+      "bytes": 1972
+    },
+    "DNA_camera_types.h": {
+      "source_path": "source/blender/makesdna/DNA_camera_types.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_camera_types.h",
+      "sha256": "a3434c2ebe1feea191f7e6844a87b99bcf805c7cb59f6ce705ae97894c39b115",
+      "bytes": 5635
+    },
+    "rna_camera.cc": {
+      "source_path": "source/blender/makesrna/intern/rna_camera.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_camera.cc",
+      "sha256": "9ee201d447990ccf558e9020355cd24e68b8a22fd28f289ac37e5e2abb52605d",
+      "bytes": 45606
+    },
+    "mapping.h": {
+      "source_path": "intern/cycles/kernel/sample/mapping.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/kernel/sample/mapping.h",
+      "sha256": "2fa6363515393039e2157dfd022b82015094ec3836e41ef10db4f6d7708be067",
+      "bytes": 7065
+    },
+    "differential.h": {
+      "source_path": "intern/cycles/kernel/util/differential.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/kernel/util/differential.h",
+      "sha256": "1a7e1b1bc15ee3900517e89b6ab0e72f3d70305bea5eab00543fe698cb23bc44",
+      "bytes": 4644
+    },
+    "util-projection.h": {
+      "source_path": "intern/cycles/util/projection.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/projection.h",
+      "sha256": "acf3a5dd1543cd3b2178f9780a09a028c3eb106f233a1657d51f50421d50d3dd",
+      "bytes": 5619
+    },
+    "transform_inverse.h": {
+      "source_path": "intern/cycles/util/transform_inverse.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/transform_inverse.h",
+      "sha256": "b4d1432cbbdaa90c427baebfcb01a7feb6a68a78bd89a07af77c381a3198dcd9",
+      "bytes": 3001
+    },
+    "transform.cpp": {
+      "source_path": "intern/cycles/util/transform.cpp",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/cycles/util/transform.cpp",
+      "sha256": "307c83aca8deb3faa07f0b5abc5ba9c3661c4ef55cfe1f5a01b75a836f674feb",
+      "bytes": 7190
+    }
+  }
+}

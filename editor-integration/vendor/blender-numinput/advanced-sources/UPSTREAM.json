@@ -1,0 +1,55 @@
+{
+  "ref": "v4.3.0",
+  "repository": "https://github.com/blender/blender",
+  "provenance": "Full bytes downloaded from the official raw.githubusercontent.com Blender mirror at the fixed v4.3.0 tag, without whitespace normalization. SHA-256 hashes identify saved bytes; independent Git blob verification has not been performed.",
+  "files": {
+    "BKE_unit.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/BKE_unit.hh",
+      "sha256": "31f5a88b5b70ebf6d45c748d8666b3586cdcff70888599eeea5090c3d74a38a5"
+    },
+    "DNA_scene_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_scene_types.h",
+      "sha256": "2630802cb63263f13742fbe2615f47e3080784c2b025ec3457b7a2cd6a1780a7"
+    },
+    "scene.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/scene.cc",
+      "sha256": "73f4f2ec12844f10074f642db106eae9a3a637a3b30c45389da3a3b42312c5d9"
+    },
+    "string.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/string.c",
+      "sha256": "c5a36066f1dc9add1a0ea5387cc54732dbb2ca89b526de5a70eb34bbc8f1a231"
+    },
+    "string_utf8.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/string_utf8.cc",
+      "sha256": "018ee023c2ed2ed4e78c6d3245e9c5b41e64a77702f55994b4598111b70d065c"
+    },
+    "wcwidth.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/extern/wcwidth/wcwidth.c",
+      "sha256": "09b63c9772391a1c18aee7675f1b671a89b9dbba87a6e448e5226a9e7c706495"
+    },
+    "wcwidth.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/extern/wcwidth/wcwidth.h",
+      "sha256": "6e79ae11dcecd0113386f401c93579d8906d06624a5edd3c35efed25efaa2cbd"
+    },
+    "BLI_string_utf8.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_string_utf8.h",
+      "sha256": "a5e6d2a0f26d402ac0f1b4b2748f95963fe8c758160ee7d4f05753bf62aa496e"
+    },
+    "BLI_string_cursor_utf8.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_string_cursor_utf8.h",
+      "sha256": "6bd60b8fcc2a406cecb45f6382cc496804be0fe20e182fa9127b58ee4677c780"
+    },
+    "BLI_string_utf8_symbols.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_string_utf8_symbols.h",
+      "sha256": "37f8367e76819f2dbd41dc8edc6c7c2273ae7b4cc124b0f5cc96b5d961ccbc86"
+    },
+    "BLI_sys_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_sys_types.h",
+      "sha256": "0f27cb3cbafb79e45fe0698bc34b84cbf08ca48a89087595bd8747d053762ebb"
+    },
+    "platform_apple.cmake": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/build_files/cmake/platform/platform_apple.cmake",
+      "sha256": "4947145bd2aa8a711783cf0a5dc1f215d5c1b445ce3be441a49242eabe32995b"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "transform_convert_armature.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_convert_armature.cc",
+      "sha256": "bf707eeffa6a7d41a797b417f8feebb80fad67e4cdac5d01e2ceb0ab5cff08f0"
+    },
+    "view3d_snap.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/space_view3d/view3d_snap.cc",
+      "sha256": "d2a2ba9f38ac81c3fd4724656306d909e50e54308f9e9fe8c73114df52e4c27d"
+    },
+    "space_view3d.py": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/scripts/startup/bl_ui/space_view3d.py",
+      "sha256": "00d6f255775ea116a6a65a873c65fe0f5ac9ee113098901344904ad4aa02a36e"
+    },
+    "rna_scene.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_scene.cc",
+      "sha256": "0657ddea08a3ca830c0e1b4e5971df2bffdc3a446507c6a98db207b484e77b2b"
+    }
+  }
+}

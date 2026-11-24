@@ -1,0 +1,11 @@
+.DS_Store
+/.runtime/
+/.tools/
+/_sources/
+/evidence/
+/outputs/
+/editor-integration/evidence/
+/editor-integration/output/
+node_modules/
+.env
+.env*.local

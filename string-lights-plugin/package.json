@@ -1,0 +1,32 @@
+{
+  "name": "@xiaohai/pascal-string-lights",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./commands": "./src/commands.ts",
+    "./schema": "./src/schema.ts",
+    "./assets": "./src/assets.ts",
+    "./ai": "./src/ai.ts"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "bun test src",
+    "check-types": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@pascal-app/core": "^1.0.1",
+    "@pascal-app/editor": "^1.0.1",
+    "@pascal-app/viewer": "^1.0.1",
+    "@react-three/fiber": "^9",
+    "react": "^19",
+    "three": "^0.186",
+    "zod": "^4",
+    "zustand": "^5"
+  }
+}

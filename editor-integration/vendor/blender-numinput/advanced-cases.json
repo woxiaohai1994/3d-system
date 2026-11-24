@@ -1,0 +1,2215 @@
+{
+  "scenarios": [
+    {
+      "name": "equal-first-trigger-no-insert",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "="
+        },
+        {
+          "key": "=",
+          "ctrlKey": true
+        },
+        {
+          "key": "m"
+        }
+      ]
+    },
+    {
+      "name": "star-first-trigger-no-insert",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "*",
+          "code": "Digit8",
+          "shiftKey": true
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        }
+      ]
+    },
+    {
+      "name": "ctrl-star-leaves-full-preserves-buffer",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        },
+        {
+          "key": "*",
+          "ctrlKey": true
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        },
+        {
+          "key": "5",
+          "code": "Digit5"
+        }
+      ]
+    },
+    {
+      "name": "pref-advanced-inserts-star",
+      "kind": "translate",
+      "advancedPreferred": true,
+      "events": [
+        {
+          "key": "*"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "pref-advanced-minus-expression",
+      "kind": "translate",
+      "advancedPreferred": true,
+      "events": [
+        {
+          "key": "-",
+          "code": "Minus"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "pref-advanced-ctrl-does-not-auto-enter",
+      "kind": "translate",
+      "advancedPreferred": true,
+      "events": [
+        {
+          "key": "2",
+          "ctrlKey": true
+        },
+        {
+          "key": "-",
+          "code": "Minus",
+          "ctrlKey": true
+        },
+        {
+          "key": "2"
+        }
+      ]
+    },
+    {
+      "name": "pref-advanced-alt-does-not-auto-enter",
+      "kind": "translate",
+      "advancedPreferred": true,
+      "events": [
+        {
+          "key": "2",
+          "altKey": true
+        },
+        {
+          "key": "-",
+          "code": "Minus",
+          "altKey": true
+        }
+      ]
+    },
+    {
+      "name": "slash-minus-full-text-and-ctrl-flags",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "8",
+          "code": "Digit8"
+        },
+        {
+          "key": "/",
+          "code": "Slash"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "-",
+          "code": "Minus"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "/",
+          "code": "Slash",
+          "ctrlKey": true
+        },
+        {
+          "key": "-",
+          "code": "Minus",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "full-shift-physical-text-is-not-rewritten",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "?",
+          "code": "Slash",
+          "shiftKey": true
+        },
+        {
+          "key": "_",
+          "code": "Minus",
+          "shiftKey": true
+        },
+        {
+          "key": ">",
+          "code": "Period",
+          "shiftKey": true
+        }
+      ]
+    },
+    {
+      "name": "simple-paste-firstline-lf",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": "2+3\n99"
+        }
+      ]
+    },
+    {
+      "name": "simple-paste-firstline-cr",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": "2+3\r99"
+        }
+      ]
+    },
+    {
+      "name": "simple-paste-firstline-crlf",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": "2+3\r\n99"
+        }
+      ]
+    },
+    {
+      "name": "simple-paste-firstline-leading-line",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": "\n99"
+        }
+      ]
+    },
+    {
+      "name": "simple-paste-firstline-empty",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": ""
+        }
+      ]
+    },
+    {
+      "name": "simple-paste-firstline-nul",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": "2+3\u0000+99"
+        }
+      ]
+    },
+    {
+      "name": "paste-null-preserves-unedited",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": null
+        }
+      ]
+    },
+    {
+      "name": "paste-at-byte-cursor",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "v",
+          "code": "KeyV",
+          "ctrlKey": true,
+          "clipboardText": "+3*\n99"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "c",
+          "code": "KeyC",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "paste-without-full-allows-expression-but-rejects-letters",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "2+3"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        },
+        {
+          "key": "c",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "python--2**2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "-",
+          "code": "Minus"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python-2**3**2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "*",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python--5%2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "-",
+          "code": "Minus"
+        },
+        {
+          "key": "5",
+          "code": "Digit5"
+        },
+        {
+          "key": "%",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python-5//2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "5",
+          "code": "Digit5"
+        },
+        {
+          "key": "/",
+          "code": "Slash"
+        },
+        {
+          "key": "/",
+          "code": "Slash"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python-1,2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": ",",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python-[1,2]",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "[",
+          "code": "Unknown"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": ",",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "]",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-sqrt(-1)",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "s",
+          "code": "KeyS"
+        },
+        {
+          "key": "q",
+          "code": "KeyQ"
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "t",
+          "code": "KeyT"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "-",
+          "code": "Minus"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-float('inf')",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "f",
+          "code": "KeyF"
+        },
+        {
+          "key": "l",
+          "code": "KeyL"
+        },
+        {
+          "key": "o",
+          "code": "KeyO"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "t",
+          "code": "KeyT"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "f",
+          "code": "KeyF"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-float('nan')",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "f",
+          "code": "KeyF"
+        },
+        {
+          "key": "l",
+          "code": "KeyL"
+        },
+        {
+          "key": "o",
+          "code": "KeyO"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "t",
+          "code": "KeyT"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-1e309",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "9",
+          "code": "Digit9"
+        }
+      ]
+    },
+    {
+      "name": "python-1e39",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        },
+        {
+          "key": "9",
+          "code": "Digit9"
+        }
+      ]
+    },
+    {
+      "name": "python-sin(pi/2)",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "s",
+          "code": "KeyS"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "p",
+          "code": "KeyP"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "/",
+          "code": "Slash"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-round(2.5)",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "o",
+          "code": "KeyO"
+        },
+        {
+          "key": "u",
+          "code": "KeyU"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "d",
+          "code": "KeyD"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": ".",
+          "code": "Period"
+        },
+        {
+          "key": "5",
+          "code": "Digit5"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-len('abc')",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "l",
+          "code": "KeyL"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "b",
+          "code": "KeyB"
+        },
+        {
+          "key": "c",
+          "code": "KeyC"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-sum(range(5))",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "s",
+          "code": "KeyS"
+        },
+        {
+          "key": "u",
+          "code": "KeyU"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "g",
+          "code": "KeyG"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "5",
+          "code": "Digit5"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-0b101<<2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "b",
+          "code": "KeyB"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "<",
+          "code": "Unknown"
+        },
+        {
+          "key": "<",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python-1_000+2",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "python-None",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "N",
+          "code": "KeyN"
+        },
+        {
+          "key": "o",
+          "code": "KeyO"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        }
+      ]
+    },
+    {
+      "name": "python-'3'",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "python-True",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "T",
+          "code": "KeyT"
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "u",
+          "code": "KeyU"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        }
+      ]
+    },
+    {
+      "name": "python-globals()['__name__']=='__main__'",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "g",
+          "code": "KeyG"
+        },
+        {
+          "key": "l",
+          "code": "KeyL"
+        },
+        {
+          "key": "o",
+          "code": "KeyO"
+        },
+        {
+          "key": "b",
+          "code": "KeyB"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "l",
+          "code": "KeyL"
+        },
+        {
+          "key": "s",
+          "code": "KeyS"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        },
+        {
+          "key": "[",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "]",
+          "code": "Unknown"
+        },
+        {
+          "key": "=",
+          "code": "Unknown"
+        },
+        {
+          "key": "=",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "_",
+          "code": "Unknown"
+        },
+        {
+          "key": "'",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "failure-previous-negate-inverse-order",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "/",
+          "ctrlKey": true,
+          "code": "Slash"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "-",
+          "ctrlKey": true,
+          "code": "Minus"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "float32-overflow-restores-previous",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        0,
+        0
+      ],
+      "events": [
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "7"
+        },
+        {
+          "key": "ShiftBackspace",
+          "text": ""
+        },
+        {
+          "key": "Backspace",
+          "shiftKey": true
+        },
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "1e39"
+        }
+      ]
+    },
+    {
+      "name": "inverse-zero-is-invalid-after-python-success",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        0,
+        0
+      ],
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "Backspace"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "/",
+          "code": "Slash",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "metric-2m",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "metric-2+2cm",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "c",
+          "code": "KeyC"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "metric-2+2in",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        }
+      ]
+    },
+    {
+      "name": "metric--1m50cm",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "-",
+          "code": "Minus"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        },
+        {
+          "key": "5",
+          "code": "Digit5"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "c",
+          "code": "KeyC"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "metric-1ft6in",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "f",
+          "code": "KeyF"
+        },
+        {
+          "key": "t",
+          "code": "KeyT"
+        },
+        {
+          "key": "6",
+          "code": "Digit6"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        }
+      ]
+    },
+    {
+      "name": "metric-2µm",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "µ",
+          "code": "Unknown"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "metric-2um",
+      "kind": "translate",
+      "units": {
+        "system": 1
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "u",
+          "code": "KeyU"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "none-length-unit-invalid",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "metric-scene-scale",
+      "kind": "translate",
+      "units": {
+        "system": 1,
+        "scale_length": 0.01
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "metric-preferred-centimeter",
+      "kind": "translate",
+      "units": {
+        "system": 1,
+        "length_unit": 5
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "imperial-preferred-foot",
+      "kind": "translate",
+      "units": {
+        "system": 2,
+        "length_unit": 4
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "imperial-adjacent-amounts",
+      "kind": "translate",
+      "units": {
+        "system": 2
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        },
+        {
+          "key": "f",
+          "code": "KeyF"
+        },
+        {
+          "key": "t",
+          "code": "KeyT"
+        },
+        {
+          "key": "6",
+          "code": "Digit6"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        }
+      ]
+    },
+    {
+      "name": "rotate-pi/2",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "p",
+          "code": "KeyP"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "/",
+          "code": "Slash"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        }
+      ]
+    },
+    {
+      "name": "rotate-pi/2 rad",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "p",
+          "code": "KeyP"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "/",
+          "code": "Slash"
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": " ",
+          "code": "Unknown"
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "d",
+          "code": "KeyD"
+        }
+      ]
+    },
+    {
+      "name": "rotate-90d",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "9",
+          "code": "Digit9"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "d",
+          "code": "KeyD"
+        }
+      ]
+    },
+    {
+      "name": "rotate-90°",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "9",
+          "code": "Digit9"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": "°",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "rotate-2r",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        }
+      ]
+    },
+    {
+      "name": "rotate-degrees(pi)",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "d",
+          "code": "KeyD"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "g",
+          "code": "KeyG"
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "e",
+          "code": "KeyE"
+        },
+        {
+          "key": "s",
+          "code": "KeyS"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "p",
+          "code": "KeyP"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "rotate-radians(90)",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "r",
+          "code": "KeyR"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "d",
+          "code": "KeyD"
+        },
+        {
+          "key": "i",
+          "code": "KeyI"
+        },
+        {
+          "key": "a",
+          "code": "KeyA"
+        },
+        {
+          "key": "n",
+          "code": "KeyN"
+        },
+        {
+          "key": "s",
+          "code": "KeyS"
+        },
+        {
+          "key": "(",
+          "code": "Unknown"
+        },
+        {
+          "key": "9",
+          "code": "Digit9"
+        },
+        {
+          "key": "0",
+          "code": "Digit0"
+        },
+        {
+          "key": ")",
+          "code": "Unknown"
+        }
+      ]
+    },
+    {
+      "name": "radians-inverse-and-tab-format",
+      "kind": "rotate",
+      "units": {
+        "system_rotation": 2
+      },
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "/",
+          "ctrlKey": true,
+          "code": "Slash"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "1",
+          "code": "Digit1"
+        }
+      ]
+    },
+    {
+      "name": "scale-unit-does-not-convert",
+      "kind": "scale",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "c",
+          "code": "KeyC"
+        },
+        {
+          "key": "m",
+          "code": "KeyM"
+        }
+      ]
+    },
+    {
+      "name": "scale-full-expression",
+      "kind": "scale",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        }
+      ]
+    },
+    {
+      "name": "full-tab-persists-and-clears-component-fake-flags",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "3",
+          "code": "Digit3"
+        },
+        {
+          "key": "/",
+          "ctrlKey": true,
+          "code": "Slash"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "4",
+          "code": "Digit4"
+        },
+        {
+          "key": "Tab",
+          "ctrlKey": true
+        },
+        {
+          "key": "Tab",
+          "shiftKey": true
+        }
+      ]
+    },
+    {
+      "name": "utf8-first-codepoint-insertion",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "Unidentified",
+          "text": "漢字"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "Delete"
+        },
+        {
+          "key": "Unidentified",
+          "text": "😀x"
+        }
+      ]
+    },
+    {
+      "name": "utf8-byte-cursor-and-combining-navigation",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "á+漢😀"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "ArrowRight"
+        },
+        {
+          "key": "ArrowRight"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "Backspace"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "Delete"
+        }
+      ]
+    },
+    {
+      "name": "utf8-ctrl-delimiter-delete",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "12µm+34µm"
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "Backspace",
+          "ctrlKey": true
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "Delete",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "capacity-62-bytes-accepted-63-rejected",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "11111111111111111111111111111111111111111111111111111111111111"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "x"
+        }
+      ]
+    },
+    {
+      "name": "utf8-capacity-counts-bytes",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "v",
+          "ctrlKey": true,
+          "clipboardText": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+        },
+        {
+          "key": "é"
+        },
+        {
+          "key": "é"
+        },
+        {
+          "key": "c",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "modal-increments-translate",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "Modal",
+          "modalValue": 18
+        },
+        {
+          "key": "Modal",
+          "modalValue": 19
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Modal",
+          "modalValue": 18
+        }
+      ]
+    },
+    {
+      "name": "modal-increments-rotate",
+      "kind": "rotate",
+      "events": [
+        {
+          "key": "Modal",
+          "modalValue": 18
+        },
+        {
+          "key": "Modal",
+          "modalValue": 19
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Modal",
+          "modalValue": 18
+        }
+      ]
+    },
+    {
+      "name": "modal-increments-scale",
+      "kind": "scale",
+      "events": [
+        {
+          "key": "Modal",
+          "modalValue": 18
+        },
+        {
+          "key": "Modal",
+          "modalValue": 19
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Modal",
+          "modalValue": 18
+        }
+      ]
+    },
+    {
+      "name": "unknown-modal-text-fallback",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "Modal",
+          "modalValue": 99,
+          "text": "2x"
+        }
+      ]
+    },
+    {
+      "name": "copy-re-evaluates-invalid-buffer",
+      "kind": "translate",
+      "events": [
+        {
+          "key": "="
+        },
+        {
+          "key": "2",
+          "code": "Digit2"
+        },
+        {
+          "key": "+",
+          "code": "Unknown"
+        },
+        {
+          "key": "c",
+          "ctrlKey": true
+        }
+      ]
+    }
+  ]
+}

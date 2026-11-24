@@ -1,0 +1,223 @@
+{
+  "blender": "5.2.2 LTS",
+  "hashes": {
+    "vendor/add-camera-rigs/build_rigs.py": "bac3d523b925451d490f786d52812f5741924f13240b93252b3e647d9d6890b9",
+    "vendor/blender-property-decorators/interface_handlers.cc": "e8165a5171c24a95099134fb2f7c59ca584f227acaa1b7fdd2d7d11d64fb19d1"
+  },
+  "records": [
+    {
+      "action": "key",
+      "frame": 0,
+      "value": 24,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ]
+      ]
+    },
+    {
+      "action": "key",
+      "frame": 24,
+      "value": 70,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "seek",
+      "frame": 12,
+      "value": 47,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "value",
+      "frame": 12,
+      "value": 100,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "value",
+      "frame": 12,
+      "value": 120,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "undo",
+      "frame": 12,
+      "value": 100,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "undo",
+      "frame": 24,
+      "value": 70,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "redo",
+      "frame": 12,
+      "value": 47,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "redo",
+      "frame": 12,
+      "value": 120,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "key",
+      "frame": 12,
+      "value": 120,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          12.0,
+          120.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "undo",
+      "frame": 12,
+      "value": 120,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "undo",
+      "frame": 12,
+      "value": 100,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "redo",
+      "frame": 12,
+      "value": 120,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    },
+    {
+      "action": "redo",
+      "frame": 12,
+      "value": 120,
+      "keys": [
+        [
+          0.0,
+          24.0
+        ],
+        [
+          12.0,
+          120.0
+        ],
+        [
+          24.0,
+          70.0
+        ]
+      ]
+    }
+  ]
+}

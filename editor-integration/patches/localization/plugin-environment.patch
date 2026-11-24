@@ -1,0 +1,2389 @@
+--- a/src/atmosphere/controls.tsx
++++ b/src/atmosphere/controls.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import {
+   ChevronRight,
+   Cloud,
+@@ -56,7 +57,7 @@
+ const WEATHER_PRESETS = [
+   {
+     id: 'clear',
+-    label: 'Clear',
++    label: 'Clear weather',
+     settings: { rain: 0, snow: 0, wind: 0.35, storm: false, thunderAudio: false },
+   },
+   {
+@@ -88,7 +89,7 @@
+ const WIND_LEVELS = [
+   { label: 'Calm', value: 0, max: 0 },
+   { label: 'Breeze', value: 0.35, max: 0.6 },
+-  { label: 'Strong', value: 0.85, max: 1 },
++  { label: 'Strong wind', value: 0.85, max: 1 },
+ ] as const
+ type AtmosphereTab = 'sky' | 'weather' | 'advanced'
+ 
+@@ -120,12 +121,14 @@
+   choices: readonly { label: string; value: number; max: number }[]
+   onChange: (value: number) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   // Labels describe bands; exact values stay untouched until a choice is clicked.
+   const selected = choices.find((choice) => value <= choice.max)
+ 
+   return (
+     <fieldset className="min-w-0" onKeyDown={(event) => event.stopPropagation()}>
+-      <legend className="mb-2 text-xs text-sidebar-foreground/80">{label}</legend>
++      <legend className="mb-2 text-xs text-sidebar-foreground/80">{uiLabel(label)}</legend>
+       <div className="grid min-w-0 grid-cols-3 gap-1">
+         {choices.map((choice) => (
+           <button
+@@ -139,7 +142,7 @@
+             onClick={() => onChange(choice.value)}
+             type="button"
+           >
+-            {choice.label}
++            {uiLabel(choice.label)}
+           </button>
+         ))}
+       </div>
+@@ -162,6 +165,8 @@
+   id,
+   title,
+ }: AdvancedDisclosureProps) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <section aria-labelledby={id} className="min-w-0">
+       <details className="group/disclosure min-w-0 rounded-lg border border-sidebar-border bg-sidebar/40 open:bg-sidebar-accent/20">
+@@ -174,10 +179,10 @@
+           />
+           <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+             <span id={id} className="text-xs font-medium text-sidebar-foreground">
+-              {title}
++              {uiLabel(title)}
+             </span>
+             <span className="text-[11px] leading-tight text-sidebar-foreground/60">
+-              {description}
++              {uiLabel(description)}
+             </span>
+           </span>
+           <ChevronRight
+@@ -196,6 +201,8 @@
+ }
+ 
+ export default function AtmosphereControls() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const settings = useEnvironmentStore((state) => state.skySettings)
+   const enabled = useEnvironmentStore((state) => state.skyEnabled)
+   const playing = useEnvironmentStore((state) => state.skyPlaying)
+@@ -299,7 +306,7 @@
+   return (
+     <div className="flex min-w-0 flex-col gap-4">
+       <div
+-        aria-label="Atmosphere settings"
++        aria-label={uiText("Atmosphere settings")}
+         aria-orientation="horizontal"
+         className="grid min-w-0 grid-cols-3 gap-1.5"
+         role="tablist"
+@@ -332,7 +339,7 @@
+               type="button"
+             >
+               <Icon aria-hidden size={14} strokeWidth={1.8} />
+-              <span>{tab.label}</span>
++              <span>{uiLabel(tab.label)}</span>
+             </button>
+           )
+         })}
+@@ -349,18 +356,16 @@
+           className="flex min-w-0 flex-col gap-2"
+           aria-labelledby={`${controlId}-status-heading`}
+         >
+-          <h2 id={`${controlId}-status-heading`} className="sr-only">
+-            Atmosphere status
+-          </h2>
++          <h2 id={`${controlId}-status-heading`} className="sr-only">{uiText("Atmosphere status")}{' '}</h2>
+           <label className="flex min-h-12 min-w-0 items-center justify-between gap-3 rounded-xl border border-sidebar-border bg-muted/40 px-3 py-2 text-xs">
+             <span className="min-w-0">
+-              <span className="block font-medium">Environment sky</span>
++              <span className="block font-medium">{uiText("Environment sky")}</span>
+               <span
+                 id={`${controlId}-sky-status`}
+                 className="block text-[11px] text-sidebar-foreground/60"
+                 role="status"
+               >
+-                {atmosphereStatus}
++                {uiLabel(atmosphereStatus)}
+               </span>
+             </span>
+             <input
+@@ -374,8 +379,8 @@
+           {!enabled ? (
+             <p className={META_CLASS}>
+               {precipitationActive
+-                ? 'Precipitation temporarily supplies its weather sky; the environment sky toggle stays off.'
+-                : 'Pascal’s scene theme currently supplies the background.'}
++                ? uiText("Precipitation temporarily supplies its weather sky; the environment sky toggle stays off.")
++                : uiText("Pascal’s scene theme currently supplies the background.")}
+             </p>
+           ) : null}
+         </section>
+@@ -384,7 +389,7 @@
+           className="flex min-w-0 flex-col gap-4 disabled:opacity-50"
+           disabled={!skyAvailable}
+         >
+-          <legend className="sr-only">Sky controls</legend>
++          <legend className="sr-only">{uiText("Sky controls")}</legend>
+           <section className={SECTION_CLASS} aria-labelledby={`${controlId}-sun-heading`}>
+             <div className="flex min-w-0 items-center justify-between gap-3">
+               <div className="min-w-0">
+@@ -392,12 +397,10 @@
+                   id={`${controlId}-sun-heading`}
+                   className="flex items-center gap-1.5 text-xs font-semibold"
+                 >
+-                  <Sun aria-hidden size={14} strokeWidth={1.8} />
+-                  Sun &amp; time
+-                </h3>
++                  <Sun aria-hidden size={14} strokeWidth={1.8} />{uiText("Sun & time")}{' '}</h3>
+                 {settings.sunMode === 'manual' ? (
+                   <p className="mt-0.5 font-mono text-sm tabular-nums text-sidebar-foreground/70">
+-                    {solar.elevation.toFixed(1)}° · {skyPeriod(solar.elevation)}
++                    {solar.elevation.toFixed(1)}° · {uiLabel(skyPeriod(solar.elevation))}
+                   </p>
+                 ) : null}
+               </div>
+@@ -411,12 +414,12 @@
+                   type="button"
+                 >
+                   {playing ? <Pause size={14} aria-hidden /> : <Play size={14} aria-hidden />}
+-                  {playing ? 'Pause' : 'Play day'}
++                  {playing ? uiText("Pause") : uiText("Play day")}
+                 </button>
+               ) : null}
+             </div>
+             <label className="flex min-w-0 flex-col gap-2 text-xs">
+-              <span className="font-medium">Sky mood</span>
++              <span className="font-medium">{uiText("Sky mood")}</span>
+               <select
+                 className={SELECT_CLASS}
+                 value={skyPresetId}
+@@ -427,12 +430,10 @@
+                   setEnabled(true)
+                 }}
+               >
+-                <option value="" disabled>
+-                  Custom sky
+-                </option>
++                <option value="" disabled>{uiText("Custom sky")}{' '}</option>
+                 {SKY_PRESETS.map((preset) => (
+                   <option key={preset.id} value={preset.id}>
+-                    {preset.label}
++                    {uiLabel(preset.label)}
+                   </option>
+                 ))}
+               </select>
+@@ -446,21 +447,16 @@
+                 value={settings.timeOfDay}
+               />
+             ) : (
+-              <p className={META_CLASS}>Manual sun angles are available in Advanced.</p>
++              <p className={META_CLASS}>{uiText("Manual sun angles are available in Advanced.")}</p>
+             )}
+-            <p id={`${controlId}-playback-hint`} className={META_CLASS}>
+-              Artistic 24-hour orbit; playback takes two minutes. It is not a geolocated solar
+-              study.
+-              {!enabled && precipitationActive
+-                ? ' Enable the environment sky to use day playback.'
++            <p id={`${controlId}-playback-hint`} className={META_CLASS}>{uiText("Artistic 24-hour orbit; playback takes two minutes. It is not a geolocated solar study.")}{' '}{!enabled && precipitationActive
++                ? uiText(" Enable the environment sky to use day playback.")
+                 : ''}
+             </p>
+           </section>
+         </fieldset>
+         {!skyAvailable ? (
+-          <p className={META_CLASS} role="status">
+-            Enable the environment sky to adjust sun and time controls.
+-          </p>
++          <p className={META_CLASS} role="status">{uiText("Enable the environment sky to adjust sun and time controls.")}{' '}</p>
+         ) : null}
+       </div>
+ 
+@@ -474,11 +470,9 @@
+         <section className={SECTION_CLASS} aria-labelledby={`${controlId}-weather-heading`}>
+           <div className="flex min-w-0 items-start justify-between gap-2">
+             <div className="min-w-0">
+-              <h2 id={`${controlId}-weather-heading`} className="text-xs font-semibold">
+-                Weather
+-              </h2>
++              <h2 id={`${controlId}-weather-heading`} className="text-xs font-semibold">{uiText("Weather")}{' '}</h2>
+               <p className="mt-0.5 text-[11px] text-sidebar-foreground/60" aria-live="polite">
+-                {weatherStateLabel}
++                {uiLabel(weatherStateLabel)}
+               </p>
+             </div>
+             <button
+@@ -486,12 +480,11 @@
+               onClick={() => applyWeatherPreset(WEATHER_PRESETS[0])}
+               type="button"
+             >
+-              <RotateCcw size={13} aria-hidden /> Reset
+-            </button>
++              <RotateCcw size={13} aria-hidden />{' '}{uiText("Reset")}{' '}</button>
+           </div>
+ 
+           <fieldset className="min-w-0">
+-            <legend className="mb-2 text-xs text-sidebar-foreground/80">Weather type</legend>
++            <legend className="mb-2 text-xs text-sidebar-foreground/80">{uiText("Weather type")}</legend>
+             <div className="grid min-w-0 grid-cols-2 gap-2">
+               {WEATHER_PRESETS.map((preset) => {
+                 const Icon = WEATHER_PRESET_ICONS[preset.id]
+@@ -512,21 +505,19 @@
+                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-background/50">
+                       <Icon aria-hidden size={16} strokeWidth={1.8} />
+                     </span>
+-                    <span>{preset.label}</span>
++                    <span>{uiLabel(preset.label)}</span>
+                   </button>
+                 )
+               })}
+             </div>
+             {mixedWeather ? (
+-              <p className={`mt-2 ${META_CLASS}`}>
+-                Adjust the rain and snow amounts separately in Fine-tune.
+-              </p>
++              <p className={`mt-2 ${META_CLASS}`}>{uiText("Adjust the rain and snow amounts separately in Fine-tune.")}{' '}</p>
+             ) : null}
+           </fieldset>
+           {!mixedWeather && weather.rain > 0 ? (
+             <WeatherChoices
+               choices={PRECIPITATION_LEVELS}
+-              label="Rain strength"
++              label={uiText("Rain strength")}
+               onChange={(rain) => setWeather({ rain })}
+               value={weather.rain}
+             />
+@@ -534,14 +525,14 @@
+           {!mixedWeather && weather.snow > 0 ? (
+             <WeatherChoices
+               choices={PRECIPITATION_LEVELS}
+-              label="Snow strength"
++              label={uiText("Snow strength")}
+               onChange={(snow) => setWeather({ snow })}
+               value={weather.snow}
+             />
+           ) : null}
+           <WeatherChoices
+             choices={WIND_LEVELS}
+-            label="Wind"
++            label={uiText("Wind")}
+             onChange={(wind) => setWeather({ wind })}
+             value={weather.wind}
+           />
+@@ -549,7 +540,7 @@
+           {weather.storm ? (
+             <div className="flex min-w-0 flex-col gap-1">
+               <label className="flex min-h-9 min-w-0 items-center justify-between gap-3 text-xs">
+-                <span>Thunder sound</span>
++                <span>{uiText("Thunder sound")}</span>
+                 <input
+                   aria-describedby={`${controlId}-thunder-hint`}
+                   checked={weather.thunderAudio && thunderConsented}
+@@ -581,19 +572,19 @@
+                 role="status"
+                 aria-live="polite"
+               >
+-                {thunderHint}
++                {uiLabel(thunderHint)}
+               </p>
+             </div>
+           ) : null}
+ 
+           <AdvancedDisclosure
+-            description="Exact amounts and mixed weather."
++            description={uiText("Exact amounts and mixed weather.")}
+             icon={SlidersHorizontal}
+             id={`${controlId}-weather-fine-tune-heading`}
+-            title="Fine-tune"
++            title={uiText("Fine-tune")}
+           >
+             <ParameterRange
+-              label="Rain intensity"
++              label={uiText("Rain intensity")}
+               max={100}
+               min={0}
+               onChange={(value) => {
+@@ -609,7 +600,7 @@
+               value={weather.rain * 100}
+             />
+             <ParameterRange
+-              label="Snow intensity"
++              label={uiText("Snow intensity")}
+               max={100}
+               min={0}
+               onChange={(value) => {
+@@ -625,7 +616,7 @@
+               value={weather.snow * 100}
+             />
+             <ParameterRange
+-              label="Wind"
++              label={uiText("Wind")}
+               max={100}
+               min={0}
+               onChange={(value) => setWeather({ wind: value / 100 })}
+@@ -635,10 +626,8 @@
+ 
+             <label className="flex min-h-9 min-w-0 items-center justify-between gap-3 text-xs">
+               <span className="min-w-0">
+-                <span className="block">Storm lightning</span>
+-                <span className="block text-[11px] text-sidebar-foreground/60">
+-                  Adds rain when needed
+-                </span>
++                <span className="block">{uiText("Storm lightning")}</span>
++                <span className="block text-[11px] text-sidebar-foreground/60">{uiText("Adds rain when needed")}{' '}</span>
+               </span>
+               <input
+                 checked={weather.storm}
+@@ -656,17 +645,11 @@
+               />
+             </label>
+ 
+-            <p className={META_CLASS}>Cloud cover is in Advanced → Clouds.</p>
+-            <p className={META_CLASS}>
+-              Rain thickens and darkens the base clouds; snow cools the sky. Rain wets surfaces;
+-              snow covers ground and roof-facing surfaces. Indoor shelter is not detected.
+-            </p>
++            <p className={META_CLASS}>{uiText("Cloud cover is in Advanced → Clouds.")}</p>
++            <p className={META_CLASS}>{uiText("Rain thickens and darkens the base clouds; snow cools the sky. Rain wets surfaces; snow covers ground and roof-facing surfaces. Indoor shelter is not detected.")}{' '}</p>
+           </AdvancedDisclosure>
+           {reducedMotion ? (
+-            <p className="text-[11px] leading-relaxed text-sidebar-foreground/70" role="status">
+-              Reduced motion is on: animated precipitation and lightning are paused, and thunder is
+-              unavailable.
+-            </p>
++            <p className="text-[11px] leading-relaxed text-sidebar-foreground/70" role="status">{uiText("Reduced motion is on: animated precipitation and lightning are paused, and thunder is unavailable.")}{' '}</p>
+           ) : null}
+         </section>
+       </div>
+@@ -678,25 +661,23 @@
+         id={`${controlId}-advanced-panel`}
+         role="tabpanel"
+       >
+-        <h2 className="sr-only">Advanced sky controls</h2>
++        <h2 className="sr-only">{uiText("Advanced sky controls")}</h2>
+         {!skyAvailable ? (
+-          <p className={META_CLASS} role="status">
+-            Enable the environment sky or precipitation to edit advanced sky controls.
+-          </p>
++          <p className={META_CLASS} role="status">{uiText("Enable the environment sky or precipitation to edit advanced sky controls.")}{' '}</p>
+         ) : null}
+         <fieldset
+           className="flex min-w-0 flex-col gap-2 disabled:opacity-50"
+           disabled={!skyAvailable}
+         >
+-          <legend className="sr-only">Advanced sky controls</legend>
++          <legend className="sr-only">{uiText("Advanced sky controls")}</legend>
+           <AdvancedDisclosure
+-            description="Aim the sun by time or manual angles."
++            description={uiText("Aim the sun by time or manual angles.")}
+             icon={Sun}
+             id={`${controlId}-position-heading`}
+-            title="Sun direction"
++            title={uiText("Sun direction")}
+           >
+             <label className="flex min-w-0 flex-col gap-2 text-xs">
+-              <span>Sun control</span>
++              <span>{uiText("Sun control")}</span>
+               <select
+                 className={SELECT_CLASS}
+                 value={settings.sunMode}
+@@ -713,13 +694,13 @@
+                   }
+                 }}
+               >
+-                <option value="time">Time of day</option>
+-                <option value="manual">Manual angles</option>
++                <option value="time">{uiText("Time of day")}</option>
++                <option value="manual">{uiText("Manual angles")}</option>
+               </select>
+             </label>
+             {settings.sunMode === 'time' ? (
+               <ParameterRange
+-                label="North offset"
++                label={uiText("North offset")}
+                 max={359}
+                 min={0}
+                 onChange={(northOffset) => setSettings({ northOffset })}
+@@ -730,7 +711,7 @@
+             ) : (
+               <>
+                 <ParameterRange
+-                  label="Sun elevation"
++                  label={uiText("Sun elevation")}
+                   max={90}
+                   min={-90}
+                   onChange={(sunElevation) => setSettings({ sunElevation })}
+@@ -740,7 +721,7 @@
+                   value={settings.sunElevation}
+                 />
+                 <ParameterRange
+-                  label="Sun azimuth"
++                  label={uiText("Sun azimuth")}
+                   max={359}
+                   min={0}
+                   onChange={(sunAzimuth) => setSettings({ sunAzimuth })}
+@@ -748,19 +729,19 @@
+                   unit="°"
+                   value={settings.sunAzimuth}
+                 />
+-                <p className={META_CLASS}>0° north · 90° east · 180° south · 270° west.</p>
++                <p className={META_CLASS}>{uiText("0° north · 90° east · 180° south · 270° west.")}</p>
+               </>
+             )}
+           </AdvancedDisclosure>
+ 
+           <AdvancedDisclosure
+-            description="Shape haze, fog depth, and scene exposure."
++            description={uiText("Shape haze, fog depth, and scene exposure.")}
+             icon={Eye}
+             id={`${controlId}-visibility-heading`}
+-            title="Light & visibility"
++            title={uiText("Light & visibility")}
+           >
+             <ParameterRange
+-              label="Haze"
++              label={uiText("Haze")}
+               max={10}
+               min={1}
+               onChange={(turbidity) => setSettings({ turbidity })}
+@@ -770,7 +751,7 @@
+               value={settings.turbidity}
+             />
+             <ParameterRange
+-              label="Fog starts"
++              label={uiText("Fog starts")}
+               max={2000}
+               min={0}
+               onChange={(fogStart) => setSettings({ fogStart })}
+@@ -779,7 +760,7 @@
+               value={settings.fogStart}
+             />
+             <ParameterRange
+-              label="Fog distance"
++              label={uiText("Fog distance")}
+               max={5000}
+               min={settings.fogStart + 20}
+               onChange={(fogEnd) => setSettings({ fogEnd })}
+@@ -788,7 +769,7 @@
+               value={settings.fogEnd}
+             />
+             <ParameterRange
+-              label="Exposure"
++              label={uiText("Exposure")}
+               max={3}
+               min={-3}
+               onChange={(exposureCompensation) => setSettings({ exposureCompensation })}
+@@ -800,13 +781,13 @@
+           </AdvancedDisclosure>
+ 
+           <AdvancedDisclosure
+-            description="Adjust cloud coverage, motion, and appearance."
++            description={uiText("Adjust cloud coverage, motion, and appearance.")}
+             icon={Cloud}
+             id={`${controlId}-cloud-heading`}
+-            title="Clouds"
++            title={uiText("Clouds")}
+           >
+             <ParameterRange
+-              label="Base cloud cover"
++              label={uiText("Base cloud cover")}
+               max={100}
+               min={0}
+               onChange={(value) => setSettings({ cloudCoverage: value / 100 })}
+@@ -814,7 +795,7 @@
+               value={settings.cloudCoverage * 100}
+             />
+             <label className="flex min-h-9 min-w-0 items-center justify-between gap-3 text-xs">
+-              <span>Animate clouds</span>
++              <span>{uiText("Animate clouds")}</span>
+               <input
+                 checked={motion}
+                 className="h-4 w-4 shrink-0 accent-primary"
+@@ -823,7 +804,7 @@
+               />
+             </label>
+             <ParameterRange
+-              label="Cloud scale"
++              label={uiText("Cloud scale")}
+               max={4}
+               min={0.25}
+               onChange={(cloudScale) => setSettings({ cloudScale })}
+@@ -833,7 +814,7 @@
+               value={settings.cloudScale}
+             />
+             <ParameterRange
+-              label="Cloud softness"
++              label={uiText("Cloud softness")}
+               max={40}
+               min={2}
+               onChange={(value) => setSettings({ cloudSoftness: value / 100 })}
+@@ -841,7 +822,7 @@
+               value={settings.cloudSoftness * 100}
+             />
+             <ParameterRange
+-              label="Cloud drift"
++              label={uiText("Cloud drift")}
+               max={40}
+               min={0}
+               onChange={(value) => setSettings({ cloudSpeed: value / 1000 })}
+@@ -852,13 +833,13 @@
+           </AdvancedDisclosure>
+ 
+           <AdvancedDisclosure
+-            description="Choose rendering and tune celestial light."
++            description={uiText("Choose rendering and tune celestial light.")}
+             icon={Sparkles}
+             id={`${controlId}-model-heading`}
+-            title="Sky model"
++            title={uiText("Sky model")}
+           >
+             <label className="flex min-w-0 flex-col gap-2 text-xs">
+-              <span>Sky model</span>
++              <span>{uiText("Sky model")}</span>
+               <select
+                 className={SELECT_CLASS}
+                 value={settings.provider}
+@@ -866,8 +847,8 @@
+                   setSettings({ provider: event.target.value as SkySettings['provider'] })
+                 }
+               >
+-                <option value="procedural">Atmosphere · Rayleigh + Mie</option>
+-                <option value="gradient">Gradient · low cost</option>
++                <option value="procedural">{uiText("Atmosphere · Rayleigh + Mie")}</option>
++                <option value="gradient">{uiText("Gradient · low cost")}</option>
+               </select>
+             </label>
+             <details className="group/physical min-w-0 rounded-md border border-sidebar-border bg-sidebar/40">
+@@ -879,12 +860,8 @@
+                   strokeWidth={1.8}
+                 />
+                 <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+-                  <span className="text-[11px] font-medium text-sidebar-foreground/80">
+-                    Physical scattering
+-                  </span>
+-                  <span className="text-[10px] leading-tight text-sidebar-foreground/55">
+-                    Specialist tuning; defaults usually suffice.
+-                  </span>
++                  <span className="text-[11px] font-medium text-sidebar-foreground/80">{uiText("Physical scattering")}{' '}</span>
++                  <span className="text-[10px] leading-tight text-sidebar-foreground/55">{uiText("Specialist tuning; defaults usually suffice.")}{' '}</span>
+                 </span>
+                 <ChevronRight
+                   aria-hidden
+@@ -895,7 +872,7 @@
+               </summary>
+               <div className="flex min-w-0 flex-col gap-3 border-t border-sidebar-border px-2.5 py-3">
+                 <ParameterRange
+-                  label="Rayleigh scattering"
++                  label={uiText("Rayleigh scattering")}
+                   max={2}
+                   min={0}
+                   onChange={(rayleigh) => setSettings({ rayleigh })}
+@@ -905,7 +882,7 @@
+                   value={settings.rayleigh}
+                 />
+                 <ParameterRange
+-                  label="Mie scattering"
++                  label={uiText("Mie scattering")}
+                   max={0.02}
+                   min={0}
+                   onChange={(mie) => setSettings({ mie })}
+@@ -915,7 +892,7 @@
+                   value={settings.mie}
+                 />
+                 <ParameterRange
+-                  label="Mie anisotropy"
++                  label={uiText("Mie anisotropy")}
+                   max={0.9}
+                   min={0}
+                   onChange={(mieG) => setSettings({ mieG })}
+@@ -925,7 +902,7 @@
+                   value={settings.mieG}
+                 />
+                 <ParameterRange
+-                  label="Sun angular radius"
++                  label={uiText("Sun angular radius")}
+                   max={(0.03 * 180) / Math.PI}
+                   min={(0.00465 * 180) / Math.PI}
+                   onChange={(value) => setSettings({ sunRadius: (value * Math.PI) / 180 })}
+@@ -935,7 +912,7 @@
+                   value={(settings.sunRadius * 180) / Math.PI}
+                 />
+                 <ParameterRange
+-                  label="Sun radiance"
++                  label={uiText("Sun radiance")}
+                   max={100}
+                   min={1}
+                   onChange={(sunRadiance) => setSettings({ sunRadiance })}
+@@ -946,42 +923,40 @@
+               </div>
+             </details>
+             <ParameterRange
+-              label="Moon phase"
++              label={uiText("Moon phase")}
+               max={100}
+               min={0}
+               onChange={(value) => setSettings({ moonPhase: value / 100 })}
+               step={1}
+               value={settings.moonPhase * 100}
+             />
+-            <p className={META_CLASS}>Artistic phase: 0% new, 100% full.</p>
++            <p className={META_CLASS}>{uiText("Artistic phase: 0% new, 100% full.")}</p>
+           </AdvancedDisclosure>
+ 
+           <AdvancedDisclosure
+-            description="Inspect individual sky rendering passes."
++            description={uiText("Inspect individual sky rendering passes.")}
+             icon={Gauge}
+             id={`${controlId}-diagnostics-heading`}
+-            title="Diagnostics"
++            title={uiText("Diagnostics")}
+           >
+             <label className="flex min-w-0 flex-col gap-2 text-xs">
+-              <span>Sky output</span>
++              <span>{uiText("Sky output")}</span>
+               <select
+                 className={SELECT_CLASS}
+                 value={settings.debug}
+                 onChange={(event) => setSettings({ debug: event.target.value as SkyDebug })}
+               >
+-                <option value="none">Composite HDR</option>
+-                <option value="direction">World direction</option>
+-                <option value="rayleigh">Rayleigh only</option>
+-                <option value="mie">Mie only</option>
+-                <option value="haze">Horizon haze</option>
+-                <option value="sun">Sun mask</option>
+-                <option value="clouds">Cloud density</option>
+-                <option value="luminance">Log luminance</option>
++                <option value="none">{uiText("Composite HDR")}</option>
++                <option value="direction">{uiText("World direction")}</option>
++                <option value="rayleigh">{uiText("Rayleigh only")}</option>
++                <option value="mie">{uiText("Mie only")}</option>
++                <option value="haze">{uiText("Horizon haze")}</option>
++                <option value="sun">{uiText("Sun mask")}</option>
++                <option value="clouds">{uiText("Cloud density")}</option>
++                <option value="luminance">{uiText("Log luminance")}</option>
+               </select>
+             </label>
+-            <p className={META_CLASS}>
+-              Background only. Reflections, fog, and lighting keep the full sky.
+-            </p>
++            <p className={META_CLASS}>{uiText("Background only. Reflections, fog, and lighting keep the full sky.")}{' '}</p>
+           </AdvancedDisclosure>
+ 
+           <button
+@@ -992,15 +967,11 @@
+             }}
+             type="button"
+           >
+-            <RotateCcw size={14} aria-hidden /> Reset sky
+-          </button>
++            <RotateCcw size={14} aria-hidden />{' '}{uiText("Reset sky")}{' '}</button>
+         </fieldset>
+       </div>
+ 
+-      <p className={META_CLASS}>
+-        Project appearance is saved in this browser, not in exported geometry. It stays active when
+-        you return to other tools.
+-      </p>
++      <p className={META_CLASS}>{uiText("Project appearance is saved in this browser, not in exported geometry. It stays active when you return to other tools.")}{' '}</p>
+     </div>
+   )
+ }
+--- a/src/atmosphere/time-orbit.tsx
++++ b/src/atmosphere/time-orbit.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { Moon, Sun } from 'lucide-react'
+ import { useId, useRef, type KeyboardEvent, type PointerEvent } from 'react'
+ import { formatSkyTime, skyPeriod, wrap } from './settings'
+@@ -51,6 +52,8 @@
+   disabled: boolean
+   onChange: (hours: number) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const id = useId()
+   const drag = useRef<Drag | null>(null)
+   const valueRef = useRef(value)
+@@ -154,9 +157,7 @@
+     <div className="min-w-0 rounded-xl border border-sidebar-border bg-sidebar">
+       <div className="flex items-center justify-between gap-2 px-3 pt-3">
+         <div className="min-w-0">
+-          <label htmlFor={`${id}-time`} className="block text-[11px] text-sidebar-foreground/60">
+-            Time of day
+-          </label>
++          <label htmlFor={`${id}-time`} className="block text-[11px] text-sidebar-foreground/60">{uiText("Time of day")}{' '}</label>
+           <input
+             id={`${id}-time`}
+             type="time"
+@@ -171,12 +172,12 @@
+             onKeyDown={(event) => event.stopPropagation()}
+           />
+         </div>
+-        <div className="flex shrink-0 gap-1" role="group" aria-label="Time shortcuts">
++        <div className="flex shrink-0 gap-1" role="group" aria-label={uiText("Time shortcuts")}>
+           <button
+             type="button"
+-            aria-label="Switch to daytime counterpart"
++            aria-label={uiText("Switch to daytime counterpart")}
+             aria-pressed={daytime}
+-            title="Daytime counterpart · 12 hours apart"
++            title={uiText("Daytime counterpart · 12 hours apart")}
+             disabled={disabled}
+             className="flex h-11 w-11 items-center justify-center rounded-lg text-sidebar-foreground/50 hover:bg-sidebar-accent focus-visible:outline-2 focus-visible:outline-ring aria-pressed:bg-sidebar-accent aria-pressed:text-sidebar-foreground disabled:cursor-not-allowed"
+             onClick={() => {
+@@ -187,9 +188,9 @@
+           </button>
+           <button
+             type="button"
+-            aria-label="Switch to nighttime counterpart"
++            aria-label={uiText("Switch to nighttime counterpart")}
+             aria-pressed={!daytime}
+-            title="Nighttime counterpart · 12 hours apart"
++            title={uiText("Nighttime counterpart · 12 hours apart")}
+             disabled={disabled}
+             className="flex h-11 w-11 items-center justify-center rounded-lg text-sidebar-foreground/50 hover:bg-sidebar-accent focus-visible:outline-2 focus-visible:outline-ring aria-pressed:bg-sidebar-accent aria-pressed:text-sidebar-foreground disabled:cursor-not-allowed"
+             onClick={() => {
+@@ -202,7 +203,7 @@
+       </div>
+       <div
+         role="slider"
+-        aria-label="Continuous 24-hour time disk"
++        aria-label={uiText("Continuous 24-hour time disk")}
+         aria-valuemin={0}
+         aria-valuemax={24}
+         aria-valuenow={Math.round(normalized * 60) / 60}
+@@ -410,18 +411,13 @@
+       </div>
+       <div className="min-w-0 space-y-1 px-3 pb-3 pt-2 text-center">
+         <p className="text-balance text-xs font-medium leading-5 text-sidebar-foreground/80">
+-          {skyPeriod(solar.elevation)}
++          {uiLabel(skyPeriod(solar.elevation))}
+         </p>
+         <p
+           id={`${id}-hint`}
+           className="text-pretty text-[11px] leading-4 text-sidebar-foreground/60"
+-        >
+-          Drag to change time.
+-          <span className="sr-only">
+-            {' '}
+-            All 24 hours are continuous. Arrow keys adjust five minutes; Shift adjusts thirty.
+-            Escape cancels a drag.
+-          </span>
++        >{uiText("Drag to change time.")}{' '}<span className="sr-only">
++            {' '}{uiText("All 24 hours are continuous. Arrow keys adjust five minutes; Shift adjusts thirty. Escape cancels a drag.")}{' '}</span>
+         </p>
+       </div>
+     </div>
+--- a/src/brush-color-picker.tsx
++++ b/src/brush-color-picker.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { Check } from 'lucide-react'
+ import { useEffect, useId, useRef, useState } from 'react'
+ import { HexColorPicker } from 'react-colorful'
+@@ -29,6 +30,8 @@
+   value: string
+   onChange: (hex: string) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const inputId = useId()
+   const errorId = `${inputId}-error`
+   const externalColor = value
+@@ -72,7 +75,7 @@
+           style={{ backgroundColor: externalColor }}
+         />
+         <div className="min-w-0">
+-          <p className="text-[11px] text-sidebar-foreground/60">Grass color</p>
++          <p className="text-[11px] text-sidebar-foreground/60">{uiText("Grass color")}</p>
+           <p className="truncate font-mono text-xs font-medium uppercase tabular-nums">
+             {externalColor}
+           </p>
+@@ -80,16 +83,14 @@
+       </div>
+ 
+       <HexColorPicker
+-        aria-label="Grass color"
++        aria-label={uiText("Grass color")}
+         className="!h-44 !w-full [&_.react-colorful__hue]:!h-6 [&_.react-colorful__hue]:!rounded-md [&_.react-colorful__pointer]:!size-5 [&_.react-colorful__saturation]:!rounded-lg"
+         color={externalColor}
+         onChange={updateColor}
+       />
+ 
+       <div className="flex flex-col gap-1.5">
+-        <label className="text-[11px] font-medium text-sidebar-foreground/70" htmlFor={inputId}>
+-          Hex
+-        </label>
++        <label className="text-[11px] font-medium text-sidebar-foreground/70" htmlFor={inputId}>{uiText("Hex")}{' '}</label>
+         <input
+           id={inputId}
+           aria-describedby={error ? errorId : undefined}
+@@ -134,9 +135,7 @@
+       </div>
+ 
+       <fieldset className="min-w-0">
+-        <legend className="mb-1.5 text-[11px] font-medium text-sidebar-foreground/70">
+-          Natural palette
+-        </legend>
++        <legend className="mb-1.5 text-[11px] font-medium text-sidebar-foreground/70">{uiText("Natural palette")}{' '}</legend>
+         <div className="grid grid-cols-2 gap-1.5">
+           {GRASS_PALETTE.map((option) => {
+             const selected = externalColor.toLowerCase() === option.color
+@@ -172,7 +171,7 @@
+                     />
+                   )}
+                 </span>
+-                <span className="truncate">{option.label}</span>
++                <span className="truncate">{uiLabel(option.label)}</span>
+               </button>
+             )
+           })}
+--- a/src/environment-selector.tsx
++++ b/src/environment-selector.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import * as TooltipPrimitive from '@radix-ui/react-tooltip'
+ import {
+   ChevronRight,
+@@ -108,6 +109,8 @@
+   disabledTools = NO_DISABLED_TOOLS,
+   onSelect,
+ }: EnvironmentSelectorProps) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const containerRef = useRef<HTMLDivElement>(null)
+   const onSelectRef = useRef(onSelect)
+   onSelectRef.current = onSelect
+@@ -177,14 +180,14 @@
+     svg.style.width = '100%'
+     svg.setAttribute('role', 'group')
+     svg.removeAttribute('aria-labelledby')
+-    svg.setAttribute('aria-label', 'Pascal Environment tools')
++    svg.setAttribute('aria-label', uiText('Pascal Environment tools'))
+     svg.setAttribute('aria-describedby', 'map-description')
+ 
+     svg.querySelector('#map-title')?.remove()
+     const mapDescription = svg.querySelector('#map-description')
+     if (mapDescription) {
+       mapDescription.textContent =
+-        'An interactive site map for Ground Cover, Atmosphere, Surroundings, Build, Terrain, Surface, and Water.'
++        uiText('An interactive site map for Ground Cover, Atmosphere, Surroundings, Build, Terrain, Surface, and Water.')
+     }
+ 
+     let pointerPosition: PointerPosition | undefined
+@@ -317,7 +320,7 @@
+       svg.removeEventListener('focusout', handleFocusOut)
+       dismissTooltip()
+     }
+-  }, [dismissTooltip, markup])
++  }, [dismissTooltip, markup, uiText])
+   const tooltipTool = tooltip?.tool
+   const tooltipFollowsPointer = tooltip?.followsPointer
+ 
+@@ -365,20 +368,20 @@
+       })
+ 
+       if (isEnvironmentTool(tool)) {
+-        const label = ENVIRONMENT_TOOL_LABELS[tool]
++        const label = uiLabel(ENVIRONMENT_TOOL_LABELS[tool])
+         const description = zone.querySelector('desc')
+         zone.querySelector('title')?.remove()
+-        zone.setAttribute('aria-label', disabled ? `${label} — Coming soon` : label)
++        zone.setAttribute('aria-label', disabled ? `${label}${uiText(' — Coming soon')}` : label)
+         if (description) {
+           description.id = `environment-${tool}-description`
+           description.textContent = disabled
+-            ? `Coming soon. ${ENVIRONMENT_TOOL_DESCRIPTIONS[tool]}`
+-            : ENVIRONMENT_TOOL_DESCRIPTIONS[tool]
++            ? `${uiText('Coming soon')}. ${uiLabel(ENVIRONMENT_TOOL_DESCRIPTIONS[tool])}`
++            : uiLabel(ENVIRONMENT_TOOL_DESCRIPTIONS[tool])
+           zone.setAttribute('aria-describedby', description.id)
+         }
+       }
+     })
+-  }, [disabledTools, markup])
++  }, [disabledTools, markup, uiLabel, uiText])
+ 
+   return (
+     <div
+@@ -403,9 +406,7 @@
+         <p
+           className="grid min-h-40 place-items-center text-sidebar-foreground/50 text-xs"
+           role="status"
+-        >
+-          Loading environment tools…
+-        </p>
++        >{uiText("Loading environment tools…")}{' '}</p>
+       )}
+ 
+       {tooltip ? (
+@@ -443,8 +444,8 @@
+                 sideOffset={12}
+                 updatePositionStrategy={tooltip.followsPointer ? 'always' : 'optimized'}
+               >
+-                {ENVIRONMENT_TOOL_LABELS[tooltip.tool]}
+-                {disabledTools.includes(tooltip.tool) && ' — Coming soon'}
++                {uiLabel(ENVIRONMENT_TOOL_LABELS[tooltip.tool])}
++                {disabledTools.includes(tooltip.tool) && uiText(" — Coming soon")}
+                 {!tooltip.followsPointer && (
+                   <TooltipPrimitive.Arrow className="z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px] bg-foreground fill-foreground" />
+                 )}
+@@ -462,9 +463,11 @@
+   disabledTools = NO_DISABLED_TOOLS,
+   onSelect,
+ }: EnvironmentSelectorProps) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <div className={className}>
+-      <ul aria-label="Environment tools" className="flex flex-col gap-2">
++      <ul aria-label={uiText("Environment tools")} className="flex flex-col gap-2">
+         {ENVIRONMENT_TOOLS.map((tool) => {
+           const disabled = disabledTools.includes(tool)
+           const Icon = ENVIRONMENT_TOOL_ICONS[tool]
+@@ -481,14 +484,14 @@
+                 </span>
+                 <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                   <span className="font-medium text-foreground">
+-                    {ENVIRONMENT_TOOL_LABELS[tool]}
++                    {uiLabel(ENVIRONMENT_TOOL_LABELS[tool])}
+                   </span>
+                   <span className="leading-relaxed text-muted-foreground">
+-                    {ENVIRONMENT_TOOL_DESCRIPTIONS[tool]}
++                    {uiLabel(ENVIRONMENT_TOOL_DESCRIPTIONS[tool])}
+                   </span>
+                 </span>
+                 {disabled ? (
+-                  <span className="shrink-0 text-muted-foreground">Coming soon</span>
++                  <span className="shrink-0 text-muted-foreground">{uiText("Coming soon")}</span>
+                 ) : (
+                   <ChevronRight
+                     aria-hidden="true"
+--- a/src/panel.tsx
++++ b/src/panel.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { type AnyNode, type AnyNodeId, type SiteNode, useScene } from '@pascal-app/core'
+ import { ActionButton, subscribeCameraPose, useEditor } from '@pascal-app/editor'
+ import { useViewer } from '@pascal-app/viewer'
+@@ -81,12 +82,14 @@
+   onChange: (tab: 'pond' | 'river') => void
+   children: ReactNode
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const id = useId()
+   return (
+     <div className="flex flex-col gap-4">
+       <div
+         role="tablist"
+-        aria-label="Water type"
++        aria-label={uiText("Water type")}
+         className="grid grid-cols-2 gap-1 rounded-xl bg-sidebar-accent/50 p-1"
+         onKeyDown={(event) => {
+           let next: 'pond' | 'river'
+@@ -121,7 +124,7 @@
+             }`}
+           >
+             {tab === 'pond' ? <Waves aria-hidden size={16} /> : <Route aria-hidden size={16} />}
+-            {tab === 'pond' ? 'Pond' : 'River'}
++            {tab === 'pond' ? uiText("Pond") : uiText("River")}
+           </button>
+         ))}
+       </div>
+@@ -142,6 +145,8 @@
+ }
+ 
+ export default function EnvironmentPanel() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const environmentEnabled = useEnvironmentStore((state) => state.environmentEnabled)
+   const setEnvironmentEnabled = useEnvironmentStore((state) => state.setEnvironmentEnabled)
+   const environmentDescriptionId = useId()
+@@ -250,9 +255,9 @@
+   if (activeSection === 'ground-cover') {
+     return (
+       <PaintPanel
+-        title="Ground Cover"
++        title={uiText("Ground Cover")}
+         tool="ground-cover"
+-        description="Paint coverage, then shape the grass."
++        description={uiText("Paint coverage, then shape the grass.")}
+         active={groundCoverActive && groundCoverSelected}
+         available={siteAvailable}
+         onBack={() => setActiveSection(undefined)}
+@@ -265,9 +270,9 @@
+   if (activeSection === 'path') {
+     return (
+       <PaintPanel
+-        title="Surface"
++        title={uiText("Surface")}
+         tool="path"
+-        description="Paint materials that follow your terrain."
++        description={uiText("Paint materials that follow your terrain.")}
+         active={surfaceActive && surfaceSelected}
+         available={siteAvailable}
+         onBack={() => setActiveSection(undefined)}
+@@ -280,12 +285,12 @@
+   if (activeSection === 'water') {
+     return (
+       <PaintPanel
+-        title="Water"
++        title={uiText("Water")}
+         tool="water"
+         description={
+           waterTab === 'pond'
+-            ? 'Fill terrain depressions in contour steps, then dress the water.'
+-            : 'Draw a watercourse and carve its channel into the terrain.'
++            ? uiText("Fill terrain depressions in contour steps, then dress the water.")
++            : uiText("Draw a watercourse and carve its channel into the terrain.")
+         }
+         active={waterTab === 'pond' ? pondActive : riverActive}
+         available={siteAvailable}
+@@ -317,8 +322,7 @@
+     return (
+       <DetailPanel
+         tool="atmosphere"
+-        title="Sky & atmosphere"
+-        description="Shape the daylight, sky, and weather."
++        title={uiText("Sky & atmosphere")}
+         onBack={() => setActiveSection(undefined)}
+       >
+         <AtmosphereControls />
+@@ -329,8 +333,7 @@
+     return (
+       <DetailPanel
+         tool="surroundings"
+-        title="Surroundings"
+-        description="Set roads and landscape beyond your property."
++        title={uiText("Surroundings")}
+         onBack={() => setActiveSection(undefined)}
+       >
+         <SurroundingsControls />
+@@ -346,14 +349,11 @@
+             ref={overviewHeading}
+             tabIndex={-1}
+             className="rounded font-semibold text-sm focus-visible:outline-2 focus-visible:outline-ring"
+-          >
+-            Environment
+-          </h2>
++          >{uiText("Environment")}{' '}</h2>
+         </div>
+-        <p className="text-sidebar-foreground/60 text-xs">Choose an area to shape your scene.</p>
+         <div className="rounded-lg bg-sidebar-accent/30 px-3 pb-3">
+           <label className="flex min-h-10 cursor-pointer items-center justify-between gap-3 text-xs font-medium">
+-            <span>Enable Environment</span>
++            <span>{uiText("Enable Environment")}</span>
+             <input
+               aria-describedby={environmentDescriptionId}
+               className="size-4 accent-primary focus-visible:outline-2 focus-visible:outline-ring"
+@@ -365,14 +365,11 @@
+           <p
+             id={environmentDescriptionId}
+             className="text-xs leading-relaxed text-sidebar-foreground/60"
+-          >
+-            Sky, weather, and surroundings. You can also enable or disable individual features in
+-            their sections.
+-          </p>
++          >{uiText("Sky, weather, and surroundings. You can also enable or disable individual features in their sections.")}{' '}</p>
+         </div>
+         <div
+           role="group"
+-          aria-label="Environment view"
++          aria-label={uiText("Environment view")}
+           className="flex gap-1 rounded-xl bg-sidebar-accent/50 p-1"
+           onKeyDownCapture={(event) => {
+             // Keep Space on the view buttons instead of starting canvas panning.
+@@ -397,7 +394,7 @@
+               }`}
+             >
+               <Icon aria-hidden size={15} />
+-              {label}
++              {uiLabel(label)}
+             </button>
+           ))}
+         </div>
+@@ -418,15 +415,15 @@
+ }
+ 
+ function BackButton({ onClick }: { onClick: () => void }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <button
+       className="-ml-1.5 flex min-h-8 self-start items-center gap-1.5 rounded-lg px-1.5 text-sidebar-foreground/60 text-xs hover:bg-sidebar-accent/50 hover:text-sidebar-foreground active:bg-sidebar-accent focus-visible:outline-2 focus-visible:outline-ring"
+       onClick={onClick}
+       type="button"
+     >
+-      <ArrowLeft aria-hidden size={14} />
+-      Environment
+-    </button>
++      <ArrowLeft aria-hidden size={14} />{uiText("Environment")}{' '}</button>
+   )
+ }
+ 
+@@ -440,11 +437,13 @@
+ }: {
+   tool: EnvironmentTool
+   title: string
+-  description: string
++  description?: string
+   onBack: () => void
+   status?: ReactNode
+   children: ReactNode
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const Icon = ENVIRONMENT_TOOL_ICONS[tool]
+   const heading = useRef<HTMLHeadingElement>(null)
+   useEffect(() => {
+@@ -464,11 +463,13 @@
+               tabIndex={-1}
+               className="rounded font-semibold text-sm focus-visible:outline-2 focus-visible:outline-ring"
+             >
+-              {title}
++              {uiLabel(title)}
+             </h2>
+-            <p className="mt-0.5 text-xs leading-relaxed text-sidebar-foreground/60">
+-              {description}
+-            </p>
++            {description && (
++              <p className="mt-0.5 text-xs leading-relaxed text-sidebar-foreground/60">
++                {uiLabel(description)}
++              </p>
++            )}
+           </div>
+         </div>
+         {status}
+@@ -484,12 +485,14 @@
+ }
+ 
+ function ResumeButton({ label, onClick }: { label: string; onClick: () => void }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <ActionButton
+       className="min-h-10 flex-none focus-visible:outline-2 focus-visible:outline-ring"
+       style={{ minHeight: 40 }}
+       icon={<Brush aria-hidden size={15} />}
+-      label={label}
++      label={uiLabel(label)}
+       onClick={onClick}
+       type="button"
+     />
+@@ -521,11 +524,13 @@
+   unavailableMessage?: string
+   children: ReactNode
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <DetailPanel
+       tool={tool}
+-      title={title}
+-      description={description}
++      title={uiLabel(title)}
++      description={uiLabel(description)}
+       onBack={onBack}
+       status={
+         available ? (
+@@ -539,15 +544,13 @@
+                 ) : (
+                   <Pause aria-hidden size={12} />
+                 )}
+-                {active ? activeLabel : 'Paused'}
++                {active ? activeLabel : uiText("Paused")}
+               </span>
+               {active && (
+                 <span className="text-sidebar-foreground/60">
+                   <kbd className="rounded border border-sidebar-border px-1 py-0.5 font-sans">
+                     Esc
+-                  </kbd>{' '}
+-                  to stop
+-                </span>
++                  </kbd>{' '}{uiText("to stop")}{' '}</span>
+               )}
+             </div>
+             {!active && <ResumeButton label={resumeLabel} onClick={onResume} />}
+@@ -567,6 +570,8 @@
+ }
+ 
+ function GroundCoverPaintControls() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const brush = useEnvironmentStore((state) => state.groundCoverBrush)
+   const tool = useEnvironmentStore((state) => state.groundCoverTool)
+   const heightAmount = useEnvironmentStore((state) => state.groundCoverHeightAmount)
+@@ -610,7 +615,7 @@
+     <div className="flex flex-col gap-5">
+       <div className="flex flex-col gap-3">
+         <BrushChoices
+-          label="Coverage"
++          label={uiText("Coverage")}
+           value={tool}
+           onChange={setTool}
+           options={[
+@@ -632,7 +637,7 @@
+           ]}
+         />
+         <BrushChoices
+-          label="Local height"
++          label={uiText("Local height")}
+           value={tool}
+           onChange={setTool}
+           options={[
+@@ -654,14 +659,14 @@
+           ]}
+         />
+         <p className="min-h-8 text-xs leading-relaxed text-sidebar-foreground/70">
+-          {GROUND_COVER_INSTRUCTIONS[tool]}
++          {uiLabel(GROUND_COVER_INSTRUCTIONS[tool])}
+         </p>
+       </div>
+-      <BrushSection title="Brush">
++      <BrushSection title={uiText("Brush")}>
+         <ParameterRange
+           presentation="radial"
+           radialVisual="radius"
+-          label="Radius"
++          label={uiText("Radius")}
+           min={0.25}
+           max={20}
+           step={0.25}
+@@ -674,7 +679,7 @@
+           <ParameterRange
+             presentation="radial"
+             radialLayout="tile"
+-            label="Strength"
++            label={uiText("Strength")}
+             min={1}
+             max={100}
+             step={1}
+@@ -685,7 +690,7 @@
+           <ParameterRange
+             presentation="radial"
+             radialLayout="tile"
+-            label="Edge softness"
++            label={uiText("Edge softness")}
+             min={0}
+             max={100}
+             step={1}
+@@ -696,10 +701,10 @@
+         </div>
+       </BrushSection>
+       {tool === 'paint-density' && (
+-        <BrushSection title="Paint result">
++        <BrushSection title={uiText("Paint result")}>
+           <ParameterRange
+             presentation="radial"
+-            label="Target coverage"
++            label={uiText("Target coverage")}
+             min={0}
+             max={100}
+             step={1}
+@@ -708,17 +713,14 @@
+             onChange={(targetDensity) => setBrush({ targetDensity: targetDensity / 100 })}
+           />
+           <BrushColorPicker value={brush.color} onChange={(color) => setBrush({ color })} />
+-          <p className="text-xs leading-relaxed text-sidebar-foreground/60">
+-            Coverage controls where grass grows. Blade size and overall density are in the Grass
+-            Field inspector.
+-          </p>
++          <p className="text-xs leading-relaxed text-sidebar-foreground/60">{uiText("Coverage controls where grass grows. Blade size and overall density are in the Grass Field inspector.")}{' '}</p>
+         </BrushSection>
+       )}
+       {isHeightTool && tool !== 'smooth-height' && (
+-        <BrushSection title="Height adjustment">
++        <BrushSection title={uiText("Height adjustment")}>
+           <ParameterRange
+             presentation="radial"
+-            label="Height change"
++            label={uiText("Height change")}
+             min={5}
+             max={100}
+             step={5}
+@@ -726,19 +728,15 @@
+             value={heightAmount}
+             onChange={setHeightAmount}
+           />
+-          <p className="text-xs leading-relaxed text-sidebar-foreground/60">
+-            Changes grass height under the brush, not the terrain.
+-          </p>
++          <p className="text-xs leading-relaxed text-sidebar-foreground/60">{uiText("Changes grass height under the brush, not the terrain.")}{' '}</p>
+         </BrushSection>
+       )}
+       <details className="group rounded-lg border border-sidebar-border">
+-        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between rounded-lg px-3 text-xs font-medium focus-visible:outline-2 focus-visible:outline-ring">
+-          Brush details
+-          <ChevronDown aria-hidden size={14} className="group-open:rotate-180" />
++        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between rounded-lg px-3 text-xs font-medium focus-visible:outline-2 focus-visible:outline-ring">{uiText("Brush details")}{' '}<ChevronDown aria-hidden size={14} className="group-open:rotate-180" />
+         </summary>
+         <div className="flex flex-col gap-3 px-3 pb-3">
+           <BrushChoices
+-            label="Shape"
++            label={uiText("Shape")}
+             value={brush.shape}
+             onChange={(shape) => setBrush({ shape })}
+             options={[
+@@ -756,7 +754,7 @@
+           />
+           <ParameterRange
+             presentation="radial"
+-            label="Stroke variation"
++            label={uiText("Stroke variation")}
+             min={0}
+             max={100}
+             step={1}
+@@ -764,9 +762,7 @@
+             value={Math.round(brush.noiseAmount * 100)}
+             onChange={(noiseAmount) => setBrush({ noiseAmount: noiseAmount / 100 })}
+           />
+-          <p className="text-xs leading-relaxed text-sidebar-foreground/60">
+-            Higher variation breaks up the stroke for a less uniform result.
+-          </p>
++          <p className="text-xs leading-relaxed text-sidebar-foreground/60">{uiText("Higher variation breaks up the stroke for a less uniform result.")}{' '}</p>
+         </div>
+       </details>
+       <WholeSiteActions
+@@ -804,9 +800,11 @@
+ }
+ 
+ function BrushSection({ title, children }: { title: string; children: ReactNode }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <section className="flex flex-col gap-2">
+-      <h3 className="text-xs font-semibold">{title}</h3>
++      <h3 className="text-xs font-semibold">{uiLabel(title)}</h3>
+       {children}
+     </section>
+   )
+@@ -823,11 +821,13 @@
+   options: { value: T; label: string; icon?: ReactNode }[]
+   onChange: (value: T) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const name = useId()
+   const [focused, setFocused] = useState<T | null>(null)
+   return (
+     <fieldset className="min-w-0">
+-      <legend className="mb-2 text-xs font-medium text-sidebar-foreground/70">{label}</legend>
++      <legend className="mb-2 text-xs font-medium text-sidebar-foreground/70">{uiLabel(label)}</legend>
+       <div className="flex gap-1.5">
+         {options.map((option) => (
+           <label className="relative min-w-0 flex-1 cursor-pointer" key={option.value}>
+@@ -858,7 +858,7 @@
+               }}
+             >
+               {option.icon}
+-              {option.label}
++              {uiLabel(option.label)}
+             </span>
+           </label>
+         ))}
+@@ -877,6 +877,8 @@
+     onConfirm: () => void
+   }[]
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const [pending, setPending] = useState<number | null>(null)
+   const [notice, setNotice] = useState('')
+   const container = useRef<HTMLDivElement>(null)
+@@ -892,7 +894,7 @@
+   const action = pending === null ? null : actions[pending]
+   return (
+     <div className="flex flex-col gap-2 border-t border-sidebar-border pt-4" ref={container}>
+-      <h3 className="text-xs font-semibold">Whole site</h3>
++      <h3 className="text-xs font-semibold">{uiText("Whole site")}</h3>
+       {action ? (
+         <div
+           className="flex flex-col gap-3 rounded-lg border border-sidebar-border bg-sidebar-accent/40 p-3"
+@@ -903,18 +905,18 @@
+             }
+           }}
+         >
+-          <p className="text-xs leading-relaxed">{action.description}</p>
++          <p className="text-xs leading-relaxed">{uiLabel(action.description)}</p>
+           <div className="flex gap-2">
+             <ActionButton
+               className="min-h-10 focus-visible:outline-2 focus-visible:outline-ring"
+-              label="Cancel"
++              label={uiText("Cancel")}
+               data-site-cancel=""
+               onClick={() => setPending(null)}
+               type="button"
+             />
+             <ActionButton
+               className="min-h-10 focus-visible:outline-2 focus-visible:outline-ring"
+-              label="Confirm"
++              label={uiText("Confirm")}
+               onClick={() => {
+                 action.onConfirm()
+                 setPending(null)
+@@ -932,7 +934,7 @@
+               data-site-action=""
+               icon={item.icon}
+               key={item.label}
+-              label={item.label}
++              label={uiLabel(item.label)}
+               onClick={() => {
+                 returnIndex.current = index
+                 setNotice('')
+@@ -944,13 +946,15 @@
+         </div>
+       )}
+       <p className="text-[11px] leading-relaxed text-sidebar-foreground/60" role="status">
+-        {notice || 'Applies across the Site, not just under the brush.'}
++        {notice || uiText("Applies across the Site, not just under the brush.")}
+       </p>
+     </div>
+   )
+ }
+ 
+ function SurroundingsControls() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const presetDescriptionId = useId()
+   const site = useScene((state) => {
+     const siteId = state.rootNodeIds.find(
+@@ -994,18 +998,14 @@
+ 
+   if (!site) {
+     return (
+-      <p className="text-destructive text-xs" role="alert">
+-        A root Site is required to configure surroundings.
+-      </p>
++      <p className="text-destructive text-xs" role="alert">{uiText("A root Site is required to configure surroundings.")}{' '}</p>
+     )
+   }
+ 
+   return (
+     <div className="flex flex-col gap-3">
+       <fieldset className="min-w-0" aria-describedby={presetDescriptionId}>
+-        <legend className="mb-2 text-xs font-medium text-sidebar-foreground/70">
+-          Landscape preset
+-        </legend>
++        <legend className="mb-2 text-xs font-medium text-sidebar-foreground/70">{uiText("Landscape preset")}{' '}</legend>
+         <div className="grid grid-cols-3 gap-1.5">
+           {SURROUNDINGS_PRESET_IDS.map((presetId) => {
+             const Icon =
+@@ -1019,7 +1019,7 @@
+                 type="button"
+               >
+                 <Icon aria-hidden size={23} strokeWidth={1.5} />
+-                {SURROUNDINGS_PRESET_POLICIES[presetId].label}
++                {uiLabel(SURROUNDINGS_PRESET_POLICIES[presetId].label)}
+               </button>
+             )
+           })}
+@@ -1028,13 +1028,13 @@
+           className="mt-2 text-xs leading-relaxed text-sidebar-foreground/60"
+           id={presetDescriptionId}
+         >
+-          {SURROUNDINGS_PRESET_POLICIES[preset].description}
++          {uiLabel(SURROUNDINGS_PRESET_POLICIES[preset].description)}
+         </p>
+       </fieldset>
+       <label className="flex min-h-10 cursor-pointer items-center justify-between gap-3 rounded-lg bg-sidebar-accent/30 px-3 text-xs">
+-        <span>Show surroundings</span>
++        <span>{uiText("Show surroundings")}</span>
+         <input
+-          aria-label="Show surroundings"
++          aria-label={uiText("Show surroundings")}
+           className="size-4 accent-primary focus-visible:outline-2 focus-visible:outline-ring"
+           checked={enabled}
+           onChange={(event) => setEnabled(event.target.checked)}
+@@ -1042,9 +1042,7 @@
+         />
+       </label>
+       {!enabled && (
+-        <p className="text-xs text-sidebar-foreground/60" role="status">
+-          Surroundings are hidden. Turn them on to preview your changes.
+-        </p>
++        <p className="text-xs text-sidebar-foreground/60" role="status">{uiText("Surroundings are hidden. Turn them on to preview your changes.")}{' '}</p>
+       )}
+       {preset === 'regional' ? (
+         <FrontageSelector
+@@ -1056,14 +1054,13 @@
+         />
+       ) : (
+         <section className="flex flex-col gap-2 rounded-lg border border-sidebar-border p-3">
+-          <h3 className="text-xs font-semibold">Road layout</h3>
++          <h3 className="text-xs font-semibold">{uiText("Road layout")}</h3>
+           <p className="text-xs leading-relaxed text-sidebar-foreground/70">
+-            {SURROUNDINGS_PRESET_POLICIES[preset].label} has no roads or homes. Switch to Regional
+-            to edit property-edge roads. Your road settings are kept.
++            {uiText('{preset} has no roads or homes. Switch to Regional to edit property-edge roads. Your road settings are kept.', {preset: uiLabel(SURROUNDINGS_PRESET_POLICIES[preset].label)})}
+           </p>
+           <ActionButton
+             className="min-h-10 focus-visible:outline-2 focus-visible:outline-ring"
+-            label="Use Regional roads"
++            label={uiText("Use Regional roads")}
+             onClick={() => setPreset('regional')}
+             type="button"
+           />
+@@ -1072,13 +1069,12 @@
+       <details className="group rounded-lg border border-sidebar-border">
+         <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between rounded-lg px-3 text-xs font-medium focus-visible:outline-2 focus-visible:outline-ring">
+           <span className="flex items-center gap-2">
+-            <Bird aria-hidden size={15} /> Variation &amp; birds
+-          </span>
++            <Bird aria-hidden size={15} />{' '}{uiText("Variation & birds")}{' '}</span>
+           <ChevronDown aria-hidden size={14} className="group-open:rotate-180" />
+         </summary>
+         <div className="flex flex-col gap-3 px-3 pb-3">
+           <label className="flex flex-col gap-2 text-xs">
+-            <span>Landscape seed</span>
++            <span>{uiText("Landscape seed")}</span>
+             <input
+               className="h-10 min-w-0 rounded-md border border-sidebar-border bg-sidebar px-3 focus-visible:outline-2 focus-visible:outline-ring"
+               key={seed}
+@@ -1095,7 +1091,7 @@
+             <label
+               className={`flex min-h-10 items-center justify-between gap-3 text-xs ${enabled ? 'cursor-pointer' : 'text-sidebar-foreground/50'}`}
+             >
+-              <span>Show distant birds</span>
++              <span>{uiText("Show distant birds")}</span>
+               <input
+                 className="size-4 accent-primary focus-visible:outline-2 focus-visible:outline-ring"
+                 checked={birdsEnabled}
+@@ -1107,7 +1103,7 @@
+             <label
+               className={`flex min-h-10 items-center justify-between gap-3 text-xs ${enabled && birdsEnabled ? 'cursor-pointer' : 'text-sidebar-foreground/50'}`}
+             >
+-              <span>Animate distant birds</span>
++              <span>{uiText("Animate distant birds")}</span>
+               <input
+                 className="size-4 accent-primary focus-visible:outline-2 focus-visible:outline-ring"
+                 checked={ambientMotion}
+@@ -1119,14 +1115,14 @@
+           </div>
+         </div>
+       </details>
+-      <p className="text-xs text-sidebar-foreground/60">
+-        Surroundings are saved per project in this browser and excluded from geometry exports.
+-      </p>
++      <p className="text-xs text-sidebar-foreground/60">{uiText("Surroundings are saved per project in this browser and excluded from geometry exports.")}{' '}</p>
+     </div>
+   )
+ }
+ 
+ function SurfacePaintControls() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const brush = useEnvironmentStore((state) => state.surfaceBrush)
+   const material = useEnvironmentStore((state) => state.surfaceMaterial)
+   const setBrush = useEnvironmentStore((state) => state.setSurfaceBrush)
+@@ -1170,8 +1166,8 @@
+   const presentation = SURFACE_MATERIAL_PRESENTATION.find((item) => item.id === material)!
+   return (
+     <div className="flex flex-col gap-5">
+-      <BrushSection title="Material">
+-        <div aria-label="Surface material" className="grid grid-cols-2 gap-2" role="group">
++      <BrushSection title={uiText("Material")}>
++        <div aria-label={uiText("Surface material")} className="grid grid-cols-2 gap-2" role="group">
+           {SURFACE_MATERIAL_PRESENTATION.map((item) => (
+             <button
+               aria-pressed={material === item.id}
+@@ -1185,7 +1181,7 @@
+             >
+               <img alt="" className="h-16 w-full object-cover" src={item.preview} />
+               <span className="flex min-h-9 items-center justify-between gap-1 px-2 py-1.5 font-medium">
+-                {item.label}
++                {uiLabel(item.label)}
+                 {material === item.id && (
+                   <Check aria-hidden size={14} className="shrink-0 text-primary" />
+                 )}
+@@ -1194,12 +1190,12 @@
+           ))}
+         </div>
+         <p className="min-h-8 text-xs leading-relaxed text-sidebar-foreground/70">
+-          {presentation.description}
++          {uiLabel(presentation.description)}
+         </p>
+       </BrushSection>
+       <div className="flex flex-col gap-2">
+         <BrushChoices
+-          label="Operation"
++          label={uiText("Operation")}
+           value={brush.mode === 'smooth' ? 'smooth' : 'paint'}
+           onChange={(mode) => setBrush({ mode })}
+           options={[
+@@ -1217,16 +1213,14 @@
+         />
+         <p className="text-xs leading-relaxed text-sidebar-foreground/70">
+           {brush.mode === 'smooth'
+-            ? 'Drag across material edges to soften the transition.'
+-            : `Drag on the terrain to paint ${presentation.label.toLowerCase()}.`}{' '}
+-          Press Esc to stop.
+-        </p>
++            ? uiText("Drag across material edges to soften the transition.")
++            : uiText('Drag on the terrain to paint {material}.', {material: uiLabel(presentation.label)})}{' '}{uiText("Press Esc to stop.")}{' '}</p>
+       </div>
+-      <BrushSection title="Brush">
++      <BrushSection title={uiText("Brush")}>
+         <ParameterRange
+           presentation="radial"
+           radialVisual="radius"
+-          label="Radius"
++          label={uiText("Radius")}
+           min={0.25}
+           max={20}
+           step={0.25}
+@@ -1239,7 +1233,7 @@
+           <ParameterRange
+             presentation="radial"
+             radialLayout="tile"
+-            label="Strength"
++            label={uiText("Strength")}
+             min={5}
+             max={100}
+             step={5}
+@@ -1249,7 +1243,7 @@
+           <ParameterRange
+             presentation="radial"
+             radialLayout="tile"
+-            label="Edge softness"
++            label={uiText("Edge softness")}
+             min={0}
+             max={100}
+             step={5}
+@@ -1259,14 +1253,12 @@
+         </div>
+       </BrushSection>
+       <details className="group rounded-lg border border-sidebar-border">
+-        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between rounded-lg px-3 text-xs font-medium focus-visible:outline-2 focus-visible:outline-ring">
+-          Material scale
+-          <ChevronDown aria-hidden size={14} className="group-open:rotate-180" />
++        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between rounded-lg px-3 text-xs font-medium focus-visible:outline-2 focus-visible:outline-ring">{uiText("Material scale")}{' '}<ChevronDown aria-hidden size={14} className="group-open:rotate-180" />
+         </summary>
+         <div className="flex flex-col gap-2 px-3 pb-3">
+           <ParameterRange
+             presentation="radial"
+-            label="Texture size"
++            label={uiText("Texture size")}
+             min={25}
+             max={200}
+             step={5}
+@@ -1274,9 +1266,7 @@
+             onChange={setTextureSize}
+             commitOnRelease
+           />
+-          <p className="text-xs leading-relaxed text-sidebar-foreground/60">
+-            Larger values enlarge the pattern on all painted materials. Release the dial to apply.
+-          </p>
++          <p className="text-xs leading-relaxed text-sidebar-foreground/60">{uiText("Larger values enlarge the pattern on all painted materials. Release the dial to apply.")}{' '}</p>
+         </div>
+       </details>
+       <WholeSiteActions
+--- a/src/parameter-range.tsx
++++ b/src/parameter-range.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { linearUnitToMeters, metersToLinearUnit } from '@pascal-app/editor'
+ import { useViewer } from '@pascal-app/viewer'
+ import { useId, useRef, useState } from 'react'
+@@ -33,6 +34,8 @@
+   onCommit: () => void
+   onCancel: (value: number) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const drag = useRef<{
+     pointerId: number
+     startValue: number
+@@ -204,9 +207,7 @@
+               strokeWidth="1.5"
+               strokeLinecap="round"
+             />
+-            <text x="50" y="92" textAnchor="middle" fill="currentColor" fontSize="9">
+-              RADIUS
+-            </text>
++            <text x="50" y="92" textAnchor="middle" fill="currentColor" fontSize="9">{uiText("RADIUS")}{' '}</text>
+           </>
+         ) : (
+           <text
+@@ -262,6 +263,8 @@
+   radialLayout?: 'row' | 'tile'
+   onChange: (value: number) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const id = useId()
+   const viewerUnit = useViewer((state) => state.unit)
+   const imperial = viewerUnit === 'imperial' && unit === 'm'
+@@ -287,13 +290,13 @@
+       htmlFor={id}
+       className={`text-xs text-sidebar-foreground/80 ${presentation === 'radial' && radialLayout === 'tile' ? 'w-full' : ''}`}
+     >
+-      {label}
++      {uiLabel(label)}
+     </label>
+   )
+   const exactEntry = (
+     <div className="flex h-8 max-w-full items-center gap-1 rounded-md border border-sidebar-border bg-sidebar px-2 focus-within:ring-1 focus-within:ring-ring">
+       <input
+-        aria-label={`${label} value (${displayUnit})`}
++        aria-label={uiText('{label} value ({unit})', {label: uiLabel(label), unit: displayUnit})}
+         className="w-14 min-w-0 bg-transparent text-right font-mono text-xs tabular-nums outline-none"
+         type="number"
+         min={display(min)}
+@@ -303,6 +306,7 @@
+         onChange={(event) => setDraft(event.target.value)}
+         onBlur={(event) => commit(event.currentTarget.value)}
+         onKeyDown={(event) => {
++          if (event.nativeEvent.isComposing || event.nativeEvent.keyCode === 229) return
+           if (event.key === 'Enter') event.currentTarget.blur()
+           if (event.key === 'Escape') {
+             event.stopPropagation()
+@@ -352,9 +356,7 @@
+             ? 'sr-only'
+             : 'text-[11px] leading-relaxed text-sidebar-foreground/60'
+         }
+-      >
+-        Drag the arc or use arrow keys.
+-      </p>
++      >{uiText("Drag the arc or use arrow keys.")}{' '}</p>
+     )
+ 
+     if (radialLayout === 'tile') {
+--- a/src/pond/controls.tsx
++++ b/src/pond/controls.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { createSceneApi, terrainFieldOf, type AnyNodeId, useScene } from '@pascal-app/core'
+ import { useViewer } from '@pascal-app/viewer'
+ import {
+@@ -87,6 +88,8 @@
+   disabledReason?: string
+   onClick: () => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <button
+       className="flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-md border border-sidebar-border bg-sidebar-accent/40 px-2 font-medium text-sidebar-foreground text-xs enabled:hover:bg-sidebar-accent disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-2 focus-visible:outline-ring"
+@@ -96,12 +99,14 @@
+       type="button"
+     >
+       <Icon aria-hidden size={15} />
+-      {label}
++      {uiLabel(label)}
+     </button>
+   )
+ }
+ 
+ export function PondControls({ onSculptTerrain }: { onSculptTerrain: () => void }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const sceneApi = useMemo(() => createSceneApi(useScene), [])
+   const nodes = useScene((state) => state.nodes)
+   const rootNodeIds = useScene((state) => state.rootNodeIds)
+@@ -185,23 +190,23 @@
+   return (
+     <div className="flex flex-col gap-5">
+       <section className="flex flex-col gap-2">
+-        <h3 className="text-xs font-semibold">Basin</h3>
++        <h3 className="text-xs font-semibold">{uiText("Basin")}</h3>
+         {info ? (
+           <dl className="grid grid-cols-2 gap-x-3 gap-y-1 rounded-lg border border-sidebar-border bg-sidebar-accent/30 p-3 text-xs">
+-            <dt className="text-sidebar-foreground/60">Water level</dt>
++            <dt className="text-sidebar-foreground/60">{uiText("Water level")}</dt>
+             <dd className="text-right font-mono">
+-              {info.level === null ? 'Empty' : formatMetres(info.level)}
++              {info.level === null ? uiText("Empty") : formatMetres(info.level)}
+             </dd>
+-            <dt className="text-sidebar-foreground/60">Spill level</dt>
++            <dt className="text-sidebar-foreground/60">{uiText("Spill level")}</dt>
+             <dd className="text-right font-mono">{formatMetres(info.basin.spillLevel)}</dd>
+-            <dt className="text-sidebar-foreground/60">Max depth</dt>
++            <dt className="text-sidebar-foreground/60">{uiText("Max depth")}</dt>
+             <dd className="text-right font-mono">{formatMetres(info.maxDepth)}</dd>
+           </dl>
+         ) : (
+           <p className="rounded-lg border border-sidebar-border p-3 text-xs leading-relaxed text-sidebar-foreground/70">
+             {hasTerrain
+-              ? 'Click inside an enclosed low point. A click on its slope selects the connected depression below.'
+-              : 'Water needs editable terrain with a contained depression.'}
++              ? uiText("Click inside an enclosed low point. A click on its slope selects the connected depression below.")
++              : uiText("Water needs editable terrain with a contained depression.")}
+           </p>
+         )}
+         <div className="grid grid-cols-2 gap-2">
+@@ -209,39 +214,39 @@
+             disabled={!info}
+             disabledReason={noBasinReason}
+             icon={ArrowUpFromLine}
+-            label={`Raise ${levelStep.toFixed(2)} m`}
++            label={uiText("Raise {arg0} m", {arg0: levelStep.toFixed(2)})}
+             onClick={() => commitLevel('raise')}
+           />
+           <PondButton
+             disabled={!info?.pond || info.level === null}
+             disabledReason={noWaterReason}
+             icon={ArrowDownToLine}
+-            label={`Lower ${levelStep.toFixed(2)} m`}
++            label={uiText("Lower {arg0} m", {arg0: levelStep.toFixed(2)})}
+             onClick={() => commitLevel('lower')}
+           />
+           <PondButton
+             disabled={!info}
+             disabledReason={noBasinReason}
+             icon={PaintBucket}
+-            label="Fill to spill"
++            label={uiText("Fill to spill")}
+             onClick={() => commitLevel('fill')}
+           />
+           <PondButton
+             disabled={!info?.pond || info.level === null}
+             disabledReason={noWaterReason}
+             icon={CircleOff}
+-            label="Empty"
++            label={uiText("Empty")}
+             onClick={() => commitLevel('empty')}
+           />
+         </div>
+         <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">
+-          Contours are {levelStep.toFixed(2)} m apart. Water cannot rise above the spill level.
++          {uiText('Contours are {step} m apart. Water cannot rise above the spill level.', {step: levelStep.toFixed(2)})}
+         </p>
+       </section>
+ 
+       <section className="flex flex-col gap-2">
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span className="font-semibold">Water quality</span>
++          <span className="font-semibold">{uiText("Water quality")}</span>
+           <select
+             aria-describedby="pond-quality-description"
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs focus-visible:outline-2 focus-visible:outline-ring"
+@@ -250,20 +255,20 @@
+           >
+             {QUALITY_OPTIONS.map((option) => (
+               <option key={option.value} value={option.value}>
+-                {option.label}
++                {uiLabel(option.label)}
+               </option>
+             ))}
+           </select>
+         </label>
+         <p id="pond-quality-description" className="text-[11px] leading-relaxed text-sidebar-foreground/60">
+           {QUALITY_OPTIONS.find((option) => option.value === selectedQuality)?.description}
+-          {!info?.pond ? ' This preset will be used when the basin first receives water.' : ''}
++          {!info?.pond ? uiText(" This preset will be used when the basin first receives water.") : ''}
+         </p>
+       </section>
+ 
+       <section className="flex flex-col gap-2">
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span className="font-semibold">Shoreline</span>
++          <span className="font-semibold">{uiText("Shoreline")}</span>
+           <select
+             aria-describedby="pond-shoreline-description"
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-2 focus-visible:outline-ring"
+@@ -271,16 +276,16 @@
+             onChange={(event) => changeShoreline(event.target.value as PondShoreline)}
+             value={info?.pond?.shoreline ?? 'soft'}
+           >
+-            <option value="soft">Soft bank</option>
+-            <option value="rocky">Rocky bank</option>
++            <option value="soft">{uiText("Soft bank")}</option>
++            <option value="rocky">{uiText("Rocky bank")}</option>
+           </select>
+         </label>
+         <p id="pond-shoreline-description" className="text-[11px] leading-relaxed text-sidebar-foreground/60">
+           {!info?.pond
+-            ? 'Add water to choose a shoreline treatment.'
++            ? uiText("Add water to choose a shoreline treatment.")
+             : info.pond.shoreline === 'rocky'
+-              ? 'Natural stones follow the waterline and the sculpted terrain.'
+-              : 'A gentle shallow-water transition blends into the bank.'}
++              ? uiText("Natural stones follow the waterline and the sculpted terrain.")
++              : uiText("A gentle shallow-water transition blends into the bank.")}
+         </p>
+       </section>
+ 
+@@ -288,30 +293,26 @@
+ 
+       <section className="flex flex-col gap-2">
+         <div className="flex items-center justify-between gap-3">
+-          <h3 className="text-xs font-semibold">Water props</h3>
++          <h3 className="text-xs font-semibold">{uiText("Water props")}</h3>
+           <span className="font-mono text-[11px] text-sidebar-foreground/60">
+-            {lilyCount} lilies · {koiCount}/32 koi
++            {uiText('{lilies} lilies · {koi}/32 koi', {lilies: lilyCount, koi: koiCount})}
+           </span>
+         </div>
+         <PondButton
+           disabled={props.length === 0}
+-          disabledReason="This pond has no props to clear."
++          disabledReason={uiText("This pond has no props to clear.")}
+           icon={Trash2}
+-          label="Clear props"
++          label={uiText("Clear props")}
+           onClick={clearProps}
+         />
+-        <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">
+-          Up to 128 props per pond. Dry props are retained and reappear when water returns.
+-        </p>
++        <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">{uiText("Up to 128 props per pond. Dry props are retained and reappear when water returns.")}{' '}</p>
+       </section>
+ 
+       {!info ? (
+         <section className="flex flex-col gap-2 border-t border-sidebar-border pt-4">
+-          <h3 className="text-xs font-semibold">Need a deeper basin?</h3>
+-          <p className="text-xs leading-relaxed text-sidebar-foreground/60">
+-            Use Pascal Terrain to lower the centre and keep a higher rim around it.
+-          </p>
+-          <PondButton icon={Mountain} label="Sculpt Terrain" onClick={onSculptTerrain} />
++          <h3 className="text-xs font-semibold">{uiText("Need a deeper basin?")}</h3>
++          <p className="text-xs leading-relaxed text-sidebar-foreground/60">{uiText("Use Pascal Terrain to lower the centre and keep a higher rim around it.")}{' '}</p>
++          <PondButton icon={Mountain} label={uiText("Sculpt Terrain")} onClick={onSculptTerrain} />
+         </section>
+       ) : null}
+ 
+@@ -320,7 +321,7 @@
+         className="min-h-8 rounded-md bg-sidebar-accent/35 px-3 py-2 text-xs leading-relaxed text-sidebar-foreground/70"
+         role="status"
+       >
+-        {feedback || 'Select a depression, then raise one contour interval or fill it to the spill level.'}
++        {feedback || uiText("Select a depression, then raise one contour interval or fill it to the spill level.")}
+       </p>
+     </div>
+   )
+@@ -333,10 +334,12 @@
+   value: PondToolMode
+   onChange: (mode: PondToolMode) => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const name = useId()
+   return (
+     <fieldset className="min-w-0">
+-      <legend className="mb-2 text-xs font-semibold">Canvas action</legend>
++      <legend className="mb-2 text-xs font-semibold">{uiText("Canvas action")}</legend>
+       <div className="grid grid-cols-2 gap-1 rounded-lg bg-sidebar-accent/50 p-1">
+         {PROP_MODE_OPTIONS.map((option) => {
+           const Icon = option.icon
+@@ -352,7 +355,7 @@
+               />
+               <span className="flex min-h-9 items-center justify-center gap-1.5 rounded-md px-2 text-xs text-sidebar-foreground/70 hover:bg-sidebar-accent peer-checked:bg-sidebar-accent peer-checked:text-primary peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-ring">
+                 <Icon aria-hidden size={14} />
+-                {option.label}
++                {uiLabel(option.label)}
+               </span>
+             </label>
+           )
+--- a/src/river/controls.tsx
++++ b/src/river/controls.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { createSceneApi, type AnyNodeId, useScene } from '@pascal-app/core'
+ import { useEditor } from '@pascal-app/editor'
+ import { useViewer } from '@pascal-app/viewer'
+@@ -39,6 +40,8 @@
+   emphasized?: boolean
+   onClick: () => void
+ }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   return (
+     <button
+       className={`flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-md border px-2 font-medium text-xs disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-2 focus-visible:outline-ring ${
+@@ -54,12 +57,14 @@
+       type="button"
+     >
+       <Icon aria-hidden size={15} />
+-      {label}
++      {uiLabel(label)}
+     </button>
+   )
+ }
+ 
+ export function RiverControls() {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const sceneApi = useMemo(() => createSceneApi(useScene), [])
+   const nodes = useScene((state) => state.nodes)
+   const rootNodeIds = useScene((state) => state.rootNodeIds)
+@@ -278,9 +283,7 @@
+     <div className="flex flex-col gap-5">
+       <section aria-labelledby="river-path-heading" className="flex flex-col gap-3">
+         <div className="flex items-center justify-between gap-3">
+-          <h3 className="text-xs font-semibold" id="river-path-heading">
+-            Path
+-          </h3>
++          <h3 className="text-xs font-semibold" id="river-path-heading">{uiText("Path")}{' '}</h3>
+           <span className="rounded-full bg-sidebar-accent px-2 py-1 font-medium text-[11px] text-sidebar-foreground/70 tabular-nums">
+             {pointSummary}
+           </span>
+@@ -317,9 +320,7 @@
+               strokeWidth="2"
+             />
+           </svg>
+-          <figcaption className="text-[11px] leading-relaxed text-sidebar-foreground/65">
+-            Points set the river centerline; width and depth turn that path into a carved channel.
+-          </figcaption>
++          <figcaption className="text-[11px] leading-relaxed text-sidebar-foreground/65">{uiText("Points set the river centerline; width and depth turn that path into a carved channel.")}{' '}</figcaption>
+         </figure>
+         <p className="text-xs leading-relaxed text-sidebar-foreground/80">{pathInstruction}</p>
+         <p
+@@ -333,28 +334,28 @@
+           <>
+             <RiverButton
+               disabled={pointCount < 2}
+-              disabledReason="Place at least two river points."
++              disabledReason={uiText("Place at least two river points.")}
+               emphasized
+               icon={Check}
+-              label="Finish river"
++              label={uiText("Finish river")}
+               onClick={finish}
+             />
+             <div className="grid grid-cols-2 gap-2">
+               <RiverButton
+                 disabled={pointCount === 0}
+-                disabledReason="Place a river point before removing one."
++                disabledReason={uiText("Place a river point before removing one.")}
+                 icon={RotateCcw}
+-                label="Remove last point"
++                label={uiText("Remove last point")}
+                 onClick={removeLastPoint}
+               />
+-              <RiverButton icon={X} label="Cancel" onClick={cancelDraft} />
++              <RiverButton icon={X} label={uiText("Cancel")} onClick={cancelDraft} />
+             </div>
+           </>
+         ) : editingRiverId ? (
+           <RiverButton
+             emphasized
+             icon={Check}
+-            label="Done editing path"
++            label={uiText("Done editing path")}
+             onClick={finishPathEditing}
+           />
+         ) : (
+@@ -363,16 +364,16 @@
+               <RiverButton
+                 emphasized
+                 icon={MousePointer2}
+-                label="Edit path"
++                label={uiText("Edit path")}
+                 onClick={togglePathEditing}
+               />
+             ) : null}
+             <RiverButton
+               disabled={!canStart}
+-              disabledReason="Add or select an editable Site first."
++              disabledReason={uiText("Add or select an editable Site first.")}
+               emphasized={!selectedRiver}
+               icon={Plus}
+-              label="Draw new river"
++              label={uiText("Draw new river")}
+               onClick={startNewRiver}
+             />
+           </>
+@@ -380,10 +381,10 @@
+       </section>
+ 
+       <section className="flex flex-col gap-3">
+-        <h3 className="text-xs font-semibold">Channel</h3>
++        <h3 className="text-xs font-semibold">{uiText("Channel")}</h3>
+         <ParameterRange
+           commitOnRelease
+-          label="Width"
++          label={uiText("Width")}
+           max={24}
+           min={1}
+           onChange={(width) => changeSettings({ width })}
+@@ -394,7 +395,7 @@
+         />
+         <ParameterRange
+           commitOnRelease
+-          label="Depth"
++          label={uiText("Depth")}
+           max={8}
+           min={0.1}
+           onChange={(depth) => changeSettings({ depth })}
+@@ -404,44 +405,37 @@
+           value={values.depth}
+         />
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span>First endpoint</span>
++          <span>{uiText("First endpoint")}</span>
+           <select
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs focus-visible:outline-2 focus-visible:outline-ring"
+             onChange={(event) => changeSettings({ source: event.target.value as RiverSource })}
+             value={values.source}
+           >
+-            <option value="rounded">Rounded</option>
+-            <option value="mountain">Mountain source</option>
++            <option value="rounded">{uiText("Rounded")}</option>
++            <option value="mountain">{uiText("Mountain source")}</option>
+           </select>
+         </label>
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span>Last endpoint</span>
++          <span>{uiText("Last endpoint")}</span>
+           <select
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs focus-visible:outline-2 focus-visible:outline-ring"
+             onChange={(event) => changeSettings({ outlet: event.target.value as RiverOutlet })}
+             value={values.outlet}
+           >
+-            <option value="rounded">Rounded</option>
+-            <option disabled={!seaOutletAvailable} value="sea">
+-              Sea outlet
+-            </option>
++            <option value="rounded">{uiText("Rounded")}</option>
++            <option disabled={!seaOutletAvailable} value="sea">{uiText("Sea outlet")}{' '}</option>
+           </select>
+         </label>
+-        <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">
+-          Mountain and sea connections continue procedurally beyond the Site; the authored river and
+-          its exports stay inside the Site.
+-        </p>
++        <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">{uiText("Mountain and sea connections continue procedurally beyond the Site; the authored river and its exports stay inside the Site.")}{' '}</p>
+         {!seaOutletAvailable ? (
+-          <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">
+-            Sea outlet is unavailable because the current Surroundings seed has no coast.
+-          </p>
++          <p className="text-[11px] leading-relaxed text-sidebar-foreground/60">{uiText("Sea outlet is unavailable because the current Surroundings seed has no coast.")}{' '}</p>
+         ) : null}
+       </section>
+ 
+       <section className="flex flex-col gap-3">
+-        <h3 className="text-xs font-semibold">Flow</h3>
++        <h3 className="text-xs font-semibold">{uiText("Flow")}</h3>
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span>Direction</span>
++          <span>{uiText("Direction")}</span>
+           <select
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs focus-visible:outline-2 focus-visible:outline-ring"
+             onChange={(event) =>
+@@ -449,13 +443,13 @@
+             }
+             value={values.flowDirection}
+           >
+-            <option value="forward">Forward</option>
+-            <option value="reverse">Reverse</option>
++            <option value="forward">{uiText("Forward")}</option>
++            <option value="reverse">{uiText("Reverse")}</option>
+           </select>
+         </label>
+         <ParameterRange
+           commitOnRelease
+-          label="Speed"
++          label={uiText("Speed")}
+           max={3}
+           min={0}
+           onChange={(flowSpeed) => changeSettings({ flowSpeed })}
+@@ -465,15 +459,13 @@
+           value={values.flowSpeed}
+         />
+         <p className="flex items-center gap-1.5 text-[11px] leading-relaxed text-sidebar-foreground/60">
+-          <ArrowLeftRight aria-hidden size={13} />
+-          Direction follows the first point toward the last; reverse flips the visible current.
+-        </p>
++          <ArrowLeftRight aria-hidden size={13} />{uiText("Direction follows the first point toward the last; reverse flips the visible current.")}{' '}</p>
+       </section>
+ 
+       <section className="flex flex-col gap-3">
+-        <h3 className="text-xs font-semibold">Appearance</h3>
++        <h3 className="text-xs font-semibold">{uiText("Appearance")}</h3>
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span>Water quality</span>
++          <span>{uiText("Water quality")}</span>
+           <select
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs focus-visible:outline-2 focus-visible:outline-ring"
+             onChange={(event) => changeSettings({ quality: event.target.value as WaterQuality })}
+@@ -481,20 +473,20 @@
+           >
+             {QUALITY_OPTIONS.map((option) => (
+               <option key={option.value} value={option.value}>
+-                {option.label}
++                {uiLabel(option.label)}
+               </option>
+             ))}
+           </select>
+         </label>
+         <label className="flex min-h-10 items-center justify-between gap-3 text-xs">
+-          <span>Shoreline</span>
++          <span>{uiText("Shoreline")}</span>
+           <select
+             className="h-9 rounded-md border border-sidebar-border bg-transparent px-3 text-sidebar-foreground text-xs focus-visible:outline-2 focus-visible:outline-ring"
+             onChange={(event) => changeSettings({ shoreline: event.target.value as PondShoreline })}
+             value={values.shoreline}
+           >
+-            <option value="soft">Soft bank</option>
+-            <option value="rocky">Rocky bank</option>
++            <option value="soft">{uiText("Soft bank")}</option>
++            <option value="rocky">{uiText("Rocky bank")}</option>
+           </select>
+         </label>
+       </section>
+@@ -504,7 +496,7 @@
+           <RiverButton
+             destructive
+             icon={Trash2}
+-            label="Delete river"
++            label={uiText("Delete river")}
+             onClick={removeSelectedRiver}
+           />
+         </section>
+--- a/src/river/floorplan-tool.tsx
++++ b/src/river/floorplan-tool.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import {
+   pointInPolygon2D,
+   snapWorldXZToBuildingLocal,
+@@ -123,6 +124,8 @@
+   finishTool,
+   sceneApi,
+ }: FloorplanToolContext) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const nodes = useSceneApiNodes(sceneApi)
+   const draft = useRiverStore((state) => state.draft)
+   const editingRiverId = useRiverStore((state) => state.editingRiverId)
+@@ -538,7 +541,7 @@
+         ? editedPlanPoints.map((point, index) => (
+             <circle
+               key={`${effectiveEditedRiver.id}:${index}`}
+-              aria-label={`River control point ${index + 1}`}
++              aria-label={uiText("River control point {arg0}", {arg0: index + 1})}
+               cx={point[0]}
+               cy={point[1]}
+               fill="#ffffff"
+--- a/src/surroundings/frontage-selector.tsx
++++ b/src/surroundings/frontage-selector.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { useMemo, useState } from 'react'
+ 
+ import {
+@@ -75,6 +76,8 @@
+   points,
+   seed,
+ }: FrontageSelectorProps) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const [selectedEdge, setSelectedEdge] = useState(0)
+   const previewPlan = useMemo(() => {
+     try {
+@@ -198,7 +201,7 @@
+   if (!diagram || previewPlan.status === 'error') {
+     return (
+       <p className="text-destructive text-xs" role="alert">
+-        {previewPlan.status === 'error' ? previewPlan.message : 'The Site boundary is unavailable.'}
++        {previewPlan.status === 'error' ? previewPlan.message : uiText("The Site boundary is unavailable.")}
+       </p>
+     )
+   }
+@@ -225,22 +228,22 @@
+   return (
+     <div className="overflow-hidden rounded-lg border border-sidebar-border bg-sidebar-accent/20">
+       <div className="flex items-center justify-between gap-2 px-3 pt-3 text-xs">
+-        <span className="font-medium">Road layout</span>
+-        <span className="text-sidebar-foreground/60">Camera aligned</span>
++        <span className="font-medium">{uiText("Road layout")}</span>
++        <span className="text-sidebar-foreground/60">{uiText("Camera aligned")}</span>
+       </div>
+       <div className="flex flex-col gap-2 px-3 py-3">
+         <div className="flex items-center justify-between gap-2 text-xs">
+-          <span className="font-medium">Edge {activeSegment.index + 1}</span>
+-          <span className="text-sidebar-foreground/60">Select an edge below</span>
++          <span className="font-medium">{uiText("Edge")}{' '}{activeSegment.index + 1}</span>
++          <span className="text-sidebar-foreground/60">{uiText("Select an edge below")}</span>
+         </div>
+         <div
+-          aria-label={`Edge ${activeSegment.index + 1} road type`}
++          aria-label={uiText("Edge {arg0} road type", {arg0: activeSegment.index + 1})}
+           className="grid grid-cols-3 gap-1 rounded-md bg-sidebar-accent/40 p-1"
+           role="group"
+         >
+           {SEPARATOR_OPTIONS.map((option) => (
+             <button
+-              aria-label={option.label}
++              aria-label={uiLabel(option.label)}
+               aria-pressed={activeSegment.context.separator === option.value}
+               className={`min-h-10 rounded px-1 text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring ${activeSegment.context.separator === option.value ? 'bg-sidebar font-medium text-sidebar-foreground shadow-sm' : 'text-sidebar-foreground/60 hover:bg-sidebar-accent hover:text-sidebar-foreground'}`}
+               key={option.value}
+@@ -248,10 +251,10 @@
+               type="button"
+             >
+               {option.value === 'none'
+-                ? 'No road'
++                ? uiText("No road")
+                 : option.value === 'secondary-road'
+-                  ? 'Secondary'
+-                  : 'Primary'}
++                  ? uiText("Secondary")
++                  : uiText("Primary")}
+             </button>
+           ))}
+         </div>
+@@ -438,17 +441,15 @@
+             ))}
+           </g>
+         </svg>
+-        <span className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-medium text-sidebar-foreground/60">
+-          Site
+-        </span>
+-
+-        <div aria-label="Property edges" role="group">
++        <span className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-medium text-sidebar-foreground/60">{uiText("Site")}{' '}</span>
++
++        <div aria-label={uiText("Property edges")} role="group">
+           {segmentShapes.map(({ arrowEnd, presentation, segment }) => {
+             const position = rotatePreviewPoint(arrowEnd, rotationDegrees, previewViewBox.center)
+             const selected = segment.index === activeSegment.index
+             return (
+               <button
+-                aria-label={`Edge ${segment.index + 1}: ${presentation.label}`}
++                aria-label={uiText("Edge {arg0}: {arg1}", {arg0: segment.index + 1, arg1: presentation.label})}
+                 aria-pressed={selected}
+                 className={`absolute flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring ${presentation.lineClassName}`}
+                 key={segment.index}
+@@ -457,7 +458,7 @@
+                   left: `${((position[0] - previewViewBox.x) / previewViewBox.width) * 100}%`,
+                   top: `${((position[1] - previewViewBox.y) / previewViewBox.height) * 100}%`,
+                 }}
+-                title={`Edge ${segment.index + 1} · ${presentation.label}`}
++                title={uiText("Edge {arg0} · {arg1}", {arg0: segment.index + 1, arg1: presentation.label})}
+                 type="button"
+               >
+                 <span

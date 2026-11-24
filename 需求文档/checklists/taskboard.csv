@@ -1,0 +1,22 @@
+﻿task_id,title,status,depends_on,source_ids,target_commit,evidence,blocker
+T00,工作区与安全检查,DONE,,,1c2c82557f792c0332d28427af880c81b88699e9,../evidence/workspace-report.md,
+T01,固定来源与初始来源锁,DONE,T00,S01;S02;S03;S04;S05,1c2c82557f792c0332d28427af880c81b88699e9,../evidence/source-map.md,
+T02,原始 Pascal 基线,DONE,T01,S04;S05;S10;S17;S18;S19,a5dec550e6d029cc026dee7c0e11e987e800765b,../evidence/baseline-report.md,
+T03,真实 API、重叠能力与契约审计,DONE,T02,S06;S07;S11;S12;S14;S15;S17;S25;S29;S30,17a7f173b83cc993a17febdcc2656ee80dac4725,../editor-integration/docs/integration/t03-completion.md,
+T04,依赖边界与测试支架,DONE,T03,S04;S06;S07;S24,928eb368409a8f4b3462bf7c8a3e52c78cd3c1ab,../editor-integration/docs/integration/boundary-report.md,
+T05,统一场景操作与坐标历史,IN_PROGRESS,T04,S06;S14;S15;S25;S28,eb911a3e63b5d8bcf9c9d1d6bc5ed690a9849155,../editor-integration/docs/integration/scene-derived-node-planning.md,仅推进AI必需的场景候选/正式提交一致性；房间自动派生问题仍待修复
+T06,目录映射与静态模型入口,TODO,T05,S11;S26;S28;S29;S32,,,当前只做AI所需原生目录映射；OpenPlan模型入库暂缓
+T07,完整项目快照和原子保存,TODO,T05;T06,S06;S17;S30,,,当前先验证AI修改的原生保存/重开与项目隔离；全量扩展包后续
+T08,便携包与保存版本恢复,TODO,T07,S29;S30,,,当前阶段暂缓，不作为AI融合前置；见当前实施范围_AI优先.md
+T09,基础轮廓和家具组合,TODO,T05;T06,S26;S27;S32,,,当前阶段暂缓，不作为AI融合前置；见当前实施范围_AI优先.md
+T10,当前相机、预览与 PNG 输出,TODO,T05;T07,S07;S25;S36,,,用户明确相机暂缓；相机与依赖截图的生图本阶段不实施
+T11,AI 传输与服务端边界,IN_PROGRESS,T04,S12;S13;S22;S23;S35,fde38647bc41c917b9138b277cdd6774c4f68c58,../editor-integration/docs/integration/ai-first-scope.md,三协议传输与多配置已实现；真实厂商凭据未配置，完整任务验收未完成
+T12,AI 上下文、工具映射与验证,IN_PROGRESS,T05;T06;T11,S12;S14;S15;S16;S22,fde38647bc41c917b9138b277cdd6774c4f68c58,../editor-integration/docs/integration/ai-first-scope.md,已接入 5 项家具/澄清工具；其余 31 工具和房间派生一致性待完成
+T13,AI 预览确认、聊天 UI 与取消,IN_PROGRESS,T07;T12,S12;S13;S14;S21,fde38647bc41c917b9138b277cdd6774c4f68c58,../editor-integration/docs/integration/ai-first-scope.md,已接入聊天、修改清单确认与取消；三维幽灵预览和完整多轮流程待完成
+T14,当前截图的单次生图,TODO,T10;T11,S25;S35,,,用户明确相机暂缓；相机与依赖截图的生图本阶段不实施
+T15,统一 UI 与生命周期,IN_PROGRESS,T08;T09;T13;T14,S25;S33;S34,0b88264d318479657e9a0e62c615ada511ff2cb3,../editor-integration/docs/integration/localization-ui.md,保留现有汉化与多语言；AI入口同步接入；深层工程报告和Windows全验收未完成
+T16,插件与原功能回归,TODO,T15,S05;S06;S07;S17;S18;S19,,,
+T17,安全、网络、依赖与来源审计,TODO,T16,S04;S05;S11;S17;S23;S29;S30;S32;S35,,,
+T18,全验收与性能比较,TODO,T17,S33;S34;S36,,,
+T19,干净候选版本复现,TODO,T18,S04;S05,,,
+T20,最终交接与恢复说明,TODO,T19,,,,

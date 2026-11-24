@@ -1,0 +1,7 @@
+{
+  "scope": "Literal toolHints labels and chip tooltips in built-in node definition files; external plugins and computed runtime strings excluded",
+  "declarations": 39,
+  "uniqueLabels": 89,
+  "missing": [],
+  "totalDictionaryEntries": 673
+}

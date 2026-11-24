@@ -1,0 +1,365 @@
+--- a/src/presets-panel.tsx
++++ b/src/presets-panel.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { useI18n } from '@pascal-app/editor/i18n'
+ import { useScene } from '@pascal-app/core'
+ import { SegmentedControl, SliderControl, ToggleControl, useEditor } from '@pascal-app/editor'
+ import { FLOWER_PRESET_LIST } from './flower-presets'
+@@ -31,6 +32,7 @@
+  * so the brush matches the right-hand inspector pixel-for-pixel.
+  */
+ export default function TreesPanel() {
++  const { t, label: localize } = useI18n()
+   // Section lives in the plugin store (not local state) so "find in catalog"
+   // can point the panel at the found node's section — see find-sync.ts.
+   const mode = useTreesStore((s) => s.mode)
+@@ -46,9 +48,9 @@
+     <div className="flex flex-col gap-4 p-4 text-sidebar-foreground">
+       <header className="flex flex-col gap-3">
+         <div className="flex items-center justify-between">
+-          <h2 className="font-semibold text-base">Nature</h2>
++          <h2 className="font-semibold text-base">{t('Nature')}</h2>
+           <span className="rounded-full bg-sidebar-accent px-2 py-0.5 text-sidebar-foreground/70 text-xs">
+-            {count} planted
++            {t('{count} planted', { count })}
+           </span>
+         </div>
+         <SegmentedControl
+@@ -62,8 +64,8 @@
+         />
+         <p className="text-sidebar-foreground/50 text-xs">
+           {arming
+-            ? 'Click the ground to plant. Press Esc to stop.'
+-            : `Pick ${mode === 'grass' ? 'a grass' : `a ${NOUN[mode]}`}, then click the ground.`}
++            ? t('Click the ground to plant. Press Esc to stop.')
++            : t('Pick a {kind}, then click the ground.', { kind: localize(NOUN[mode]) })}
+         </p>
+       </header>
+ 
+@@ -72,7 +74,7 @@
+       {mode === 'grass' && <GrassSection arming={arming} />}
+ 
+       <footer className="-mx-4 -mb-4 sticky bottom-0 mt-1 border-sidebar-border/50 border-t bg-sidebar px-4 py-3 text-[11px] text-sidebar-foreground/50 leading-relaxed">
+-        Trees generated with{' '}
++        {t('Trees generated with')}{' '}
+         <a
+           className="underline decoration-dotted underline-offset-2 hover:text-sidebar-foreground/70"
+           href="https://github.com/dgreenheck/ez-tree"
+@@ -81,7 +83,7 @@
+         >
+           ez-tree
+         </a>{' '}
+-        by{' '}
++        {t('by')}{' '}
+         <a
+           className="underline decoration-dotted underline-offset-2 hover:text-sidebar-foreground/70"
+           href="https://x.com/dangreenheck"
+@@ -97,6 +99,8 @@
+ }
+ 
+ function TreesSection({ arming }: { arming: boolean }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const selected = useTreesStore((s) => s.preset)
+   const size = useTreesStore((s) => s.size)
+   const height = useTreesStore((s) => s.height)
+@@ -118,9 +122,9 @@
+           <SegmentedControl
+             onChange={useTreesStore.getState().setSize}
+             options={[
+-              { label: 'S', value: 'small' },
+-              { label: 'M', value: 'medium' },
+-              { label: 'L', value: 'large' },
++              { label: 'Small', value: 'small' },
++              { label: 'Medium', value: 'medium' },
++              { label: 'Large', value: 'large' },
+             ]}
+             value={size}
+           />
+@@ -128,7 +132,7 @@
+       )}
+       <div className="flex flex-col gap-0.5">
+         <SliderControl
+-          label="Height"
++          label={uiText("Height")}
+           max={15}
+           min={1}
+           onChange={useTreesStore.getState().setHeight}
+@@ -140,7 +144,7 @@
+         />
+         {!leafless && (
+           <SliderControl
+-            label="Foliage"
++            label={uiText("Foliage")}
+             max={1.5}
+             min={0}
+             onChange={useTreesStore.getState().setFoliageDensity}
+@@ -151,7 +155,7 @@
+           />
+         )}
+         <SliderControl
+-          label="Trunk"
++          label={uiText("Trunk")}
+           max={2.5}
+           min={0.3}
+           onChange={useTreesStore.getState().setTrunkThickness}
+@@ -162,7 +166,7 @@
+         />
+         <ToggleControl
+           checked={leafless}
+-          label="Bare (leafless)"
++          label={uiText("Bare (leafless)")}
+           onChange={useTreesStore.getState().setLeafless}
+         />
+       </div>
+@@ -171,6 +175,8 @@
+ }
+ 
+ function FlowersSection({ arming }: { arming: boolean }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const selected = useTreesStore((s) => s.flowerPreset)
+   const height = useTreesStore((s) => s.flowerHeight)
+ 
+@@ -188,7 +194,7 @@
+         selected={arming ? selected : null}
+       />
+       <SliderControl
+-        label="Height"
++        label={uiText("Height")}
+         max={2}
+         min={0.2}
+         onChange={useTreesStore.getState().setFlowerHeight}
+@@ -203,6 +209,8 @@
+ }
+ 
+ function GrassSection({ arming }: { arming: boolean }) {
++  const { t: uiText, label: uiLabel } = useI18n()
++
+   const selected = useTreesStore((s) => s.grassPreset)
+   const height = useTreesStore((s) => s.grassHeight)
+ 
+@@ -216,7 +224,7 @@
+     <>
+       <PresetGrid items={GRASS_PRESET_LIST} onPick={activate} selected={arming ? selected : null} />
+       <SliderControl
+-        label="Height"
++        label={uiText("Height")}
+         max={2}
+         min={0.1}
+         onChange={useTreesStore.getState().setGrassHeight}
+@@ -239,6 +247,7 @@
+   selected: T | null
+   onPick: (id: T) => void
+ }) {
++  const { label: localize } = useI18n()
+   return (
+     <div className="grid grid-cols-2 gap-2">
+       {items.map((item) => {
+@@ -260,7 +269,7 @@
+               className="aspect-square w-full rounded-lg bg-[#f3f4f6] object-cover ring-1 ring-black/10 transition-transform group-hover:scale-[1.02]"
+               src={item.thumbnail}
+             />
+-            <span className="pl-0.5 font-medium text-xs">{item.label}</span>
++            <span className="pl-0.5 font-medium text-xs">{localize(item.label)}</span>
+             {isSelected && (
+               <span className="absolute top-3 right-3 h-2 w-2 rounded-full bg-sidebar-ring ring-2 ring-sidebar-accent" />
+             )}
+--- a/src/instanced.tsx
++++ b/src/instanced.tsx
+@@ -8,10 +8,10 @@
+   useRegistry,
+   useScene,
+ } from '@pascal-app/core'
+-import { useNodeEvents, useViewer } from '@pascal-app/viewer'
++import { registerSurfaceSource, useNodeEvents, useViewer } from '@pascal-app/viewer'
+ import { useFrame } from '@react-three/fiber'
+ import { useCallback, useLayoutEffect, useMemo, useRef } from 'react'
+-import { type BufferGeometry, type InstancedMesh, type Material, Matrix4, Object3D } from 'three'
++import { type BufferGeometry, type InstancedMesh, type Material, Group, Mesh, Matrix4, Object3D } from 'three'
+ import { toStaticMaterial } from './wind-node'
+ 
+ /**
+@@ -336,6 +336,21 @@
+   )
+   const geometryScale = variant ? height / variant.naturalHeight : 1
+ 
++  useLayoutEffect(() => {
++    let source: Group | undefined
++    return registerSurfaceSource(registeredRef.current, () => {
++      if (!source) {
++        const data = getVariant(node)
++        source = new Group()
++        const geometry = new Group()
++        geometry.scale.setScalar(height / data.naturalHeight)
++        for (const part of data.subMeshes) geometry.add(new Mesh(part.geometry, part.material))
++        source.add(geometry)
++      }
++      return source
++    })
++  }, [node, height, getVariant])
++
+   return (
+     <group visible={node.visible !== false} {...handlers}>
+       {!isExporting && (
+--- a/src/definition.ts
++++ b/src/definition.ts
+@@ -1,9 +1,53 @@
+-import type { HandleDescriptor, NodeDefinition } from '@pascal-app/core'
++import {
++  POINT_ATTACHMENT_EXTENSION,
++  type HandleDescriptor,
++  type NodeDefinition,
++  type PointAttachmentProvider,
++} from '@pascal-app/core'
+ import { buildTreeFloorplan, treeTrunkRadius } from './floorplan'
+ import { treeParametrics } from './parametrics'
+ import { TreeNode } from './schema'
+ 
+ type TreeDefinition = NodeDefinition<typeof TreeNode> & Record<string, unknown>
++
++function attachmentShape(node: TreeNode) {
++  // Foliage also affects naturalHeight, which the renderer uses to scale the trunk.
++  return JSON.stringify([
++    node.preset ?? 'oak',
++    node.size ?? 'medium',
++    node.treeType ?? null,
++    node.seed ?? null,
++    node.foliageDensity ?? 1,
++    node.trunkThickness ?? 1,
++    node.leafless ?? false,
++  ])
++}
++
++const treePointAttachment: PointAttachmentProvider<TreeNode> = {
++  capture(node, point) {
++    if (!(node.height > 0)) return null
++    return {
++      parameters: {
++        x: point[0] / node.height,
++        y: point[1] / node.height,
++        z: point[2] / node.height,
++        shape: attachmentShape(node),
++      },
++      distance: 0,
++    }
++  },
++  resolve(node, p) {
++    if (!(node.height > 0)) return null
++    if (p.shape !== attachmentShape(node)) {
++      // ez-tree loads textures at module scope. Defer evaluation until a browser needs deformation,
++      // including a 2D-only view; importing this definition during SSR must remain safe.
++      if (typeof document === 'undefined') return null
++      const geometry = require('./geometry') as typeof import('./geometry')
++      return geometry.resolveTreeAttachment(node, p)
++    }
++    return [Number(p.x) * node.height, Number(p.y) * node.height, Number(p.z) * node.height]
++  },
++}
+ 
+ const ROTATE_RING_OFFSET = 0.35
+ /** Ring hugs the ground like the item gizmo — high enough to clear the grass,
+@@ -69,6 +113,7 @@
+   schema: TreeNode,
+   category: 'furnish',
+   snapProfile: 'item',
++  extensions: { [POINT_ATTACHMENT_EXTENSION]: treePointAttachment },
+ 
+   defaults: () => ({
+     object: 'node',
+--- a/src/geometry.ts
++++ b/src/geometry.ts
+@@ -4,9 +4,11 @@
+ // `floorplan.ts`, or SSR/prerender crashes. Pure helpers shared with the
+ // flower/grass builders live in `variant-utils.ts` for that reason.
+ import { Tree } from '@dgreenheck/ez-tree'
++import type { PointAttachment } from '@pascal-app/core'
++import { createMeshPointAttachmentProvider } from '@pascal-app/viewer'
+ import type { BufferGeometry, Material, Mesh, Object3D } from 'three'
+ import { ezPresetOf } from './presets'
+-import type { TreeNode } from './schema'
++import { TreeNode } from './schema'
+ import { naturalHeight } from './variant-utils'
+ import { toWindMaterial } from './wind-node'
+ 
+@@ -100,7 +102,11 @@
+ /** A renderable sub-mesh of a tree: geometry (baked into tree-local space) +
+  * its material. The instanced renderer builds one InstancedMesh per sub-mesh
+  * per variant. */
+-export type TreeSubMesh = { geometry: BufferGeometry; material: Material | Material[] }
++export type TreeSubMesh = {
++  geometry: BufferGeometry
++  material: Material | Material[]
++  role?: string
++}
+ 
+ /** Geometry + height for one tree variant, generated once and shared across
+  * every instance of that spec. */
+@@ -141,8 +147,64 @@
+       const material = Array.isArray(mesh.material)
+         ? mesh.material.map(toWindMaterial)
+         : toWindMaterial(mesh.material)
+-      out.push({ geometry, material })
++      out.push({
++        geometry,
++        material,
++        role: Array.isArray(mesh.material) ? undefined : mesh.material.name,
++      })
+     }
+   })
+   return out
+ }
++
++const branchAttachment = createMeshPointAttachmentProvider<TreeNode>((node) => {
++  const data = getVariantData(treeSpecOf(node))
++  const part = data.subMeshes.find((part) => part.role === 'branches')
++  if (!part) return null
++  return {
++    geometry: part.geometry,
++    scale: node.height / data.naturalHeight,
++    key: JSON.stringify([node.preset, node.size, node.treeType ?? null, node.seed ?? null]),
++  }
++})
++
++export function resolveTreeAttachment(
++  node: TreeNode,
++  p: PointAttachment['parameters'],
++): [number, number, number] | null {
++  let shape: unknown
++  try {
++    shape = JSON.parse(String(p.shape))
++  } catch {
++    return null
++  }
++  if (!Array.isArray(shape) || shape.length !== 7) return null
++  const parsed = TreeNode.safeParse({
++    ...node,
++    preset: shape[0],
++    size: shape[1],
++    treeType: shape[2] ?? undefined,
++    seed: shape[3] ?? undefined,
++    foliageDensity: shape[4],
++    trunkThickness: shape[5],
++    leafless: shape[6],
++  })
++  if (!parsed.success) return null
++  const original = parsed.data
++  if (
++    original.preset !== node.preset ||
++    original.size !== node.size ||
++    original.treeType !== node.treeType ||
++    original.seed !== node.seed
++  )
++    return null
++  const point: [number, number, number] = [
++    Number(p.x) * node.height,
++    Number(p.y) * node.height,
++    Number(p.z) * node.height,
++  ]
++  const binding = branchAttachment.capture(original, point, {})
++  // Canopy/leaf placements cannot be rebound to a distant branch by a nearest-point guess.
++  if (!binding || binding.distance > Math.max(0.15, node.height * 0.04)) return null
++  return branchAttachment.resolve(node, binding.parameters, {})
++}

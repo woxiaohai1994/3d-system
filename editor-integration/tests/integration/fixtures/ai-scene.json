@@ -1,0 +1,41 @@
+{
+  "nodes": {
+    "site_xxcgh1lbkc8dt8vf": {
+      "object": "node",
+      "id": "site_xxcgh1lbkc8dt8vf",
+      "type": "site",
+      "parentId": null,
+      "visible": true,
+      "metadata": {},
+      "polygon": { "type": "polygon", "points": [[-15, -15], [15, -15], [15, 15], [-15, 15]] },
+      "children": ["building_8jhnl10cjs9dlr65"]
+    },
+    "building_8jhnl10cjs9dlr65": {
+      "object": "node",
+      "id": "building_8jhnl10cjs9dlr65",
+      "type": "building",
+      "parentId": "site_xxcgh1lbkc8dt8vf",
+      "visible": true,
+      "metadata": {},
+      "children": ["level_8sdagw3cym5iqos6"],
+      "position": [0, 0, 0],
+      "rotation": [0, 0, 0]
+    },
+    "level_8sdagw3cym5iqos6": {
+      "object": "node",
+      "id": "level_8sdagw3cym5iqos6",
+      "type": "level",
+      "parentId": "building_8jhnl10cjs9dlr65",
+      "visible": true,
+      "metadata": {},
+      "children": [],
+      "level": 0,
+      "baseElevation": 0,
+      "height": 3
+    }
+  },
+  "rootNodeIds": ["site_xxcgh1lbkc8dt8vf"],
+  "collections": {},
+  "materials": {},
+  "installedPlugins": []
+}

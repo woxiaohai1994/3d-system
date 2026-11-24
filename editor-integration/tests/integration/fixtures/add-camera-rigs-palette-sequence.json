@@ -1,0 +1,107 @@
+{
+  "blender": "5.2.2 LTS",
+  "drawingReference": "Blender v4.3.0",
+  "sources": {
+    "vendor/add-camera-rigs/operators.py": "8939a8e0733a5a8fea9418a21c63921374f710ff79a4cc966062e8b952e99f39",
+    "vendor/add-camera-rigs/build_rigs.py": "bac3d523b925451d490f786d52812f5741924f13240b93252b3e647d9d6890b9",
+    "vendor/blender-rig-wire/overlay_armature.cc": "683c30d319ba8ed27f9da34df8af7682fcdc746985c3723aaa2f891ea5c67ae6"
+  },
+  "sequence": [
+    {
+      "rig": "dolly",
+      "step": "initial",
+      "operation": null,
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "dolly",
+      "step": "enable-1",
+      "operation": "set_dolly_zoom",
+      "posePalette": "THEME01",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME01"
+    },
+    {
+      "rig": "dolly",
+      "step": "remove-1",
+      "operation": "remove_dolly_zoom",
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "dolly",
+      "step": "enable-2",
+      "operation": "set_dolly_zoom",
+      "posePalette": "THEME01",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME01"
+    },
+    {
+      "rig": "dolly",
+      "step": "remove-2",
+      "operation": "remove_dolly_zoom",
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "dolly",
+      "step": "remove-3",
+      "operation": "remove_dolly_zoom",
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "crane",
+      "step": "initial",
+      "operation": null,
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "crane",
+      "step": "enable-1",
+      "operation": "set_dolly_zoom",
+      "posePalette": "THEME01",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME01"
+    },
+    {
+      "rig": "crane",
+      "step": "remove-1",
+      "operation": "remove_dolly_zoom",
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "crane",
+      "step": "enable-2",
+      "operation": "set_dolly_zoom",
+      "posePalette": "THEME01",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME01"
+    },
+    {
+      "rig": "crane",
+      "step": "remove-2",
+      "operation": "remove_dolly_zoom",
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    },
+    {
+      "rig": "crane",
+      "step": "remove-3",
+      "operation": "remove_dolly_zoom",
+      "posePalette": "DEFAULT",
+      "bonePalette": "THEME04",
+      "effectivePalette": "THEME04"
+    }
+  ]
+}

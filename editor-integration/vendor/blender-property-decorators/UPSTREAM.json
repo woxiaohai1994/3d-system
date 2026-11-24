@@ -1,0 +1,57 @@
+{
+  "tag": "v4.3.0",
+  "files": {
+    "interface_layout.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/interface/interface_layout.cc",
+      "sha256": "56bc2e69fa8539e097854d25e5814741823c7c35d24bbfaf64e3341c9f6c89d6"
+    },
+    "interface_handlers.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/interface/interface_handlers.cc",
+      "sha256": "e8165a5171c24a95099134fb2f7c59ca584f227acaa1b7fdd2d7d11d64fb19d1"
+    },
+    "interface.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/interface/interface.cc",
+      "sha256": "fd8ee661ebcb5f720daf1daa56880f3002d78574f12042aa07c2c79badcd9b48"
+    },
+    "interface_anim.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/interface/interface_anim.cc",
+      "sha256": "d21d35e7602fe877b368c38329c3555aebee042e4b79718c1fc6480172678a24"
+    },
+    "interface_intern.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/interface/interface_intern.hh",
+      "sha256": "6a3793611c0f0228f04fb1be148eb5295368777e141213a80e19e9f53097d384"
+    },
+    "decorate.svg": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/decorate.svg",
+      "sha256": "6fd9424112020466f61b5b147b7291ebca391b47ec6ce41d7b5fd660b244be4e"
+    },
+    "decorate_animate.svg": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/decorate_animate.svg",
+      "sha256": "2bf3331fd5527ab86f5c1996feb7c114a7a3ff7abdf9774b6b3bd29a46edc2b1"
+    },
+    "decorate_driver.svg": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/decorate_driver.svg",
+      "sha256": "8a4a25bccf1e95294a916bbeef9a8e01a093d1e99606905a591b3937a1db1218"
+    },
+    "decorate_keyframe.svg": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/decorate_keyframe.svg",
+      "sha256": "4054a2bb15b798acc1b6c5b6e2cbaeb88c91e128a2c59a1776c09ed5f7a6d275"
+    },
+    "decorate_override.svg": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/decorate_override.svg",
+      "sha256": "a79b452d2c9aead5efde9bf27624b1c2e2b1a422898decffb3a4bbfb9a4e186c"
+    },
+    "UI_interface_c.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/include/UI_interface_c.hh",
+      "sha256": "a8dede00b64c48349e0ba3c450359872681c64fd14a2ab4f6eb42b59accd8d99"
+    },
+    "interface_widgets.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/interface/interface_widgets.cc",
+      "sha256": "06a7464b5b41e9a6a01d1c7dd2ecf6f059a327ee2ad1bd4394759c6cc93c7f2a"
+    },
+    "RNA_types.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/RNA_types.hh",
+      "sha256": "9fd8f7dc8045333afe79dfe31733e9cfa9fa9e17be6b16f59b75d8573ca29066"
+    }
+  }
+}

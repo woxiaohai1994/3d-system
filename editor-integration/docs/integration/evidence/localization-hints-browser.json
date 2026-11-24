@@ -1,0 +1,37 @@
+{
+  "browser": "153.0.8010.50",
+  "locale": "en-US",
+  "translationDisabled": true,
+  "sceneId": "86d138ed8a72",
+  "checks": [
+    {
+      "name": "English browser renders Chinese camera, shelf inspector, enum labels and selection hints",
+      "status": "PASS"
+    },
+    {
+      "name": "Live English switch keeps the selected shelf and expanded inspector",
+      "status": "PASS"
+    },
+    {
+      "name": "Translated enum submits original schema value; locale switches preserve full export and user name Door",
+      "status": "PASS"
+    },
+    {
+      "name": "One native Undo restores the enum edit after both language switches",
+      "status": "PASS"
+    },
+    {
+      "name": "Chinese preference survives reload",
+      "status": "PASS"
+    },
+    {
+      "name": "Wall drawing chips cycle real snap/grid/continuation state and keep it on language switch",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}

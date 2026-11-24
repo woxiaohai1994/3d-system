@@ -1,0 +1,25 @@
+{
+  "project": "Blender",
+  "tag": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "normalization": null,
+  "provenance": "Complete source bytes downloaded from the pinned jsDelivr mirror; official raw URLs verified separately. No independent Git blob hash verification.",
+  "files": [
+    {
+      "file": "transform_convert_object.cc",
+      "sourcePath": "source/blender/editors/transform/transform_convert_object.cc",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_convert_object.cc",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/editors/transform/transform_convert_object.cc",
+      "sha256": "13cb0bd3fc9ffafbfd11992565914268064f95e8e49116e7b074ffdec3856904",
+      "bytes": 33025
+    },
+    {
+      "file": "transform_orientations.cc",
+      "sourcePath": "source/blender/editors/transform/transform_orientations.cc",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_orientations.cc",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/editors/transform/transform_orientations.cc",
+      "sha256": "76efe71179ceecf3c7001a9d4eb6c7805807ec8bece0c95ff73869ab82d460ef",
+      "bytes": 45201
+    }
+  ]
+}

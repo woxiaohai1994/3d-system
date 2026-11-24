@@ -1,0 +1,52 @@
+{
+  "source": {
+    "ref": "v4.3.0",
+    "method": "Source declaration extraction; hard bounds use RNA_def_property PROP_FLOAT defaults, UI bounds use the explicit Object declarations.",
+    "files": {
+      "rna_object.cc": {
+        "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_object.cc",
+        "sha256": "84f427341aac389b4c6b565ce73c18f5588e78371c09805a4e2fa86341406c1f"
+      },
+      "rna_define.cc": {
+        "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_define.cc",
+        "sha256": "132944ddc31b41dfd9a3f9c37fbe05caca7ab7410a64f23e1b5ee2841ea5d826"
+      },
+      "RNA_types.hh": {
+        "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/RNA_types.hh",
+        "sha256": "9fd8f7dc8045333afe79dfe31733e9cfa9fa9e17be6b16f59b75d8573ca29066"
+      }
+    }
+  },
+  "objectTransformRNA": {
+    "location": {
+      "subtype": "TRANSLATION",
+      "hard_min": -3.4028234663852886e38,
+      "hard_max": 3.4028234663852886e38,
+      "soft_min": -3.4028234663852886e38,
+      "soft_max": 3.4028234663852886e38,
+      "step": 1,
+      "precision": 5,
+      "source_line": 3075
+    },
+    "rotation_euler": {
+      "subtype": "EULER",
+      "hard_min": -3.4028234663852886e38,
+      "hard_max": 3.4028234663852886e38,
+      "soft_min": -3.4028234663852886e38,
+      "soft_max": 3.4028234663852886e38,
+      "step": 100,
+      "precision": 5,
+      "source_line": 3101
+    },
+    "scale": {
+      "subtype": "XYZ",
+      "hard_min": -3.4028234663852886e38,
+      "hard_max": 3.4028234663852886e38,
+      "soft_min": -3.4028234663852886e38,
+      "soft_max": 3.4028234663852886e38,
+      "step": 1,
+      "precision": 3,
+      "source_line": 3115
+    }
+  }
+}

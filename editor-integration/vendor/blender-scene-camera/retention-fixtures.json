@@ -1,0 +1,659 @@
+{
+  "metadata": {
+    "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/scene.cc",
+    "ref": "v4.3.0",
+    "sha256": "73f4f2ec12844f10074f642db106eae9a3a637a3b30c45389da3a3b42312c5d9",
+    "license": "GPL-2.0-or-later",
+    "generatorHash": "9facb88c99aa3fb505536eecb7e107bec625652aa6d4b9714e7412ab17b98626",
+    "translationUnitHash": "566a849e817c62822a9288535590c590a2a5024c2adc0703fccedae34174cb7e",
+    "functions": [
+      "BKE_scene_camera_switch_find",
+      "BKE_scene_camera_switch_update"
+    ],
+    "boundaryModel": "Original function bodies compile unchanged. Scene/camera/marker storage and dependency-update notification are host boundaries; delete/unbind/manual-active actions mutate those boundary records. This is a native C++ source oracle, not the installed Blender 5.2.2 application."
+  },
+  "cases": [
+    {
+      "id": "delete-last-valid-from-A",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "delete",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "delete-last-valid-from-none",
+      "initialCamera": null,
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "delete",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "delete-valid-retaining-unbound-marker",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        },
+        {
+          "id": "unbound",
+          "frame": 60,
+          "cameraId": null
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "delete",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "delete-selected-with-earlier-valid",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "A24",
+          "frame": 24,
+          "cameraId": "A"
+        },
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "delete",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "A",
+          "updated": false
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": true
+        }
+      ]
+    },
+    {
+      "id": "delete-after-seeking-back",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "A24",
+          "frame": 24,
+          "cameraId": "A"
+        },
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 24
+        },
+        {
+          "operation": "delete",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": true
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": false
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "delete-after-manual-active",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "active",
+          "cameraId": "C"
+        },
+        {
+          "operation": "delete",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "C",
+          "selectedMarkerCamera": "B",
+          "updated": false
+        },
+        {
+          "sceneCamera": "C",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "C",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "unbind-last-valid-from-A",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "unbind",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "unbind-last-valid-from-none",
+      "initialCamera": null,
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "unbind",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "unbind-valid-retaining-unbound-marker",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        },
+        {
+          "id": "unbound",
+          "frame": 60,
+          "cameraId": null
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "unbind",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "unbind-selected-with-earlier-valid",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "A24",
+          "frame": 24,
+          "cameraId": "A"
+        },
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "unbind",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "A",
+          "updated": false
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": true
+        }
+      ]
+    },
+    {
+      "id": "unbind-after-seeking-back",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "A24",
+          "frame": 24,
+          "cameraId": "A"
+        },
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 24
+        },
+        {
+          "operation": "unbind",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": true
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": false
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": "A",
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "unbind-after-manual-active",
+      "initialCamera": "A",
+      "markers": [
+        {
+          "id": "B48",
+          "frame": 48,
+          "cameraId": "B"
+        }
+      ],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "active",
+          "cameraId": "C"
+        },
+        {
+          "operation": "unbind",
+          "markerId": "B48"
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "B",
+          "selectedMarkerCamera": "B",
+          "updated": true
+        },
+        {
+          "sceneCamera": "C",
+          "selectedMarkerCamera": "B",
+          "updated": false
+        },
+        {
+          "sceneCamera": "C",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "C",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    },
+    {
+      "id": "no-markers-retain-existing-camera",
+      "initialCamera": "A",
+      "markers": [],
+      "events": [
+        {
+          "operation": "update",
+          "frame": 0
+        },
+        {
+          "operation": "update",
+          "frame": 48
+        },
+        {
+          "operation": "update",
+          "frame": 72
+        }
+      ],
+      "states": [
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": null,
+          "updated": false
+        },
+        {
+          "sceneCamera": "A",
+          "selectedMarkerCamera": null,
+          "updated": false
+        }
+      ]
+    }
+  ]
+}

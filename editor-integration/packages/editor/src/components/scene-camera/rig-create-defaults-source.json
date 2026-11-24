@@ -1,0 +1,42 @@
+{
+  "source": "add-camera-rigs@1.9.0",
+  "blender": "5.2.2 LTS",
+  "buildHash": "d13f752e3b9c",
+  "operator": "object.build_camera_rig",
+  "sourcePath": "vendor/add-camera-rigs/build_rigs.py",
+  "sourceSHA256": "bac3d523b925451d490f786d52812f5741924f13240b93252b3e647d9d6890b9",
+  "cameraDefaults": {
+    "projection": "perspective",
+    "sensorWidth": 36.0,
+    "near": 0.10000000149011612,
+    "far": 1000.0,
+    "orthoScale": 6.0,
+    "depthOfField": false,
+    "focusDistance": 10.0,
+    "aperture": 2.799999952316284,
+    "showInFront": false,
+    "lockCamera": false
+  },
+  "objectWireColors": {
+    "active": [
+      1.0,
+      0.6274510025978088,
+      0.1568627506494522
+    ],
+    "select": [
+      0.9294118285179138,
+      0.34117648005485535,
+      0.0
+    ],
+    "normal": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "transform": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  }
+}

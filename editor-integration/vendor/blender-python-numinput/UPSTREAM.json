@@ -1,0 +1,15 @@
+{
+  "ref": "v4.3.0",
+  "sources": [
+    {
+      "name": "py_capi_utils.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/generic/py_capi_utils.cc",
+      "sha256": "719c8c2a45a163e210061c2dd0f44a424839a19db40a62b6e11c657e92fcb30e"
+    },
+    {
+      "name": "bpy_interface_run.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/intern/bpy_interface_run.cc",
+      "sha256": "0221cd6627a720292b4117bf2ed41d92321ac1dc46628f16aa7970a886de80e0"
+    }
+  ]
+}

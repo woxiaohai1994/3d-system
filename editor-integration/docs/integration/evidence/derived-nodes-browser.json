@@ -1,0 +1,171 @@
+{
+  "browser": "153.0.8010.50",
+  "report": {
+    "runtimeIdentity": {
+      "singleCore": true,
+      "singleThree": true,
+      "reactVersion": "19.2.7"
+    },
+    "storeIdentity": true,
+    "bridgeUsesHostStore": true,
+    "browserRafPresent": true,
+    "initialNodeCount": 3,
+    "bridgeInvalidInput": {
+      "rejected": false,
+      "createSurvived": true,
+      "history": {
+        "pastCount": 2,
+        "futureCount": 0
+      }
+    },
+    "hostInvalidInput": {
+      "rejected": false,
+      "snapshotUnchanged": false,
+      "history": {
+        "pastCount": 1,
+        "futureCount": 0
+      }
+    },
+    "bridgeInjectedFailure": {
+      "rejected": true,
+      "createSurvived": true,
+      "history": {
+        "pastCount": 1,
+        "futureCount": 0
+      }
+    },
+    "hostInjectedFailure": {
+      "rejected": true,
+      "snapshotUnchanged": true,
+      "history": {
+        "pastCount": 0,
+        "futureCount": 0
+      }
+    },
+    "hostMixedCommit": {
+      "history": {
+        "pastCount": 1,
+        "futureCount": 0
+      },
+      "undo": true,
+      "redo": true
+    },
+    "groupedHistory": {
+      "pastCount": 1,
+      "futureCount": 0
+    },
+    "undoRestoresSnapshot": true,
+    "redoRestoresCreation": true,
+    "adapterUpdates": {
+      "previewUnchanged": true,
+      "confirmedOnce": true,
+      "adapterUndo": true,
+      "staleRejected": true,
+      "cancellationPreservesManualEdit": true
+    },
+    "adapterBatch": {
+      "batchTemporaryIds": true,
+      "nodeIdMap": {
+        "$door": "door_jn4pfc77xunmmncd",
+        "$wall": "wall_qwh8nuaue4dafful",
+        "$level": "level_cqbasuv753ke46qz"
+      },
+      "batchPreviewUnchanged": true,
+      "batchMatchesPreview": true,
+      "batchSingleHistory": true,
+      "batchUndo": true,
+      "batchRedo": true,
+      "cascadeDeleted": true,
+      "deleteUndo": true,
+      "createdIds": [
+        "level_cqbasuv753ke46qz",
+        "wall_qwh8nuaue4dafful",
+        "door_jn4pfc77xunmmncd"
+      ]
+    },
+    "adapterResources": {
+      "resourcePreviewUnchanged": true,
+      "resourceOnce": true,
+      "resourceMatchesPreview": true,
+      "resourceUndo": true,
+      "resourceRedo": true,
+      "materialDeleteRejected": true,
+      "resourceFailureUnchanged": true,
+      "materialUndoRefreshes": true,
+      "materialRedoRefreshes": true,
+      "resourceRoundtrip": true
+    },
+    "adapterCoordinates": {
+      "checks": {
+        "detachedPreview": true,
+        "localCoordinates": true,
+        "mirrorScale": true,
+        "asymmetricWorldMarker": true,
+        "singleHistory": true,
+        "undo": true,
+        "redo": true,
+        "shearRejectedAtomically": true,
+        "openPlanCardinalDirections": true,
+        "openPlanScaleAxes": true,
+        "jsonReload": true
+      },
+      "passed": true,
+      "localPosition": [
+        4,
+        0.75,
+        2
+      ],
+      "scale": [
+        -2,
+        3,
+        0.5
+      ]
+    },
+    "adapterDerivedNodes": {
+      "checks": {
+        "previewUnchanged": true,
+        "allDerivedNodesPreviewed": true,
+        "exactCandidateCommitted": true,
+        "receiptIncludesDerivedIds": true,
+        "oneHistoryAndIdempotent": true,
+        "undo": true,
+        "redoKeepsIds": true,
+        "jsonReloadKeepsReferences": true,
+        "deletionMatchesPreview": true,
+        "deleteUndo": true,
+        "wallMergePreviewIncludesAttachment": true,
+        "wallMergeMatchesManualDeletion": true,
+        "wallMergeUndo": true
+      },
+      "passed": true,
+      "createdTypes": [
+        "gutter",
+        "gutter",
+        "downspout",
+        "downspout"
+      ],
+      "createdIds": [
+        "gutter_0wr2nfhuoat3jng0",
+        "gutter_dh3secboa75gcbcs",
+        "downspout_5xzo7kud4024wez7",
+        "downspout_7vuljsgkwh1tilgl"
+      ]
+    },
+    "checks": {
+      "adapterDerivedNodes": true,
+      "adapterCoordinates": true,
+      "adapterResources": true,
+      "adapterTemporaryIds": true,
+      "adapterBatch": true,
+      "adapterUpdates": true,
+      "sharedRuntime": true,
+      "singleStore": true,
+      "nativeRafPreserved": true,
+      "hostFailurePreservesScene": true,
+      "hostMixedCommitOneUndo": true,
+      "groupedUndoRedo": true
+    },
+    "passed": true
+  },
+  "errors": []
+}

@@ -1,0 +1,313 @@
+{
+  "document_id": "INT-3D-BASE-001",
+  "manifest_sha256": "29f70e1681652dcdc6eddfd6a3277a05b6dfca6ae3a6eb7fec9a7a11e55a0558",
+  "audit_kind": "READ_ONLY_LOCAL_SOURCE_IDENTITY",
+  "runtime_verified": false,
+  "results": [
+    {
+      "repository": "pascalorg/editor",
+      "path": "/Users/xiaohai/三维系统/editor-integration",
+      "expected_commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+      "status": "PASS_SOURCE_AUDIT",
+      "errors": [],
+      "warnings": [],
+      "files": [
+        {
+          "path": "README.md",
+          "exists": true,
+          "size_bytes": 20293,
+          "sha256": "6582eb0adc6be1c10ddd8d433ef4c9e063b651baed785c424262a9a28733761f"
+        },
+        {
+          "path": "package.json",
+          "exists": true,
+          "size_bytes": 2912,
+          "sha256": "ca58163bd801f5eeb6435b0024f92e3a4f5a9cd20c1b913d0a826b1da83f2585"
+        },
+        {
+          "path": "apps/editor/package.json",
+          "exists": true,
+          "size_bytes": 2083,
+          "sha256": "aa34fe5bd8b198e00d851f77631100476cdcaf1d251fb82748bc73546e43447f"
+        },
+        {
+          "path": "apps/editor/lib/bootstrap.ts",
+          "exists": true,
+          "size_bytes": 4870,
+          "sha256": "e642d7a7e0eaefb5e12d1919542fe58429e67d02a7925935082e89af2ef90e90"
+        },
+        {
+          "path": "packages/core/src/registry/registry.ts",
+          "exists": true,
+          "size_bytes": 17490,
+          "sha256": "68fdfd0a2719f699bf99ec24a152d6a260d672f151c492d744a8c8e32a90fbea"
+        },
+        {
+          "path": "packages/core/src/lib/asset-storage.ts",
+          "exists": true,
+          "size_bytes": 1608,
+          "sha256": "fb71d1e2641c08e32cf43dc519d48534817ce2ad49afa9f2e64fb68b31f23e29"
+        },
+        {
+          "path": "packages/mcp/package.json",
+          "exists": true,
+          "size_bytes": 2453,
+          "sha256": "6197ec379730978cabed41a4f736a62f287ad37b8ca2340152a58062a15605a4"
+        },
+        {
+          "path": "packages/mcp/src/bridge/scene-bridge.ts",
+          "exists": true,
+          "size_bytes": 20350,
+          "sha256": "2b7cd10ca10702e45642f84e4222332ed34b6885112bd79ea0e89c85cdaf8bc0"
+        },
+        {
+          "path": "packages/mcp/src/operations/scene-operations.ts",
+          "exists": true,
+          "size_bytes": 9506,
+          "sha256": "2a6c26e9dab4d7e6085251ddc9408dfb05eeb40f221566711d9d170b20b7b60a"
+        },
+        {
+          "path": "packages/viewer/src/index.ts",
+          "exists": true,
+          "size_bytes": 10534,
+          "sha256": "c3a035d467a45c792ccb4e4ae5095f5de3cc27a2d1ad6610c87fc238359c1863"
+        },
+        {
+          "path": "packages/viewer/src/lib/snapshot-pipeline.ts",
+          "exists": true,
+          "size_bytes": 17016,
+          "sha256": "ec620dbfe6a08de5d84732ff3630c9315605232a23ca8695996022a1516c30b5"
+        }
+      ],
+      "runtime_verified": false,
+      "worktree_status": [],
+      "actual_commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+      "identity": "EXACT_PIN",
+      "lockfiles": [
+        {
+          "path": "bun.lock",
+          "sha256": "0e50aa67e193bd31e7ebb9654ebef1b46ae3298f322ed66ea8762775e6df5599"
+        }
+      ],
+      "package_manager": "bun@1.3.14",
+      "node_engine": ">=20.9.0",
+      "available_script_names": [
+        "build",
+        "check",
+        "check-types",
+        "check:fix",
+        "checks",
+        "clean:cache",
+        "dev",
+        "format",
+        "format:check",
+        "kill",
+        "lint",
+        "lint:fix",
+        "release",
+        "release:beta",
+        "release:cli",
+        "release:core",
+        "release:editor",
+        "release:major",
+        "release:mcp",
+        "release:minor",
+        "release:nodes",
+        "release:viewer",
+        "restart",
+        "skills:validate",
+        "test"
+      ]
+    },
+    {
+      "repository": "TangSY/aedifex",
+      "path": "/Users/xiaohai/三维系统/_sources/aedifex",
+      "expected_commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+      "status": "PASS_SOURCE_AUDIT",
+      "errors": [],
+      "warnings": [],
+      "files": [
+        {
+          "path": "README.zh-CN.md",
+          "exists": true,
+          "size_bytes": 7159,
+          "sha256": "b200efff2a4cd8e6b5c3038d16e8ceaf6d6ec0f818a960b939e3f829e5715679"
+        },
+        {
+          "path": "packages/editor/src/components/ai/ai-agent-loop.ts",
+          "exists": true,
+          "size_bytes": 36085,
+          "sha256": "134cfefa7772237911ca9ff886697323bb6efd7ee262b527737a090c5441ff6d"
+        },
+        {
+          "path": "packages/editor/src/components/ai/ai-mutation-executor.ts",
+          "exists": true,
+          "size_bytes": 21720,
+          "sha256": "e6606981f0481d0ed8daf2c39cefd3b35e7c9c1fe470eba6dcf1d27a510dcf36"
+        },
+        {
+          "path": "packages/editor/src/components/ai/ai-preview-manager.ts",
+          "exists": true,
+          "size_bytes": 8051,
+          "sha256": "c4f3c69767e1c832580912326cc77b69291377a2b40fae60bd2c8980f4500638"
+        },
+        {
+          "path": "packages/editor/src/components/ai/contracts/runtime.ts",
+          "exists": true,
+          "size_bytes": 7805,
+          "sha256": "4ff392e34e7edb73c2b705f38af715f642ef596d4c54756eaeb293b3bd2e3330"
+        },
+        {
+          "path": "packages/editor/src/components/ai/prompt/openai-tools.ts",
+          "exists": true,
+          "size_bytes": 68971,
+          "sha256": "b6279520f3092aaffca311b290019ac1e050894d07b6ef160376f04e443c4ac6"
+        },
+        {
+          "path": "packages/editor/src/components/ai/types/tool-call-types.ts",
+          "exists": true,
+          "size_bytes": 21775,
+          "sha256": "45e02e6fd4a5ab40e0c120a6c47657cf274d40530ed09f4ee62bb55b333d3416"
+        },
+        {
+          "path": "packages/core/src/registry/registry.ts",
+          "exists": true,
+          "size_bytes": 17491,
+          "sha256": "d9396230e4e9ed0138976214943924688ce31a84d70d6de2f5a9160e5f1619fe"
+        }
+      ],
+      "runtime_verified": false,
+      "worktree_status": [],
+      "actual_commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+      "identity": "EXACT_PIN",
+      "lockfiles": [
+        {
+          "path": "bun.lock",
+          "sha256": "00c515da69d922923ac9ddc5f5acd2e75b94e410d1d99b3c481e554cb231d287"
+        }
+      ],
+      "package_manager": "bun@1.3.14",
+      "node_engine": ">=20.9.0",
+      "available_script_names": [
+        "build",
+        "check",
+        "check-types",
+        "check:fix",
+        "checks",
+        "clean:cache",
+        "dev",
+        "format",
+        "format:check",
+        "kill",
+        "lint",
+        "lint:fix",
+        "restart",
+        "test"
+      ]
+    },
+    {
+      "repository": "laanlabs/openPlan3D",
+      "path": "/Users/xiaohai/三维系统/_sources/openplan3d",
+      "expected_commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+      "status": "PASS_SOURCE_AUDIT",
+      "errors": [],
+      "warnings": [],
+      "files": [
+        {
+          "path": "README.md",
+          "exists": true,
+          "size_bytes": 12841,
+          "sha256": "0d2f255c6d42eaabef7a53b274c9d038bfcfaba96ec837777fd205500186b755"
+        },
+        {
+          "path": "package.json",
+          "exists": true,
+          "size_bytes": 1865,
+          "sha256": "275af60de7e517daea14d572ad385404116fcd791c617d94dde5e0557a964234"
+        },
+        {
+          "path": "FEATURES.md",
+          "exists": true,
+          "size_bytes": 8785,
+          "sha256": "14cd231bd4c8fa1f4b7b9c76b77fb2ba64ecef6e6c0a732d6aefa365a0923c69"
+        },
+        {
+          "path": "src/lib/components/viewer3d/ThreeViewer.svelte",
+          "exists": true,
+          "size_bytes": 115387,
+          "sha256": "d804fa8ab25b649c3873cc5235f17be9315bc2ab6bbc49e4b483f0d3166561a8"
+        },
+        {
+          "path": "src/lib/utils/roomTemplates.ts",
+          "exists": true,
+          "size_bytes": 3390,
+          "sha256": "f6086b551b0ddab9ce2b8f2e8bc314acea5beaf10b1121863d3e7115441196dc"
+        },
+        {
+          "path": "src/lib/utils/roomPresets.ts",
+          "exists": true,
+          "size_bytes": 3396,
+          "sha256": "4d85c7eb03ea6b76b81a08cb8f06a116c57be485d1e18d440488a05f2518e73f"
+        },
+        {
+          "path": "src/lib/utils/furnitureModelLoader.ts",
+          "exists": true,
+          "size_bytes": 6669,
+          "sha256": "7265489290769a35ecdad7391f796198f3d067deb1863296a0d42c0e4084abec"
+        },
+        {
+          "path": "src/lib/utils/openaiClient.ts",
+          "exists": true,
+          "size_bytes": 7935,
+          "sha256": "23929115b595e386eaa405a393ea20c49574bdbd160228612efcc54406281091"
+        },
+        {
+          "path": "docs/local-custom-models.md",
+          "exists": true,
+          "size_bytes": 3448,
+          "sha256": "51bc65f090367c3ad3f82b6bb2ddfb7a9c767da29c0db676872ad7f9db08eaea"
+        },
+        {
+          "path": "docs/project-package-v1.md",
+          "exists": true,
+          "size_bytes": 20621,
+          "sha256": "d8a8fae4fcc69a0e5743794578ef4e61a6efef2aac1dd4756183efcb3dab93d6"
+        },
+        {
+          "path": "docs/furniture-inventory.md",
+          "exists": true,
+          "size_bytes": 5177,
+          "sha256": "6b308868af654ef11a9c9233fb908ad3aa20577ef1cacbfa42c575a72ef4f28a"
+        }
+      ],
+      "runtime_verified": false,
+      "worktree_status": [],
+      "actual_commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+      "identity": "EXACT_PIN",
+      "lockfiles": [
+        {
+          "path": "package-lock.json",
+          "sha256": "fd48e591f2e94d6497f7347ceab374bbbc44202b7922f870fd84f6416a838a8a"
+        }
+      ],
+      "package_manager": null,
+      "node_engine": null,
+      "available_script_names": [
+        "benchmark:fixtures",
+        "benchmark:viewer",
+        "build",
+        "build:render-lab",
+        "catalog:check",
+        "catalog:manifest",
+        "check",
+        "check:watch",
+        "dev",
+        "prepare",
+        "preview",
+        "test",
+        "test:browser",
+        "test:watch"
+      ]
+    }
+  ]
+}

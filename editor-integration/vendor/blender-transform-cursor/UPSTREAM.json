@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "ref": "v4.3.0",
+  "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_draw_cursors.cc",
+  "sha256": "394071405ea9cad9b39541c789e5f15afdf160117d90b316bb695f353d3d79d5",
+  "license": "GPL-2.0-or-later"
+}

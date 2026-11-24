@@ -1,0 +1,10 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "math_rotation.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_rotation.c",
+      "sha256": "ee4c167a8488fa668157028e90e9a1275a48e804925fa617990b8738b75adc84"
+    }
+  }
+}

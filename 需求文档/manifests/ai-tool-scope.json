@@ -1,0 +1,398 @@
+{
+  "status": "MIGRATED_PARTIAL_VALIDATION",
+  "tools": [
+    {
+      "name": "add_item",
+      "positive_case": "加入已存在目录项到明确目标楼层",
+      "negative_case": "不存在目录项或非法位置",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "remove_item",
+      "positive_case": "删除一个存在且可删家具",
+      "negative_case": "节点不存在或类别不匹配",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "move_item",
+      "positive_case": "移动存在家具并保持其他属性",
+      "negative_case": "目标楼层不存在/非法坐标",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_material",
+      "positive_case": "修改允许对象的整体材质",
+      "negative_case": "不存在材质/不支持的对象范围",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_wall_material",
+      "positive_case": "仅修改指定合法墙面",
+      "negative_case": "非法 side/错误材质标识",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_roof_material",
+      "positive_case": "仅修改 top/edge/wall 中指定角色",
+      "negative_case": "假冒 shingle/soffit 无损一对一映射",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_stair_material",
+      "positive_case": "仅修改宿主明确对应的合法角色",
+      "negative_case": "未知角色/错误节点",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "paint_slot",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_wall",
+      "positive_case": "创建合法长度墙并正确挂到层级",
+      "negative_case": "零长度/无效父节点",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_door",
+      "positive_case": "把门加入合法墙内的开口位置",
+      "negative_case": "开口越墙或父不是墙",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_window",
+      "positive_case": "把窗加入合法墙内",
+      "negative_case": "开口重叠/父节点错误",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_wall",
+      "positive_case": "修改合法墙尺寸，门窗跟随原规则",
+      "negative_case": "无法容纳现有开口的非法修改",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_door",
+      "positive_case": "按源 schema 改合法尺寸/方向",
+      "negative_case": "非法尺寸或超出墙范围",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_window",
+      "positive_case": "合法调整窗尺寸/位置",
+      "negative_case": "非法高度/超范围",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "remove_node",
+      "positive_case": "预览列明一个可删节点的级联影响后删除",
+      "negative_case": "缺失节点/受保护节点",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_level",
+      "positive_case": "在存在建筑下新增楼层",
+      "negative_case": "父节点错误/非法标高",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_slab",
+      "positive_case": "创建合法多边形楼板",
+      "negative_case": "退化或自交多边形",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_slab",
+      "positive_case": "修改宿主支持的楼板参数",
+      "negative_case": "不支持字段/无效边界",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_ceiling",
+      "positive_case": "在合法层级加入天花",
+      "negative_case": "非法几何或父级",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_ceiling",
+      "positive_case": "修改宿主支持的天花参数",
+      "negative_case": "非法尺寸/不存在节点",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_roof",
+      "positive_case": "按宿主现有屋顶类型创建",
+      "negative_case": "非法类型/无效几何",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_roof",
+      "positive_case": "修改宿主已支持屋顶参数",
+      "negative_case": "写入仅 Aedifex 支持的未知槽位字段",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_elevator",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_stair",
+      "positive_case": "创建宿主支持的合法楼梯",
+      "negative_case": "非法升高/尺寸",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_stair",
+      "positive_case": "修改合法楼梯参数并保持派生开孔",
+      "negative_case": "越界参数/不合法父级",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_zone",
+      "positive_case": "创建有效区域且不重复宿主自动区域",
+      "negative_case": "自交/非法边界/重复检测冲突",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_zone",
+      "positive_case": "修改允许的区域属性",
+      "negative_case": "越界字段/不存在区域",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_building",
+      "positive_case": "在正确 Site 下新增建筑",
+      "negative_case": "无效 Site 或重复 ID",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_site",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_scan",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_guide",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "update_item",
+      "positive_case": "修改源 schema 支持的一项家具属性",
+      "negative_case": "未知或越界属性",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "move_building",
+      "positive_case": "整体移动/旋转建筑，子节点相对关系不变",
+      "negative_case": "非法 transform/不存在建筑",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "clone_level",
+      "positive_case": "复制楼层并重映射全部层内正式引用",
+      "negative_case": "无法解析的强引用/ID 冲突",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "enter_walkthrough",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_fence",
+      "positive_case": "按宿主路径创建合法围栏",
+      "negative_case": "退化路径/非法参数",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "update_fence",
+      "positive_case": "调整存在围栏合法参数",
+      "negative_case": "无效节点类型/参数",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_cut_out",
+      "positive_case": "在支持开孔的宿主表面建立合法孔洞",
+      "negative_case": "孔越界/不支持表面",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "batch_operations",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "propose_placement",
+      "positive_case": "显示可审核位置提议，不提前正式创建",
+      "negative_case": "候选引用不存在目录/节点",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "ask_user",
+      "positive_case": "缺信息时呈现澄清，回答后重新验证候选",
+      "negative_case": "切项目后旧回答/非法响应",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "confirm_preview",
+      "positive_case": "模型请求确认后等待用户，用户点击仅提交一次",
+      "negative_case": "无用户确认/重复确认/过期 revision",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "reject_preview",
+      "positive_case": "安全清理本请求未确认预览",
+      "negative_case": "误清别的请求/已切换项目预览",
+      "status": "MIGRATED_PARTIAL_VALIDATION",
+      "source_schema_required": true
+    },
+    {
+      "name": "add_roof_accessory",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "save_room_preset",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "BACKEND_UNAVAILABLE"
+    },
+    {
+      "name": "insert_room_preset",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "BACKEND_UNAVAILABLE"
+    },
+    {
+      "name": "add_duct_segment",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_duct_fitting",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_duct_terminal",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_pipe_segment",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_pipe_fitting",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_pipe_trap",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_hvac_equipment",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_lineset",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "add_liquid_line",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    },
+    {
+      "name": "align_opening_to_nearest",
+      "positive_case": "按固定源码 schema 验证合法调用",
+      "negative_case": "拒绝非法参数和过期场景",
+      "source_schema_required": true,
+      "status": "MIGRATED_PARTIAL_VALIDATION"
+    }
+  ],
+  "note": "AI-03: user requests full donor UI, interaction and logic. Pinned source has 56 definitions; previous 36 were a selected subset. Migration is not per-tool visual or real-provider acceptance."
+}

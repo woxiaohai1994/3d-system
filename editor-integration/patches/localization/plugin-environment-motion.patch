@@ -1,0 +1,418 @@
+--- a/src/atmosphere/layer.tsx
++++ b/src/atmosphere/layer.tsx
+@@ -1,6 +1,6 @@
+ 'use client'
+ 
+-import { useScene } from '@pascal-app/core'
++import { getScenePlaybackTime, registerScenePlaybackSampler, useScene } from '@pascal-app/core'
+ import { useFrame, useThree } from '@react-three/fiber'
+ import { type ComponentType, useEffect, useMemo, useRef } from 'react'
+ import { useEnvironmentStore } from '../store'
+@@ -11,6 +11,7 @@
+ import { weatherRequiresSky } from './weather-sky'
+ import { WeatherLayer } from './weather'
+ import { WeatherSurfaces } from './weather-surfaces'
++import { nightFactor, setSurroundingsNightFactor } from '../surroundings/night-lighting'
+ 
+ type AtmosphereLayerProps = {
+   /** The host supplies its public viewer atmosphere seam; beta.5 does not publish it yet. */
+@@ -40,6 +41,7 @@
+ 
+ function ActiveAtmosphere({ atmosphereComponent: SceneAtmosphere }: AtmosphereLayerProps) {
+   const scene = useThree((state) => state.scene)
++  const renderer = useThree((state) => state.gl)
+   const runtime = useMemo(() => ({ ...useEnvironmentStore.getState().skySettings }), [])
+   const weatherSignal = useMemo(() => getSceneWeatherSignal(scene), [scene])
+   const weatherRuntime = useMemo(
+@@ -68,7 +70,20 @@
+     }
+   }, [scene, source])
+ 
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    const state = useEnvironmentStore.getState()
++    Object.assign(runtime, state.skySettings)
++    if (seconds !== null && state.skyPlaying)
++      runtime.timeOfDay = wrap(state.skySettings.timeOfDay + seconds * 24 / 120, 24)
++    Object.assign(weatherRuntime, state.weatherSettings, { flash: weatherSignal.flash })
++    source.update(runtime, seconds !== null && state.skyMotion ? seconds : cloudTime.current, weatherRuntime)
++    setSurroundingsNightFactor(nightFactor(runtime, state.skyEnabled))
++    solarRegistration.current?.publish()
++    renderer.toneMappingExposure = source.exposure
++  }, -20), [runtime, weatherRuntime, weatherSignal, source, renderer])
++
+   useFrame((_, delta) => {
++    if (getScenePlaybackTime() !== null) return
+     const state = useEnvironmentStore.getState()
+     const settingsChanged = state.skySettings !== lastSettings.current
+     const weatherChanged = state.weatherSettings !== lastWeatherSettings.current
+--- a/src/atmosphere/weather.tsx
++++ b/src/atmosphere/weather.tsx
+@@ -1,19 +1,22 @@
+ 'use client'
+ 
++import { getScenePlaybackTime, registerScenePlaybackSampler } from '@pascal-app/core'
+ import { useFrame, useThree } from '@react-three/fiber'
+ import { useViewer } from '@pascal-app/viewer'
+-import { useEffect, useMemo, useRef } from 'react'
++import { useCallback, useEffect, useMemo, useRef } from 'react'
+ import {
+   BufferGeometry,
+   DoubleSide,
+   DynamicDrawUsage,
+   Float32BufferAttribute,
++  Group,
+   InstancedMesh,
+   Mesh,
+   MeshBasicNodeMaterial,
+   OrthographicCamera,
+   PerspectiveCamera,
+   Uint16BufferAttribute,
++  Vector2,
+   Vector3,
+   type Camera,
+   type UniformNode,
+@@ -166,7 +169,7 @@
+   }
+ }
+ 
+-function RainField({ settings, active }: { settings: WeatherSettings; active: boolean }) {
++function RainField({ settings, active, allowed }: { settings: WeatherSettings; active: boolean; allowed: boolean }) {
+   const resources = useMemo(
+     () => createRainFieldResources(useEnvironmentStore.getState().weatherSettings),
+     [],
+@@ -174,6 +177,9 @@
+   const getThree = useThree((state) => state.get)
+ 
+   useEffect(() => () => disposeRainFieldResources(resources), [resources])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    resources.mesh.visible = seconds === null ? active : allowed
++  }), [resources, active, allowed])
+   useEffect(() => {
+     resources.uniforms.intensity.value = settings.rain
+     resources.uniforms.wind.value = settings.wind
+@@ -318,96 +324,85 @@
+   resources.positions.needsUpdate = true
+ }
+ 
+-function LightningFlash({
+-  active,
+-  audioOwner,
+-}: {
++export function sampleLightning(seconds: number) {
++  const random = { value: 0x4b7a70e9 }
++  let start = FIRST_FLASH_MIN_SECONDS + nextRandom(random) * FIRST_FLASH_SPAN_SECONDS
++  let index = 0
++  while (start <= seconds) {
++    const strength = 0.65 + nextRandom(random) * 0.35
++    const seed = random.value
++    // Ribbon geometry consumes nine samples, independently of which camera renders it.
++    for (let point = 0; point < LIGHTNING_POINT_COUNT; point++) nextRandom(random)
++    const audioDelay = 420 + nextRandom(random) * 980
++    const next = start + REPEAT_FLASH_MIN_SECONDS + nextRandom(random) * REPEAT_FLASH_SPAN_SECONDS
++    if (next > seconds) {
++      const remaining = Math.max(0, 1 - (seconds - start) / FLASH_SECONDS)
++      return { index, seed, strength, audioDelay, flash: strength * remaining * remaining * (3 - 2 * remaining) }
++    }
++    start = next
++    index++
++  }
++  return { index: -1, seed: random.value, strength: 0, audioDelay: 0, flash: 0 }
++}
++
++function LightningFlash({ active, allowed, audioOwner }: {
+   active: boolean
++  allowed: boolean
+   audioOwner: ThunderAudioOwner
+ }) {
+-  const getThree = useThree((state) => state.get)
+   const scene = useThree((state) => state.scene)
+   const signal = useMemo(() => getSceneWeatherSignal(scene), [scene])
+   const resources = useMemo(createLightningResources, [])
+-  const timer = useRef<number | null>(null)
+-  const flashStarted = useRef(-1)
+-  const flashStrength = useRef(0)
+-  const random = useRef({ value: 0x4b7a70e9 })
+-  const direction = useRef(new Vector3())
+-  const right = useRef(new Vector3())
+-
+-  useEffect(() => () => disposeLightningResources(resources), [resources])
++  const elapsed = useRef(0)
++  const lastAudioIndex = useRef(-1)
++  const eventSeed = useRef(0)
++  const direction = useMemo(() => new Vector3(), [])
++  const right = useMemo(() => new Vector3(), [])
++  const size = useMemo(() => new Vector2(), [])
++
++  const sample = useCallback((seconds: number, enabled: boolean) => {
++    const event = sampleLightning(seconds)
++    eventSeed.current = event.seed
++    signal.flash = enabled ? event.flash : 0
++    resources.bolt.material.opacity = 0.92 * signal.flash
++    resources.bolt.visible = signal.flash > 0
++    return event
++  }, [resources, signal])
++
++  useEffect(() => () => {
++    signal.flash = 0
++    disposeLightningResources(resources)
++  }, [resources, signal])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    sample(seconds ?? elapsed.current, seconds === null ? active : allowed)
++  }, -30), [sample, active, allowed])
+   useEffect(() => {
+-    let cancelled = false
+-    signal.flash = 0
+-    const schedule = (first: boolean) => {
+-      const delaySeconds = first
+-        ? FIRST_FLASH_MIN_SECONDS + nextRandom(random.current) * FIRST_FLASH_SPAN_SECONDS
+-        : REPEAT_FLASH_MIN_SECONDS + nextRandom(random.current) * REPEAT_FLASH_SPAN_SECONDS
+-      timer.current = window.setTimeout(() => {
+-        if (cancelled) return
+-        const strength = 0.65 + nextRandom(random.current) * 0.35
+-        const state = getThree()
+-        placeLightningRibbon(
+-          resources,
+-          state.camera,
+-          state.size.width,
+-          state.size.height,
+-          random.current,
+-          direction.current,
+-          right.current,
+-        )
+-        resources.bolt.visible = true
+-        flashStarted.current = performance.now() / 1000
+-        flashStrength.current = strength
+-        signal.flash = strength
+-        if (
+-          useEnvironmentStore.getState().weatherSettings.thunderAudio &&
+-          isThunderAudioConsented()
+-        ) {
+-          playThunderAfter(audioOwner, 420 + nextRandom(random.current) * 980, strength)
+-        }
+-        if (state.frameloop === 'demand') state.invalidate()
+-        schedule(false)
+-      }, delaySeconds * 1000)
++    resources.bolt.onBeforeRender = (renderer, _scene, camera) => {
++      const target = renderer.getRenderTarget()
++      renderer.getSize(size)
++      placeLightningRibbon(resources, camera, target?.width ?? size.x, target?.height ?? size.y,
++        { value: eventSeed.current }, direction, right)
++      resources.bolt.updateMatrixWorld(true)
+     }
+-    if (active) schedule(true)
+-    return () => {
+-      cancelled = true
+-      if (timer.current !== null) window.clearTimeout(timer.current)
+-      timer.current = null
+-      flashStarted.current = -1
+-      flashStrength.current = 0
+-      signal.flash = 0
+-      resources.bolt.material.opacity = 0
+-      resources.bolt.visible = false
++    return () => { resources.bolt.onBeforeRender = () => {} }
++  }, [resources, direction, right, size])
++
++  useFrame((state, delta) => {
++    if (getScenePlaybackTime() !== null) return
++    if (active) elapsed.current += Math.min(delta, 0.1)
++    const event = sample(elapsed.current, active)
++    if (active && event.index > lastAudioIndex.current) {
++      lastAudioIndex.current = event.index
++      if (useEnvironmentStore.getState().weatherSettings.thunderAudio && isThunderAudioConsented())
++        playThunderAfter(audioOwner, event.audioDelay, event.strength)
+     }
+-  }, [active, audioOwner, getThree, resources, signal])
+-
+-  useFrame((state) => {
+-    if (!active || flashStarted.current < 0) {
+-      signal.flash = 0
+-      return
+-    }
+-    const elapsed = performance.now() / 1000 - flashStarted.current
+-    const remaining = Math.max(0, 1 - elapsed / FLASH_SECONDS)
+-    const fade = remaining * remaining * (3 - 2 * remaining)
+-    const flash = Math.max(0, Math.min(1, flashStrength.current * fade))
+-    signal.flash = flash
+-    resources.bolt.material.opacity = 0.92 * flash
+-    if (remaining === 0) {
+-      flashStarted.current = -1
+-      resources.bolt.material.opacity = 0
+-      resources.bolt.visible = false
+-    } else if (state.frameloop === 'demand') {
+-      state.invalidate()
+-    }
++    if (active && state.frameloop === 'demand') state.invalidate()
+   }, -3)
+ 
+   return <primitive object={resources.bolt} dispose={null} />
+ }
+ 
+-function SnowField({ settings, active }: { settings: WeatherSettings; active: boolean }) {
++function SnowField({ settings, active, allowed }: { settings: WeatherSettings; active: boolean; allowed: boolean }) {
+   const resources = useMemo(
+     () => createSnowFieldResources(useEnvironmentStore.getState().weatherSettings),
+     [],
+@@ -415,6 +410,9 @@
+   const getThree = useThree((state) => state.get)
+ 
+   useEffect(() => () => disposeSnowFieldResources(resources), [resources])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    resources.mesh.visible = seconds === null ? active : allowed
++  }), [resources, active, allowed])
+   useEffect(() => {
+     resources.uniforms.intensity.value = settings.snow
+     resources.uniforms.wind.value = settings.wind
+@@ -433,19 +431,25 @@
+   const reducedMotion = useReducedMotionPreference()
+   const pageVisible = usePageVisible()
+   const renderPaused = useViewer((state) => state.renderPaused)
+-  const active = pageVisible && !renderPaused && !reducedMotion
++  const allowed = !renderPaused && !reducedMotion
++  const active = pageVisible && allowed
++  const root = useRef<Group>(null)
+   const audioOwner = useMemo(createThunderAudioOwner, [])
+   useEffect(() => acquireThunderAudioOwner(audioOwner), [audioOwner])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    if (root.current) root.current.visible = seconds === null ? active : allowed
++    setThunderAudioOwnerEnabled(audioOwner, seconds === null && active && settings.storm && settings.thunderAudio)
++  }, -40), [active, allowed, audioOwner, settings.storm, settings.thunderAudio])
+ 
+   useEffect(() => {
+-    setThunderAudioOwnerEnabled(audioOwner, active && settings.storm && settings.thunderAudio)
++    setThunderAudioOwnerEnabled(audioOwner, getScenePlaybackTime() === null && active && settings.storm && settings.thunderAudio)
+   }, [active, audioOwner, settings.storm, settings.thunderAudio])
+ 
+   return (
+-    <group name="environment-weather" visible={active} userData={{ pascalExport: 'strip' }}>
+-      {settings.rain > 0 ? <RainField settings={settings} active={active} /> : null}
+-      {settings.snow > 0 ? <SnowField settings={settings} active={active} /> : null}
+-      {settings.storm ? <LightningFlash active={active} audioOwner={audioOwner} /> : null}
++    <group ref={root} name="environment-weather" visible={active} userData={{ pascalExport: 'strip' }}>
++      {settings.rain > 0 ? <RainField settings={settings} active={active} allowed={allowed} /> : null}
++      {settings.snow > 0 ? <SnowField settings={settings} active={active} allowed={allowed} /> : null}
++      {settings.storm ? <LightningFlash active={active} allowed={allowed} audioOwner={audioOwner} /> : null}
+     </group>
+   )
+ }
+--- a/src/pond/static-renderer.tsx
++++ b/src/pond/static-renderer.tsx
+@@ -1,6 +1,8 @@
+ 'use client'
+ 
+ import {
++  getScenePlaybackTime,
++  registerScenePlaybackSampler,
+   useScene,
+   type AnyNode,
+   type AnyNodeId,
+@@ -59,8 +61,11 @@
+       if (state.frameloop === 'demand') state.invalidate()
+     }
+   }, [getThree, node.visible, renderPaused])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    updatePondKoiMotion(geometry, seconds !== null && !renderPaused ? seconds : elapsed.current)
++  }), [geometry, renderPaused])
+   useFrame((state, delta) => {
+-    if (renderPaused || node.visible === false) return
++    if (renderPaused || node.visible === false || getScenePlaybackTime() !== null) return
+     elapsed.current += Math.min(delta, 0.1)
+     if (
+       updatePondKoiMotion(geometry, elapsed.current)
+--- a/src/pond/system.tsx
++++ b/src/pond/system.tsx
+@@ -1,6 +1,8 @@
+ 'use client'
+ 
+ import {
++  getScenePlaybackTime,
++  registerScenePlaybackSampler,
+   sceneRegistry,
+   useLiveNodeOverrides,
+   useLiveTerrain,
+@@ -136,8 +138,17 @@
+     }
+   }, [getThree, renderPaused])
+ 
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    const ids = (sceneRegistry.byType as Record<string, Set<string> | undefined>)[POND_KIND]
++    for (const id of ids ?? []) {
++      const root = sceneRegistry.nodes.get(id)
++      if (root && sceneApi.nodes()[id as AnyNodeId]?.visible !== false)
++        updatePondKoiMotion(root, seconds !== null && !renderPaused ? seconds : elapsed.current)
++    }
++  }), [sceneApi, renderPaused])
++
+   useFrame((state, delta) => {
+-    if (renderPaused) return
++    if (renderPaused || getScenePlaybackTime() !== null) return
+     elapsed.current += Math.min(delta, 0.1)
+     const roots = registeredRoots.current
+     if (registryRevision.current !== sceneRegistry.revision) {
+--- a/src/surroundings/distant-birds.tsx
++++ b/src/surroundings/distant-birds.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ 
++import { getScenePlaybackTime, registerScenePlaybackSampler } from '@pascal-app/core'
+ import { useFrame, useThree } from '@react-three/fiber'
+ import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
+ import {
+@@ -482,8 +483,11 @@
+     const state = getThree()
+     if (moving && state.frameloop === 'demand') state.invalidate()
+   }, [getThree, moving])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    updateDistantBirdInstances(mesh, plan, seconds !== null && moving ? seconds : elapsed.current, context)
++  }), [mesh, plan, context, moving])
+   useFrame((state, delta) => {
+-    if (!moving) return
++    if (!moving || getScenePlaybackTime() !== null) return
+     elapsed.current += Math.min(delta, 0.1)
+     // Chain demand renders only while motion is active. A false `moving`
+     // leaves the component-local elapsed time and the last matrices untouched.
+--- a/src/surroundings/lighthouse-beacon.tsx
++++ b/src/surroundings/lighthouse-beacon.tsx
+@@ -1,6 +1,7 @@
+ import { useFrame, useThree } from '@react-three/fiber'
++import { getScenePlaybackTime, registerScenePlaybackSampler } from '@pascal-app/core'
+ import { useViewer } from '@pascal-app/viewer'
+-import { useEffect, useMemo } from 'react'
++import { useEffect, useMemo, useRef } from 'react'
+ import { AdditiveBlending, CylinderGeometry, DoubleSide, Group, Mesh, Object3D, SphereGeometry, SpotLight } from 'three'
+ import { normalView, positionView, smoothstep, uv } from 'three/tsl'
+ import { MeshBasicNodeMaterial } from 'three/webgpu'
+@@ -14,6 +15,7 @@
+ export function LighthouseBeacon({ plan }: { plan: LighthousePlan }) {
+   const renderPaused = useViewer((state) => state.renderPaused)
+   const getThree = useThree((state) => state.get)
++  const ordinaryAngle = useRef(plan.rotationY)
+   const resources = useMemo(() => {
+     const root = new Group()
+     root.name = 'environment-lighthouse-beacon'
+@@ -67,6 +69,7 @@
+     return { root, light, beamGeometry, beamMaterial, lensGeometry, lensMaterial }
+   }, [plan])
+ 
++  useEffect(() => { ordinaryAngle.current = plan.rotationY }, [resources, plan.rotationY])
+   useEffect(() => () => {
+     resources.beamGeometry.dispose()
+     resources.beamMaterial.dispose()
+@@ -78,11 +81,18 @@
+     const state = getThree()
+     if (state.frameloop === 'demand') state.invalidate()
+   }, [getThree, renderPaused, resources])
++  useEffect(() => registerScenePlaybackSampler((seconds) => {
++    resources.light.intensity = 80_000 * SURROUNDINGS_NIGHT_FACTOR.value
++    resources.root.rotation.y = seconds !== null && !renderPaused
++      ? plan.rotationY + seconds * ROTATION_SPEED : ordinaryAngle.current
++  }), [resources, renderPaused, plan.rotationY])
+   useFrame((state, delta) => {
++    if (getScenePlaybackTime() !== null) return
+     const night = SURROUNDINGS_NIGHT_FACTOR.value
+     resources.light.intensity = 80_000 * night
+     if (night <= 0 || renderPaused) return
+     resources.root.rotation.y = (resources.root.rotation.y + Math.min(delta, 0.1) * ROTATION_SPEED) % (Math.PI * 2)
++    ordinaryAngle.current = resources.root.rotation.y
+     if (state.frameloop === 'demand') state.invalidate()
+   })
+ 

@@ -1,0 +1,17 @@
+{
+  "project": "Blender",
+  "tag": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "normalization": null,
+  "provenance": "Complete unchanged source bytes from pinned jsDelivr mirror; official raw source contents verified through web reader. Raw curl request reset; no independent Git blob hash verification.",
+  "files": [
+    {
+      "file": "transform_orientations.hh",
+      "sourcePath": "source/blender/editors/transform/transform_orientations.hh",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_orientations.hh",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/editors/transform/transform_orientations.hh",
+      "sha256": "508f53339c25fdd02fb6092fd9f0f0a7f7b7666bf6dc319e399fe43a7c8e4c1e",
+      "bytes": 2634
+    }
+  ]
+}

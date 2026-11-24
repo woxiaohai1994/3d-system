@@ -1,0 +1,31 @@
+{
+  "label": "Transform Pivot Point",
+  "description": "Pivot center for rotation/scaling",
+  "items": [
+    {
+      "value": "BOUNDING_BOX_CENTER",
+      "label": "Bounding Box Center",
+      "description": "Pivot around bounding box center of selected object(s)"
+    },
+    {
+      "value": "CURSOR",
+      "label": "3D Cursor",
+      "description": "Pivot around the 3D cursor"
+    },
+    {
+      "value": "INDIVIDUAL_ORIGINS",
+      "label": "Individual Origins",
+      "description": "Pivot around each object's own origin"
+    },
+    {
+      "value": "MEDIAN_POINT",
+      "label": "Median Point",
+      "description": "Pivot around the median point of selected objects"
+    },
+    {
+      "value": "ACTIVE_ELEMENT",
+      "label": "Active Element",
+      "description": "Pivot around active object"
+    }
+  ]
+}

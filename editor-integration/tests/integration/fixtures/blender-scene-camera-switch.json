@@ -1,0 +1,518 @@
+{
+  "blender": "5.2.2 LTS",
+  "samples": [
+    {
+      "markers": [],
+      "frame": -1,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 0,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 19,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 20,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 21,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 39,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 40,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 41,
+      "expected": "A"
+    },
+    {
+      "markers": [],
+      "frame": 100,
+      "expected": "A"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": -1,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 0,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 19,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 20,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 21,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 39,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 40,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 41,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 100,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": -1,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 0,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 19,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 20,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 21,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 39,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 40,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 41,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 40,
+          "cameraId": "C"
+        },
+        {
+          "frame": 20,
+          "cameraId": "B"
+        }
+      ],
+      "frame": 100,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": -1,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 0,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 19,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 20,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 21,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 39,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 40,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 41,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": "B"
+        },
+        {
+          "frame": 20,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 100,
+      "expected": "B"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": -1,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 0,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 19,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 20,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 21,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 39,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 40,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 41,
+      "expected": "C"
+    },
+    {
+      "markers": [
+        {
+          "frame": 20,
+          "cameraId": null
+        },
+        {
+          "frame": 40,
+          "cameraId": "C"
+        }
+      ],
+      "frame": 100,
+      "expected": "C"
+    }
+  ]
+}

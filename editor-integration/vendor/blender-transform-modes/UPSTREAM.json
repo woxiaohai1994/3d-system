@@ -1,0 +1,30 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "transform_mode.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_mode.cc",
+      "sha256": "c8cad264cc3e424d09629dd029a14059e35a0426c2a8a50cbb600eb802506aac"
+    },
+    "transform_mode_rotate.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_mode_rotate.cc",
+      "sha256": "6364548afcdd7d5a4ceb6d1d97e88f320b86ae61a342620da6b7d87db8b22989"
+    },
+    "transform_mode_resize.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_mode_resize.cc",
+      "sha256": "83ebdd9df89fda7b02bc311b81fc3342f16727d85084ee73f245f71b3a3b047c"
+    },
+    "transform_mode_translate.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_mode_translate.cc",
+      "sha256": "ed312a9aa82c43ea5349f06f61b92b58b4568b89650875c210d7f74543bc117a"
+    },
+    "DNA_object_types.h": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_object_types.h",
+      "sha256": "203d4458086b1f1aed9ff57f245facfd9eaa58f2252aed3dbc4c69ccc7346790"
+    },
+    "transform_input.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_input.cc",
+      "sha256": "accebaed1652ac61cd26952ad3a55a3597128b3248be2ce0b8310df2b7db74fb"
+    }
+  }
+}

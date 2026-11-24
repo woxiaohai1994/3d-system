@@ -1,0 +1,113 @@
+{
+  "browser": "153.0.8010.50",
+  "report": {
+    "runtimeIdentity": {
+      "singleCore": true,
+      "singleThree": true,
+      "reactVersion": "19.2.7"
+    },
+    "storeIdentity": true,
+    "bridgeUsesHostStore": true,
+    "browserRafPresent": true,
+    "initialNodeCount": 3,
+    "bridgeInvalidInput": {
+      "rejected": false,
+      "createSurvived": true,
+      "history": {
+        "pastCount": 2,
+        "futureCount": 0
+      }
+    },
+    "hostInvalidInput": {
+      "rejected": false,
+      "snapshotUnchanged": false,
+      "history": {
+        "pastCount": 1,
+        "futureCount": 0
+      }
+    },
+    "bridgeInjectedFailure": {
+      "rejected": true,
+      "createSurvived": true,
+      "history": {
+        "pastCount": 1,
+        "futureCount": 0
+      }
+    },
+    "hostInjectedFailure": {
+      "rejected": true,
+      "snapshotUnchanged": true,
+      "history": {
+        "pastCount": 0,
+        "futureCount": 0
+      }
+    },
+    "hostMixedCommit": {
+      "history": {
+        "pastCount": 1,
+        "futureCount": 0
+      },
+      "undo": true,
+      "redo": true
+    },
+    "groupedHistory": {
+      "pastCount": 1,
+      "futureCount": 0
+    },
+    "undoRestoresSnapshot": true,
+    "redoRestoresCreation": true,
+    "adapterUpdates": {
+      "previewUnchanged": true,
+      "confirmedOnce": true,
+      "adapterUndo": true,
+      "staleRejected": true,
+      "cancellationPreservesManualEdit": true
+    },
+    "adapterBatch": {
+      "batchTemporaryIds": true,
+      "nodeIdMap": {
+        "$door": "door_6ltdi5aujphfdz1n",
+        "$wall": "wall_kyl4c91tgoab0m2e",
+        "$level": "level_owrjpeprzoryqlxe"
+      },
+      "batchPreviewUnchanged": true,
+      "batchMatchesPreview": true,
+      "batchSingleHistory": true,
+      "batchUndo": true,
+      "batchRedo": true,
+      "cascadeDeleted": true,
+      "deleteUndo": true,
+      "createdIds": [
+        "level_owrjpeprzoryqlxe",
+        "wall_kyl4c91tgoab0m2e",
+        "door_6ltdi5aujphfdz1n"
+      ]
+    },
+    "adapterResources": {
+      "resourcePreviewUnchanged": true,
+      "resourceOnce": true,
+      "resourceMatchesPreview": true,
+      "resourceUndo": true,
+      "resourceRedo": true,
+      "materialDeleteRejected": true,
+      "resourceFailureUnchanged": true,
+      "materialUndoRefreshes": true,
+      "materialRedoRefreshes": true,
+      "resourceRoundtrip": true
+    },
+    "checks": {
+      "adapterResources": true,
+      "adapterTemporaryIds": true,
+      "adapterBatch": true,
+      "adapterUpdates": true,
+      "sharedRuntime": true,
+      "singleStore": true,
+      "nativeRafPreserved": true,
+      "hostFailurePreservesScene": true,
+      "hostMixedCommitOneUndo": true,
+      "groupedUndoRedo": true
+    },
+    "passed": true
+  },
+  "errors": []
+}

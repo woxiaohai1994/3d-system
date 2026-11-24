@@ -1,0 +1,9 @@
+{
+  "tag": "v4.3.0",
+  "files": {
+    "wm_operators.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/windowmanager/intern/wm_operators.cc",
+      "sha256": "abad7dd2eac31c863408de5daeb99b50a29b2f395a79c9430b30175f6c478980"
+    }
+  }
+}

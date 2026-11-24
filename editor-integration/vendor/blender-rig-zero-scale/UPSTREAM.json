@@ -1,0 +1,53 @@
+{
+  "project": "Blender",
+  "tag": "v4.3.0",
+  "normalization": null,
+  "provenance": "Complete unchanged bytes downloaded from the pinned jsDelivr mirror. SHA256 records local byte identity; independent Git blob hash verification was not performed.",
+  "files": [
+    {
+      "file": "matrix.cc",
+      "sourcePath": "intern/eigen/intern/matrix.cc",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/intern/eigen/intern/matrix.cc",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/intern/eigen/intern/matrix.cc",
+      "sha256": "03bf43670863ddbdb5ff6edb8bb9d4afcfc819251fc93544cda771116e9d3998",
+      "bytes": 927,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "constraint.cc",
+      "sourcePath": "source/blender/blenkernel/intern/constraint.cc",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/constraint.cc",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/blenkernel/intern/constraint.cc",
+      "sha256": "6d3b36af995b97b841e028d071e6e7a4a90e6e3a0465bc3f47b9be08c7b22f48",
+      "bytes": 214161,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "armature.cc",
+      "sourcePath": "source/blender/blenkernel/intern/armature.cc",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/armature.cc",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/blenkernel/intern/armature.cc",
+      "sha256": "ddb8de22e5be3b9986b4e918ff539b30edb833dd3393fa436e7a223e20f261cf",
+      "bytes": 105501,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "file": "Determinant.h",
+      "sourcePath": "extern/Eigen3/Eigen/src/LU/Determinant.h",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/extern/Eigen3/Eigen/src/LU/Determinant.h",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/extern/Eigen3/Eigen/src/LU/Determinant.h",
+      "sha256": "123f081581c38e07a204cf0cb28a220a96d93051fc7c00c8d19b9a186fc2fb27",
+      "bytes": 3439,
+      "license": "MPL-2.0"
+    },
+    {
+      "file": "InverseImpl.h",
+      "sourcePath": "extern/Eigen3/Eigen/src/LU/InverseImpl.h",
+      "rawURL": "https://raw.githubusercontent.com/blender/blender/v4.3.0/extern/Eigen3/Eigen/src/LU/InverseImpl.h",
+      "deliveryURL": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/extern/Eigen3/Eigen/src/LU/InverseImpl.h",
+      "sha256": "61c32ebf15d645a38a24981fe98cc02fa51a9e15bbb15030832c963926a155e4",
+      "bytes": 15727,
+      "license": "MPL-2.0"
+    }
+  ]
+}

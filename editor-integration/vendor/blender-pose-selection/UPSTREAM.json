@@ -1,0 +1,10 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "pose_select.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/armature/pose_select.cc",
+      "sha256": "6c527840cfabf4375944fe7baa69fa94cbda68f73026c8bccdd0884009eba85e"
+    }
+  }
+}

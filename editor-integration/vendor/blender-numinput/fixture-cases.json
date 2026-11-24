@@ -1,0 +1,1916 @@
+{
+  "scenarios": [
+    {
+      "name": "slash-toggle-after-digit",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "slash-before-digits",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "/"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "numpad-slash-toggle",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/",
+          "code": "NumpadDivide"
+        },
+        {
+          "key": "/",
+          "code": "NumpadDivide"
+        }
+      ]
+    },
+    {
+      "name": "negate-before-digits",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "-"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "-"
+        }
+      ]
+    },
+    {
+      "name": "negate-after-digits",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "-"
+        }
+      ]
+    },
+    {
+      "name": "numpad-negate",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "4"
+        },
+        {
+          "key": "-",
+          "code": "NumpadSubtract"
+        },
+        {
+          "key": "-",
+          "code": "NumpadSubtract"
+        }
+      ]
+    },
+    {
+      "name": "negate-and-inverse",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "-"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "inverse-zero-preserves-previous",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "Delete"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "inverse-zero-with-original",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        8,
+        9
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "/"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "invalid-decimal-preserves-previous",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "5"
+        },
+        {
+          "key": "Backspace"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "lone-period-and-leading-decimal",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "."
+        },
+        {
+          "key": "5"
+        }
+      ]
+    },
+    {
+      "name": "nonzero-leading-zero-integer",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "0"
+        }
+      ]
+    },
+    {
+      "name": "all-zero-integer",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        }
+      ]
+    },
+    {
+      "name": "insert-in-middle",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "4"
+        }
+      ]
+    },
+    {
+      "name": "delete-in-middle",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "ArrowRight"
+        },
+        {
+          "key": "Delete"
+        }
+      ]
+    },
+    {
+      "name": "backspace-in-middle",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "home-end-and-edge-handling",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "ArrowRight"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "ArrowRight"
+        },
+        {
+          "key": "Delete"
+        }
+      ]
+    },
+    {
+      "name": "delete-entire-string",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        8,
+        9
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "8"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "Delete"
+        },
+        {
+          "key": "Delete"
+        }
+      ]
+    },
+    {
+      "name": "backspace-entire-string",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        8,
+        9
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "8"
+        },
+        {
+          "key": "Backspace"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "shift-backspace-restores-original",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        8,
+        9
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "Backspace",
+          "shiftKey": true
+        }
+      ]
+    },
+    {
+      "name": "backspace-unedited-component-resets-all",
+      "kind": "translate",
+      "initialValues": [
+        7,
+        8,
+        9
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "ctrl-left-right-decimal-delimiters",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowRight",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowRight",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowRight",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "ctrl-backspace-decimal-delimiters",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "Backspace",
+          "ctrlKey": true
+        },
+        {
+          "key": "Backspace",
+          "ctrlKey": true
+        },
+        {
+          "key": "Backspace",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "ctrl-delete-decimal-delimiters",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "Delete",
+          "ctrlKey": true
+        },
+        {
+          "key": "Delete",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "tab-cycles-values-and-clears-current-flags",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Tab",
+          "ctrlKey": true
+        },
+        {
+          "key": "Tab",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "tab-single-component-converts-current-value",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "scale-affect-all-null-one",
+      "kind": "scale",
+      "initialValues": [
+        1,
+        1,
+        1
+      ],
+      "idxMax": 2,
+      "affectAll": true,
+      "nullOne": true,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "scale-selected-empty-null-one",
+      "kind": "scale",
+      "initialValues": [
+        1,
+        1,
+        1
+      ],
+      "idxMax": 2,
+      "affectAll": true,
+      "nullOne": true,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Backspace",
+          "shiftKey": true
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "scale-without-affect-all",
+      "kind": "scale",
+      "initialValues": [
+        1,
+        1,
+        1
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": true,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "scale-inverse-null-one",
+      "kind": "scale",
+      "initialValues": [
+        1,
+        1,
+        1
+      ],
+      "idxMax": 2,
+      "affectAll": true,
+      "nullOne": true,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "rotate-degrees-and-inverse",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "9"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "rotate-negate-and-inverse",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "-"
+        },
+        {
+          "key": "9"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "rotate-tab-degree-sign-byte-cursor",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "9"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "ArrowRight"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "rotate-tab-insert-before-degree-sign",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "9"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "1"
+        }
+      ]
+    },
+    {
+      "name": "rotate-ctrl-delimiter-and-delete",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "9"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "Backspace",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "rotate-shift-backspace-restores-radians",
+      "kind": "rotate",
+      "initialValues": [
+        0.7853981633974483,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "9"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Backspace",
+          "shiftKey": true
+        }
+      ]
+    },
+    {
+      "name": "rotate-inverse-zero-preserves-previous",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "Delete"
+        },
+        {
+          "key": "/"
+        }
+      ]
+    },
+    {
+      "name": "numpad-period-ignores-locale-comma",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": ",",
+          "code": "NumpadDecimal"
+        },
+        {
+          "key": "5"
+        }
+      ]
+    },
+    {
+      "name": "ctrl-digit-is-unhandled",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "3",
+          "ctrlKey": true
+        },
+        {
+          "key": "4"
+        }
+      ]
+    },
+    {
+      "name": "unsupported-simple-chars-are-unhandled",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "x"
+        },
+        {
+          "key": "+"
+        },
+        {
+          "key": "("
+        },
+        {
+          "key": "a"
+        },
+        {
+          "key": "1"
+        }
+      ]
+    },
+    {
+      "name": "input-capacity-rejects-extra-digit",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 2,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-trailing-space-edit",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "/"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "End"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-round-tie-even",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "5"
+        },
+        {
+          "key": "6"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "5"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-round-tie-odd",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "7"
+        },
+        {
+          "key": "5"
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-large-fixed-number",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "3"
+        },
+        {
+          "key": "4"
+        },
+        {
+          "key": "5"
+        },
+        {
+          "key": "6"
+        },
+        {
+          "key": "7"
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-small-decimal-clamp",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-tiny-negative",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "Tab"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-negative-zero",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "-"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "tab-format-ctrl-delete-trailing-space",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Home"
+        },
+        {
+          "key": "Delete",
+          "ctrlKey": true
+        },
+        {
+          "key": "Delete",
+          "ctrlKey": true
+        }
+      ]
+    },
+    {
+      "name": "tab-format-ctrl-space-delimiters",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": "2"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "ArrowLeft",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowRight",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowRight",
+          "ctrlKey": true
+        },
+        {
+          "key": "ArrowLeft"
+        },
+        {
+          "key": "Delete"
+        }
+      ]
+    },
+    {
+      "name": "rotate-tab-format-small-decimal-clamp",
+      "kind": "rotate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "0"
+        },
+        {
+          "key": "."
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "0"
+        },
+        {
+          "key": "1"
+        },
+        {
+          "key": "Tab"
+        },
+        {
+          "key": "Backspace"
+        }
+      ]
+    },
+    {
+      "name": "shift-physical-slash-toggles-inverse",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "?",
+          "code": "Slash",
+          "shiftKey": true
+        },
+        {
+          "key": "?",
+          "code": "Slash",
+          "shiftKey": true
+        }
+      ]
+    },
+    {
+      "name": "shift-physical-minus-toggles-negate",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "2"
+        },
+        {
+          "key": "_",
+          "code": "Minus",
+          "shiftKey": true
+        },
+        {
+          "key": "_",
+          "code": "Minus",
+          "shiftKey": true
+        }
+      ]
+    },
+    {
+      "name": "shift-physical-period-inserts-decimal",
+      "kind": "translate",
+      "initialValues": [
+        0,
+        0,
+        0
+      ],
+      "idxMax": 0,
+      "affectAll": false,
+      "nullOne": false,
+      "events": [
+        {
+          "key": "1"
+        },
+        {
+          "key": ">",
+          "code": "Period",
+          "shiftKey": true
+        },
+        {
+          "key": "5"
+        }
+      ]
+    }
+  ]
+}

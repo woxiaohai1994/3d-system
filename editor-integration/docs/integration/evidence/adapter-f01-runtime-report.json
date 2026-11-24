@@ -1,0 +1,621 @@
+{
+  "browser": "153.0.8010.50",
+  "scene": "http://127.0.0.1:3005/scene/334e12d30671",
+  "checks": {
+    "nativeSelectionSameId": true,
+    "previewDoesNotWrite": true,
+    "adapterCommitMovesSameNode": true,
+    "oneNativeUndo": true,
+    "nativeRedo": true,
+    "restored": true
+  },
+  "before": {
+    "id": "door_cg8r3de45342rqq1",
+    "node": {
+      "object": "node",
+      "id": "door_cg8r3de45342rqq1",
+      "type": "door",
+      "name": "Door 1",
+      "parentId": "wall_kdpghg65cz80lunk",
+      "visible": true,
+      "metadata": {},
+      "position": [
+        2.5035389016432363,
+        1.05,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "side": "front",
+      "wallId": "wall_kdpghg65cz80lunk",
+      "width": 0.9,
+      "height": 2.1,
+      "constructionType": "framed",
+      "dimensionReference": "nominal",
+      "doorCategory": "interior",
+      "doorType": "hinged",
+      "leafCount": 1,
+      "operationState": 0,
+      "slideDirection": "left",
+      "trackStyle": "none",
+      "garagePanelCount": 4,
+      "openingKind": "door",
+      "openingShape": "rectangle",
+      "openingRadiusMode": "all",
+      "openingTopRadii": [
+        0.15,
+        0.15
+      ],
+      "cornerRadius": 0.15,
+      "archHeight": 0.45,
+      "openingRevealRadius": 0.025,
+      "frameThickness": 0.05,
+      "frameDepth": 0.07,
+      "threshold": true,
+      "thresholdHeight": 0.02,
+      "hingesSide": "left",
+      "swingDirection": "inward",
+      "swingAngle": 0,
+      "segments": [
+        {
+          "type": "panel",
+          "heightRatio": 0.4,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        },
+        {
+          "type": "panel",
+          "heightRatio": 0.6,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        }
+      ],
+      "handle": true,
+      "handleHeight": 1.05,
+      "handleSide": "right",
+      "contentPadding": [
+        0.04,
+        0.04
+      ],
+      "doorCloser": false,
+      "panicBar": false,
+      "panicBarHeight": 1
+    },
+    "revision": 3,
+    "past": 0,
+    "count": 23
+  },
+  "preview": {
+    "preview": {
+      "projectId": "334e12d30671",
+      "sceneRevision": 3,
+      "requestId": "f4593543-dfc5-48e7-9444-3b08fdfb6fd6",
+      "changes": [
+        {
+          "id": "door_cg8r3de45342rqq1",
+          "before": {
+            "object": "node",
+            "id": "door_cg8r3de45342rqq1",
+            "type": "door",
+            "name": "Door 1",
+            "parentId": "wall_kdpghg65cz80lunk",
+            "visible": true,
+            "metadata": {},
+            "position": [
+              2.5035389016432363,
+              1.05,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "side": "front",
+            "wallId": "wall_kdpghg65cz80lunk",
+            "width": 0.9,
+            "height": 2.1,
+            "constructionType": "framed",
+            "dimensionReference": "nominal",
+            "doorCategory": "interior",
+            "doorType": "hinged",
+            "leafCount": 1,
+            "operationState": 0,
+            "slideDirection": "left",
+            "trackStyle": "none",
+            "garagePanelCount": 4,
+            "openingKind": "door",
+            "openingShape": "rectangle",
+            "openingRadiusMode": "all",
+            "openingTopRadii": [
+              0.15,
+              0.15
+            ],
+            "cornerRadius": 0.15,
+            "archHeight": 0.45,
+            "openingRevealRadius": 0.025,
+            "frameThickness": 0.05,
+            "frameDepth": 0.07,
+            "threshold": true,
+            "thresholdHeight": 0.02,
+            "hingesSide": "left",
+            "swingDirection": "inward",
+            "swingAngle": 0,
+            "segments": [
+              {
+                "type": "panel",
+                "heightRatio": 0.4,
+                "columnRatios": [
+                  1
+                ],
+                "dividerThickness": 0.03,
+                "panelDepth": 0.01,
+                "panelInset": 0.04
+              },
+              {
+                "type": "panel",
+                "heightRatio": 0.6,
+                "columnRatios": [
+                  1
+                ],
+                "dividerThickness": 0.03,
+                "panelDepth": 0.01,
+                "panelInset": 0.04
+              }
+            ],
+            "handle": true,
+            "handleHeight": 1.05,
+            "handleSide": "right",
+            "contentPadding": [
+              0.04,
+              0.04
+            ],
+            "doorCloser": false,
+            "panicBar": false,
+            "panicBarHeight": 1
+          },
+          "after": {
+            "object": "node",
+            "id": "door_cg8r3de45342rqq1",
+            "type": "door",
+            "name": "Door 1",
+            "parentId": "wall_kdpghg65cz80lunk",
+            "visible": true,
+            "metadata": {},
+            "position": [
+              2.7535389016432363,
+              1.05,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "side": "front",
+            "wallId": "wall_kdpghg65cz80lunk",
+            "width": 0.9,
+            "height": 2.1,
+            "constructionType": "framed",
+            "dimensionReference": "nominal",
+            "doorCategory": "interior",
+            "doorType": "hinged",
+            "leafCount": 1,
+            "operationState": 0,
+            "slideDirection": "left",
+            "trackStyle": "none",
+            "garagePanelCount": 4,
+            "openingKind": "door",
+            "openingShape": "rectangle",
+            "openingRadiusMode": "all",
+            "openingTopRadii": [
+              0.15,
+              0.15
+            ],
+            "cornerRadius": 0.15,
+            "archHeight": 0.45,
+            "openingRevealRadius": 0.025,
+            "frameThickness": 0.05,
+            "frameDepth": 0.07,
+            "threshold": true,
+            "thresholdHeight": 0.02,
+            "hingesSide": "left",
+            "swingDirection": "inward",
+            "swingAngle": 0,
+            "segments": [
+              {
+                "type": "panel",
+                "heightRatio": 0.4,
+                "columnRatios": [
+                  1
+                ],
+                "dividerThickness": 0.03,
+                "panelDepth": 0.01,
+                "panelInset": 0.04
+              },
+              {
+                "type": "panel",
+                "heightRatio": 0.6,
+                "columnRatios": [
+                  1
+                ],
+                "dividerThickness": 0.03,
+                "panelDepth": 0.01,
+                "panelInset": 0.04
+              }
+            ],
+            "handle": true,
+            "handleHeight": 1.05,
+            "handleSide": "right",
+            "contentPadding": [
+              0.04,
+              0.04
+            ],
+            "doorCloser": false,
+            "panicBar": false,
+            "panicBarHeight": 1
+          }
+        }
+      ]
+    }
+  },
+  "committed": {
+    "id": "door_cg8r3de45342rqq1",
+    "node": {
+      "object": "node",
+      "id": "door_cg8r3de45342rqq1",
+      "type": "door",
+      "name": "Door 1",
+      "parentId": "wall_kdpghg65cz80lunk",
+      "visible": true,
+      "metadata": {},
+      "position": [
+        2.7535389016432363,
+        1.05,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "side": "front",
+      "wallId": "wall_kdpghg65cz80lunk",
+      "width": 0.9,
+      "height": 2.1,
+      "constructionType": "framed",
+      "dimensionReference": "nominal",
+      "doorCategory": "interior",
+      "doorType": "hinged",
+      "leafCount": 1,
+      "operationState": 0,
+      "slideDirection": "left",
+      "trackStyle": "none",
+      "garagePanelCount": 4,
+      "openingKind": "door",
+      "openingShape": "rectangle",
+      "openingRadiusMode": "all",
+      "openingTopRadii": [
+        0.15,
+        0.15
+      ],
+      "cornerRadius": 0.15,
+      "archHeight": 0.45,
+      "openingRevealRadius": 0.025,
+      "frameThickness": 0.05,
+      "frameDepth": 0.07,
+      "threshold": true,
+      "thresholdHeight": 0.02,
+      "hingesSide": "left",
+      "swingDirection": "inward",
+      "swingAngle": 0,
+      "segments": [
+        {
+          "type": "panel",
+          "heightRatio": 0.4,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        },
+        {
+          "type": "panel",
+          "heightRatio": 0.6,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        }
+      ],
+      "handle": true,
+      "handleHeight": 1.05,
+      "handleSide": "right",
+      "contentPadding": [
+        0.04,
+        0.04
+      ],
+      "doorCloser": false,
+      "panicBar": false,
+      "panicBarHeight": 1
+    },
+    "revision": 4,
+    "past": 1,
+    "count": 23
+  },
+  "undone": {
+    "id": "door_cg8r3de45342rqq1",
+    "node": {
+      "object": "node",
+      "id": "door_cg8r3de45342rqq1",
+      "type": "door",
+      "name": "Door 1",
+      "parentId": "wall_kdpghg65cz80lunk",
+      "visible": true,
+      "metadata": {},
+      "position": [
+        2.5035389016432363,
+        1.05,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "side": "front",
+      "wallId": "wall_kdpghg65cz80lunk",
+      "width": 0.9,
+      "height": 2.1,
+      "constructionType": "framed",
+      "dimensionReference": "nominal",
+      "doorCategory": "interior",
+      "doorType": "hinged",
+      "leafCount": 1,
+      "operationState": 0,
+      "slideDirection": "left",
+      "trackStyle": "none",
+      "garagePanelCount": 4,
+      "openingKind": "door",
+      "openingShape": "rectangle",
+      "openingRadiusMode": "all",
+      "openingTopRadii": [
+        0.15,
+        0.15
+      ],
+      "cornerRadius": 0.15,
+      "archHeight": 0.45,
+      "openingRevealRadius": 0.025,
+      "frameThickness": 0.05,
+      "frameDepth": 0.07,
+      "threshold": true,
+      "thresholdHeight": 0.02,
+      "hingesSide": "left",
+      "swingDirection": "inward",
+      "swingAngle": 0,
+      "segments": [
+        {
+          "type": "panel",
+          "heightRatio": 0.4,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        },
+        {
+          "type": "panel",
+          "heightRatio": 0.6,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        }
+      ],
+      "handle": true,
+      "handleHeight": 1.05,
+      "handleSide": "right",
+      "contentPadding": [
+        0.04,
+        0.04
+      ],
+      "doorCloser": false,
+      "panicBar": false,
+      "panicBarHeight": 1
+    },
+    "revision": 5,
+    "past": 0,
+    "count": 23
+  },
+  "redone": {
+    "id": "door_cg8r3de45342rqq1",
+    "node": {
+      "object": "node",
+      "id": "door_cg8r3de45342rqq1",
+      "type": "door",
+      "name": "Door 1",
+      "parentId": "wall_kdpghg65cz80lunk",
+      "visible": true,
+      "metadata": {},
+      "position": [
+        2.7535389016432363,
+        1.05,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "side": "front",
+      "wallId": "wall_kdpghg65cz80lunk",
+      "width": 0.9,
+      "height": 2.1,
+      "constructionType": "framed",
+      "dimensionReference": "nominal",
+      "doorCategory": "interior",
+      "doorType": "hinged",
+      "leafCount": 1,
+      "operationState": 0,
+      "slideDirection": "left",
+      "trackStyle": "none",
+      "garagePanelCount": 4,
+      "openingKind": "door",
+      "openingShape": "rectangle",
+      "openingRadiusMode": "all",
+      "openingTopRadii": [
+        0.15,
+        0.15
+      ],
+      "cornerRadius": 0.15,
+      "archHeight": 0.45,
+      "openingRevealRadius": 0.025,
+      "frameThickness": 0.05,
+      "frameDepth": 0.07,
+      "threshold": true,
+      "thresholdHeight": 0.02,
+      "hingesSide": "left",
+      "swingDirection": "inward",
+      "swingAngle": 0,
+      "segments": [
+        {
+          "type": "panel",
+          "heightRatio": 0.4,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        },
+        {
+          "type": "panel",
+          "heightRatio": 0.6,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        }
+      ],
+      "handle": true,
+      "handleHeight": 1.05,
+      "handleSide": "right",
+      "contentPadding": [
+        0.04,
+        0.04
+      ],
+      "doorCloser": false,
+      "panicBar": false,
+      "panicBarHeight": 1
+    },
+    "revision": 6,
+    "past": 1,
+    "count": 23
+  },
+  "restored": {
+    "id": "door_cg8r3de45342rqq1",
+    "node": {
+      "object": "node",
+      "id": "door_cg8r3de45342rqq1",
+      "type": "door",
+      "name": "Door 1",
+      "parentId": "wall_kdpghg65cz80lunk",
+      "visible": true,
+      "metadata": {},
+      "position": [
+        2.5035389016432363,
+        1.05,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "side": "front",
+      "wallId": "wall_kdpghg65cz80lunk",
+      "width": 0.9,
+      "height": 2.1,
+      "constructionType": "framed",
+      "dimensionReference": "nominal",
+      "doorCategory": "interior",
+      "doorType": "hinged",
+      "leafCount": 1,
+      "operationState": 0,
+      "slideDirection": "left",
+      "trackStyle": "none",
+      "garagePanelCount": 4,
+      "openingKind": "door",
+      "openingShape": "rectangle",
+      "openingRadiusMode": "all",
+      "openingTopRadii": [
+        0.15,
+        0.15
+      ],
+      "cornerRadius": 0.15,
+      "archHeight": 0.45,
+      "openingRevealRadius": 0.025,
+      "frameThickness": 0.05,
+      "frameDepth": 0.07,
+      "threshold": true,
+      "thresholdHeight": 0.02,
+      "hingesSide": "left",
+      "swingDirection": "inward",
+      "swingAngle": 0,
+      "segments": [
+        {
+          "type": "panel",
+          "heightRatio": 0.4,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        },
+        {
+          "type": "panel",
+          "heightRatio": 0.6,
+          "columnRatios": [
+            1
+          ],
+          "dividerThickness": 0.03,
+          "panelDepth": 0.01,
+          "panelInset": 0.04
+        }
+      ],
+      "handle": true,
+      "handleHeight": 1.05,
+      "handleSide": "right",
+      "contentPadding": [
+        0.04,
+        0.04
+      ],
+      "doorCloser": false,
+      "panicBar": false,
+      "panicBarHeight": 1
+    },
+    "revision": 7,
+    "past": 0,
+    "count": 23
+  }
+}

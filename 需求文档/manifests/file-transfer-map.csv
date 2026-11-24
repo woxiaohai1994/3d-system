@@ -1,0 +1,29 @@
+﻿source_project,source_path_or_discovery_entry,proposed_target,action,tasks,required_adaptation
+Aedifex,packages/editor/src/components/ai/contracts/runtime.ts,integrations/contracts/ai-runtime.ts,PORT_ADAPT,T03;T11,纯接口语义重用；换Host类型，不搬SaaS/provider缺失实现
+Aedifex,packages/editor/src/components/ai/prompt/openai-tools.ts,integrations/ai/tool-capabilities.ts,PORT_SUBSET,T12,从本期清单生成工具schema/prompt/dispatch，移除排除工具说明
+Aedifex,packages/editor/src/components/ai/types/tool-call-types.ts,integrations/ai/types/,PORT_SUBSET,T12,保留被迁工具类型；不把整个节点union复制为另一套
+Aedifex,packages/editor/src/components/ai/ai-scene-serializer.ts,integrations/ai/context.ts,PORT_ADAPT,T12,只读Pascal store，最小上下文/项目版本/层级
+Aedifex,packages/editor/src/components/ai/ai-catalog-resolver.ts,integrations/ai/catalog-resolver.ts,PORT_ADAPT,T06;T12,连接实际宿主目录/明确映射
+Aedifex,packages/editor/src/components/ai/ai-mutation-executor.ts,integrations/ai/validation/,PORT_SUBSET,T12,直接write/私有类型改为SceneEditAdapter，按真实源码签名
+Aedifex,packages/editor/src/components/ai/mutation/,integrations/ai/validation/,PORT_SUBSET,T12,仅纳入工具的validator与相关测试；该目录需完整依赖审计
+Aedifex,packages/editor/src/components/ai/ai-preview-manager.ts,integrations/ai/preview/,PORT_ADAPT,T13,ghost不得污染保存/导出，项目切换/取消清理
+Aedifex,packages/editor/src/components/ai/preview/confirm-operations.ts,integrations/ai/preview/,PORT_ADAPT,T05;T13,正式提交来自明确用户确认，复用同一history
+Aedifex,packages/editor/src/components/ai/ai-agent-loop.ts,integrations/ai/controller.ts,PORT_RESTRICTED,T13,保留必要编排而非引入新框架；安全上限/无自动确认
+Aedifex,packages/editor/src/components/ai/ai-stream-client.ts,integrations/ai/transport/,PORT_ADAPT,T11,分片/取消/requestId/服务端配置
+Aedifex,packages/editor/src/components/ai/ai-chat-panel.tsx,integrations/ai/ui/,PORT_ADAPT,T13,已有React UI适配宿主layout，不重造editor
+Aedifex,apps/editor/app/api/ai/,apps/editor/app/api/integration-ai/,PORT_ADAPT,T11;T14,完整审计真实路由再迁；限制provider目标、密钥不进前端
+Aedifex,packages/core/src/registry/registry.ts,无,DO_NOT_PORT,T03,保持Pascal v1，不把v2迁入
+Aedifex,apps/editor/lib/bootstrap.ts,无,DO_NOT_PORT,T03,不可覆盖原版六插件装配
+openPlan3D,src/lib/components/viewer3d/ThreeViewer.svelte,integrations/camera/ + integrations/ai-image/,EXTRACT_REWRITE_UI,T10;T14,仅相机/prompt流程，React重写；不搬renderer/scene/buildWalls
+openPlan3D,src/lib/utils/openaiClient.ts,server/image-transport/,ADAPT_PROTOCOL,T14,读取/Responses协议边界；禁止照搬浏览器key存储
+openPlan3D,src/lib/utils/roomPresets.ts,integrations/templates/room-presets.ts,PORT_PURE_GEOMETRY,T09,cm→m/平面→XZ，只保留四形状
+openPlan3D,src/lib/utils/roomTemplates.ts,integrations/templates/room-templates.ts,PORT_DATA_ADAPT_ACTIONS,T09,六组合固定偏移；目录映射；一个宿主事务
+openPlan3D,src/lib/utils/furnitureModelLoader.ts,integrations/custom-assets/（局部参考）,DO_NOT_COPY_RENDERER,T06,仅提取准则；宿主loader与实例复用，防变形/错误dispose
+openPlan3D,docs/local-custom-models.md 与其链接实现,integrations/custom-assets/,CONTRACT_GUIDED_PORT,T06,T03定位真实入口与测试；16MiB/静态/嵌入纹理/原源hash
+openPlan3D,docs/project-package-v1.md 与其链接实现,integrations/project-package/,CONTRACT_ADAPTATION,T07;T08,不搬native PlanDocument；独立format，源安全/原子/池化思想
+openPlan3D,docs/furniture-inventory.md / 实际模型子集,必要素材目录与notices,MINIMAL_VERIFIED_ASSETS,T06;T09,只取六模板缺项的核实素材，逐文件hash/许可
+openPlan3D,tests/capture-main-3d.test.ts,整合capture回归测试,PORT_TEST_INTENT,T10,测试宿主真实capture，不保留source DOM selector假定
+Pascal,packages/mcp/src/operations/scene-operations.ts,integrations/pascal/scene-adapter.ts,REUSE_AFTER_BROWSER_AUDIT,T04;T05,真实Patch/exports；检查node-shims，不从server入口import
+Pascal,packages/viewer/src/lib/snapshot-pipeline.ts,integrations/pascal/capture-adapter.ts,REUSE,T10,WebP与2048边界；PNG需真实转换，不改全局缩略图
+Pascal,packages/core/src/lib/asset-storage.ts,integrations/pascal/asset-adapter.ts,REUSE,T06,asset://持久，blob运行时；历史GC引用
+Pascal,apps/editor/lib/bootstrap.ts,原位保留,PRESERVE,T02;T16,v1及六类插件，不被donor覆盖

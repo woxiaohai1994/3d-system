@@ -1,0 +1,170 @@
+import { getLocale, useI18n } from '../../i18n'
+
+const zh: Record<string, string> = {
+  'Waiting for your answer': '等待你的回答',
+  'Auto-apply changes': '自动应用修改',
+  'Auto-apply on': '自动应用：开',
+  'Auto-apply off': '自动应用：关',
+  'Auto-apply is on. Click to turn off.': '已开启自动应用，点击即可关闭。',
+  'Review each preview before applying changes.': '每轮预览需你确认后才会应用。',
+  'Enable automatic application?': '开启自动应用？',
+  'Future validated previews will be applied directly, without asking you to confirm each round. AI may add, modify or delete scene objects, and continued requests may use more API credits.':
+    '开启后，后续通过校验的预览将直接应用，无需逐轮确认。AI 可能添加、修改或删除场景对象，连续执行也可能消耗更多 API 用量。',
+  'Save your scene first. You can turn this off or stop AI at any time. Already applied changes remain until you undo them in operation history.':
+    '建议先保存场景。你可以随时关闭此功能或停止 AI；已应用的修改不会自动恢复，需要在操作历史中撤销。',
+  'AI questions still wait for your answer. Any preview already awaiting confirmation still needs your approval. This setting resets when you reload or switch projects.':
+    'AI 提问仍会等待你的回答。当前已在等待确认的预览仍需手动确认。刷新页面或切换项目后会恢复为关闭。',
+  'Keep manual review': '保持手动确认',
+  'Confirm and enable': '确认开启',
+  'Configure API to send': '配置 API 后发送',
+  'Configure API to send · Your draft is kept': '配置 API 后即可发送 · 已保留草稿',
+  'Refresh model resources': '刷新模型资源',
+  'Refresh resources after adding models': '新增模型后点击刷新；重新打开项目也会重新读取。',
+  '{count} models loaded': '已读取 {count} 个模型',
+  'Resources refreshed': '资源已刷新',
+  'AI Design Assistant': 'AI 设计助手',
+  'Describe your design changes in natural language,': '用自然语言描述你的设计需求，',
+  'AI will preview and execute them in the scene.': 'AI 会在场景中预览并执行修改。',
+  'Place a sofa and coffee table in the living room': '在客厅放置沙发和茶几',
+  'Help me furnish a bedroom': '帮我布置一间卧室',
+  'Add lighting fixtures': '添加照明灯具',
+  'Rearrange the furniture': '重新布置家具',
+  'Answer AI question...': '回答 AI 的问题…',
+  'Describe your design changes...': '描述你的设计需求…',
+  'Enter to send · Shift+Enter for new line': 'Enter 发送 · Shift+Enter 换行',
+  'Clear chat': '清空对话',
+  Retry: '重试',
+  Send: '发送',
+  Stop: '停止',
+  Close: '关闭',
+  'Thinking...': '正在思考…',
+  'Iteration {count} — Thinking...': '第 {count} 轮 · 正在思考…',
+  'Operation History': '操作历史',
+  '{count} operations': '{count} 项操作',
+  '{count} adjusted': '{count} 项已调整',
+  '{count} invalid': '{count} 项无效',
+  '{count} confirmed': '{count} 项已确认',
+  '{count} undone': '{count} 项已撤销',
+  'Preview {count} operations': '预览 {count} 项操作',
+  '{count} nodes': '{count} 个对象',
+  'Switch tabs to preview different options': '切换标签预览不同方案',
+  'Position was adjusted': '位置已调整',
+  adjusted: '已调整',
+  Confirmed: '已确认',
+  Rejected: '已拒绝',
+  Undone: '已撤销',
+  undone: '已撤销',
+  Undo: '撤销',
+  'Undo this operation': '撤销此操作',
+  'Reject all': '全部放弃',
+  'Confirm selection': '确认所选方案',
+  Reject: '放弃',
+  Confirm: '确认应用',
+  Before: '修改前',
+  After: '修改后',
+  'Slide to compare': '滑动对比',
+  'Add furniture': '添加家具',
+  'Add wall': '添加墙体',
+  'Add door': '添加门',
+  'Add window': '添加窗',
+  'Add staircase': '添加楼梯',
+  'Remove furniture': '删除家具',
+  'Remove node': '删除对象',
+  'Move furniture': '移动家具',
+  'Update material': '修改材质',
+  'Add {name}': '添加 {name}',
+  'Remove {name}': '删除 {name}',
+  'Move {name}': '移动 {name}',
+  'Update material of {name}': '修改 {name} 的材质',
+  NOT_CONFIGURED: '请先在 API 设置中添加并选择配置。',
+  STALE_PREVIEW: '场景已发生变化，请重新生成方案。',
+  INVALID_PREVIEW: '方案已失效，请重新生成。',
+  BUSY: '请先完成当前编辑操作。',
+  READ_ONLY: '当前场景为只读。',
+  PROVIDER_ERROR: 'AI 服务请求失败，请检查配置后重试。',
+  RATE_LIMITED: 'AI 服务繁忙，请稍后重试。',
+  INCOMPLETE_RESPONSE: 'AI 响应不完整，请重试。',
+  MODEL_CAPABILITY_UNAVAILABLE: '无法读取此模型的输出能力，请检查厂商的模型查询接口。',
+  THINKING_UNSUPPORTED: '当前模型不支持此思考档位，请在 API 配置中选择跟随模型默认。',
+  INVALID_TOOL: 'AI 返回的操作参数未通过校验，本轮操作未执行，请重试或分步描述。',
+  OUTPUT_LIMIT: 'AI 思考或回复达到长度上限，本轮操作未执行，请将任务拆成更小的步骤。',
+  UPSTREAM_INTERRUPTED: 'AI 服务中断了生成，本轮操作未执行，请稍后重试。',
+  INVALID_RESPONSE: 'AI 响应格式无效，请重试。',
+  INVALID_NODE: '对象参数无效，修改未应用。',
+  INVALID_RELATION: '对象之间的关联无效，修改未应用。',
+  'AI configuration could not be checked.': '无法读取 AI 配置，请检查服务连接。',
+  'Sorry, I was unable to process that request. Please try rephrasing or providing more details.':
+    '未能处理这条请求，请换一种描述或提供更多细节。',
+}
+const en: Record<string, string> = {
+  MODEL_CAPABILITY_UNAVAILABLE:
+    'Could not read the model output limit. Check the provider model lookup endpoint.',
+  THINKING_UNSUPPORTED:
+    'This thinking setting is not supported. Choose Model default in API settings.',
+  INVALID_TOOL:
+    'The AI returned invalid operation parameters. This round was not applied. Retry or break the task into smaller steps.',
+  OUTPUT_LIMIT:
+    'The AI reached its reasoning or response limit. This round was not applied. Break the task into smaller steps.',
+  UPSTREAM_INTERRUPTED:
+    'The AI service interrupted generation. This round was not applied. Please try again later.',
+}
+export function aiText(text: string, values: Record<string, string | number> = {}): string {
+  const localized = getLocale() === 'zh-CN' ? (zh[text] ?? text) : (en[text] ?? text)
+  return localized.replace(/\{(\w+)\}/g, (match, key) => String(values[key] ?? match))
+}
+export function useAIText() {
+  useI18n()
+  return aiText
+}
+export function operationLabel(type: string) {
+  if (type === 'plugin_action') return getLocale() === 'zh-CN' ? '插件操作' : 'Plugin action'
+  const names: Record<string, string> = {
+    item: '家具',
+    wall: '墙体',
+    door: '门',
+    window: '窗',
+    slab: '楼板',
+    ceiling: '天花',
+    roof: '屋顶',
+    stair: '楼梯',
+    zone: '区域',
+    site: '场地',
+    building: '建筑',
+    level: '楼层',
+    fence: '围栏',
+    material: '材质',
+    scan: '扫描模型',
+    guide: '参考图',
+    node: '对象',
+    roof_accessory: '屋顶附件',
+    elevator: '电梯',
+    wall_material: '墙体材质',
+    roof_material: '屋顶材质',
+    stair_material: '楼梯材质',
+    cut_out: '开孔',
+    duct_segment: '风管',
+    duct_fitting: '风管配件',
+    duct_terminal: '风口',
+    pipe_segment: '管道',
+    pipe_fitting: '管件',
+    pipe_trap: '存水弯',
+    hvac_equipment: '暖通设备',
+    lineset: '管线组',
+    liquid_line: '液管',
+    room_preset: '房间预设',
+  }
+  const [verb, ...rest] = type.split('_')
+  if (getLocale() !== 'zh-CN') return type.replaceAll('_', ' ')
+  const verbs: Record<string, string> = {
+    add: '添加',
+    update: '修改',
+    remove: '删除',
+    move: '移动',
+    clone: '复制',
+    save: '保存',
+    insert: '插入',
+    align: '对齐',
+    paint: '涂装',
+  }
+  return `${verbs[verb ?? ''] ?? ''}${names[rest.join('_')] ?? '对象'}`
+}

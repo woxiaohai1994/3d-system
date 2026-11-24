@@ -1,0 +1,827 @@
+{
+  "source": "Blender v4.3.0 original keymap generators, LEFT selection",
+  "hashes": {
+    "blender_default.py": "67e041a1dffa6015b430dbe7cf325f3281258c858bbff976d61a8ed1db9380cc",
+    "userdef_default.c": "3997c60abfa9e9d34f01f2744f7f1b943d69ac89c7bb5a5ee366364927f68c33"
+  },
+  "dragThreshold": 3,
+  "releaseConfirm": true,
+  "maps": {
+    "pose": [
+      [
+        "transform.translate",
+        {
+          "type": "G",
+          "value": "PRESS"
+        },
+        null
+      ],
+      [
+        "transform.rotate",
+        {
+          "type": "R",
+          "value": "PRESS"
+        },
+        null
+      ],
+      [
+        "transform.resize",
+        {
+          "type": "S",
+          "value": "PRESS"
+        },
+        null
+      ],
+      [
+        "transform.translate",
+        {
+          "type": "LEFTMOUSE",
+          "value": "CLICK_DRAG"
+        },
+        null
+      ],
+      [
+        "transform.mirror",
+        {
+          "type": "M",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "object.parent_set",
+        {
+          "type": "P",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.reveal",
+        {
+          "type": "H",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.hide",
+        {
+          "type": "H",
+          "value": "PRESS"
+        },
+        {
+          "properties": [
+            [
+              "unselected",
+              false
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.hide",
+        {
+          "type": "H",
+          "value": "PRESS",
+          "shift": true
+        },
+        {
+          "properties": [
+            [
+              "unselected",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "A",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_pose_apply"
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.rot_clear",
+        {
+          "type": "R",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.loc_clear",
+        {
+          "type": "G",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.scale_clear",
+        {
+          "type": "S",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.quaternions_flip",
+        {
+          "type": "F",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.rotation_mode_set",
+        {
+          "type": "R",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.copy",
+        {
+          "type": "C",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.paste",
+        {
+          "type": "V",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        {
+          "properties": [
+            [
+              "flipped",
+              false
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.paste",
+        {
+          "type": "V",
+          "value": "PRESS",
+          "shift": true,
+          "ctrl": true
+        },
+        {
+          "properties": [
+            [
+              "flipped",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_all",
+        {
+          "type": "A",
+          "value": "PRESS"
+        },
+        {
+          "properties": [
+            [
+              "action",
+              "SELECT"
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_all",
+        {
+          "type": "A",
+          "value": "PRESS",
+          "alt": true
+        },
+        {
+          "properties": [
+            [
+              "action",
+              "DESELECT"
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_all",
+        {
+          "type": "I",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        {
+          "properties": [
+            [
+              "action",
+              "INVERT"
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_all",
+        {
+          "type": "A",
+          "value": "DOUBLE_CLICK"
+        },
+        {
+          "properties": [
+            [
+              "action",
+              "DESELECT"
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_parent",
+        {
+          "type": "P",
+          "value": "PRESS",
+          "shift": true
+        },
+        null
+      ],
+      [
+        "pose.select_hierarchy",
+        {
+          "type": "LEFT_BRACKET",
+          "value": "PRESS",
+          "repeat": true
+        },
+        {
+          "properties": [
+            [
+              "direction",
+              "PARENT"
+            ],
+            [
+              "extend",
+              false
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_hierarchy",
+        {
+          "type": "LEFT_BRACKET",
+          "value": "PRESS",
+          "shift": true,
+          "repeat": true
+        },
+        {
+          "properties": [
+            [
+              "direction",
+              "PARENT"
+            ],
+            [
+              "extend",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_hierarchy",
+        {
+          "type": "RIGHT_BRACKET",
+          "value": "PRESS",
+          "repeat": true
+        },
+        {
+          "properties": [
+            [
+              "direction",
+              "CHILD"
+            ],
+            [
+              "extend",
+              false
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_hierarchy",
+        {
+          "type": "RIGHT_BRACKET",
+          "value": "PRESS",
+          "shift": true,
+          "repeat": true
+        },
+        {
+          "properties": [
+            [
+              "direction",
+              "CHILD"
+            ],
+            [
+              "extend",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "pose.select_linked",
+        {
+          "type": "L",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.select_linked_pick",
+        {
+          "type": "L",
+          "value": "PRESS"
+        },
+        null
+      ],
+      [
+        "pose.select_grouped",
+        {
+          "type": "G",
+          "value": "PRESS",
+          "shift": true
+        },
+        null
+      ],
+      [
+        "pose.select_mirror",
+        {
+          "type": "M",
+          "value": "PRESS",
+          "shift": true,
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.constraint_add_with_targets",
+        {
+          "type": "C",
+          "value": "PRESS",
+          "shift": true,
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.constraints_clear",
+        {
+          "type": "C",
+          "value": "PRESS",
+          "ctrl": true,
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.ik_add",
+        {
+          "type": "I",
+          "value": "PRESS",
+          "shift": true
+        },
+        null
+      ],
+      [
+        "pose.ik_clear",
+        {
+          "type": "I",
+          "value": "PRESS",
+          "ctrl": true,
+          "alt": true
+        },
+        null
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "W",
+          "value": "PRESS",
+          "shift": true
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_bone_options_toggle"
+            ]
+          ]
+        }
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "W",
+          "value": "PRESS",
+          "shift": true,
+          "ctrl": true
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_bone_options_enable"
+            ]
+          ]
+        }
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "W",
+          "value": "PRESS",
+          "alt": true
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_bone_options_disable"
+            ]
+          ]
+        }
+      ],
+      [
+        "armature.collection_show_all",
+        {
+          "type": "ACCENT_GRAVE",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "armature.assign_to_collection",
+        {
+          "type": "M",
+          "value": "PRESS",
+          "shift": true
+        },
+        null
+      ],
+      [
+        "armature.move_to_collection",
+        {
+          "type": "M",
+          "value": "PRESS"
+        },
+        null
+      ],
+      [
+        "transform.bbone_resize",
+        {
+          "type": "S",
+          "value": "PRESS",
+          "shift": true,
+          "ctrl": true,
+          "alt": true
+        },
+        null
+      ],
+      [
+        "anim.keyframe_insert_menu",
+        {
+          "type": "K",
+          "value": "PRESS"
+        },
+        {
+          "properties": [
+            [
+              "always_prompt",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "anim.keyframe_delete_v3d",
+        {
+          "type": "I",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "anim.keying_set_active_set",
+        {
+          "type": "K",
+          "value": "PRESS",
+          "shift": true
+        },
+        null
+      ],
+      [
+        "pose.push",
+        {
+          "type": "E",
+          "value": "PRESS",
+          "ctrl": true
+        },
+        null
+      ],
+      [
+        "pose.relax",
+        {
+          "type": "E",
+          "value": "PRESS",
+          "alt": true
+        },
+        null
+      ],
+      [
+        "pose.breakdown",
+        {
+          "type": "E",
+          "value": "PRESS",
+          "shift": true
+        },
+        null
+      ],
+      [
+        "pose.blend_to_neighbor",
+        {
+          "type": "E",
+          "value": "PRESS",
+          "shift": true,
+          "alt": true
+        },
+        null
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "P",
+          "value": "PRESS",
+          "alt": true
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_pose_propagate"
+            ]
+          ]
+        }
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "RIGHTMOUSE",
+          "value": "PRESS"
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_pose_context_menu"
+            ]
+          ]
+        }
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "APP",
+          "value": "PRESS"
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "VIEW3D_MT_pose_context_menu"
+            ]
+          ]
+        }
+      ],
+      [
+        "wm.call_menu",
+        {
+          "type": "W",
+          "value": "PRESS",
+          "shift": true,
+          "alt": true
+        },
+        {
+          "properties": [
+            [
+              "name",
+              "POSE_MT_selection_sets_select"
+            ]
+          ]
+        }
+      ],
+      [
+        "anim.keyframe_insert",
+        {
+          "type": "I",
+          "value": "PRESS"
+        },
+        null
+      ]
+    ],
+    "select": [
+      [
+        "view3d.select",
+        {
+          "type": "LEFTMOUSE",
+          "value": "PRESS"
+        },
+        {
+          "properties": [
+            [
+              "deselect_all",
+              true
+            ],
+            [
+              "select_passthrough",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "view3d.select",
+        {
+          "type": "LEFTMOUSE",
+          "value": "PRESS",
+          "shift": true
+        },
+        {
+          "properties": [
+            [
+              "toggle",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "transform.translate",
+        {
+          "type": "LEFTMOUSE",
+          "value": "CLICK_DRAG"
+        },
+        {
+          "properties": [
+            [
+              "release_confirm",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "paint.face_select_loop",
+        {
+          "type": "LEFTMOUSE",
+          "value": "PRESS",
+          "alt": true
+        },
+        {
+          "properties": [
+            [
+              "extend",
+              false
+            ],
+            [
+              "select",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "paint.face_select_loop",
+        {
+          "type": "LEFTMOUSE",
+          "value": "PRESS",
+          "alt": true,
+          "shift": true
+        },
+        {
+          "properties": [
+            [
+              "extend",
+              true
+            ],
+            [
+              "select",
+              true
+            ]
+          ]
+        }
+      ],
+      [
+        "paint.face_select_loop",
+        {
+          "type": "LEFTMOUSE",
+          "value": "PRESS",
+          "alt": true,
+          "shift": true,
+          "ctrl": true
+        },
+        {
+          "properties": [
+            [
+              "extend",
+              true
+            ],
+            [
+              "select",
+              false
+            ]
+          ]
+        }
+      ]
+    ],
+    "move": [
+      [
+        "transform.translate",
+        {
+          "type": "LEFTMOUSE",
+          "value": "CLICK_DRAG"
+        },
+        {
+          "properties": [
+            [
+              "release_confirm",
+              true
+            ]
+          ]
+        }
+      ]
+    ],
+    "rotate": [
+      [
+        "transform.rotate",
+        {
+          "type": "LEFTMOUSE",
+          "value": "CLICK_DRAG"
+        },
+        {
+          "properties": [
+            [
+              "release_confirm",
+              true
+            ]
+          ]
+        }
+      ]
+    ],
+    "scale": [
+      [
+        "transform.resize",
+        {
+          "type": "LEFTMOUSE",
+          "value": "CLICK_DRAG"
+        },
+        {
+          "properties": [
+            [
+              "release_confirm",
+              true
+            ]
+          ]
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "tag": "v4.3.0",
+  "localChanges": false,
+  "files": [
+    {
+      "path": "rna_pose.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_pose.cc",
+      "sha256": "47a50c576f103c52e8472aed9d8c86ebfa8b14be43ee5440103edade67ee7cc6",
+      "bytes": 62984
+    },
+    {
+      "path": "properties_data_bone.py",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/scripts/startup/bl_ui/properties_data_bone.py",
+      "sha256": "d04f6588cea4bc90667ce42323c8710f30ddbcdddc43ec2f31fd4777cede259f",
+      "bytes": 21368
+    }
+  ]
+}

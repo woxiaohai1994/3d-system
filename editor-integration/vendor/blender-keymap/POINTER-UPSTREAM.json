@@ -1,0 +1,15 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "purpose": "Verify pointer drag modifier matching and KeyMapItem defaults against the existing Blender keymap archive.",
+  "files": {
+    "wm_event_system.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/windowmanager/intern/wm_event_system.cc",
+      "sha256": "1d21d1b37130ac128c354caabe809b89f33387f5f07cccfb2d2df8724beff864"
+    },
+    "rna_wm_api.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_wm_api.cc",
+      "sha256": "c5b078d3e29fb80b731f17b04b87d7366a1441c580338973a81263a2cd019bd4"
+    }
+  }
+}

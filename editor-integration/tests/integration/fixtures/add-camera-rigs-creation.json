@@ -1,0 +1,2067 @@
+{
+  "blender": "5.2.2 LTS",
+  "buildHash": "d13f752e3b9c",
+  "source": "add-camera-rigs@1.9.0",
+  "alignment": "WORLD",
+  "objectWireColors": {
+    "active": [
+      1.0,
+      0.6274510025978088,
+      0.1568627506494522
+    ],
+    "select": [
+      0.9294118285179138,
+      0.34117648005485535,
+      0.0
+    ],
+    "normal": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "transform": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "sources": {
+    "vendor/add-camera-rigs/__init__.py": "aebfc75983588db6cfe5a11c6867c1b83a48702f71d95cae92c42168adeb5850",
+    "vendor/add-camera-rigs/build_rigs.py": "bac3d523b925451d490f786d52812f5741924f13240b93252b3e647d9d6890b9",
+    "vendor/add-camera-rigs/composition_guides_menu.py": "7a51830c3f0b5e7824a1df04d4f58d408adf575dd582fac6964b6730025e9349",
+    "vendor/add-camera-rigs/create_widgets.py": "f8808bd45569a327c2e3cbaa796516669403e737e8791d568eb620ee0ce1bfce",
+    "vendor/add-camera-rigs/operators.py": "8939a8e0733a5a8fea9418a21c63921374f710ff79a4cc966062e8b952e99f39",
+    "vendor/add-camera-rigs/prefs.py": "f465a870e99ba318ad5d6ff68d4e1c5484ad45924d6e0a0aaff1d054d76bbc93",
+    "vendor/add-camera-rigs/ui_panels.py": "93e59d6499bf7fb438145330ee9866f0131e9f6093d4f6e8e5e0d64675f8e665"
+  },
+  "cases": [
+    {
+      "type": "dolly",
+      "cursor": [
+        0,
+        0,
+        0
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.7000000476837158,
+        -7.430936221908269e-08,
+        1.0
+      ],
+      "projectionMatrix": [
+        2.777777671813965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.938271522521973,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": null
+      },
+      "lens": 50.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "lens": 50.0,
+            "lens_offset": 0.0,
+            "lens_breathing_scale": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Camera_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          -0.20000000298023224,
+          0.30000001192092896
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          -0.20000000298023224,
+          0.30000001192092896
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "dolly",
+      "cursor": [
+        2.25,
+        3.5,
+        -4.75
+      ],
+      "resolution": [
+        1080,
+        1920
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        2.25,
+        3.5,
+        -4.75,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        2.25,
+        5.200000286102295,
+        -4.75,
+        1.0
+      ],
+      "projectionMatrix": [
+        4.938271522521973,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.777777671813965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": null
+      },
+      "lens": 50.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "lens": 50.0,
+            "lens_offset": 0.0,
+            "lens_breathing_scale": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Camera_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          -0.20000000298023224,
+          0.30000001192092896
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          -0.20000000298023224,
+          0.30000001192092896
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "dolly",
+      "cursor": [
+        -3,
+        1.25,
+        2
+      ],
+      "resolution": [
+        1600,
+        1200
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -3.0,
+        1.25,
+        2.0,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -3.0,
+        2.9499998092651367,
+        1.9999998807907104,
+        1.0
+      ],
+      "projectionMatrix": [
+        2.777777671813965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.7037034034729004,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": null
+      },
+      "lens": 50.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "lens": 50.0,
+            "lens_offset": 0.0,
+            "lens_breathing_scale": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Camera_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          -0.20000000298023224,
+          0.30000001192092896
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          -0.20000000298023224,
+          0.30000001192092896
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "crane",
+      "cursor": [
+        0,
+        0,
+        0
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999403953552,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999403953552,
+        0.0,
+        0.0,
+        1.7000000476837158,
+        -1.0000001192092896,
+        1.0
+      ],
+      "projectionMatrix": [
+        2.777777671813965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.938271522521973,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": null
+      },
+      "lens": 50.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Crane_Height": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Crane_Arm": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "lens": 50.0,
+            "lens_offset": 0.0,
+            "lens_breathing_scale": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Camera_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          -0.19999997317790985,
+          0.30000004172325134
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          -0.19999997317790985,
+          0.30000004172325134
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "crane",
+      "cursor": [
+        2.25,
+        3.5,
+        -4.75
+      ],
+      "resolution": [
+        1080,
+        1920
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        2.25,
+        3.5,
+        -4.75,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999403953552,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999403953552,
+        0.0,
+        2.25,
+        5.199999809265137,
+        -5.75,
+        1.0
+      ],
+      "projectionMatrix": [
+        4.938271522521973,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.777777671813965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": null
+      },
+      "lens": 50.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Crane_Height": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Crane_Arm": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "lens": 50.0,
+            "lens_offset": 0.0,
+            "lens_breathing_scale": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Camera_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          -0.19999997317790985,
+          0.30000004172325134
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          -0.19999997317790985,
+          0.30000004172325134
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "crane",
+      "cursor": [
+        -3,
+        1.25,
+        2
+      ],
+      "resolution": [
+        1600,
+        1200
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -3.0,
+        1.25,
+        2.0,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999403953552,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999999403953552,
+        0.0,
+        -3.0,
+        2.9499998092651367,
+        0.9999998211860657,
+        1.0
+      ],
+      "projectionMatrix": [
+        2.777777671813965,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        3.7037034034729004,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": null
+      },
+      "lens": 50.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Crane_Height": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Crane_Arm": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "lens": 50.0,
+            "lens_offset": 0.0,
+            "lens_breathing_scale": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Camera_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          -0.19999997317790985,
+          0.30000004172325134
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          -0.19999997317790985,
+          0.30000004172325134
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "2d",
+      "cursor": [
+        0,
+        0,
+        0
+      ],
+      "resolution": [
+        1920,
+        1080
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9999992251396179,
+        -0.0012500474695116282,
+        0.0,
+        0.0,
+        0.0012500474695116282,
+        0.9999992251396179,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "projectionMatrix": [
+        3.3333332538604736,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        5.9259257316589355,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": "DOF"
+      },
+      "lens": 60.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Root_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Root_Tweak": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "rotation_shift": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Left_Corner": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Right_Corner": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "DOF": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          0.30000001192092896,
+          0.20000000298023224
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          0.30000001192092896,
+          0.20000000298023224
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "2d",
+      "cursor": [
+        2.25,
+        3.5,
+        -4.75
+      ],
+      "resolution": [
+        1080,
+        1920
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        2.25,
+        3.5,
+        -4.75,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9398848414421082,
+        0.34149155020713806,
+        0.0,
+        0.0,
+        -0.34149155020713806,
+        0.9398848414421082,
+        0.0,
+        2.25,
+        3.5,
+        -4.75,
+        1.0
+      ],
+      "projectionMatrix": [
+        3.3333332538604736,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.875,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": "DOF"
+      },
+      "lens": 60.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Root_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Root_Tweak": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "rotation_shift": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Left_Corner": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Right_Corner": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "DOF": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          0.30000001192092896,
+          0.20000000298023224
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          0.30000001192092896,
+          0.20000000298023224
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    },
+    {
+      "type": "2d",
+      "cursor": [
+        -3,
+        1.25,
+        2
+      ],
+      "resolution": [
+        1600,
+        1200
+      ],
+      "mode": "OBJECT",
+      "activeIsRig": true,
+      "selectedObjects": [
+        "rig"
+      ],
+      "sceneCameraIsCreatedCamera": true,
+      "activeBone": null,
+      "selectedControls": [],
+      "placement": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -3.0,
+        1.25,
+        2.0,
+        1.0
+      ],
+      "cameraMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.9984909296035767,
+        0.054916951805353165,
+        0.0,
+        0.0,
+        -0.054916951805353165,
+        0.9984909296035767,
+        0.0,
+        -3.0,
+        1.25,
+        2.0,
+        1.0
+      ],
+      "projectionMatrix": [
+        3.3333332538604736,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.444444179534912,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0001999139785767,
+        -1.0,
+        0.0,
+        0.0,
+        -0.20002000033855438,
+        0.0
+      ],
+      "cameraDefaults": {
+        "projection": "perspective",
+        "sensorWidth": 36.0,
+        "near": 0.10000000149011612,
+        "far": 1000.0,
+        "orthoScale": 6.0,
+        "depthOfField": false,
+        "focusDistance": 10.0,
+        "aperture": 2.799999952316284,
+        "showInFront": false,
+        "lockCamera": false,
+        "focusBone": "DOF"
+      },
+      "lens": 60.0,
+      "bones": {
+        "Root": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Root_Offset": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Root_Tweak": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Camera": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {
+            "rotation_shift": 0.0,
+            "focus_distance": 10.0,
+            "aperture_fstop": 2.8
+          }
+        },
+        "Aim": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Left_Corner": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "Right_Corner": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        },
+        "DOF": {
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "properties": {}
+        }
+      },
+      "modeTransitions": {
+        "enterPose": {
+          "mode": "POSE",
+          "activeBone": null,
+          "selectedControls": []
+        },
+        "posedCameraLocation": [
+          0.699999988079071,
+          0.30000001192092896,
+          0.20000000298023224
+        ],
+        "exitMode": "OBJECT",
+        "exitCameraLocation": [
+          0.699999988079071,
+          0.30000001192092896,
+          0.20000000298023224
+        ],
+        "exitActiveBone": "Camera",
+        "exitSelectedControls": [
+          "Camera"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "browser": "153.0.8010.50",
+  "locale": "en-US",
+  "translationDisabled": true,
+  "checks": [
+    {
+      "name": "English browser displays Chinese level controls from production build",
+      "status": "PASS"
+    },
+    {
+      "name": "Level duplication preset descriptions and dialog actions are Chinese",
+      "status": "PASS"
+    },
+    {
+      "name": "Switching dialog and level labels both ways preserves complete native scene export",
+      "status": "PASS"
+    },
+    {
+      "name": "Delete confirmation is Chinese and cancellation preserves the level",
+      "status": "PASS"
+    },
+    {
+      "name": "Composition Enter does not finish rename; explicit English user name survives locale switches",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "sceneId": "ba634dd0a0d1"
+}

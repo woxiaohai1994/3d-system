@@ -1,0 +1,18 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "math_vector.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector.c",
+      "sha256": "7f6c851cdafe5028e6d0343bc0976abb977a44fb77a1fe1d1a791e1a8246daf1"
+    },
+    "math_vector_inline.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector_inline.c",
+      "sha256": "f43528fd8ac6efa045bf11e96764cc08849e2837e96876e079508c73178b13b9"
+    },
+    "math_base_safe_inline.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_base_safe_inline.c",
+      "sha256": "8f0aca2be432be52f7d9edbb51a25c579f8a17a2d0495b9a31145c28c23b856a"
+    }
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "hidden-browser": {
+    "checks": [
+      {
+        "name": "Every enabled bottom toolbar button was hovered and its tooltip is Chinese",
+        "status": "PASS"
+      },
+      {
+        "name": "Bottom tooltip and accessibility label switch to English and back",
+        "status": "PASS"
+      },
+      {
+        "name": "Shortcut dialog categories, descriptions and notes are localized",
+        "status": "PASS"
+      },
+      {
+        "name": "Bottom display popover uses localized rendering options",
+        "status": "PASS"
+      },
+      {
+        "name": "Language changes synchronize across open tabs",
+        "status": "PASS"
+      },
+      {
+        "name": "No uncaught browser errors",
+        "status": "PASS"
+      }
+    ],
+    "errors": [],
+    "tooltips": [
+      {
+        "label": "将视图朝向北方",
+        "text": "将视图朝向北方"
+      },
+      {
+        "label": "选择",
+        "text": "选择 (V)"
+      },
+      {
+        "label": "区域",
+        "text": "区域 (Z)"
+      },
+      {
+        "label": "测量：距离",
+        "text": "测量：距离 (M)"
+      },
+      {
+        "label": "删除",
+        "text": "删除 (X)"
+      },
+      {
+        "label": "参考对象：显示",
+        "text": "参考对象：显示"
+      },
+      {
+        "label": "向左环绕",
+        "text": "向左环绕"
+      },
+      {
+        "label": "向右环绕",
+        "text": "向右环绕"
+      },
+      {
+        "label": "俯视",
+        "text": "俯视"
+      }
+    ]
+  },
+  "full-browser": {
+    "checks": [
+      {
+        "name": "Fresh English browser defaults to Chinese with Translate disabled",
+        "status": "PASS"
+      },
+      {
+        "name": "Explicit English persists across reload",
+        "status": "PASS"
+      },
+      {
+        "name": "Privacy, terms, import validation and missing-scene routes are localized",
+        "status": "PASS"
+      },
+      {
+        "name": "Full scene export is identical across both language switches",
+        "status": "PASS"
+      },
+      {
+        "name": "Catalog, Nature, Streetscape, Pools and plugin management display Chinese",
+        "status": "PASS"
+      },
+      {
+        "name": "Plugin state and active tab survive live language switching",
+        "status": "PASS"
+      },
+      {
+        "name": "Browsing plugin panels and switching language leaves scene data unchanged",
+        "status": "PASS"
+      },
+      {
+        "name": "Language survives production editor reload",
+        "status": "PASS"
+      },
+      {
+        "name": "No uncaught production page errors",
+        "status": "PASS"
+      }
+    ],
+    "errors": []
+  },
+  "final-controls-browser-results": {
+    "checks": [
+      {
+        "name": "English browser displays Chinese level controls from production build",
+        "status": "PASS"
+      },
+      {
+        "name": "Level duplication preset descriptions and dialog actions are Chinese",
+        "status": "PASS"
+      },
+      {
+        "name": "Switching dialog and level labels both ways preserves complete native scene export",
+        "status": "PASS"
+      },
+      {
+        "name": "Delete confirmation is Chinese and cancellation preserves the level",
+        "status": "PASS"
+      },
+      {
+        "name": "Composition Enter does not finish rename; explicit English user name survives locale switches",
+        "status": "PASS"
+      },
+      {
+        "name": "No uncaught browser errors",
+        "status": "PASS"
+      }
+    ],
+    "errors": []
+  },
+  "final-helpers-browser-results": {
+    "checks": [
+      {
+        "name": "English browser renders Chinese camera, shelf inspector, enum labels and selection hints",
+        "status": "PASS"
+      },
+      {
+        "name": "Live English switch keeps the selected shelf and expanded inspector",
+        "status": "PASS"
+      },
+      {
+        "name": "Translated enum submits original schema value; locale switches preserve full export and user name Door",
+        "status": "PASS"
+      },
+      {
+        "name": "One native Undo restores the enum edit after both language switches",
+        "status": "PASS"
+      },
+      {
+        "name": "Chinese preference survives reload",
+        "status": "PASS"
+      },
+      {
+        "name": "Wall drawing chips cycle real snap/grid/continuation state and keep it on language switch",
+        "status": "PASS"
+      },
+      {
+        "name": "No uncaught browser errors",
+        "status": "PASS"
+      }
+    ],
+    "errors": []
+  },
+  "main-3002-hidden": {
+    "checks": [
+      {
+        "name": "Every enabled bottom toolbar button was hovered and its tooltip is Chinese",
+        "status": "PASS"
+      },
+      {
+        "name": "Bottom tooltip and accessibility label switch to English and back",
+        "status": "PASS"
+      },
+      {
+        "name": "Shortcut dialog categories, descriptions and notes are localized",
+        "status": "PASS"
+      },
+      {
+        "name": "Bottom display popover uses localized rendering options",
+        "status": "PASS"
+      },
+      {
+        "name": "Language changes synchronize across open tabs",
+        "status": "PASS"
+      },
+      {
+        "name": "No uncaught browser errors",
+        "status": "PASS"
+      }
+    ],
+    "errors": [],
+    "tooltips": [
+      {
+        "label": "将视图朝向北方",
+        "text": "将视图朝向北方"
+      },
+      {
+        "label": "选择",
+        "text": "选择 (V)"
+      },
+      {
+        "label": "区域",
+        "text": "区域 (Z)"
+      },
+      {
+        "label": "测量：距离",
+        "text": "测量：距离 (M)"
+      },
+      {
+        "label": "删除",
+        "text": "删除 (X)"
+      },
+      {
+        "label": "参考对象：显示",
+        "text": "参考对象：显示"
+      },
+      {
+        "label": "向左环绕",
+        "text": "向左环绕"
+      },
+      {
+        "label": "向右环绕",
+        "text": "向右环绕"
+      },
+      {
+        "label": "俯视",
+        "text": "俯视"
+      }
+    ]
+  },
+  "savedScenesPreserved": {
+    "scenes": 2,
+    "exactSceneRowsUnchanged": true,
+    "graphs": [
+      {
+        "id": "3337ebcb6afc",
+        "sha256": "718803da4d29cab848e0cf00fd5c15f4d24fd6dd81ef422e3b156a18f5d62494"
+      },
+      {
+        "id": "efc866892b8f",
+        "sha256": "6b42182129ac3c78551a6af7a8588b9ca565ec2886826d960a8b081cfd405aef"
+      }
+    ]
+  }
+}

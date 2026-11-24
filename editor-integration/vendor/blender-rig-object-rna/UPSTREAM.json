@@ -1,0 +1,19 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "provenance": "Complete fixed-tag sources. rna_object.cc and rna_define.cc downloaded from the pinned jsDelivr mirror and checked against the official raw source; RNA_types.hh copied from the existing fixed-tag vendored source.",
+  "files": {
+    "rna_object.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_object.cc",
+      "sha256": "84f427341aac389b4c6b565ce73c18f5588e78371c09805a4e2fa86341406c1f"
+    },
+    "rna_define.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/intern/rna_define.cc",
+      "sha256": "132944ddc31b41dfd9a3f9c37fbe05caca7ab7410a64f23e1b5ee2841ea5d826"
+    },
+    "RNA_types.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesrna/RNA_types.hh",
+      "sha256": "9fd8f7dc8045333afe79dfe31733e9cfa9fa9e17be6b16f59b75d8573ca29066"
+    }
+  }
+}

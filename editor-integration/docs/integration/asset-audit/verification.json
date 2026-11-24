@@ -1,0 +1,21 @@
+{
+  "sourceFilesChanged": [],
+  "missingReportLinks": [],
+  "xlsxSize": 89849,
+  "sheets": [
+    "概览",
+    "资产总表",
+    "分类草案",
+    "AI规则",
+    "问题清单",
+    "资源与变换",
+    "MCP差异",
+    "能力边界",
+    "标签词典"
+  ],
+  "filteredTables": 8,
+  "all111ExportedNamesDimensionsRules": "verified",
+  "summaryCachedValues": "verified",
+  "excelErrorCells": [],
+  "scope": "源码与表格核查；不是实景摆放/真实LLM测试"
+}

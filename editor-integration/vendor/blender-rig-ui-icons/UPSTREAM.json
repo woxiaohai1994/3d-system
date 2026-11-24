@@ -1,0 +1,31 @@
+{
+  "repository": "https://projects.blender.org/blender/blender",
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "DOWNARROW_HLT": {
+      "path": "release/datafiles/icons_svg/downarrow_hlt.svg",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/downarrow_hlt.svg",
+      "sha256": "a63ad42be88cc5a85f5c86c25d3f8758b35cb83ac72e77cb5cfb034c01cc08d9",
+      "bytes": 691
+    },
+    "MARKER_HLT": {
+      "path": "release/datafiles/icons_svg/marker_hlt.svg",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/marker_hlt.svg",
+      "sha256": "ea56645cfb215d457418241a2f9a62cb02519d930129a5a25d1bfe1f4d4b5b53",
+      "bytes": 782
+    },
+    "CAMERA_DATA": {
+      "path": "release/datafiles/icons_svg/camera_data.svg",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/camera_data.svg",
+      "sha256": "564ac523da1fe377c83265f53e51634516550d889b7ef5b9ecfe492634d2169b",
+      "bytes": 1940
+    },
+    "ERROR": {
+      "path": "release/datafiles/icons_svg/error.svg",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/icons_svg/error.svg",
+      "sha256": "36191613eb3bba8dea9fa85940e429422a38a85fbeaddec62a2ed21b395db873",
+      "bytes": 1033
+    }
+  }
+}

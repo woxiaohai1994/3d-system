@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "transform.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform.cc",
+      "sha256": "f098b32998d72615ff0bfea7c40c29df70cf0da9a85765acb0a2ebe6834daa2c"
+    },
+    "transform_constraints.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_constraints.cc",
+      "sha256": "66d8a50afdcf5f6bde376b0dbcdf47547bed1e5bd22a4674e466aba8c52eaf51"
+    },
+    "transform_generics.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_generics.cc",
+      "sha256": "fa9b8ba1ecb1a13c8b42a412758d89b8129660f08b87ae12cb7173a0d7330348"
+    }
+  }
+}

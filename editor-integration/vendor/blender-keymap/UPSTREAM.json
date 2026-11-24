@@ -1,0 +1,10 @@
+{
+  "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/scripts/presets/keyconfig/keymap_data/blender_default.py",
+  "ref": "v4.3.0",
+  "sha256": "67e041a1dffa6015b430dbe7cf325f3281258c858bbff976d61a8ed1db9380cc",
+  "license": "GPL-2.0-or-later",
+  "userdef": {
+    "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/release/datafiles/userdef/userdef_default.c",
+    "sha256": "3997c60abfa9e9d34f01f2744f7f1b943d69ac89c7bb5a5ee366364927f68c33"
+  }
+}

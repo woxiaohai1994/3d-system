@@ -1,0 +1,129 @@
+{
+  "document_id": "INT-3D-BASE-001",
+  "document_version": "1.1",
+  "research_date": "2026-09-19",
+  "status": "LOCAL_SOURCE_IDENTITY_VERIFIED_NOT_RUNTIME_VERIFIED",
+  "local_checkouts_verified": true,
+  "installation_tested": false,
+  "integration_implemented": false,
+  "projects": {
+    "pascal": {
+      "repository": "pascalorg/editor",
+      "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+      "role": "唯一主底座",
+      "paths": [
+        "README.md",
+        "package.json",
+        "apps/editor/package.json",
+        "apps/editor/lib/bootstrap.ts",
+        "packages/core/src/registry/registry.ts",
+        "packages/core/src/lib/asset-storage.ts",
+        "packages/mcp/package.json",
+        "packages/mcp/src/bridge/scene-bridge.ts",
+        "packages/mcp/src/operations/scene-operations.ts",
+        "packages/viewer/src/index.ts",
+        "packages/viewer/src/lib/snapshot-pipeline.ts"
+      ],
+      "lockfiles": [
+        {
+          "path": "bun.lock",
+          "sha256": "0e50aa67e193bd31e7ebb9654ebef1b46ae3298f322ed66ea8762775e6df5599"
+        }
+      ],
+      "local_verified_commit": "73e578913c40419b3c637cb7f5f46a7b526c0057"
+    },
+    "aedifex": {
+      "repository": "TangSY/aedifex",
+      "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+      "role": "内置 AI 来源",
+      "paths": [
+        "README.zh-CN.md",
+        "packages/editor/src/components/ai/ai-agent-loop.ts",
+        "packages/editor/src/components/ai/ai-mutation-executor.ts",
+        "packages/editor/src/components/ai/ai-preview-manager.ts",
+        "packages/editor/src/components/ai/contracts/runtime.ts",
+        "packages/editor/src/components/ai/prompt/openai-tools.ts",
+        "packages/editor/src/components/ai/types/tool-call-types.ts",
+        "packages/core/src/registry/registry.ts"
+      ],
+      "lockfiles": [
+        {
+          "path": "bun.lock",
+          "sha256": "00c515da69d922923ac9ddc5f5acd2e75b94e410d1d99b3c481e554cb231d287"
+        }
+      ],
+      "local_verified_commit": "0c0906d74806c1035c459b498b33057ee9e6eb32"
+    },
+    "openplan": {
+      "repository": "laanlabs/openPlan3D",
+      "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+      "role": "选定工作流与算法来源",
+      "paths": [
+        "README.md",
+        "package.json",
+        "FEATURES.md",
+        "src/lib/components/viewer3d/ThreeViewer.svelte",
+        "src/lib/utils/roomTemplates.ts",
+        "src/lib/utils/roomPresets.ts",
+        "src/lib/utils/furnitureModelLoader.ts",
+        "src/lib/utils/openaiClient.ts",
+        "docs/local-custom-models.md",
+        "docs/project-package-v1.md",
+        "docs/furniture-inventory.md"
+      ],
+      "lockfiles": [
+        {
+          "path": "package-lock.json",
+          "sha256": "fd48e591f2e94d6497f7347ceab374bbbc44202b7922f870fd84f6416a838a8a"
+        }
+      ],
+      "local_verified_commit": "d68cadf703578f2cd3a7c77f820e18d342580c32"
+    }
+  },
+  "plugins": [
+    {
+      "name": "Environment",
+      "repository": "AxiomeCG/environment",
+      "commit": "1aa0bc3cbed273dbf751e9af79e446f6de105c90",
+      "evidence": "Verified in local pinned Pascal apps/editor/package.json; runtime not yet installed/tested"
+    },
+    {
+      "name": "Pool",
+      "repository": "sudhir9297/pool-pascal-plugin",
+      "commit": "483a080558293cd344170e66318230e2ac9b6ae8",
+      "evidence": "Verified in local pinned Pascal apps/editor/package.json; runtime not yet installed/tested"
+    },
+    {
+      "name": "Nature",
+      "repository": "pascalorg/plugin-trees",
+      "commit": "56d978cd9b409b716207b3f3d269455d3cd6f067",
+      "evidence": "Verified in local pinned Pascal apps/editor/package.json; runtime not yet installed/tested"
+    },
+    {
+      "name": "Streetscape",
+      "repository": "sudhir9297/streetscape-pascal-plugin",
+      "commit": "1c04ec9ccb3fa8124ec56dfc1026567cbbc51aef",
+      "evidence": "Verified in local pinned Pascal apps/editor/package.json; runtime not yet installed/tested"
+    },
+    {
+      "name": "Bones",
+      "repository": "pascalorg/plugin-bones",
+      "commit": "5679260261ee1c733656ff6dfb99e30bb24b58a7",
+      "evidence": "Verified in local pinned Pascal apps/editor/package.json; runtime not yet installed/tested"
+    },
+    {
+      "name": "Mint",
+      "repository": "mintdotgg/mint-pascal-plugin",
+      "commit": "902c546dbaece6b31455c0dc394afe6b9cd136fe",
+      "evidence": "Verified in local pinned Pascal apps/editor/package.json; runtime not yet installed/tested"
+    }
+  ],
+  "toolchain": {
+    "base_package_manager": "bun@1.3.14",
+    "base_root_node_engine": ">=20.9.0",
+    "cli_documented_node_minimum": "22.13",
+    "openplan_reference_node_major": 24,
+    "base_three_override": "0.186.0",
+    "instruction": "Use the source lockfile. Do not align all donor versions or regenerate multiple lockfiles."
+  }
+}

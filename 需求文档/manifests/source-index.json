@@ -1,0 +1,594 @@
+[
+  {
+    "id": "S01",
+    "title": "Pascal 项目与包架构",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "README.md"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/README.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "本地编辑器、模块化包、MCP 与单客户端限制。README 并非部署验证。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S02",
+    "title": "Aedifex 项目说明",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "README.zh-CN.md"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/README.zh-CN.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "与 Pascal 的派生关系及 AI 概要；包数量、工具数量等以代码为准。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S03",
+    "title": "openPlan3D 项目说明",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "README.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/README.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "SvelteKit/Three.js、开发入口与本地数据/可选服务边界。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S04",
+    "title": "Pascal 根依赖与运行脚本",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "package.json"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/package.json"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "Bun 版本、engines、overrides、工作区；kill/restart/release 不能盲目执行。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S05",
+    "title": "Pascal 应用依赖和插件装配",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "apps/editor/package.json",
+      "apps/editor/lib/bootstrap.ts"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/apps/editor/package.json",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/apps/editor/lib/bootstrap.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "六类插件实际固定引用及注册入口。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S06",
+    "title": "场景操作、Patch 与 SceneBridge",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "packages/mcp/package.json",
+      "packages/mcp/src/operations/scene-operations.ts",
+      "packages/mcp/src/bridge/scene-bridge.ts"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/mcp/package.json",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/mcp/src/operations/scene-operations.ts",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/mcp/src/bridge/scene-bridge.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "真实子路径导出、Patch 形状、store/历史关系和完整快照字段。浏览器兼容需实测。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S07",
+    "title": "Pascal 查看器与截图管线",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "packages/viewer/src/index.ts",
+      "packages/viewer/src/lib/snapshot-pipeline.ts"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/viewer/src/index.ts",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/viewer/src/lib/snapshot-pipeline.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "createSnapshotPipeline、WebP 默认、实际尺寸返回与 2048 最大边。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S08",
+    "title": "Pascal 插件协议",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "packages/core/src/registry/registry.ts"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/core/src/registry/registry.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "读取/搜索确认 HOST_API_VERSION=1；实施时检查完整插件契约。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S09",
+    "title": "Aedifex 插件协议",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/core/src/registry/registry.ts",
+      "wiki/architecture/plugin-authoring.md"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/core/src/registry/registry.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/wiki/architecture/plugin-authoring.md"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "HOST_API_VERSION=2，与 Pascal 不同；不移植此差异。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S10",
+    "title": "Pascal 本地 CLI 与 MCP 边界",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "README.md"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/README.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "README 明确 Node 22.13+ CLI、同一服务的 active-scene/单 agent-client 约束。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S11",
+    "title": "Pascal 资产持久化与解析",
+    "repository": "pascalorg/editor",
+    "commit": "73e578913c40419b3c637cb7f5f46a7b526c0057",
+    "paths": [
+      "packages/core/src/lib/asset-storage.ts",
+      "packages/viewer/src/lib/asset-url.ts",
+      "packages/viewer/src/hooks/use-asset-url.ts"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/core/src/lib/asset-storage.ts",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/viewer/src/lib/asset-url.ts",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/viewer/src/hooks/use-asset-url.ts"
+    ],
+    "evidence_level": "SOURCE_SEARCH_AND_PATH_VERIFICATION",
+    "note": "asset:// 对应 IndexedDB 与运行时 URL，避免复制第二套资产存储。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S12",
+    "title": "Aedifex 可替换 AI 运行接口",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/editor/src/components/ai/contracts/runtime.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/contracts/runtime.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "传输、目录、会话存储和默认缺失后端的 RoomPresetProvider。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S13",
+    "title": "Aedifex AI 编排",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/editor/src/components/ai/ai-agent-loop.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/ai-agent-loop.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "循环、取消与限额；来源上限不是整合默认限额。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S14",
+    "title": "Aedifex AI 校验/分发",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/editor/src/components/ai/ai-mutation-executor.ts",
+      "packages/editor/src/components/ai/scene-operations-adapter.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/ai-mutation-executor.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/scene-operations-adapter.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "工具分发、验证与 bridge 适配；不等于移植后一切兼容。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S15",
+    "title": "Aedifex AI 工具定义",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/editor/src/components/ai/prompt/openai-tools.ts",
+      "packages/editor/src/components/ai/types/tool-call-types.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/prompt/openai-tools.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/types/tool-call-types.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "位置米制、旋转弧度、outdoor、材质和各类操作参数。实施需完整提取所有工具。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S16",
+    "title": "屋顶材质差异（两个来源）",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/core/src/schema/nodes/roof.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/core/src/schema/nodes/roof.ts",
+      "https://github.com/pascalorg/editor/blob/73e578913c40419b3c637cb7f5f46a7b526c0057/packages/core/src/schema/nodes/roof.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "与 Pascal 同路径对照；细分槽位不等于 top/edge/wall 的一一映射。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S17",
+    "title": "Environment 能力、保存与展示边界",
+    "repository": "AxiomeCG/environment",
+    "commit": "1aa0bc3cbed273dbf751e9af79e446f6de105c90",
+    "paths": [
+      "README.md"
+    ],
+    "urls": [
+      "https://github.com/AxiomeCG/environment/blob/1aa0bc3cbed273dbf751e9af79e446f6de105c90/README.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "环境节点与浏览器 sidecar 分离；周边展示不是全部独立节点；cloud/share 不在现有范围。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S18",
+    "title": "Pool 插件与限制",
+    "repository": "sudhir9297/pool-pascal-plugin",
+    "commit": "483a080558293cd344170e66318230e2ac9b6ae8",
+    "paths": [
+      "README.md"
+    ],
+    "urls": [
+      "https://github.com/sudhir9297/pool-pascal-plugin/blob/483a080558293cd344170e66318230e2ac9b6ae8/README.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "Plugin API v1、参数化池体与视觉水面，不是水力模拟；browser 流程仍需验证。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S19",
+    "title": "Nature 插件",
+    "repository": "pascalorg/plugin-trees",
+    "commit": "56d978cd9b409b716207b3f3d269455d3cd6f067",
+    "paths": [
+      "README.md"
+    ],
+    "urls": [
+      "https://github.com/pascalorg/plugin-trees/blob/56d978cd9b409b716207b3f3d269455d3cd6f067/README.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "独立植物插件与实例化/模板结构；宿主已有，不重复迁入 Aedifex 内置版本。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S20",
+    "title": "Aedifex 上游整合审计",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "docs/plans/2026-09-15-upstream-r2-rebuild.md",
+      "docs/upstream-r2-audit-2026-07-28.md"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/docs/plans/2026-09-15-upstream-r2-rebuild.md",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/docs/upstream-r2-audit-2026-07-28.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "仅作为作者维护记录，不执行作者私有仓库/部署指令，不把其测试数当成我们的结果。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S21",
+    "title": "Aedifex 预览源码核查入口",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/editor/src/components/ai/ai-preview-manager.ts",
+      "packages/editor/src/components/ai/preview/confirm-operations.ts",
+      "packages/editor/src/components/ai/preview/ghost-node-helpers.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/ai-preview-manager.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/preview/confirm-operations.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/preview/ghost-node-helpers.ts"
+    ],
+    "evidence_level": "DISCOVERED_PATH_REQUIRES_FULL_AUDIT",
+    "note": "从已读取分发/调用链定位的必读文件；本文未对全部实现逐行审计。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S22",
+    "title": "Aedifex 流式与目录核查入口",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "packages/editor/src/components/ai/ai-stream-client.ts",
+      "packages/editor/src/components/ai/ai-catalog-resolver.ts",
+      "packages/editor/src/components/ai/ai-scene-serializer.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/ai-stream-client.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/ai-catalog-resolver.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/packages/editor/src/components/ai/ai-scene-serializer.ts"
+    ],
+    "evidence_level": "DISCOVERED_PATH_REQUIRES_FULL_AUDIT",
+    "note": "来源差异清单与调用链定位；迁移前读完实现和测试。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S23",
+    "title": "Aedifex 服务端路由核查入口",
+    "repository": "TangSY/aedifex",
+    "commit": "0c0906d74806c1035c459b498b33057ee9e6eb32",
+    "paths": [
+      "apps/editor/app/api/ai/chat/route.ts",
+      "apps/editor/app/api/ai/config.ts",
+      "apps/editor/app/api/ai/summarize/route.ts"
+    ],
+    "urls": [
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/apps/editor/app/api/ai/chat/route.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/apps/editor/app/api/ai/config.ts",
+      "https://github.com/TangSY/aedifex/blob/0c0906d74806c1035c459b498b33057ee9e6eb32/apps/editor/app/api/ai/summarize/route.ts"
+    ],
+    "evidence_level": "DISCOVERED_PATH_REQUIRES_FULL_AUDIT",
+    "note": "来源 diff/README 已定位；迁移前核查 SDK、SSE 和安全边界，不直接照抄。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S24",
+    "title": "OpenPlan 工具链",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "package.json"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/package.json"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "独立 npm/Svelte/Vite/Three 依赖，不能覆盖宿主工具链。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S25",
+    "title": "OpenPlan 当前相机与图像生成",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "src/lib/components/viewer3d/ThreeViewer.svelte"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/src/lib/components/viewer3d/ThreeViewer.svelte"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "已读相机状态、参数、截图、提示词和请求部分；完整组件迁移前继续审阅。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S26",
+    "title": "OpenPlan 六类家具组合",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "src/lib/utils/roomTemplates.ts"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/src/lib/utils/roomTemplates.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "固定偏移、400×300cm 默认与 grouped undo；没有自动重布局。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S27",
+    "title": "OpenPlan 四种房间轮廓",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "src/lib/utils/roomPresets.ts"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/src/lib/utils/roomPresets.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "矩形/L/T/U 的几何生成与包围盒中心放置。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S28",
+    "title": "OpenPlan 模型加载与尺寸变换",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "src/lib/utils/furnitureModelLoader.ts"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/src/lib/utils/furnitureModelLoader.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "每轴适配目录尺寸、centering、fallback、负旋转和 scale 映射；不能盲目搬入宿主。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S29",
+    "title": "OpenPlan 自定义 GLB 准入",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "docs/local-custom-models.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/docs/local-custom-models.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "16 MiB、静态 GLB、内嵌图片、定义/历史上限、原始字节与来源。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S30",
+    "title": "OpenPlan 项目包与版本",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "docs/project-package-v1.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/docs/project-package-v1.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "ZIP、附件、原子导入、历史池化；native/web 往返协议本期不复制。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S31",
+    "title": "OpenPlan 能力边界与实验渲染",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "FEATURES.md",
+      "docs/render-lab.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/FEATURES.md",
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/docs/render-lab.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "屋顶/设备/发布验证限制；render-lab 独立、不纳入本期。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S32",
+    "title": "OpenPlan 资产来源与清单",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "docs/furniture-inventory.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/docs/furniture-inventory.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "204 GLB/189 catalog/93 映射为日期化清单；实际复制文件逐一复核许可与哈希。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S33",
+    "title": "OpenPlan 场景重建与基准记录",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "docs/reviews/2026-09-07-rendering-benchmarks.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/docs/reviews/2026-09-07-rendering-benchmarks.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "避免无关编辑重建的改进；作者原始性能记录不能当成 Pascal 的性能承诺。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S34",
+    "title": "OpenPlan 空闲渲染记录",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "docs/reviews/2026-09-07-idle-rendering.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/docs/reviews/2026-09-07-idle-rendering.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "按需渲染与资源测量；不照搬 raf 到 R3F。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S35",
+    "title": "OpenPlan 图像协议客户端",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "src/lib/utils/openaiClient.ts"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/src/lib/utils/openaiClient.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "/responses + image_generation、协议检查、取消、大小和不自动重试。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S36",
+    "title": "OpenPlan 截图失败测试",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "tests/capture-main-3d.test.ts"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/tests/capture-main-3d.test.ts"
+    ],
+    "evidence_level": "SOURCE_READ",
+    "note": "图像准备、编码、超时/取消与 timer 清理的测试参考。",
+    "runtime_verified": false
+  },
+  {
+    "id": "S37",
+    "title": "OpenPlan 当前能力与剩余工作",
+    "repository": "laanlabs/openPlan3D",
+    "commit": "d68cadf703578f2cd3a7c77f820e18d342580c32",
+    "paths": [
+      "FEATURES.md",
+      "NEXT.md"
+    ],
+    "urls": [
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/FEATURES.md",
+      "https://github.com/laanlabs/openPlan3D/blob/d68cadf703578f2cd3a7c77f820e18d342580c32/NEXT.md"
+    ],
+    "evidence_level": "REPOSITORY_DOCUMENTATION",
+    "note": "来源已有/未完成/部署与设备验证分开，历史时间线不能替代我们的验收。",
+    "runtime_verified": false
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "ref": "v4.3.0",
+  "retrieved": "2026-09-30",
+  "method": "urllib.request.urlopen official raw bytes; no normalization",
+  "independent_git_blob_verified": false,
+  "files": [
+    {
+      "file": "pose_transform.cc",
+      "source_path": "source/blender/editors/armature/pose_transform.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/armature/pose_transform.cc",
+      "sha256": "c2b54f32ebcdf0f553b8a71474cf12cca0cf45e2ef6eb587131d582c34efeb34",
+      "bytes": 47351,
+      "lines": 1432
+    },
+    {
+      "file": "string_utils.cc",
+      "source_path": "source/blender/blenlib/intern/string_utils.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/string_utils.cc",
+      "sha256": "6808450d267008bc9d03ab644ef2123abb458d49d764fe0e502ec0c58ba47bf9",
+      "bytes": 18762,
+      "lines": 667
+    },
+    {
+      "file": "idprop.cc",
+      "source_path": "source/blender/blenkernel/intern/idprop.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/idprop.cc",
+      "sha256": "7bf3a1d0f733c03ef864b66155317140dec923839379a871e893e2d382bd762e",
+      "bytes": 61355,
+      "lines": 1954
+    },
+    {
+      "file": "platform_helpers.py",
+      "source_path": "scripts/modules/bl_keymap_utils/platform_helpers.py",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/scripts/modules/bl_keymap_utils/platform_helpers.py",
+      "sha256": "a9f077d7967c84f4b3913c324d037f305f6c2748cc0a40f6f3d821e6baf7a5dd",
+      "bytes": 1917,
+      "lines": 50
+    },
+    {
+      "file": "Blender.py",
+      "source_path": "scripts/presets/keyconfig/Blender.py",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/scripts/presets/keyconfig/Blender.py",
+      "sha256": "92eec0982296179328c4104b2e9d1ee8f47e17302e3a824523fc408d22405bcd",
+      "bytes": 13187,
+      "lines": 384
+    }
+  ],
+  "keymap": {
+    "file": "../blender-keymap/blender_default.py",
+    "source_path": "scripts/presets/keyconfig/keymap_data/blender_default.py",
+    "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/scripts/presets/keyconfig/keymap_data/blender_default.py",
+    "sha256": "67e041a1dffa6015b430dbe7cf325f3281258c858bbff976d61a8ed1db9380cc"
+  }
+}

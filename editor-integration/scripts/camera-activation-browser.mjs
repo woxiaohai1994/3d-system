@@ -1,0 +1,121 @@
+import assert from 'node:assert/strict'
+import { chromium } from 'playwright'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
+const output = '.integration-audit/camera-activation'
+await mkdir(output, { recursive: true })
+const fixture = JSON.parse(await readFile('/tmp/multicamera-fixture.json', 'utf8'))
+const cameras = Object.values(fixture.nodes).filter(n => n.type === 'scene-camera')
+const [a, b] = cameras
+const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--enable-unsafe-webgpu'] })
+const context = await browser.newContext({ viewport: { width: 1600, height: 1050 } })
+await context.addInitScript(scene => {
+  if (!localStorage.getItem('pascal-editor-scene')) localStorage.setItem('pascal-editor-scene', JSON.stringify(scene))
+}, fixture)
+const page = await context.newPage(), errors = []
+page.on('pageerror', e => errors.push(e.message))
+page.setDefaultTimeout(30000)
+const button = name => page.getByRole('button', { name, exact: true })
+const row = camera => button(`选择轨道 ${camera.name}`)
+const animation = async () => {
+  await page.waitForTimeout(1500)
+  return page.evaluate(() => Object.values(JSON.parse(localStorage.getItem('pascal-editor-scene')).nodes).find(n => n.type === 'site').animation)
+}
+const active = async camera => row(camera).getAttribute('aria-pressed')
+const color = async camera => row(camera).evaluate(el => getComputedStyle(el.parentElement).backgroundColor)
+const pose = () => page.evaluate(() => {
+  const c = window.__pascalCameraControls().camera
+  return { position:c.position.toArray(), rotation:c.quaternion.toArray(), zoom:c.zoom, fov:c.fov }
+})
+const samePose = (actual,expected) => {
+  for (const k of ['position','rotation']) actual[k].forEach((v,i) => assert.ok(Math.abs(v-expected[k][i]) < 1e-5, `${k} changed on deactivation`))
+  assert.equal(actual.zoom,expected.zoom)
+  assert.equal(actual.fov,expected.fov)
+}
+const move = async (finish = true) => {
+  await page.waitForTimeout(600)
+  const box = await page.locator('canvas[data-engine]').first().boundingBox()
+  const x = box.x + box.width * .35, y = box.y + box.height * .35
+  await page.waitForFunction(({x,y}) => document.elementFromPoint(x,y)?.tagName === 'CANVAS', {x,y}, {timeout:90000})
+  const before = await page.evaluate(() => window.__pascalCameraControls().camera.position.toArray())
+  await page.mouse.move(x,y)
+  await page.mouse.down({button:'right'})
+  for (let i=1;i<=20;i++) {
+    await page.mouse.move(x+i*4,y+i)
+    await page.waitForTimeout(20)
+  }
+  if (finish) await page.mouse.up({button:'right'})
+  await page.waitForTimeout(600)
+  const after = await page.evaluate(() => window.__pascalCameraControls().camera.position.toArray())
+  assert.notDeepEqual(after,before,'The viewport must actually move')
+}
+try {
+  await page.goto('http://localhost:3002', {waitUntil:'domcontentloaded',timeout:120000})
+  await button('场景相机').waitFor({timeout:90000})
+  await button('场景相机').click()
+  await button('视频时间轴').click()
+  assert.equal(await active(a),'false')
+  const gray = await color(a)
+  const initial = await animation()
+  await move()
+  assert.deepEqual(await animation(),initial,'Gray navigation must not record keys')
+  const overview = await pose()
+  await row(a).click()
+  assert.equal(await active(a),'true')
+  assert.equal(await active(b),'false')
+  assert.notEqual(await color(a),gray)
+  await page.getByLabel('播放头时间',{exact:true}).fill('3')
+  await move()
+  assert.deepEqual(await animation(),initial,'Blue navigation must not record keys')
+  await button('添加 / 更新关键帧').click()
+  const keyed = await animation()
+  assert.notDeepEqual(keyed,initial)
+  assert.ok(keyed.cameras.find(t => t.nodeId===a.id).points.some(p => p.time===3))
+  await page.screenshot({path:`${output}/active.png`})
+  await row(a).click()
+  await page.waitForTimeout(1500)
+  samePose(await pose(),overview)
+  assert.equal(await active(a),'false')
+  assert.equal(await color(a),gray)
+  await move()
+  assert.deepEqual(await animation(),keyed,'Deactivated navigation must preserve all keys')
+  const nextOverview = await pose()
+  await row(a).click()
+  await row(b).click()
+  assert.equal(await active(a),'false')
+  assert.equal(await active(b),'true')
+  await page.getByLabel('播放头时间',{exact:true}).fill('4')
+  await move()
+  await button('添加 / 更新关键帧').click()
+  const switched = await animation()
+  assert.deepEqual(switched.cameras.find(t => t.nodeId===a.id),keyed.cameras.find(t => t.nodeId===a.id))
+  assert.ok(switched.cameras.find(t => t.nodeId===b.id).points.some(p => p.time===4))
+  await button('取消激活').click()
+  await page.waitForTimeout(1500)
+  samePose(await pose(),nextOverview)
+  assert.equal(await active(b),'false')
+  await move()
+  assert.deepEqual(await animation(),switched)
+  const pendingOverview = await pose()
+  await row(b).click()
+  await page.getByLabel('播放头时间',{exact:true}).fill('2')
+  await move(false)
+  assert.deepEqual(await animation(),switched,'Held pointer must leave a pending gesture')
+  await row(b).focus()
+  await page.keyboard.press('Enter')
+  await page.mouse.up({button:'right'})
+  assert.equal(await active(b),'false')
+  const saved = await animation()
+  samePose(await pose(),pendingOverview)
+  assert.deepEqual(saved,switched,'Deactivation must not save a pending gesture')
+  await page.reload({waitUntil:'domcontentloaded'})
+  await button('场景相机').waitFor({timeout:90000})
+  assert.deepEqual(await animation(),saved,'Saved keys must survive a reload')
+  await page.screenshot({path:`${output}/inactive.png`})
+  assert.deepEqual(errors,[])
+  await writeFile(`${output}/result.json`,JSON.stringify({passed:true,errors,checks:['initial gray','gray navigation preserves keys','blue navigation requires explicit save','click again disarms','only one blue camera','switch records correct camera','save and exit disarms','scene overview restored','pending gesture not saved','reload preserves keys']},null,2))
+  console.log('PASS camera activation colors, exclusive selection, active keys and inactive navigation')
+} catch(error) {
+  await page.screenshot({path:`${output}/failure.png`})
+  await writeFile(`${output}/failure.txt`,`${error.stack}\n${errors.join('\n')}\n${await page.locator('body').innerText()}`)
+  throw error
+} finally {await browser.close()}

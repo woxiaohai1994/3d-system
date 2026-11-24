@@ -1,0 +1,53 @@
+const fs = require('node:fs/promises');
+const assert = require('node:assert/strict');
+const { chromium } = require('playwright');
+(async () => {
+  const scene = JSON.parse(await fs.readFile('/tmp/unified-scene-fixture.json', 'utf8'));
+  for (const n of Object.values(scene.nodes)) if (n.type === 'site') delete n.animation;
+  const actor = Object.values(scene.nodes).find(n => n.type === 'column');
+  const browser = await chromium.launch({channel:'chrome',headless:true,args:['--enable-unsafe-webgpu']});
+  const context = await browser.newContext({viewport:{width:1440,height:1000}});
+  await context.addInitScript(s => localStorage.setItem('pascal-editor-scene', JSON.stringify(s)), scene);
+  const page = await context.newPage(); page.setDefaultTimeout(20000);
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const button=name=>page.getByRole('button',{name,exact:true});
+  const seek=async t=>{const f=page.getByLabel('时间 · 秒',{exact:true});await f.fill(String(t));await f.press('Enter');};
+  const saved=async()=>page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('pascal-editor-scene')).nodes).find(n=>n.type==='site').animation);
+  try {
+    await page.goto('http://localhost:3002',{waitUntil:'domcontentloaded'});
+    await button('时间轴').waitFor({timeout:60000});
+    await button('时间轴').click();
+    await page.getByLabel('编辑对象',{exact:true}).selectOption(actor.id);
+    await button('创建物品关键帧').waitFor();
+    const lane=page.locator(`[data-motion-lane][data-motion-row="${actor.id}"]`);
+    await page.mouse.click(790,380,{button:'right'});
+    await page.getByRole('menuitem',{name:'创建关键帧',exact:true}).click();
+    await page.waitForTimeout(2000);
+    assert.equal((await saved()).tracks.find(t=>t.nodeId===actor.id).points.length,1);
+    await seek(2);
+    await page.getByText('精确调整姿态',{exact:true}).click();
+    const field=page.getByLabel('位置 X',{exact:true}); await field.fill('3');await field.press('Enter');
+    await button('创建物品关键帧').click();
+    await page.waitForTimeout(2000);
+    let track=(await saved()).tracks.find(t=>t.nodeId===actor.id);
+    assert.equal(track.points.length,2);assert.equal(track.points[1].position[0],3);
+    const last=page.locator(`[data-node-id="${actor.id}"][data-motion-key]`).last();
+    await last.click({button:'right'});
+    await page.getByRole('menuitem',{name:'删除关键帧',exact:true}).click();
+    await page.waitForTimeout(2000);
+    assert.equal((await saved()).tracks.find(t=>t.nodeId===actor.id).points.length,1);
+    const bounds=await lane.boundingBox();
+    await page.mouse.click(bounds.x + bounds.width * 0.65, bounds.y + 17, {button:'right'});
+    await page.getByRole('menuitem',{name:'添加关键帧',exact:true}).click();
+    await page.waitForTimeout(2000);
+    assert.equal((await saved()).tracks.find(t=>t.nodeId===actor.id).points.length,2);
+    await seek(0);
+    await page.mouse.move(790,380);await page.mouse.down({button:'right'});
+    await page.waitForTimeout(150);assert.equal(await page.getByRole('menu').count(),0);
+    await page.mouse.move(880,400,{steps:10});await page.mouse.up({button:'right'});
+    await page.waitForTimeout(300);assert.equal(await page.getByRole('menu').count(),0);
+    await page.screenshot({path:'/tmp/keyframe-context.png'});
+    console.log(JSON.stringify({objectRightClick:true,floatingKeyIcon:true,timelineAdd:true,pendingPoseRecorded:true,delete:true,rightDragDoesNotOpenMenu:true,errors}));
+  } catch(e) {console.error(e.stack);console.error((await page.locator('body').innerText()).slice(-3500));await page.screenshot({path:'/tmp/keyframe-context-failed.png'});process.exitCode=1;}
+  finally {await browser.close();}
+})();

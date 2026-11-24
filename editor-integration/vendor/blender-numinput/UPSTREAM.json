@@ -1,0 +1,109 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "numinput.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/util/numinput.cc",
+      "source_path": "source/blender/editors/util/numinput.cc",
+      "sha256": "20d2d51cee75b4d99afa3c2aec7a61f1c39088d3b8f6ed48710ccfabbb911b4c",
+      "bytes": 17914,
+      "line_count": 631
+    },
+    "ED_numinput.hh": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/include/ED_numinput.hh",
+      "source_path": "source/blender/editors/include/ED_numinput.hh",
+      "sha256": "35797959ce47624605cc5b8f129095bf44e4290bee33f9f51f9e5dd52208639a",
+      "bytes": 3020,
+      "line_count": 103
+    },
+    "string_cursor_utf8.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/string_cursor_utf8.c",
+      "source_path": "source/blender/blenlib/intern/string_cursor_utf8.c",
+      "sha256": "df5ea6598a3778dcdbd4270be90eedb5c1f40e9eed6d93433c363726ca98ad18",
+      "bytes": 13780,
+      "line_count": 427
+    },
+    "../blender-fcurve/math_base_inline.c": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_base_inline.c",
+      "sha256": "636c252ff3511d21b570862e176a59782774dc38e0e4a42b080d79021ba79e2f",
+      "line_count": 725,
+      "compiled_function": "integer_digits_d",
+      "compiled_one_based_line_range": [
+        670,
+        673
+      ]
+    },
+    "unit.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/unit.cc",
+      "source_path": "source/blender/blenkernel/intern/unit.cc",
+      "sha256": "9f51a81e575fded214a2e5ffeddcc288d3e309dcd93601370191d0ecc0657ac3",
+      "bytes": 72772,
+      "line_count": 2535,
+      "compiled_one_based_line_ranges": [
+        [
+          42,
+          42
+        ],
+        [
+          88,
+          173
+        ],
+        [
+          1171,
+          1238
+        ],
+        [
+          1588,
+          1721
+        ]
+      ],
+      "compiled_regions": "EPS macro; bUnitDef/bUnitCollection and dummy collection; natural rotation collection; unit_default/unit_best_fit/unit_dual_convert/unit_as_string. Extracted verbatim by source declaration boundaries for each native build."
+    }
+  },
+  "provenance": {
+    "method": "Python urllib.request.urlopen from fixed official raw.githubusercontent.com URLs; response bytes saved without normalization or source modification",
+    "download_date": "2026-09-30",
+    "full_raw_source_files": [
+      "numinput.cc",
+      "ED_numinput.hh",
+      "string_cursor_utf8.c",
+      "unit.cc"
+    ],
+    "official_raw_response_bytes_preserved": true,
+    "canonical_git_blob_bytes_verified": false,
+    "normalization": "None for the four full raw files; all downloaded response bytes are retained unchanged.",
+    "previous_extraction_comparison": "numinput.cc, ED_numinput.hh and string_cursor_utf8.c match the former web extraction line-for-line after skipping empty lines and trimming each line.",
+    "unchanged_dependency": "../blender-fcurve/math_base_inline.c retains its existing vendored bytes and SHA-256; its separate original provenance is not upgraded by this download."
+  },
+  "oracle": {
+    "generator": "generate_fixtures.py",
+    "entry": "native-oracle.cc",
+    "boundaries": "native-boundaries.hh",
+    "cases": "fixture-cases.json",
+    "fixtures": "fixtures.json",
+    "compile": "clang++ -std=c++17 -O0 -DWITH_PYTHON -x c++ numinput.cc string_cursor_utf8.c native-oracle.cc temporary unit-format-native.cc with regions extracted verbatim from complete unit.cc and integer_digits_d, plus temporary stub include headers",
+    "source_bodies": "Original NumInput and cursor files are compiled directly. Original unit definitions and unit_default/unit_best_fit/unit_dual_convert/unit_as_string bodies are extracted from complete unit.cc without rewriting their algorithms; integer_digits_d comes from the existing complete vendored math_base_inline.c.",
+    "mode": "Default simple input; USER_FLAG_NUMINPUT_ADVANCED is zero.",
+    "mocked_boundaries": [
+      "Context and default Scene units",
+      "Strict simple-decimal Python API result with surrounding whitespace accepted",
+      "Degree suffix parsing and default unit API collection selection",
+      "Reporting and clipboard contents",
+      "C snprintf/BLI string API boundaries",
+      "Low-level UTF-8 helpers limited to ASCII and spacing degree sign"
+    ],
+    "scenario_count": 54,
+    "event_snapshot_count": 372,
+    "format_fixtures": "format-fixtures.json",
+    "formatter_wrapper": "Adaptive unit API wrapper only selects original dummy collection or original preferred degree unit in the default context, then calls original unit_as_string.",
+    "format_case_count": 400,
+    "format_random_seed": "Python Random(0x4300), 128 finite float32 raw-bit values in dummy and degree contexts",
+    "negative_zero": "Formatter input uses JSON string -0; event snapshot floats serialize -0.0 to retain the sign."
+  },
+  "boundary_reference_urls": [
+    "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_string_cursor_utf8.h",
+    "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/BLI_math_rotation.h",
+    "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/unit.cc",
+    "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/intern/bpy_interface_run.cc"
+  ]
+}

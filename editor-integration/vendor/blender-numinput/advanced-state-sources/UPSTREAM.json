@@ -1,0 +1,28 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "provenance": "Official fixed raw URL response bytes preserved without normalization; no independent Git blob verification.",
+  "files": {
+    "py_capi_utils.cc": {
+      "source_path": "source/blender/python/generic/py_capi_utils.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/python/generic/py_capi_utils.cc",
+      "sha256": "719c8c2a45a163e210061c2dd0f44a424839a19db40a62b6e11c657e92fcb30e",
+      "bytes": 53482,
+      "line_count": 1911
+    },
+    "wm_window.cc": {
+      "source_path": "source/blender/windowmanager/intern/wm_window.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/windowmanager/intern/wm_window.cc",
+      "sha256": "b06cc2dc1fd9ac346bad3fa856ef4492a00c5f30fe3a6075bb8faa2708845fd8",
+      "bytes": 95525,
+      "line_count": 3082
+    },
+    "transform_snap.cc": {
+      "source_path": "source/blender/editors/transform/transform_snap.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/transform/transform_snap.cc",
+      "sha256": "f1368c889f6c9ac3d65ce583352c614a0f12d167c78a0ba42442929d94df80d8",
+      "bytes": 60103,
+      "line_count": 1959
+    }
+  }
+}

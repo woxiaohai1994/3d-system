@@ -1,0 +1,272 @@
+{
+  "repository": "https://github.com/blender/blender",
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "retrieved_on": "2026-09-30",
+  "files": {
+    "overlay_armature_shape_wire_vert.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert.glsl",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert.glsl",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert.glsl",
+      "sha256": "bc0aa161939c8fed26c321041d94f75076dc40e7d2029a767e476181ee693762",
+      "bytes": 740
+    },
+    "overlay_armature_shape_wire_geom.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_geom.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_geom.glsl",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_geom.glsl",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_geom.glsl",
+      "sha256": "618275faeb1140b8272d4121b536e471ab917d68b7ec4eb75235061153d4def1",
+      "bytes": 2426
+    },
+    "overlay_armature_shape_wire_frag.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_frag.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_frag.glsl",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_frag.glsl",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_frag.glsl",
+      "sha256": "4a206b300227f96193844a025f08cd58e4a829b15d317fddf26ba6aa09b13374",
+      "bytes": 1524
+    },
+    "overlay_armature_shape_wire_vert_no_geom.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert_no_geom.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert_no_geom.glsl",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert_no_geom.glsl",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_wire_vert_no_geom.glsl",
+      "sha256": "76286f61966a17f6df0d637b9256a2c86dc620d1215dc4cac2db28fe59552d59",
+      "bytes": 730
+    },
+    "overlay_armature_wire_frag.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_wire_frag.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_wire_frag.glsl",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_wire_frag.glsl",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_wire_frag.glsl",
+      "sha256": "7057dcdfd1788c8846c0fe192b0c5016dcf913d19805c139463d92c52b3ddb16",
+      "bytes": 366
+    },
+    "overlay_armature_info.hh": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/infos/overlay_armature_info.hh",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/infos/overlay_armature_info.hh",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/infos/overlay_armature_info.hh",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/shaders/infos/overlay_armature_info.hh",
+      "sha256": "c540966f87c317f3e0342ec7954930e1b71e16418045aa41bc5af71fe9bfd4bf",
+      "bytes": 14111
+    },
+    "overlay_shader_shared.h": {
+      "source_path": "source/blender/draw/engines/overlay/overlay_shader_shared.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/overlay_shader_shared.h",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_shader_shared.h",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_shader_shared.h",
+      "sha256": "e34eb37377485a762f52d8b7fbe061e695d84cd8d6cb9e3162092703988b7938",
+      "bytes": 9963
+    },
+    "common_view_lib.glsl": {
+      "source_path": "source/blender/draw/intern/shaders/common_view_lib.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/intern/shaders/common_view_lib.glsl",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/intern/shaders/common_view_lib.glsl",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/intern/shaders/common_view_lib.glsl",
+      "sha256": "e6a0dc95ef39aed1b47c055302328a0c0cb54afdd28037c9fd3aeb6841742f61",
+      "bytes": 12337
+    },
+    "draw_common.cc": {
+      "source_path": "source/blender/draw/intern/draw_common.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/intern/draw_common.cc",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/intern/draw_common.cc",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/intern/draw_common.cc",
+      "sha256": "84d2e7fa77a395b31c98c14f7bbb7ee7c54a5991783b18a07f686037aeb38148",
+      "bytes": 17578
+    },
+    "overlay_shader.cc": {
+      "source_path": "source/blender/draw/engines/overlay/overlay_shader.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/overlay_shader.cc",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_shader.cc",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_shader.cc",
+      "sha256": "dc6d89db196345ab4a8162da0a1d7834ea6ecca7d89bc25598e6c259007704e0",
+      "bytes": 47506
+    },
+    "overlay_armature.cc": {
+      "source_path": "source/blender/draw/engines/overlay/overlay_armature.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/overlay_armature.cc",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_armature.cc",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_armature.cc",
+      "sha256": "683c30d319ba8ed27f9da34df8af7682fcdc746985c3723aaa2f891ea5c67ae6",
+      "bytes": 117770
+    },
+    "overlay_engine.cc": {
+      "source_path": "source/blender/draw/engines/overlay/overlay_engine.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/overlay_engine.cc",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_engine.cc",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/draw/engines/overlay/overlay_engine.cc",
+      "sha256": "d4dc6d80c80d38918630a40a7d04f7bd54821d6453bad1a46dc95fe41e34ce29",
+      "bytes": 26049
+    },
+    "gpu_shader_create_info.cc": {
+      "source_path": "source/blender/gpu/intern/gpu_shader_create_info.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/intern/gpu_shader_create_info.cc",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/intern/gpu_shader_create_info.cc",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/intern/gpu_shader_create_info.cc",
+      "sha256": "7a6340df98f4bfd47dc3d9e5404d70ab530544adf5413aa67467176fb93857ae",
+      "bytes": 25533
+    },
+    "gl_framebuffer.cc": {
+      "source_path": "source/blender/gpu/opengl/gl_framebuffer.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/opengl/gl_framebuffer.cc",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/opengl/gl_framebuffer.cc",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/opengl/gl_framebuffer.cc",
+      "sha256": "91271dea94c337d2de812cf9f85e7e3547e734a6db3877fcd71a54dbe2bf22cf",
+      "bytes": 19628
+    },
+    "mtl_framebuffer.mm": {
+      "source_path": "source/blender/gpu/metal/mtl_framebuffer.mm",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/metal/mtl_framebuffer.mm",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/metal/mtl_framebuffer.mm",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/metal/mtl_framebuffer.mm",
+      "sha256": "fac2a8761fc331ef8d4f1a0fbaa7d7975fd9cbebb1967b90413c300f25968a73",
+      "bytes": 70437
+    },
+    "mtl_texture.mm": {
+      "source_path": "source/blender/gpu/metal/mtl_texture.mm",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/gpu/metal/mtl_texture.mm",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/metal/mtl_texture.mm",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/gpu/metal/mtl_texture.mm",
+      "sha256": "b68e799bbdee2c5d6545457661ee0a138a361cabf7373bfbdde2d151798d6afd",
+      "bytes": 102957
+    },
+    "rct.c": {
+      "source_path": "source/blender/blenlib/intern/rct.c",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/rct.c",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/blenlib/intern/rct.c",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/source/blender/blenlib/intern/rct.c",
+      "sha256": "6b2dca04cb1d1fc6d63c38f86558bfdb8892d4b7172c1de232c6d11fb91ba9d8",
+      "bytes": 26728
+    },
+    "COPYING": {
+      "source_path": "COPYING",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/COPYING",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/COPYING",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/COPYING",
+      "sha256": "19e6f4b541772f9d7b98a52bdbca3ebd5ef9e404956a9a6de68bfc3c1a178387",
+      "bytes": 302
+    },
+    "GPL-license.txt": {
+      "source_path": "doc/license/GPL-license.txt",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/doc/license/GPL-license.txt",
+      "mirror_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/doc/license/GPL-license.txt",
+      "download_url": "https://cdn.jsdelivr.net/gh/blender/blender@v4.3.0/doc/license/GPL-license.txt",
+      "sha256": "f2703dec1b0118070caabd3302e21738c00211b0cc3260dbeb1168d6eda726b7",
+      "bytes": 17992
+    },
+    "draw_cache.cc": {
+      "source_path": "source/blender/draw/intern/draw_cache.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/intern/draw_cache.cc",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/intern/draw_cache.cc",
+      "sha256": "159adc83bcbc7ce83de1f2f49c9c8c8fff38e2012710e95b88bb39ae79561f1e",
+      "bytes": 111180
+    },
+    "overlay_armature_shape_solid_vert.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_solid_vert.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_solid_vert.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_solid_vert.glsl",
+      "sha256": "d811ca37fb1c110836d83cf00e1a08eef86294c9a284c670474eab6ebf93fc49",
+      "bytes": 1316
+    },
+    "overlay_armature_shape_solid_frag.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_solid_frag.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_solid_frag.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_solid_frag.glsl",
+      "sha256": "72369678bdf633701c085ab766e44e43c4930392c5ddff1c040416124ecbf0c3",
+      "bytes": 487
+    },
+    "overlay_armature_shape_outline_vert.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_outline_vert.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_outline_vert.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_outline_vert.glsl",
+      "sha256": "e629d5e2a4dda8ced73b2ffbf4d8c40f09ea9adcd3795402c236e65851ffa149",
+      "bytes": 1609
+    },
+    "overlay_armature_shape_outline_geom.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_armature_shape_outline_geom.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_outline_geom.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_armature_shape_outline_geom.glsl",
+      "sha256": "ab0936ee9726b78cd57fcc8d210c4528019ba7b8d8ef9dd6bf7ce3e148fa00e1",
+      "bytes": 2714
+    },
+    "camera.cc": {
+      "source_path": "source/blender/blenkernel/intern/camera.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/camera.cc",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenkernel/intern/camera.cc",
+      "sha256": "4501e5da35d51b791ba8641782128384a6b0bfbc351cf8bedf3144fc723aa3a1",
+      "bytes": 39253
+    },
+    "overlay_extra.cc": {
+      "source_path": "source/blender/draw/engines/overlay/overlay_extra.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/overlay_extra.cc",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/overlay_extra.cc",
+      "sha256": "26afb0227d8c4d3a6445074aafa9ee5dfd24adfee4b67332c080cd07b057a5ca",
+      "bytes": 64797
+    },
+    "overlay_extra_vert.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_extra_vert.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_extra_vert.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_extra_vert.glsl",
+      "sha256": "cdea6d949228d18fc3400807d134e2b2446c4ee2587b65c69cb27f7f1d26e02b",
+      "bytes": 7878
+    },
+    "math_vector_inline.c": {
+      "source_path": "source/blender/blenlib/intern/math_vector_inline.c",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector_inline.c",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector_inline.c",
+      "sha256": "f43528fd8ac6efa045bf11e96764cc08849e2837e96876e079508c73178b13b9",
+      "bytes": 29884
+    },
+    "DNA_camera_defaults.h": {
+      "source_path": "source/blender/makesdna/DNA_camera_defaults.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_camera_defaults.h",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_camera_defaults.h",
+      "sha256": "fd7311f49fdf9fdd27620b7e571adb0993283bb066b0a9f1eb9f9abdb71ed535",
+      "bytes": 1972
+    },
+    "math_matrix_c.cc": {
+      "source_path": "source/blender/blenlib/intern/math_matrix_c.cc",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_matrix_c.cc",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_matrix_c.cc",
+      "sha256": "42af477e6a16067244e3d7050026d9ef2c20296bf4401a77074c33f33cdc4764",
+      "bytes": 82918
+    },
+    "math_vector.c": {
+      "source_path": "source/blender/blenlib/intern/math_vector.c",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector.c",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_vector.c",
+      "sha256": "7f6c851cdafe5028e6d0343bc0976abb977a44fb77a1fe1d1a791e1a8246daf1",
+      "bytes": 32739
+    },
+    "overlay_extra_wire_vert.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_extra_wire_vert.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_extra_wire_vert.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_extra_wire_vert.glsl",
+      "sha256": "c232b47fab2cfc2dcbdd496482ee13de80fd0c6c3a8b704e868f5120774bab66",
+      "bytes": 1634
+    },
+    "overlay_extra_wire_frag.glsl": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/overlay_extra_wire_frag.glsl",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_extra_wire_frag.glsl",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/overlay_extra_wire_frag.glsl",
+      "sha256": "ae9f894bba8ac6b08fc2690e65e6ad51c3e50ec492908ef72811a133c844265e",
+      "bytes": 931
+    },
+    "overlay_extra_info.hh": {
+      "source_path": "source/blender/draw/engines/overlay/shaders/infos/overlay_extra_info.hh",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/infos/overlay_extra_info.hh",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/draw/engines/overlay/shaders/infos/overlay_extra_info.hh",
+      "sha256": "ae842b927843322fe6e5dd5e223cd3c6bc6cbe18ecea3d3db71c3d6df30ff10c",
+      "bytes": 15539
+    },
+    "DNA_armature_types.h": {
+      "source_path": "source/blender/makesdna/DNA_armature_types.h",
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_armature_types.h",
+      "download_url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/makesdna/DNA_armature_types.h",
+      "sha256": "c51c32ed735927aa0bbf592b622cd183d31443f92df47a58bd3221a8398abbc5",
+      "bytes": 18422
+    }
+  }
+}

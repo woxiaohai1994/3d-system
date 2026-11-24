@@ -1,0 +1,18 @@
+{
+  "ref": "v4.3.0",
+  "license": "GPL-2.0-or-later",
+  "files": {
+    "view3d_project.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/editors/space_view3d/view3d_project.cc",
+      "sha256": "b84e9ff14ee943a9dadbcfb9ced308ca1e57764f506cb643192aa6812c701733"
+    },
+    "math_geom.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_geom.cc",
+      "sha256": "3de333b5b273342dddbc72ffa5d92718fd8abe720d83ecf347ed570f60730d09"
+    },
+    "math_matrix_c.cc": {
+      "url": "https://raw.githubusercontent.com/blender/blender/v4.3.0/source/blender/blenlib/intern/math_matrix_c.cc",
+      "sha256": "42af477e6a16067244e3d7050026d9ef2c20296bf4401a77074c33f33cdc4764"
+    }
+  }
+}
