@@ -9,3 +9,14 @@
 node_modules/
 .env
 .env*.local
+
+# Local credentials and encrypted AI settings
+.env.*
+!.env.example
+!.env.defaults
+ai-master.key
+ai-profiles.json
+*.pem
+*.key
+*.p12
+*.pfx
